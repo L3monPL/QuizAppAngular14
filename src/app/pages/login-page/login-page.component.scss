@@ -1,0 +1,54 @@
+@import '/src/style/colors.scss';
+.login_body{
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    margin-left: 20px;
+}
+.header_login_form{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    
+}
+.text_header h1{
+    font-size: 2rem;
+    font-weight: 700;
+}
+.header_login_form img{
+    width: 10rem;
+    max-width: 100%;
+}
+.bg_color{
+    background-color: $white;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    position: relative;
+}
+.text_login_form{
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/////////////////////////////MOBILE////////////////////////////////
+
+@media only screen and (max-width: 600px){
+.form-container{
+    width: auto;
+}
+.login_body{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+
+}
+
+
+

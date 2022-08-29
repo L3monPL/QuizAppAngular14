@@ -1,0 +1,83 @@
+@import '/src/style/colors.scss';
+.example-container{
+    display: flex;    
+    width: auto;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+// .mat-raised-button{
+//     border-radius: 20px;
+// }
+// .mat-button{
+//     border-radius: 20px;
+// }
+// ::ng-deep .mat-form-field-outline-start {
+//     border-radius: 30px 0 0 30px !important;
+//     min-width: 30px !important;
+//   }
+  
+//   ::ng-deep .mat-form-field-outline-end {
+//     border-radius: 0 30px 30px 0 !important;
+//   }
+.btn_space{
+    margin-bottom: 2rem;
+}
+
+.form-container{
+    width: 350px;
+}
+.form-field{
+    display: block;
+}
+.login_border{
+    // border: 1px solid #ccc;
+    // border-radius: 1.5rem;
+    padding: 2rem;
+    background-color: $card-color;
+}
+.text_login_form{
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.login_buttons{
+    display: flex;
+    flex-direction: column;
+}
+.mat-raised-button, .mat-button{
+    width: 100%;
+}
+.button_margin{
+    margin-bottom: 8px;
+}
+.input_margin{
+    padding-top: 0.3rem;
+}
+mat-form-field{
+    padding-top: 0.3rem;
+}
+.spinner{
+    display: flex;
+    justify-content: center;
+    margin-top: 5.2rem;
+    margin-bottom: 4.2rem;
+}
+.error_code{
+    text-align: center;
+    margin-top: 3rem;
+}
+.error{
+    color: $red;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+/////////////////////////////MOBILE////////////////////////////////
+
+@media only screen and (max-width: 600px){
+.form-container{
+    width: auto;
+}
+}

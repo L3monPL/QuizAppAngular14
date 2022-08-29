@@ -3,14 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginModule } from './components/login/login.module';
+import { RemindPasswordModule } from './components/remind-password/remind-password.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LoginModule,
+    RemindPasswordModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
