@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 100;
 
-  loginForm = new FormGroup({
-    email: new FormControl('',[Validators.required, Validators.email]),
-    password: new FormControl('',Validators.required)
+  loginForm = new UntypedFormGroup({
+    email: new UntypedFormControl('',[Validators.required, Validators.email]),
+    password: new UntypedFormControl('',Validators.required)
   });
 
   constructor(
