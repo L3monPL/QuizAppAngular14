@@ -1,4 +1,24 @@
 @import '/src/style/colors.scss';
+.page_body{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.left_panel{
+    width: 60%;
+    // background-color: #3e4687;
+    background-color: #3e4688;
+    box-shadow: 8px 0px 25px -8px rgba(66, 68, 90, 1);
+}
+.right_panel{
+    width: 40%;
+    // background-color: #444658;
+    
+}
+
+
+
+
 .login_body{
     justify-self: center;
     align-self: center;
@@ -19,8 +39,7 @@
     width: 10rem;
     max-width: 100%;
 }
-.bg_color{
-    background-color: $white;
+.bg{
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -33,6 +52,12 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+}
+.title{
+    font-size: 1.8rem;
+    color: $white;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
 }
 
 
