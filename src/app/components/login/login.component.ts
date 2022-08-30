@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 100;
 
-  loginForm = new UntypedFormGroup({
-    email: new UntypedFormControl('',[Validators.required, Validators.email]),
-    password: new UntypedFormControl('',Validators.required)
+  loginForm = new FormGroup({
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',Validators.required)
   });
 
   constructor(
@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let loginValue = this.loginForm.get('email')!.value;
       let passwordValue = this.loginForm.get('password')!.value;
+      if (loginValue == "admin@gmail.com" && passwordValue == "admin123") {
+        this.router.navigateByUrl('home')
+      }
     }
   }
 
@@ -45,7 +48,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   remindPassword(){
-    this.router.navigateByUrl('remind-password');
+    this.router.navigateByUrl('remind-password')
   }
 
 }

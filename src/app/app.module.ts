@@ -7,6 +7,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './components/login/login.module';
 import { RemindPasswordModule } from './components/remind-password/remind-password.module';
+import { RegisterModule } from './components/register/register.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { RemindPasswordModule } from './components/remind-password/remind-passwo
     BrowserAnimationsModule,
     LoginModule,
     RemindPasswordModule,
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

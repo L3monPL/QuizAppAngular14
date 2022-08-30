@@ -2,9 +2,8 @@
     <div class="example-container">
         <!-- <mat-card-title>Zaloguj</mat-card-title> -->
         <mat-card-content class="form-container">
-            <form [formGroup]="remindPassword" (submit)="submit()">
-                <div *ngIf="!loading">
-                    
+            <form [formGroup]="registerForm" (submit)="submit()">
+                <div *ngIf="!loading">  
                 <mat-form-field class="form-field" appearance="outline">
                     
                     <mat-label> E-mail</mat-label>
@@ -13,7 +12,7 @@
                     
                     <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger"></div>
 
-                    <mat-error *ngIf="f['email'].hasError('email') && !remindPassword.hasError('required')">
+                    <mat-error *ngIf="f['email'].hasError('email') && !registerForm.hasError('required')">
                         Wprowadz poprawny adres email
                     </mat-error>
 
@@ -22,7 +21,30 @@
                     </mat-error>
                 
                 </mat-form-field>
-                
+                <mat-form-field class="form-field" appearance="outline">
+                    
+                    <mat-label> Hasło</mat-label>
+                    
+                    <input matInput formControlName="password" type="password">
+                    
+                    <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger"></div>
+
+                    <mat-error *ngIf="f['email'].hasError('required')">
+                        Hasło jest <strong>wymagane</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                    
+                    <mat-label> Powtórz Hasło</mat-label>
+                    
+                    <input matInput formControlName="passwordSecond" type="password">
+                    
+                    <div *ngIf="f['passwordSecond'].touched && f['passwordSecond'].invalid" class="alert alert-danger"></div>
+
+                    <mat-error *ngIf="f['email'].hasError('required')">
+                        Hasło jest <strong>wymagane</strong>
+                    </mat-error>
+                </mat-form-field>
             </div>
             <!-- <div *ngIf="loading" class="spinner">
                 <mat-progress-spinner
@@ -43,10 +65,13 @@
             
             
                 <div class="input_margin">
-                    <button class="button_margin" mat-raised-button color="primary" type="submit">Przypomnij hasło</button>
+                    <button class="button_margin" mat-raised-button color="primary" type="submit">Zarejestruj się</button>
+                    
                 </div>
             </form>
-            <button routerLink="/login" class="button_margin" mat-button type="submit">Zaloguj się</button>
+            <button routerLink="/login" class="button_margin" mat-button type="submit">Powrót do logowania</button>
+            <div class="link">
+            </div>
             
         </mat-card-content>
         

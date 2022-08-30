@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RemindPasswordComponent } from './components/remind-password/remind-password.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'remind-password',
         component: RemindPasswordComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
     ]},
     { path: 'home', loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),

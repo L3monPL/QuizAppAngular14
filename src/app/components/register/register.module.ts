@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RemindPasswordComponent } from './remind-password.component';
+import { RegisterComponent } from './register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';  
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
+
 @NgModule({
   declarations: [
-    RemindPasswordComponent
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +30,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
   ],
   exports: [
-    RemindPasswordComponent
+    RegisterComponent
   ]
 })
-export class RemindPasswordModule { }
+export class RegisterModule { }

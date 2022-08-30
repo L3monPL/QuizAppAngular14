@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-remind-password',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RemindPasswordComponent implements OnInit {
 
-  constructor() { }
+  loading = false
+
+  constructor(
+    private router: Router
+  ) { }
+
+  remindPassword = new FormGroup({
+    email: new FormControl('',[Validators.required, Validators.email]),
+  });
 
   ngOnInit(): void {
+  }
+  get f(){
+    return this.remindPassword.controls;
+  }
+  // login(){
+  //   this.router.navigateByUrl('remind-password');
+  // }
+  submit(){
+    this.router.navigateByUrl('login');
   }
 
 }
