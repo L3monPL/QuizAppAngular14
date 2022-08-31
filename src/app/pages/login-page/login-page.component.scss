@@ -7,13 +7,26 @@
 .left_panel{
     width: 60%;
     // background-color: #3e4687;
-    background-color: #3e4688;
+    // background-color: #3e4688;
+    object-fit:contain;
+     background: url(../../../assets/bg_welcome0.jpg);
     box-shadow: 8px 0px 25px -8px rgba(66, 68, 90, 1);
+    // background-size:cover;
 }
+
+
+
 .right_panel{
     width: 40%;
     // background-color: #444658;
     
+}
+.bg_overlay{
+    width: 100%;
+    height: 100%;
+    background: #3e4688;
+    opacity: .9;
+    position: absolute;
 }
 
 
@@ -45,6 +58,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     position: relative;
+    
 }
 .text_login_form{
     margin-left: 2rem;
@@ -53,12 +67,9 @@
     flex-direction: column;
     justify-content: center;
 }
-.title{
-    font-size: 1.8rem;
-    color: $white;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-weight: 500;
-}
+
+
+
 
 
 
