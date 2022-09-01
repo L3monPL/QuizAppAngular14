@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
-import { HeaderModule } from 'src/app/components/header/header.module';
 import { RouterModule, Routes } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -24,7 +24,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    HeaderModule
+    MatIconModule,
+
   ],
   exports: [
     RouterModule
