@@ -11,10 +11,12 @@ import { RegisterModule } from './components/register/register.module';
 import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-login-page.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
+    
   ],
   imports: [
     BrowserModule,

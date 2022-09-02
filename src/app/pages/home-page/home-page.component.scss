@@ -14,11 +14,10 @@
     width: 100%;
     background-color: #6f41e6;
 }
-.margin_content{
-    margin-left: 2rem;
-    margin-right: 2rem;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
+.content{
+    
+    display: flex;
+    flex-direction: row;
 }
 .main_content{
     width: 100%;
@@ -26,6 +25,9 @@
     border-bottom-left-radius: 50px;
     border-top-left-radius: 50px;
     background-color: white;
+    -webkit-box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
+-moz-box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
+box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
 }
 .menu{
     display: flex;
@@ -40,8 +42,14 @@
     padding-right: 4rem;
     margin-top: 1.6rem;
     margin-bottom: 1.6rem;
+    color: #d1d1d1;
+    font-size: 1.6rem;
+}
+.menu_btn:hover{
     color: white;
-    font-size: 2rem;
+}
+.menu_btn.active{
+    color: white;
 }
 .avatar{
     margin-top: 3rem;
@@ -75,4 +83,16 @@
 }
 .bottom_menu{
     margin-bottom: 2rem;
+}
+.main{
+    width: 100%;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+}
+.profile_card{
+    width: 450px;
+    // background-color: #ccc;
+    height: 100vh;
 }
