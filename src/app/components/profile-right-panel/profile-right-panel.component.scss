@@ -1,5 +1,6 @@
+@import '/src/style/colors.scss';
 .bg{
-    background-color: #6f41e6;
+    background-color: $bg_layout;
     height: 100%;
     -webkit-box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
     -moz-box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
@@ -8,4 +9,99 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: 500;
     font-size: 1rem;
+}
+.image_profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image_profile img{
+    margin-top: 4rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgb(121, 121, 121);
+    
+}
+.text_name{
+    margin-top: 1.2rem;
+    color: white;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+}
+.lvl_text{
+    text-align: center;
+}
+.text_rank{
+    color: greenyellow;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-align: center;
+}
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: $bar_color_progress;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #000;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+}
+.progres_card{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-bottom: 2px;
+    display: flex;
+    flex-direction: row;
+}
+.right_container_flex{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.current_lvl p{
+    margin: 0;
+}
+.row_lvl_text{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.lvl_bar{
+    margin-bottom: 8px;
+}
+.daily_rewards{
+    margin-top: 12px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.image_reward{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image_reward img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid rgb(121, 121, 121);
+    
+}
+.daily_reward_text{
+    text-align: center;
+}
+.daily_reward_text_progress{
+    text-align: center;
+    margin-top: 8px;
+}
+.daily_reward_text_progress p{
+    margin: 0;
+    color: $bar_color_progress;
 }

@@ -1,3 +1,4 @@
+@import '/src/style/colors.scss';
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -12,7 +13,7 @@
 }
 .bg{
     width: 100%;
-    background-color: #6f41e6;
+    background-color: $bg_layout;
 }
 .content{
     
@@ -33,7 +34,7 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #6f41e6;
+    background-color: $bg_layout;
     width: auto;
     height: 100%;
 }
