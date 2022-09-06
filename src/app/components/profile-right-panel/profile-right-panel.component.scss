@@ -94,14 +94,95 @@
     border: 4px solid rgb(121, 121, 121);
     
 }
-.daily_reward_text{
-    text-align: center;
+// .daily_reward_text{
+//     text-align: center;
+// }
+// .daily_reward_text_progress{
+//     text-align: center;
+//     margin-top: 8px;
+// }
+// .daily_reward_text_progress p{
+//     margin: 0;
+//     color: $bar_color_progress;
+// }
+.scoreboard{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    // row-gap: 1rem;
+    padding: 0;
+    // padding-bottom: 1rem;
 }
-.daily_reward_text_progress{
-    text-align: center;
-    margin-top: 8px;
-}
-.daily_reward_text_progress p{
+.scoreboard p{
     margin: 0;
-    color: $bar_color_progress;
+}
+.scroll_elements{
+    overflow-y: scroll;
+    height: 155px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	// background-color: #F5F5F5;
+    // width: 10px;
+	// background-color: #F5F5F5;
+}
+
+#style-scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+    border-bottom-right-radius: 3px;
+}
+
+#style-scroll::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+    border-bottom-right-radius: 3px;
+}
+
+#style-scroll::-webkit-scrollbar-thumb
+{
+	background-color: #F90;	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent);
+                                              border-bottom-right-radius: 3px;
+}
+
+
+
+
+.label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+}
+.border_label{
+    background-color: $bar_color_progress;
+    padding-top: 0.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding-bottom: 0.8rem;
+}
+.rank_number{
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+.margin_top_in_scroll{
+    margin-top: 0.5rem;
 }

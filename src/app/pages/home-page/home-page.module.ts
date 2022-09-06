@@ -9,12 +9,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
-    // children: [
-    //   {
-    //     path: 'negotiations',
-    //     loadChildren: () => import('../negotiations-page/negotiations-page.module').then(m => m.NegotiationsPageModule)
-    //   },
-    // ]
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule)
+      },
+    ]
   }
 ]
 

@@ -1,0 +1,36 @@
+@import '/src/style/colors.scss';
+.list_container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 3rem;
+    width: 100%;
+    // overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    // -webkit-overflow-scrolling: touch;
+}
+
+.btn_element p{
+    text-align: center;
+    margin-top: 4px;
+}
+.element{
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: rgb(225, 225, 225);
+    width: 54px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.element img{
+    width: 50px;
+    height: 50px;
+}
+.element p{
+    font-size: 14px;
+    margin-top: 4px;
+}

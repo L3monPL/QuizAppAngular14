@@ -15,8 +15,7 @@ import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
