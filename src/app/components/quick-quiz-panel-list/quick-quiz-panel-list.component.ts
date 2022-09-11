@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-quick-quiz-panel-list',
@@ -8,22 +8,19 @@ import { Component, OnInit } from '@angular/core';
 
 export class QuickQuizPanelListComponent implements OnInit {
 
-  buttonRight: any
-  buttonLeft: any
-  container:any
+  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent!: ElementRef<any>;
 
   constructor() { }
 
   ngOnInit(): void {
-     this.buttonRight = document.getElementById('slideRight');
-     this.buttonLeft = document.getElementById('slideLeft');
-     this.container = document.getElementById('container');
-  
 
   }
-  right(){
-    this.buttonRight.onclick = function () {
-      this.container.scrollLeft += 20;
-    };
+
+  public scrollLeft(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
   }
+  public scrollRight(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
 }
