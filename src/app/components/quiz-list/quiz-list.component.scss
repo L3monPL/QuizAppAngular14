@@ -1,13 +1,46 @@
 @import '/src/style/colors.scss';
 .card{
-    min-height: 100px;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
     background-color: #fff;
-    border-radius: 15px;
-    margin-top: 2rem;
+    border-radius: 5px;
     box-shadow: $box_shadow;
+    margin-top: 1rem;
 }
 .item{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+.item p{
+    margin: 0;
+    font-size: 1rem;
+}
+.item_icon{
+    font-size: 1.8rem;
+}
+.item img{
+    width: 35px;
+    height: 35px;
+    margin-left: 2rem;
+}
+.icon_and_nameQuiz{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+.value_to_done{
+    width: 150px;
+}
+.value_to_done mat-progress-bar{
+    height: 8px !important;
+}
+.btn_and_bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    margin-right: 2rem;
 }

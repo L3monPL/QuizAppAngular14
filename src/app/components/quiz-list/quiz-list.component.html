@@ -1,9 +1,16 @@
-<div class="card">
+<div class="card" *ngFor="let number of [0,1,2]">
     <div class="item">
-        <p>icon</p>
-        <p>JavaScript</p>
-        <p>Front-end</p>
-        <p>Podstawowy</p>
-        <p></p>
+        <div class="icon_and_nameQuiz">
+            <img src="../../../assets/js.png" alt="">
+            <p>JavaScript</p>
+            <p>Front-end</p>
+        </div>
+        <div class="btn_and_bar">
+            <p class="value_to_done">
+                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            </p>
+            <button mat-raised-button color="accent">Rozpocznij Quiz</button>
+        </div>
+        <!-- <mat-icon class="item_icon">home</mat-icon> -->
     </div>
 </div>
