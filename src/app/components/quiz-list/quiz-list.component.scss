@@ -1,0 +1,13 @@
+@import '/src/style/colors.scss';
+.card{
+    min-height: 100px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: $box_shadow;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

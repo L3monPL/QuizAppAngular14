@@ -8,7 +8,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 export class QuickQuizPanelListComponent implements OnInit {
 
-  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent!: ElementRef<any>;
 
   constructor() { }
 
@@ -16,11 +15,5 @@ export class QuickQuizPanelListComponent implements OnInit {
 
   }
 
-  public scrollLeft(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
-  }
-  public scrollRight(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
-  }
 
 }

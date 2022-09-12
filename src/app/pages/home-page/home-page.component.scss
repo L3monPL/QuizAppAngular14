@@ -86,14 +86,17 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
     margin-bottom: 2rem;
 }
 .main{
-    width: calc(100vw - 350px - 152px - 34px);
-    margin-right: 2rem;
-    margin-left: 2rem;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
+    width: calc(100vw - 350px - 152px - 34px - 2rem);
+    margin-right: 3rem;
+    margin-left: 3rem;
+    padding-top: 2.6rem;
+    padding-bottom: 2.6rem;
 }
 .profile_card{
     width: 320px;
     // background-color: #ccc;
     height: 100vh;
+}
+.main_content{
+    background-color: $page_bg_main;
 }
