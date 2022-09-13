@@ -10,7 +10,7 @@
     box-shadow: $box_shadow;
 }
 .txt_container{
-    width: 60%;
+    width: 80%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -32,10 +32,27 @@
     color: $bar_color_progress;
 }
 .image{
-    width: 100%;
+    // width: 100%;
 }
 .image img{
     width: 200px;
     float: right;
     margin-right: 2rem;
+}
+
+
+
+@media only screen and (max-width: 1400px){
+    .row{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .name_color{
+        margin-left: 0px;
+    }
+    .txt h2{
+        margin: 0;
+        margin-bottom: 8px;
+    }
 }
