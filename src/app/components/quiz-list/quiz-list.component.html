@@ -1,15 +1,14 @@
 
-
-<div class="card" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+<div class="card" *ngFor="let quiz of quizList">
     <div class="item">
         <div class="icon_and_nameQuiz">
-            <img src="../../../assets/js.png" alt="">
-            <p>JavaScript</p>
-            <p>Front-end</p>
+            <img src={{quiz.icon}} alt="">
+            <p>{{quiz.name}}</p>
+            <p>{{quiz.type}}</p>
         </div>
         <div class="btn_and_bar">
             <p class="value_to_done">
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
             </p>
             <button mat-raised-button color="accent">Rozpocznij Quiz</button>
         </div>
