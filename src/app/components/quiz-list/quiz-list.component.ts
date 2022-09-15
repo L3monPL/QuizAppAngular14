@@ -34,19 +34,19 @@ export class QuizListComponent implements OnInit {
     },
     {
       name: 'SQL',
-      icon: '../../../assets/js.png',
+      icon: '../../../assets/sql.png',
       type: 'Back-end',
       progresValue: 25,
     },
     {
       name: 'C++',
-      icon: '../../../assets/js.png',
+      icon: '../../../assets/c++.png',
       type: 'Back-end',
       progresValue: 45,
     },
     {
       name: 'Python',
-      icon: '../../../assets/js.png',
+      icon: '../../../assets/python.png',
       type: 'Back-end',
       progresValue: 5,
     },

@@ -1,10 +1,10 @@
 <h2>Szybki dostęp</h2>
 <div class="list_container">
-    <div #widgetsContent id="container" class="btn_element" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12]">
+    <div #widgetsContent id="container" class="btn_element" *ngFor="let quiz of quizList">
     <div class="element">
-        <img src="../../../assets/js.png" alt="">
+        <img src={{quiz.icon}} alt="">
     </div>
-    <p>JavaScript</p>
+    <p>{{quiz.name}}</p>
     </div>
 </div>
 
