@@ -1,10 +1,12 @@
 <h2>Szybki dostęp</h2>
 <div class="list_container">
     <div #widgetsContent id="container" class="btn_element" *ngFor="let quiz of quizList">
-    <div class="element">
-        <img src={{quiz.icon}} alt="">
-    </div>
-    <p>{{quiz.name}}</p>
+        <div class="item">
+            <div class="element">
+                <img src={{quiz.icon}} alt="">
+            </div>
+            <p>{{quiz.name}}</p>
+        </div>
     </div>
 </div>
 

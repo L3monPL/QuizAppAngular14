@@ -10,7 +10,9 @@
             <p class="value_to_done">
                 <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
             </p>
-            <button mat-raised-button color="accent">Rozpocznij Quiz</button>
+            <a href={{quiz.link}}>
+                <button mat-raised-button color="accent">Rozpocznij Quiz</button>
+            </a>
         </div>
         <!-- <mat-icon class="item_icon">home</mat-icon> -->
     </div>

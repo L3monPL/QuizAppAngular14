@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatProgressBarModule,
     MatButtonModule,
+    
   ],
   exports: [
     QuizListComponent
