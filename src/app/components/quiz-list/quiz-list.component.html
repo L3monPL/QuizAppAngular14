@@ -4,13 +4,13 @@
         <div class="icon_and_nameQuiz">
             <img src={{quiz.icon}} alt="">
             <p class="quiz_name">{{quiz.name}}</p>
-            <p>{{quiz.type}}</p>
+            <!-- <p>{{quiz.type}}</p> -->
         </div>
         <div class="btn_and_bar">
             <p class="value_to_done">
                 <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
             </p>
-            <a href={{quiz.link}}>
+            <a routerLink={{quiz.link}}>
                 <button mat-raised-button color="accent">Rozpocznij Quiz</button>
             </a>
         </div>

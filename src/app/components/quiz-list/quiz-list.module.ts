@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatButtonModule} from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatProgressBarModule,
     MatButtonModule,
+    RouterModule
     
   ],
   exports: [

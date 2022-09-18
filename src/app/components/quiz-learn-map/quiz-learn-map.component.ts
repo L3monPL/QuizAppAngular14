@@ -1,12 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-quick-quiz-panel-list',
-  templateUrl: './quick-quiz-panel-list.component.html',
-  styleUrls: ['./quick-quiz-panel-list.component.scss']
+  selector: 'app-quiz-learn-map',
+  templateUrl: './quiz-learn-map.component.html',
+  styleUrls: ['./quiz-learn-map.component.scss']
 })
-
-export class QuickQuizPanelListComponent implements OnInit {
+export class QuizLearnMapComponent implements OnInit {
 
   quizList = [
     {
@@ -58,14 +57,11 @@ export class QuickQuizPanelListComponent implements OnInit {
       progresValue: 5,
       link: '/home/quiz/7'
     },
-
   ]
 
   constructor() { }
 
   ngOnInit(): void {
-
   }
-
 
 }

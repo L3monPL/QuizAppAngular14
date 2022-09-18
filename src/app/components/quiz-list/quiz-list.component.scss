@@ -6,12 +6,15 @@
     border-radius: 5px;
     box-shadow: $box_shadow;
     margin-top: 1rem;
+    // width: 45%;
 }
 .item{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .item p{
     margin: 0;
@@ -43,6 +46,7 @@
     align-items: center;
     gap: 4rem;
     margin-right: 2rem;
+    flex-wrap: wrap;
 }
 .quiz_name{
     width: 100px;

@@ -4,6 +4,7 @@ import { DashboardPageComponent } from './dashboard-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { QuickQuizPanelListModule } from 'src/app/components/quick-quiz-panel-list/quick-quiz-panel-list.module';
 import { QuizListModule } from 'src/app/components/quiz-list/quiz-list.module';
+import { QuizLearnMapModule } from 'src/app/components/quiz-learn-map/quiz-learn-map.module';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     QuickQuizPanelListModule,
     QuizListModule,
+    QuizLearnMapModule,
   ]
 })
 export class DashboardPageModule { }
