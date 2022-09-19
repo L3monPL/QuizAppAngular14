@@ -1,23 +1,17 @@
 <div class="container">
-    <div class="item" *ngIf="quizList">
+    <div class="item" *ngFor="let quiz of quizMap">
         <div class="course_container">
             <div class="name">
                 <h2>Angular Developer</h2>
             </div>
-            <div class="image_container">
-                <div class="image">
-                    <img src={{quizList[2].icon}} alt="">
-                </div>
-                <div class="image">
-                    <img src={{quizList[1].icon}} alt="">
-                </div>
-                <div class="image">
-                    <img src={{quizList[0].icon}} alt="">
+            <div class="image_container" *ngFor="let quizList of quiz.quizList">
+                <div routerLink={{quizList.link}} class="image">
+                    <img src={{quizList.icon}} alt="">
                 </div>
             </div>
         </div>
     </div>
-    <div class="item" *ngIf="quizList">
+    <!-- <div class="item" *ngIf="quizList">
         <div class="course_container">
             <div class="name">
                 <h2>Back-end C# Developer</h2>
@@ -38,4 +32,16 @@
     <div class="item">
         
     </div>
+    <div class="item">
+        
+    </div>
+    <div class="item">
+        
+    </div>
+    <div class="item">
+        
+    </div>
+    <div class="item">
+        
+    </div> -->
 </div>
