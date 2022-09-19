@@ -6,10 +6,10 @@
             <p class="quiz_name">{{quiz.name}}</p>
             <!-- <p>{{quiz.type}}</p> -->
         </div>
+        <p class="value_to_done">
+            <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
+        </p>
         <div class="btn_and_bar">
-            <p class="value_to_done">
-                <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
-            </p>
             <a routerLink={{quiz.link}}>
                 <button mat-raised-button color="accent">Rozpocznij Quiz</button>
             </a>

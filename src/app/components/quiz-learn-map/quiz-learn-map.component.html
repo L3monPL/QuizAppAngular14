@@ -1,5 +1,8 @@
 <div class="margin">
-    <h2>Podążaj wyznaczonymi ścieżkami nauki</h2>
+    <h2>Podążaj główną scieżką nauki</h2>
+    <div class="btn">
+        <a routerLink="/home/quiz-maps" class="btn_map_more">Poznaj więcej scieżk rozwoju</a>
+    </div>
     <div class="row">
         <div class="element">
             <div class="color green"></div>
@@ -16,10 +19,10 @@
     </div>
     <div class="map" *ngIf="quizList">
         <div class="row_container">
-            <div class="item border_green">
+            <div routerLink={{quizList[2].link}} class="item border_green">
                 <img src={{quizList[2].icon}} alt="">
             </div>
-            <div class="item">
+            <div routerLink={{quizList[5].link}} class="item">
                 <img src={{quizList[5].icon}} alt="">
             </div>
         </div>

@@ -14,6 +14,9 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('../dashboard-page/dashboard-page.module').then(m => m.DashboardPageModule)
       },
+      { path: 'quiz-maps', 
+      loadChildren: () => import('../quiz-maps-page/quiz-maps-page.module').then(m => m.QuizMapsPageModule),
+      },
       {
         path: 'quiz/:code',
         loadChildren: () => import('../../components/quiz/quiz.module').then(m => m.QuizModule),
