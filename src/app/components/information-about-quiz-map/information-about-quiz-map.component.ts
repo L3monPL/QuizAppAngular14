@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizMapServiceService } from 'src/app/services/quiz-map-service.service';
 
 @Component({
   selector: 'app-information-about-quiz-map',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InformationAboutQuizMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public quizMapService: QuizMapServiceService
+  ) { }
 
   ngOnInit(): void {
   }

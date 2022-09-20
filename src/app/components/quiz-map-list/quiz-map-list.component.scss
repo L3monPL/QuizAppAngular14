@@ -5,24 +5,33 @@
     row-gap: 1rem;
     margin-right: 1rem;
 }
+.title{
+    text-align: center;
+}
 .item{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80px;
+    height: auto;
     border-radius: 30px;
     border: 4px solid #fff;
     box-shadow: $box_shadow;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    cursor: pointer;
 }
 .course_container{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .course_container h2{
     margin: 0;
-    margin-right: 2rem;
+    margin-right: 0.5rem;
 }
 .image{
     display: flex;
@@ -41,10 +50,41 @@
     flex-direction: row;
     // column-gap: 0.4rem;
 }
+.image_container image{
+    flex-wrap:nowrap;
+}
 .image img{
     width: 25px;
     height: 25px;
 }
 .name{
     width: 200px;
+}
+.bar{
+    width: 200px;
+}
+.selected {
+    background-color: aqua;
+  }
+.icon img{
+    width: 55px;
+    height: 55px;
+}
+.icon_name_bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.name_bar{
+    margin-left: 1rem;
+}
+
+@media only screen and (max-width: 1500px){
+    // .course_container{
+    //     flex-direction: column;
+    // }
+    // .image_container{
+    //     // display: flex;
+    //     flex-direction: row;
+    // }
 }

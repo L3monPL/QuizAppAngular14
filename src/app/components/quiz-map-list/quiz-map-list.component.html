@@ -1,47 +1,27 @@
 <div class="container">
-    <div class="item" *ngFor="let quiz of quizMap">
+    <h2 class="title">Wybierz swoją ścieżkę rozwoju:</h2>
+    <div class="item" *ngFor="let quiz of this.quizMapService.quizMap" (click)="this.quizMapService.onClickMapSelect(quiz)" [ngClass]="{ 'selected': quiz == this.quizMapService.selectedItem }">
         <div class="course_container">
-            <div class="name">
-                <h2>Angular Developer</h2>
+            <div class="icon_name_bar">
+                <div class="icon">
+                    <img src={{quiz.icon}} alt="">
+                </div>
+                <div class="name_bar">
+                    <div class="name">
+                        <h2>{{quiz.name}}</h2>
+                    </div>
+                    <div class="bar">
+                        12/26
+                    </div>
+                </div>
+            
             </div>
-            <div class="image_container" *ngFor="let quizList of quiz.quizList">
-                <div routerLink={{quizList.link}} class="image">
+            
+            <div class="image_container">
+                <div routerLink="/home/quiz/{{quizList.id}}" class="image" *ngFor="let quizList of quiz.quizList">
                     <img src={{quizList.icon}} alt="">
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="item" *ngIf="quizList">
-        <div class="course_container">
-            <div class="name">
-                <h2>Back-end C# Developer</h2>
-            </div>
-            <div class="image_container">
-                <div class="image">
-                    <img src={{quizList[2].icon}} alt="">
-                </div>
-                <div class="image">
-                    <img src={{quizList[1].icon}} alt="">
-                </div>
-                <div class="image">
-                    <img src={{quizList[0].icon}} alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        
-    </div>
-    <div class="item">
-        
-    </div>
-    <div class="item">
-        
-    </div>
-    <div class="item">
-        
-    </div>
-    <div class="item">
-        
-    </div> -->
 </div>
