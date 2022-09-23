@@ -6,15 +6,44 @@
          </div>
       </div>
    </div>
+   <h2 class="name_of_map">{{this.quizMapService.selectedItem.name}}</h2>
    <div class="description" *ngFor="let quizMapInfo of this.quizMapService.selectedItem.quizList">
-      <div class="card_lesson">
+      <div class="card_container">
+         <div class="card_lesson" (click)="showLessonPanel()">
+            <div class="row">
+               <div class="left_in_row">
+                  <div class="icon">
+                     <img src={{quizMapInfo.icon}} alt="">
+                  </div>
+                  <div class="name">
+                     {{quizMapInfo.name}} 
+                  </div>
+               </div>
+            <div class="right_in_row">
+               <div class="progress">
+                  {{quizMapInfo.progresValue}}/100
+               </div>
+            </div>
+            </div>
+         </div>
+         <div class="card_lesson_info" *ngIf="lessonsPanel">
+            <div class="card_lesson_item" *ngFor="let desc of quizMapInfo.lesson">
+               <div class="lesson_name">{{desc.name}}</div>
+            </div>
+         </div>
+      </div>
+      <div class="space"></div>
+      
+      
+      
+      <!-- <div class="card_lesson">
          <div class="card_bg">
             <div class="lesson_title">
                {{quizMapInfo.name}}
             </div>
             <h2 *ngFor="let desc of quizMapInfo.lesson">- {{desc.name}}</h2>
          </div>
-      </div>
-      <div class="space"></div>
+      </div> -->
+      
    </div>
 </div>
