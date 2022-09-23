@@ -380,5 +380,6 @@ export class QuizMapServiceService {
   onClickMapSelect(item:any){
     this.selectedItem = item;
     console.log(this.selectedItem)
+    this.showLessonsFromQuizMap = null
   }
 }
