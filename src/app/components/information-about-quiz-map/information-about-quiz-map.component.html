@@ -7,9 +7,9 @@
       </div>
    </div>
    <h2 class="name_of_map">{{this.quizMapService.selectedItem.name}}</h2>
-   <div class="description" *ngFor="let quizMapInfo of this.quizMapService.selectedItem.quizList">
+   <div class="description" *ngFor="let quizMapInfo of this.quizMapService.selectedItem.quizList; let id = index">
       <div class="card_container">
-         <div class="card_lesson" (click)="showLessonPanel()">
+         <div class="card_lesson" (click)="showLessonPanel(id)">
             <div class="row">
                <div class="left_in_row">
                   <div class="icon">
@@ -26,7 +26,7 @@
             </div>
             </div>
          </div>
-         <div class="card_lesson_info" *ngIf="lessonsPanel">
+         <div class="card_lesson_info" *ngIf="lessonsPanel && this.quizMapService.showLessonsFromQuizMap === id">
             <div class="card_lesson_item" *ngFor="let desc of quizMapInfo.lesson">
                <div class="lesson_name">{{desc.name}}</div>
             </div>

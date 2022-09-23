@@ -373,6 +373,8 @@ export class QuizMapServiceService {
 
   selectedItem = this.quizMap[0];
 
+  showLessonsFromQuizMap?: any
+
   constructor() { }
 
   onClickMapSelect(item:any){
