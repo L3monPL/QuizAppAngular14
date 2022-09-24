@@ -29,6 +29,7 @@
          <div class="card_lesson_info" *ngIf="lessonsPanel && this.quizMapService.showLessonsFromQuizMap === id">
             <div class="card_lesson_item" *ngFor="let desc of quizMapInfo.lesson">
                <div class="lesson_name">{{desc.name}}</div>
+               <div class="lesson_progress">80%</div>
             </div>
          </div>
       </div>
