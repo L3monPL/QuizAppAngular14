@@ -373,6 +373,8 @@ export class QuizMapServiceService {
 
   selectedItem = this.quizMap[0];
 
+  lastId?: number| any
+
   showLessonsFromQuizMap?: any
 
   constructor() { }
@@ -381,5 +383,6 @@ export class QuizMapServiceService {
     this.selectedItem = item;
     console.log(this.selectedItem)
     this.showLessonsFromQuizMap = null
+    this.lastId = null
   }
 }

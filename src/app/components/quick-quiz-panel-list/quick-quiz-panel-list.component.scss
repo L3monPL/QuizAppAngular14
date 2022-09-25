@@ -17,22 +17,24 @@
     text-align: center;
     margin-top: 4px;
     font-size: 12px;
+    font-weight: 500;
 }
 .element{
-    border: 1px solid rgb(225, 225, 225);
+    // border: 1px solid rgb(255, 255, 255);
     border-radius: 14px;
     padding: 0.7rem;
-    background-color: rgb(225, 225, 225);
+    background-color: #fff;
     width: 30px;
     height: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: 0.6s;
+    box-shadow: $box_shadow;
 }
 .element:hover{
-    background-color: rgb(243, 243, 243);
-    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(226, 226, 226);
+    // border: 1px solid rgb(255, 255, 255);
     transition: 0.6s;
 }
 .element img{

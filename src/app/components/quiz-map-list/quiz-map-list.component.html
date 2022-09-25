@@ -1,5 +1,6 @@
 <div class="container">
-    <h2 class="title">Wybierz swoją ścieżkę rozwoju:</h2>
+    <div class="padding">
+        <h2 class="title">Wybierz swoją ścieżkę rozwoju:</h2>
     <div class="item" *ngFor="let quiz of this.quizMapService.quizMap" (click)="this.quizMapService.onClickMapSelect(quiz)" [ngClass]="{ 'selected': quiz == this.quizMapService.selectedItem }">
         <div class="course_container">
             <div class="icon_name_bar">
@@ -23,5 +24,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>

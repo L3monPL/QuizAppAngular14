@@ -9,7 +9,7 @@ import { QuizMapServiceService } from 'src/app/services/quiz-map-service.service
 export class InformationAboutQuizMapComponent implements OnInit {
 
   lessonsPanel = false
-  lastId?: number
+  // lastId?: number
 
 
   constructor(
@@ -28,15 +28,15 @@ export class InformationAboutQuizMapComponent implements OnInit {
     this.lessonsPanel =! this.lessonsPanel
     this.lessonsPanel =! this.lessonsPanel
 
-    if (this.lastId == id) {
+    if (this.quizMapService.lastId == id) {
       this.lessonsPanel =! this.lessonsPanel
-      console.log(this.lastId, id)
+      console.log(this.quizMapService.lastId, id)
     }
-    if(this.lastId !== id){ //JAK KLIKAMY NA INNA MAPE TO RESET lastId = null (w servisie)
+    if(this.quizMapService.lastId !== id){ 
       this.lessonsPanel = true
     }
-    console.log('wykonuje gdy kilkamy na inny div' + this.lastId, id)
-    this.lastId = id
+    console.log(this.quizMapService.lastId, id)
+    this.quizMapService.lastId = id
 
     // if (this.lessonsPanel == false) {
     //   this.lessonsPanel = true
