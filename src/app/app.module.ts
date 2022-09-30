@@ -9,6 +9,7 @@ import { LoginModule } from './components/login/login.module';
 import { RemindPasswordModule } from './components/remind-password/remind-password.module';
 import { RegisterModule } from './components/register/register.module';
 import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-login-page.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,6 +23,7 @@ import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LoginModule,
