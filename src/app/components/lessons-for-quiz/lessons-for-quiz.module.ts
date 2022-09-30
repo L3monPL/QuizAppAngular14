@@ -4,24 +4,26 @@ import { LessonsForQuizComponent } from './lessons-for-quiz.component';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizComponent } from '../quiz/quiz.component';
 import { QuizModule } from '../quiz/quiz.module';
+import { LessonsComponent } from '../lessons/lessons.component';
 
 const routes: Routes = [
   {
-    path: ':code',
+    path: '',
     component: LessonsForQuizComponent,
     children: [
       {
-        path: '',
-        // component: QuizComponent
-        loadChildren: () => import('../../components/quiz/quiz.module').then(m => m.QuizModule),
+        path: ':code',
+        component: LessonsComponent
+        // loadChildren: () => import('../../components/lessons/lessons.module').then(m => m.LessonsModule),
       },
       {
-        path: ':code',
+        path: ':code/:code',
         // component: QuizComponent
         loadChildren: () => import('../../components/quiz/quiz.module').then(m => m.QuizModule),
       },
     ]
-  }
+  },
+  { path: '**',   redirectTo: ':code/:code', pathMatch: 'full' }
 ]
 
 @NgModule({
@@ -31,10 +33,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    QuizModule
+    // QuizModule
   ],
   exports: [
-    LessonsForQuizComponent
+    LessonsForQuizComponent,
+    RouterModule
   ]
 })
 export class LessonsForQuizModule { }
