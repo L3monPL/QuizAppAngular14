@@ -1,16 +1,16 @@
 
-<div class="card" *ngFor="let quiz of quizList">
+<div class="card" *ngFor="let category of categoryList">
     <div class="item">
         <div class="icon_and_nameQuiz">
-            <img src={{quiz.icon}} alt="">
-            <p class="quiz_name">{{quiz.name}}</p>
+            <img src={{category.iconUrl}} alt="">
+            <p class="quiz_name">{{category.name}}</p>
             <!-- <p>{{quiz.type}}</p> -->
         </div>
         <p class="value_to_done">
-            <mat-progress-bar mode="determinate" value={{quiz.progresValue}}></mat-progress-bar>
+            <mat-progress-bar mode="determinate" value=10></mat-progress-bar>
         </p>
         <div class="btn_and_bar">
-            <a routerLink={{quiz.link}}>
+            <a routerLink='/home/lessons/{{category.id}}'>
                 <button mat-raised-button color="accent">Rozpocznij Quiz</button>
             </a>
         </div>

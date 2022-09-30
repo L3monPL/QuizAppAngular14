@@ -18,8 +18,8 @@ const routes: Routes = [
       loadChildren: () => import('../quiz-maps-page/quiz-maps-page.module').then(m => m.QuizMapsPageModule),
       },
       {
-        path: 'quiz/:code',
-        loadChildren: () => import('../../components/quiz/quiz.module').then(m => m.QuizModule),
+        path: 'lessons',
+        loadChildren: () => import('../../components/lessons-for-quiz/lessons-for-quiz.module').then(m => m.LessonsForQuizModule),
       },
     ]
   }
