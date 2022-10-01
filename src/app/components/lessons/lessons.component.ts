@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-lessons',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LessonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.takeValueFromUrl()
   }
+
+  takeValueFromUrl(){
+    this.route.paramMap.subscribe(params => {
+      var id = params.get('code');
+      console.log(id);
+    });
+  }
+  
+  
 
 }

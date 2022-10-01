@@ -28,4 +28,13 @@ export class CategoryRestService {
       responseType: 'json'
     })
   }
+
+  getCategoryId(id: number):Observable<HttpResponse<Category>>{
+    return this.http.get<Category>(this.PATH + `/category/${id}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
+
 }

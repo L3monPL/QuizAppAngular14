@@ -37,14 +37,6 @@ export class InformationAboutQuizMapComponent implements OnInit {
     }
     console.log(this.quizMapService.lastId, id)
     this.quizMapService.lastId = id
-
-    // if (this.lessonsPanel == false) {
-    //   this.lessonsPanel = true
-    // }
-    // else if (this.lessonsPanel == true) {
-    //   this.lessonsPanel = false
-    // }
-    // this.lessonsPanel = true
   }
 
 }

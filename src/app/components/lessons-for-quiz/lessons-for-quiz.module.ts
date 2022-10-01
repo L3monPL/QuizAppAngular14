@@ -26,7 +26,8 @@ import { LessonsComponent } from '../lessons/lessons.component';
 const routes: Routes = [
   {
     path: ':code',
-    component: LessonsComponent,
+    // component: LessonsComponent,
+    loadChildren: () => import('../../components/lessons/lessons.module').then(m => m.LessonsModule),
     
   },
   {
