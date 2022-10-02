@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+  idParam?: any
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.idParam = params.get('code')
+      console.log(this.idParam);
+    });
   }
 
 }

@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25%;
+}
+.container mat-card{
+    padding: 4rem;
+    cursor: pointer;
+}

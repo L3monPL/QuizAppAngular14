@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryRestService } from 'src/app/services/category-rest.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public categoryRest: CategoryRestService
+  ) { }
 
   ngOnInit(): void {
+    this.categoryRest.getCategoryList()
   }
 
 }

@@ -8,6 +8,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class LessonsComponent implements OnInit {
 
+  idParam?: string|null
+
   constructor(
     private route: ActivatedRoute
   ) { }
@@ -18,8 +20,8 @@ export class LessonsComponent implements OnInit {
 
   takeValueFromUrl(){
     this.route.paramMap.subscribe(params => {
-      var id = params.get('code');
-      console.log(id);
+      this.idParam = params.get('code')
+      console.log(this.idParam);
     });
   }
   

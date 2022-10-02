@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryRestService } from 'src/app/services/category-rest.service';
 
 @Component({
   selector: 'app-home-page',
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
+
     if(this.router.url === '/home')
     {
       this.router.navigate(['./home/dashboard'])

@@ -1,11 +1,11 @@
 <h2>Szybki dostęp</h2>
 <div class="list_container">
-    <div #widgetsContent id="container" class="btn_element" *ngFor="let quiz of quizList">
-        <div routerLink={{quiz.link}} class="item">
+    <div #widgetsContent id="container" class="btn_element" *ngFor="let category of this.categoryRest.categoryList">
+        <div routerLink='/home/level/{{category.id}}' class="item">
             <div class="element">
-                <img src={{quiz.icon}} alt="">
+                <img src={{category.iconUrl}} alt="">
             </div>
-            <p>{{quiz.name}}</p>
+            <p>{{category.name}}</p>
         </div>
     </div>
 </div>
