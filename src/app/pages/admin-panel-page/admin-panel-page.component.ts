@@ -13,8 +13,10 @@ export class AdminPanelPageComponent implements OnInit, OnDestroy {
   subQuestionAddToCategory?: Subscription
   customError?: string
 
+
+
   questionAddToCategoryForm = new FormGroup({
-    categoryId: new FormControl<number>(0,Validators.required),
+    categoryId: new FormControl<number|null>(null,Validators.required),
     questionContent: new FormControl<string>('',Validators.required),
     imageUrl: new FormControl<string>(''),
     a: new FormControl<string>('',Validators.required),
@@ -22,7 +24,7 @@ export class AdminPanelPageComponent implements OnInit, OnDestroy {
     c: new FormControl<string>('',Validators.required),
     d: new FormControl<string>('',Validators.required),
     correctAnswer: new FormControl<string>('',Validators.required),
-    level: new FormControl<number>(0,Validators.required),
+    level: new FormControl<number|null>(null,Validators.required),
   });
 
   constructor(
@@ -43,6 +45,18 @@ export class AdminPanelPageComponent implements OnInit, OnDestroy {
     return this.questionAddToCategoryForm.controls;
   }
 
+  resetForm(){
+    this.questionAddToCategoryForm.controls['categoryId'].setValue(null)
+    this.questionAddToCategoryForm.controls['questionContent'].setValue('')
+    this.questionAddToCategoryForm.controls['imageUrl'].setValue('')
+    this.questionAddToCategoryForm.controls['a'].setValue('')
+    this.questionAddToCategoryForm.controls['b'].setValue('')
+    this.questionAddToCategoryForm.controls['c'].setValue('')
+    this.questionAddToCategoryForm.controls['d'].setValue('')
+    this.questionAddToCategoryForm.controls['correctAnswer'].setValue('')
+    this.questionAddToCategoryForm.controls['level'].setValue(null)
+  }
+
   postQuestionToCategory(){
     let categoryId = this.questionAddToCategoryForm.get('categoryId')?.value
     let questionContent = this.questionAddToCategoryForm.get('questionContent')?.value
@@ -58,7 +72,7 @@ export class AdminPanelPageComponent implements OnInit, OnDestroy {
       ).subscribe({
       next: (response) => {
         if (response.body) {
-
+          this.resetForm()
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
@@ -75,7 +89,9 @@ export class AdminPanelPageComponent implements OnInit, OnDestroy {
             break;
         }
       },
-      complete: () => {}
+      complete: () => {
+        
+      }
     })
   }
 

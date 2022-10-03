@@ -48,7 +48,16 @@ export class QuestionRestService {
   }
 
 
-  postQuestionsByCategoryId(categoryId: number, questionContent: string, imageUrl: string, a: string, b: string, c: string, d: string, correctAnswer: string, level: number):Observable<HttpResponse<Questions>>{
+  postQuestionsByCategoryId(
+    categoryId: number, 
+    questionContent: string, 
+    imageUrl: string, 
+    a: string, 
+    b: string, 
+    c: string, 
+    d: string, 
+    correctAnswer: string, 
+    level: number):Observable<HttpResponse<Questions>>{
     return this.http.post<Questions>(this.PATH + `/question/${categoryId}`,{
       questionContent: questionContent, 
       imageUrl: imageUrl,
