@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'level',
         loadChildren: () => import('../../components/lessons-for-quiz/lessons-for-quiz.module').then(m => m.LessonsForQuizModule),
       },
+      {
+        path: 'admin-panel',
+        loadChildren: () => import('../admin-panel-page/admin-panel-page.module').then(m => m.AdminPanelPageModule),
+      },
     ]
   }
 ]

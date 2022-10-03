@@ -2,6 +2,19 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export interface Questions{
+  id: number,
+  questionContent: string,
+  imageUrl: string,
+  a: string,
+  b: string,
+  c: string,
+  d: string,
+  correctAnswer: string,
+  level: number,
+  categoryId: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +39,34 @@ export class QuestionRestService {
       responseType: 'json'
     })
   }
+
+  getQuestionsListByCategoryIdAndLvl(categoryId: number, level: number):Observable<HttpResponse<Array<Questions>>>{
+    return this.http.get<Array<Questions>>(this.PATH + `/question/${categoryId}/${level}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
+
+  postQuestionsByCategoryId(categoryId: number, questionContent: string, imageUrl: string, a: string, b: string, c: string, d: string, correctAnswer: string, level: number):Observable<HttpResponse<Questions>>{
+    return this.http.post<Questions>(this.PATH + `/question/${categoryId}`,{
+      questionContent: questionContent, 
+      imageUrl: imageUrl,
+      a: a,
+      b: b,
+      c: c,
+      d: d,
+      correctAnswer: correctAnswer,
+      level: level
+    },{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
+
+
+  
 
   
 }
