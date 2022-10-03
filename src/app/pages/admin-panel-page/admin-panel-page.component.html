@@ -4,7 +4,7 @@
                     
             <mat-label>ID Quizu</mat-label>
             
-            <input matInput formControlName="categoryId" required>
+            <input matInput formControlName="categoryId">
             
             <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
         
@@ -13,7 +13,7 @@
                     
             <mat-label>Pytanie:</mat-label>
             
-            <input matInput formControlName="questionContent" required>
+            <input matInput formControlName="questionContent">
             
             <div *ngIf="f['questionContent'].touched && f['questionContent'].invalid" class="alert alert-danger"></div>
         
@@ -22,7 +22,7 @@
                     
             <mat-label>Link ze zdjęciem do pytania:</mat-label>
             
-            <input matInput formControlName="imageUrl" required>
+            <input matInput formControlName="imageUrl" >
             
             <div *ngIf="f['imageUrl'].touched && f['imageUrl'].invalid" class="alert alert-danger"></div>
         
@@ -31,7 +31,7 @@
                     
             <mat-label>Odpowiedź A:</mat-label>
             
-            <input matInput formControlName="a" required>
+            <input matInput formControlName="a">
             
             <div *ngIf="f['a'].touched && f['a'].invalid" class="alert alert-danger"></div>
         
@@ -40,7 +40,7 @@
                     
             <mat-label>Odpowiedź B:</mat-label>
             
-            <input matInput formControlName="b" required>
+            <input matInput formControlName="b">
             
             <div *ngIf="f['b'].touched && f['b'].invalid" class="alert alert-danger"></div>
         
@@ -49,7 +49,7 @@
                     
             <mat-label>Odpowiedź C:</mat-label>
             
-            <input matInput formControlName="c" required>
+            <input matInput formControlName="c">
             
             <div *ngIf="f['c'].touched && f['c'].invalid" class="alert alert-danger"></div>
         
@@ -58,7 +58,7 @@
                     
             <mat-label>Odpowiedź D:</mat-label>
             
-            <input matInput formControlName="d" required>
+            <input matInput formControlName="d">
             
             <div *ngIf="f['d'].touched && f['d'].invalid" class="alert alert-danger"></div>
         
@@ -67,7 +67,7 @@
                     
             <mat-label>Poprawna odpowiedź (A, B, C, D):</mat-label>
             
-            <input matInput formControlName="correctAnswer" required>
+            <input matInput formControlName="correctAnswer">
             
             <div *ngIf="f['correctAnswer'].touched && f['correctAnswer'].invalid" class="alert alert-danger"></div>
         
@@ -76,7 +76,7 @@
                     
             <mat-label>Poziom trudności (1-3):</mat-label>
             
-            <input matInput formControlName="level" required>
+            <input type="number" matInput formControlName="level">
             
             <div *ngIf="f['level'].touched && f['level'].invalid" class="alert alert-danger"></div>
         
