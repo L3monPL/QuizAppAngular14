@@ -1,33 +1,33 @@
-<div class="container" *ngFor="let question of this.questionManagerService.questionsList; let i = index">
-    <div *ngIf="question">
+<!-- <div class="container" *ngFor="let question of this.questionManagerService.questionsList; let i = index"> -->
+    <div *ngIf="quizes">
     <div class="main_text">
-        <p>Pytanie {{i + 1}}</p>
-        <h2>{{question.questionContent}}</h2>
+        <p>Pytanie {{0 + 1}}</p>
+        <h2>{{quizes.questionContent}}</h2>
     </div>
     <div class="border"></div>
 
     <div class="questions_component">
         <div class="card">
             <div class="value">A</div>
-            <div class="answer">{{question.a}}</div>
+            <div class="answer">{{quizes.a}}</div>
         </div>
         <div class="card">
             <div class="value">B</div>
-            <div class="answer">{{question.b}}</div>
+            <div class="answer">{{quizes.b}}</div>
         </div>
         <div class="card">
             <div class="value">C</div>
-            <div class="answer">{{question.c}}</div>
+            <div class="answer">{{quizes.c}}</div>
         </div>
         <div class="card">
             <div class="value">D</div>
-            <div class="answer">{{question.d}}</div>
+            <div class="answer">{{quizes.d}}</div>
         </div>
 
         <div class="btn_container">
             <!-- <button mat-raised-button color="primary">Cofnij</button> -->
-            <button mat-raised-button color="primary">Dalej</button>
+            <button (click)="nextQuestion()" mat-raised-button color="primary">Dalej</button>
         </div>
     </div>
-</div>
+<!-- </div> -->
 </div>

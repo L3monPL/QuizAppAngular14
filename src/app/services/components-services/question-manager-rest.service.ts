@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QuestionRestService, Questions } from '../question-rest.service';
 
@@ -6,6 +6,8 @@ import { QuestionRestService, Questions } from '../question-rest.service';
   providedIn: 'root'
 })
 export class QuestionManagerRestService {
+
+  quizEmitterRest: EventEmitter<any> = new EventEmitter()
 
   subQuestionsList?: Subscription
   questionsList?: Array<Questions>
@@ -24,6 +26,9 @@ export class QuestionManagerRestService {
         if (response.body) {
           this.questionsList = response.body
           console.log(this.questionsList)
+          // let selectedCategory = this.questionsList![0]
+          // console.log(selectedCategory)
+          this.quizEmitterRest.emit(this.questionsList)
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
