@@ -26,7 +26,7 @@
 
         <div class="btn_container">
             <!-- <button mat-raised-button color="primary">Cofnij</button> -->
-            <button (click)="nextQuestion()" mat-raised-button color="primary">Dalej</button>
+            <button [disabled]="!btnNextEnable" (click)="nextQuestion()" mat-raised-button color="primary">Dalej</button>
         </div>
     </div>
 <!-- </div> -->

@@ -16,6 +16,8 @@ export class QuizComponent implements OnInit {
   indexOfQuiz = 0
   selectedQuestion = []
 
+  btnNextEnable = false
+
   constructor(
     private route: ActivatedRoute,
     public questionManagerService: QuestionManagerRestService,
@@ -45,12 +47,15 @@ export class QuizComponent implements OnInit {
     this.indexOfQuiz = this.indexOfQuiz + 1
     if (this.indexOfQuiz < this.quizList.length) {
       this.quizes = this.quizList[this.indexOfQuiz]
+      this.btnNextEnable = false
     }
     else if(this.indexOfQuiz >= this.quizList.length){
       //zakończ quiz
     }
     console.log(this.indexOfQuiz)
     console.log(this.quizList.length)
+
+    
   }
 
   takeValueFromRest(){
@@ -66,6 +71,7 @@ export class QuizComponent implements OnInit {
   }
 
   onClickAnswerSelect(question: any){
+    this.btnNextEnable = true
     this.selectedQuestion = question
     console.log(this.selectedQuestion)
     if (question == this.quizes.a) {
