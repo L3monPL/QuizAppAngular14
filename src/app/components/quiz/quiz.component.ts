@@ -14,6 +14,7 @@ export class QuizComponent implements OnInit {
   quizList = []
   quizes: any
   indexOfQuiz = 0
+  selectedQuestion = []
 
   constructor(
     private route: ActivatedRoute,
@@ -27,28 +28,7 @@ export class QuizComponent implements OnInit {
     if (this.questionManagerService.categoryId == undefined) {
       this.router.navigate(['./home/dashboard'])
     }
-
-
-    this.questionManagerService.quizEmitterRest.subscribe(item => {
-      this.quizList = item
-      // console.log(this.quizList)
-      if (this.quizList) {
-          console.log(this.quizList.length)
-          console.log(this.quizList[0])
-          this.quizes = this.quizList[0]
-      }
-    })
-
-
-    // console.log(this.questionManagerService.questionsList!)
-    // // this.questionManagerService.questionsList?.values
-    // let selectedCategory = this.questionManagerService.questionsList![0]
-    // console.log(selectedCategory)
-
-    // if (this.quizList) {
-    //   let selectedCategory = this.quizList![0]
-    //       console.log(selectedCategory)
-    // }
+    this.takeValueFromRest()
 
   }
 
@@ -71,6 +51,36 @@ export class QuizComponent implements OnInit {
     }
     console.log(this.indexOfQuiz)
     console.log(this.quizList.length)
+  }
+
+  takeValueFromRest(){
+    this.questionManagerService.quizEmitterRest.subscribe(item => {
+      this.quizList = item
+      // console.log(this.quizList)
+      if (this.quizList) {
+          console.log(this.quizList.length)
+          console.log(this.quizList[0])
+          this.quizes = this.quizList[0]
+      }
+    })
+  }
+
+  onClickAnswerSelect(question: any){
+    this.selectedQuestion = question
+    console.log(this.selectedQuestion)
+    if (question == this.quizes.a) {
+      console.log("A")
+    }
+    if (question == this.quizes.b) {
+      console.log("B")
+    }
+    if (question == this.quizes.c) {
+      console.log("C")
+    }
+    if (question == this.quizes.d) {
+      console.log("D")
+    }
+    // console.log(this.selectedQuestion)
   }
 
 }

@@ -1,25 +1,25 @@
 <!-- <div class="container" *ngFor="let question of this.questionManagerService.questionsList; let i = index"> -->
     <div *ngIf="quizes">
     <div class="main_text">
-        <p>Pytanie {{0 + 1}}</p>
+        <p>Pytanie {{indexOfQuiz + 1}}</p>
         <h2>{{quizes.questionContent}}</h2>
     </div>
     <div class="border"></div>
 
     <div class="questions_component">
-        <div class="card">
+        <div class="card" (click)="onClickAnswerSelect(quizes.a)" [ngClass]="{ 'selected': quizes.a == this.selectedQuestion}">
             <div class="value">A</div>
             <div class="answer">{{quizes.a}}</div>
         </div>
-        <div class="card">
+        <div class="card" (click)="onClickAnswerSelect(quizes.b)" [ngClass]="{ 'selected': quizes.b == this.selectedQuestion}">
             <div class="value">B</div>
             <div class="answer">{{quizes.b}}</div>
         </div>
-        <div class="card">
+        <div class="card" (click)="onClickAnswerSelect(quizes.c)" [ngClass]="{ 'selected': quizes.c == this.selectedQuestion}">
             <div class="value">C</div>
             <div class="answer">{{quizes.c}}</div>
         </div>
-        <div class="card">
+        <div class="card" (click)="onClickAnswerSelect(quizes.d)" [ngClass]="{ 'selected': quizes.d == this.selectedQuestion}">
             <div class="value">D</div>
             <div class="answer">{{quizes.d}}</div>
         </div>
