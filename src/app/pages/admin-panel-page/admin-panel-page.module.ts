@@ -7,6 +7,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import { AddQuestionModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-question/add-question.module';
+import { AddCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-category/add-category.module';
 
 
 const routes: Routes = [
@@ -23,11 +25,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule
+    AddQuestionModule,
+    AddCategoryModule
   ],
   exports: [
     AdminPanelPageComponent

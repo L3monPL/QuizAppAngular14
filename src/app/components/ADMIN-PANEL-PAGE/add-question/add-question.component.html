@@ -1,0 +1,112 @@
+<div class="container">
+    <h2>Dodaj pytanie do quizu</h2>
+    <form [formGroup]="questionAddToCategoryForm" (submit)="addQuestionSubmit()">
+        <!-- <mat-form-field class="form-field" appearance="outline">
+                    
+            <mat-label>ID Quizu</mat-label>
+            
+            <input matInput formControlName="categoryId">
+            
+            <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
+        
+        </mat-form-field> -->
+        <div class="row">
+            <mat-form-field class="auto_width" appearance="outline">
+                <mat-label>Wybierz Quiz</mat-label>
+                <mat-select formControlName="categoryId" required>
+                  <mat-option *ngFor="let element of this.categoryList" [value]=element.id>{{element.name}}</mat-option>
+                  <!-- <mat-option value=2>2</mat-option>
+                  <mat-option value=3>3</mat-option> -->
+                  
+                </mat-select>
+                <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+    
+            <mat-form-field class="auto_width" appearance="outline">
+                <mat-label>Poziom trudności</mat-label>
+                <mat-select formControlName="level" required>
+                  <mat-option value=1 selected>1</mat-option>
+                  <mat-option value=2>2</mat-option>
+                  <mat-option value=3>3</mat-option>
+                  
+                </mat-select>
+                <div *ngIf="f['level'].touched && f['level'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                    
+                <mat-label>Link ze zdjęciem do pytania:</mat-label>
+                
+                <input matInput formControlName="imageUrl" >
+                
+                <div *ngIf="f['imageUrl'].touched && f['imageUrl'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <mat-form-field class="auto_width" appearance="outline">
+                <mat-label>Poprawna odpowiedź</mat-label>
+                <mat-select formControlName="correctAnswer" required>
+                  <mat-option value='a'>A</mat-option>
+                  <mat-option value='b'>B</mat-option>
+                  <mat-option value='c'>C</mat-option>
+                  <mat-option value='d'>D</mat-option>
+                </mat-select>
+                <div *ngIf="f['correctAnswer'].touched && f['correctAnswer'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field class="form-field question_width" appearance="outline">
+                    
+            <mat-label>Pytanie:</mat-label>
+            
+            <input matInput formControlName="questionContent">
+            
+            <div *ngIf="f['questionContent'].touched && f['questionContent'].invalid" class="alert alert-danger"></div>
+        
+        </mat-form-field>
+        
+        <div class="row">
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                    
+                <mat-label>Odpowiedź A:</mat-label>
+                
+                <input matInput formControlName="a">
+                
+                <div *ngIf="f['a'].touched && f['a'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                        
+                <mat-label>Odpowiedź B:</mat-label>
+                
+                <input matInput formControlName="b">
+                
+                <div *ngIf="f['b'].touched && f['b'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                        
+                <mat-label>Odpowiedź C:</mat-label>
+                
+                <input matInput formControlName="c">
+                
+                <div *ngIf="f['c'].touched && f['c'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                        
+                <mat-label>Odpowiedź D:</mat-label>
+                
+                <input matInput formControlName="d">
+                
+                <div *ngIf="f['d'].touched && f['d'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+        </div>
+        
+
+        <div class="input_margin">
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Dodaj pytanie</button>
+        </div>
+    </form>
+</div>

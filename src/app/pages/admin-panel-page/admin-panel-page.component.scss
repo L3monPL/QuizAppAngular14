@@ -1,11 +1,5 @@
-.row{
+.components{
     display: flex;
-    flex-direction: row;
-    column-gap: 1rem;
-}
-.question_width{
-    width: 100%;
-}
-.row .auto_width{
-    width: 25%;
+    flex-direction: column;
+    row-gap: 2rem;
 }

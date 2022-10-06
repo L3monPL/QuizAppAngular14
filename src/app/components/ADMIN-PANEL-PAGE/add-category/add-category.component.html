@@ -1,0 +1,64 @@
+<div class="container">
+    <h2>Dodaj Quiz</h2>
+    <form [formGroup]="addCategoryForm" (submit)="postQuestionToCategory()">
+        <div class="row">
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Nazwa Quizu</mat-label>
+                
+                <input matInput formControlName="name" >
+                
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Opis</mat-label>
+                
+                <input matInput formControlName="description">
+                
+                <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+        </div>
+        
+        
+        
+        <div class="row">
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                    
+                <mat-label>Ilość pytań na lekcje</mat-label>
+                
+                <input type="number" matInput formControlName="questionsPerLesson">
+                
+                <div *ngIf="f['questionsPerLesson'].touched && f['questionsPerLesson'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+            <mat-form-field class="form-field auto_width" appearance="outline">
+                    
+                <mat-label>Ilość lekcji na poziom</mat-label>
+                
+                <input type="number" matInput formControlName="lessonsPerLevel">
+                
+                <div *ngIf="f['lessonsPerLevel'].touched && f['lessonsPerLevel'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+            <mat-form-field class="form-field question_width" appearance="outline">
+                    
+                <mat-label>Link url do ikony</mat-label>
+                
+                <input matInput formControlName="iconUrl">
+                
+                <div *ngIf="f['iconUrl'].touched && f['iconUrl'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+        </div>
+        
+
+        <div class="input_margin">
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Dodaj Quiz</button>
+        </div>
+    </form>
+</div>

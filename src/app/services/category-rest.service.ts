@@ -41,6 +41,25 @@ export class CategoryRestService {
     })
   }
 
+  postCategory(
+    name: string, 
+    description: string, 
+    iconUrl: string, 
+    questionsPerLesson: number, 
+    lessonsPerLevel: number, 
+    ):Observable<HttpResponse<Category>>{
+    return this.http.post<Category>(this.PATH + `/category`,{
+      name: name, 
+      description: description,
+      iconUrl: iconUrl,
+      questionsPerLesson: questionsPerLesson,
+      lessonsPerLevel: lessonsPerLevel,
+    },{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
   getCategoryList(){
     this.subCategoryList = this.getCategory().subscribe({
       next: (response) => {
