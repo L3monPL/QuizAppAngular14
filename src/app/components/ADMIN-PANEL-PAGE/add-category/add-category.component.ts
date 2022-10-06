@@ -47,14 +47,12 @@ export class AddCategoryComponent implements OnInit {
         name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
         ).subscribe({
         next: (response) => {
-          console.log('wykonało przed')
-          this.categoryManagerService.getCategoryList()
           if (response.body) {
-            this.categoryManagerService.getCategoryList()
-            console.log('wykonało')
+
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
+            console.log('wykonało')
           } 
         },
         error: (errorResponse) => {
@@ -67,16 +65,16 @@ export class AddCategoryComponent implements OnInit {
               this.customError = 'Błąd servera'
               break;
           }
+          console.log('return getCategory')
+          this.categoryManagerService.getCategoryList()
         },
+        
         complete: () => {
-          console.log('wykonało complete')
         }
       })
-      
-    
+
     }
     else{
-      // this.questionAddToCategoryForm.reset(this.questionAddToCategoryForm.value)
       console.log('reset')
     }
   }
