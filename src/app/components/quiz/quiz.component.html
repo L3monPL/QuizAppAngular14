@@ -1,12 +1,17 @@
 <!-- <div class="container" *ngFor="let question of this.questionManagerService.questionsList; let i = index"> -->
-    <div *ngIf="quizes">
-    <div class="main_text">
+<div *ngIf="quizes">
+    <div *ngIf="!btnShowResult" class="main_text">
         <p>Pytanie {{indexOfQuiz + 1}}</p>
         <h2>{{quizes.questionContent}}</h2>
     </div>
-    <div class="border"></div>
+    <div *ngIf="btnShowResult" class="main_text">
+        <p>Pytanie {{indexOfQuiz + 1}}</p>
+        <h2>Podsumowanie</h2>
+    </div>
+    <div *ngIf="btnShowResult" class="border"></div>
+    <mat-progress-bar *ngIf="!btnShowResult" mode="determinate" value={{indexOfQuiz+1}}></mat-progress-bar>
 
-    <div class="questions_component">
+    <div *ngIf="!btnShowResult" class="questions_component">
         <div class="card" (click)="onClickAnswerSelect(quizes.a)" [ngClass]="{ 'selected': quizes.a == this.selectedQuestion}">
             <div class="value">A</div>
             <div class="answer">{{quizes.a}}</div>
@@ -24,10 +29,16 @@
             <div class="answer">{{quizes.d}}</div>
         </div>
 
-        <div class="btn_container">
+        <div *ngIf="!btnShowResult" class="btn_container">
             <!-- <button mat-raised-button color="primary">Cofnij</button> -->
             <button [disabled]="!btnNextEnable" (click)="nextQuestion()" mat-raised-button color="primary">Dalej</button>
         </div>
+        
+    </div>
+    <div *ngIf="btnShowResult" class="results">
+        <mat-progress-bar mode="determinate" value={{this.getResultValue}}></mat-progress-bar>
+        <h2>Uzyskano {{this.endResult}} na {{this.quizList.length}} poprawne odpowiedzi</h2>
+        <button class="btn" routerLink="/home/dashboard" mat-raised-button color="primary">Zakończ</button>
     </div>
 <!-- </div> -->
 </div>

@@ -18,6 +18,13 @@
     align-items: center;
     row-gap: 0.5rem;
 }
+.results{
+    margin-top: 14rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.5rem;
+}
 .card{
     width: 50%;
     background-color: #fff;
@@ -59,5 +66,12 @@
 .selected{
     background-color: rgb(90, 212, 59);
 }
-
+.results mat-progress-bar{
+    width: 40%;
+    height: 30px;
+}
+.results .btn{
+    width: 200px;
+    margin-top: 4rem;
+}
 

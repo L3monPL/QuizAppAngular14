@@ -15,8 +15,13 @@ export class QuizComponent implements OnInit {
   quizes: any
   indexOfQuiz = 0
   selectedQuestion = []
+  acceptAnswer?: string
+  valueAnswer = 0
+  endResult = 0
+  getResultValue?: number
 
   btnNextEnable = false
+  btnShowResult = false
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +48,8 @@ export class QuizComponent implements OnInit {
   }
 
   nextQuestion(){
+    this.endResult = this.endResult + this.valueAnswer
+    
     
     this.indexOfQuiz = this.indexOfQuiz + 1
     if (this.indexOfQuiz < this.quizList.length) {
@@ -50,7 +57,8 @@ export class QuizComponent implements OnInit {
       this.btnNextEnable = false
     }
     else if(this.indexOfQuiz >= this.quizList.length){
-      //zakończ quiz
+      this.btnShowResult = true
+      this.getResultValue = (this.endResult / this.quizList.length) * 100
     }
     console.log(this.indexOfQuiz)
     console.log(this.quizList.length)
@@ -75,18 +83,47 @@ export class QuizComponent implements OnInit {
     this.selectedQuestion = question
     console.log(this.selectedQuestion)
     if (question == this.quizes.a) {
-      console.log("A")
+      this.acceptAnswer = 'a'
+      if (this.quizes.correctAnswer == this.acceptAnswer) {
+        this.valueAnswer = 1
+      }
+      else if (this.quizes.correctAnswer != this.acceptAnswer){
+        this.valueAnswer = 0
+      }
+      console.log(this.valueAnswer)
     }
     if (question == this.quizes.b) {
-      console.log("B")
+      this.acceptAnswer = 'b'
+      if (this.quizes.correctAnswer == this.acceptAnswer) {
+        this.valueAnswer = 1
+      }
+      else if (this.quizes.correctAnswer != this.acceptAnswer){
+        this.valueAnswer = 0
+      }
+      console.log(this.valueAnswer)
     }
     if (question == this.quizes.c) {
-      console.log("C")
+      this.acceptAnswer = 'c'
+      if (this.quizes.correctAnswer == this.acceptAnswer) {
+        this.valueAnswer = 1
+      }
+      else if (this.quizes.correctAnswer != this.acceptAnswer){
+        this.valueAnswer = 0
+      }
+      console.log(this.valueAnswer)
     }
     if (question == this.quizes.d) {
-      console.log("D")
+      this.acceptAnswer = 'd'
+      if (this.quizes.correctAnswer == this.acceptAnswer) {
+        this.valueAnswer = 1
+      }
+      else if (this.quizes.correctAnswer != this.acceptAnswer){
+        this.valueAnswer = 0
+      }
+      console.log(this.valueAnswer)
     }
     // console.log(this.selectedQuestion)
   }
+
 
 }

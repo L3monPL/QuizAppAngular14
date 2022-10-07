@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuizComponent } from './quiz.component';
 import { RouterModule, Routes } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MatButtonModule,
+    MatProgressBarModule
   ],
   exports: [
     QuizComponent
