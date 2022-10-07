@@ -1,5 +1,9 @@
 <div class="container">
-    <h2>Dodaj Quiz</h2>
+    <div class="title_row">
+        <h2>Dodaj Quiz</h2>
+        <h2 *ngIf="addCategoryDone" class="green_txt">Dodano poprawnie</h2>
+    </div>
+    
     <form [formGroup]="addCategoryForm" (submit)="postQuestionToCategory()">
         <div class="row">
 

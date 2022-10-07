@@ -15,6 +15,8 @@ export class AddCategoryComponent implements OnInit {
   subAddCategory?: Subscription
   customError?: string
 
+  addCategoryDone = false
+
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
@@ -34,6 +36,27 @@ export class AddCategoryComponent implements OnInit {
 
   get f(){
     return this.addCategoryForm.controls;
+  }
+
+  resetForm(){
+    this.addCategoryForm.controls['name'].setValue('')
+    this.addCategoryForm.controls['description'].setValue('')
+    this.addCategoryForm.controls['iconUrl'].setValue('')
+    this.addCategoryForm.controls['questionsPerLesson'].setValue(null)
+    this.addCategoryForm.controls['lessonsPerLevel'].setValue(null)
+
+    this.addCategoryForm.controls['name'].setErrors(null)
+    this.addCategoryForm.controls['description'].setErrors(null)
+    this.addCategoryForm.controls['iconUrl'].setErrors(null)
+    this.addCategoryForm.controls['questionsPerLesson'].setErrors(null)
+    this.addCategoryForm.controls['lessonsPerLevel'].setErrors(null)
+
+
+    this.addCategoryDone = true
+
+    setTimeout(() => {
+      this.addCategoryDone = false
+  }, 4000);
   }
 
   postQuestionToCategory(){
@@ -66,6 +89,7 @@ export class AddCategoryComponent implements OnInit {
               break;
           }
           console.log('return getCategory')
+          this.resetForm()
           this.categoryManagerService.getCategoryList()
         },
         

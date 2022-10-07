@@ -1,5 +1,9 @@
 <div class="container">
-    <h2>Dodaj pytanie do quizu</h2>
+    <div class="title_row">
+        <h2>Dodaj pytanie do quizu</h2>
+        <h2 *ngIf="addQuestionDone" class="green_txt">Dodano poprawnie</h2>
+    </div>
+    
     <form [formGroup]="questionAddToCategoryForm" (submit)="addQuestionSubmit()">
         <!-- <mat-form-field class="form-field" appearance="outline">
                     
@@ -106,7 +110,7 @@
         
 
         <div class="input_margin">
-            <button class="button_margin" mat-raised-button color="primary" type="submit">Dodaj pytanie</button>
+            <button type="submit" class="button_margin" mat-raised-button color="primary">Dodaj pytanie</button>
         </div>
     </form>
 </div>

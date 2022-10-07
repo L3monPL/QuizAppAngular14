@@ -18,6 +18,8 @@ export class AddQuestionComponent implements OnInit {
   subCategoryList?: Subscription
   categoryList?: any
 
+  addQuestionDone = false
+
   questionAddToCategoryForm = new FormGroup({
     categoryId: new FormControl<number|null>(null,Validators.required),
     questionContent: new FormControl<string>('',Validators.required),
@@ -62,6 +64,22 @@ export class AddQuestionComponent implements OnInit {
     this.questionAddToCategoryForm.controls['d'].setValue('')
     this.questionAddToCategoryForm.controls['correctAnswer'].setValue('')
     this.questionAddToCategoryForm.controls['level'].setValue(null)
+
+    this.questionAddToCategoryForm.controls['categoryId'].setErrors(null)
+    this.questionAddToCategoryForm.controls['questionContent'].setErrors(null)
+    this.questionAddToCategoryForm.controls['imageUrl'].setErrors(null)
+    this.questionAddToCategoryForm.controls['a'].setErrors(null)
+    this.questionAddToCategoryForm.controls['b'].setErrors(null)
+    this.questionAddToCategoryForm.controls['c'].setErrors(null)
+    this.questionAddToCategoryForm.controls['d'].setErrors(null)
+    this.questionAddToCategoryForm.controls['correctAnswer'].setErrors(null)
+    this.questionAddToCategoryForm.controls['level'].setErrors(null)
+
+    this.addQuestionDone = true
+
+    setTimeout(() => {
+      this.addQuestionDone = false
+  }, 4000);
   }
 
   getCategoryList(){
@@ -107,7 +125,7 @@ export class AddQuestionComponent implements OnInit {
         ).subscribe({
         next: (response) => {
           if (response.body) {
-            this.resetForm()
+            // this.resetForm()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
@@ -123,6 +141,7 @@ export class AddQuestionComponent implements OnInit {
               this.customError = 'Błąd servera'
               break;
           }
+          this.resetForm()
         },
         complete: () => {
           
@@ -132,8 +151,9 @@ export class AddQuestionComponent implements OnInit {
     
     }
     else{
-      this.questionAddToCategoryForm.reset(this.questionAddToCategoryForm.value)
-      console.log('reset')
+      // this.resetForm()
+      console.log('niepoprawne')
+      this.addQuestionDone = false
     }
   }
 

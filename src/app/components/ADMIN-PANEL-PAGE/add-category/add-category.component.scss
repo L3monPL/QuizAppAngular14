@@ -24,3 +24,11 @@
     display: flex;
     justify-content: flex-end;
 }
+.title_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.green_txt{
+    color: rgb(40, 207, 82);
+}
