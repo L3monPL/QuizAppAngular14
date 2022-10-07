@@ -14,6 +14,7 @@ export class QuizComponent implements OnInit {
   quizList = []
   quizes: any
   indexOfQuiz = 0
+  progressBarQuizLength = 0
   selectedQuestion = []
   acceptAnswer?: string
   valueAnswer = 0
@@ -50,8 +51,9 @@ export class QuizComponent implements OnInit {
   nextQuestion(){
     this.endResult = this.endResult + this.valueAnswer
     
-    
     this.indexOfQuiz = this.indexOfQuiz + 1
+    this.progressBarQuizLength = ((this.indexOfQuiz)/this.quizList.length)*100
+
     if (this.indexOfQuiz < this.quizList.length) {
       this.quizes = this.quizList[this.indexOfQuiz]
       this.btnNextEnable = false

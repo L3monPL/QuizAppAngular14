@@ -74,4 +74,9 @@
     width: 200px;
     margin-top: 4rem;
 }
-
+.border_progress_bar ::ng-deep .mat-progress-bar-buffer{
+    background: #ccc;
+}
+.border_progress_bar mat-progress-bar{
+    height: 2px;
+}

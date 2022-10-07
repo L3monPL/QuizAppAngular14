@@ -8,8 +8,10 @@
         <p>Pytanie {{indexOfQuiz + 1}}</p>
         <h2>Podsumowanie</h2>
     </div>
-    <div *ngIf="btnShowResult" class="border"></div>
-    <mat-progress-bar *ngIf="!btnShowResult" mode="determinate" value={{indexOfQuiz+1}}></mat-progress-bar>
+    <!-- <div *ngIf="btnShowResult" class="border"></div> -->
+    <div class="border_progress_bar">
+        <mat-progress-bar  mode="determinate" value={{progressBarQuizLength}}></mat-progress-bar>
+    </div>
 
     <div *ngIf="!btnShowResult" class="questions_component">
         <div class="card" (click)="onClickAnswerSelect(quizes.a)" [ngClass]="{ 'selected': quizes.a == this.selectedQuestion}">
@@ -36,8 +38,8 @@
         
     </div>
     <div *ngIf="btnShowResult" class="results">
+        <h2>Rozwiązano poprawnie {{this.endResult}} z {{this.quizList.length}} odpowiedzi</h2>
         <mat-progress-bar mode="determinate" value={{this.getResultValue}}></mat-progress-bar>
-        <h2>Uzyskano {{this.endResult}} na {{this.quizList.length}} poprawne odpowiedzi</h2>
         <button class="btn" routerLink="/home/dashboard" mat-raised-button color="primary">Zakończ</button>
     </div>
 <!-- </div> -->
