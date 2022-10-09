@@ -51,3 +51,21 @@
 .quiz_name{
     width: 100px;
 }
+
+
+@media only screen and (max-width: 600px){
+    .item{
+        row-gap: 1rem;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .item img{
+        margin-left: 0px;
+    }
+    .btn_and_bar{
+        margin-right: 0;
+    }
+    .quiz_name{
+        width: auto;
+    }
+}

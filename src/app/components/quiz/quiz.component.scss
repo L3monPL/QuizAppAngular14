@@ -80,3 +80,10 @@
 .border_progress_bar mat-progress-bar{
     height: 2px;
 }
+
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: 100%;
+    }
+}
