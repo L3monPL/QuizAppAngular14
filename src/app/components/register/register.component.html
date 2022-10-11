@@ -12,7 +12,7 @@
                         
                     <div *ngIf="f['username'].touched && f['username'].invalid" class="alert alert-danger"></div>
     
-                    <mat-error *ngIf="f['username'].hasError('username')">
+                    <mat-error *ngIf="f['username'].hasError('required')">
                         Nazwa użytkownika jest <strong>wymagana</strong>
                     </mat-error>
                 </mat-form-field> 
@@ -41,7 +41,7 @@
                     
                     <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger"></div>
 
-                    <mat-error *ngIf="f['email'].hasError('required')">
+                    <mat-error *ngIf="f['password'].hasError('required')">
                         Hasło jest <strong>wymagane</strong>
                     </mat-error>
                 </mat-form-field>
@@ -49,11 +49,11 @@
                     
                     <mat-label> Powtórz Hasło</mat-label>
                     
-                    <input matInput formControlName="passwordSecond" type="password">
+                    <input matInput formControlName="repeatPassword" type="password">
                     
-                    <div *ngIf="f['passwordSecond'].touched && f['passwordSecond'].invalid" class="alert alert-danger"></div>
+                    <div *ngIf="f['repeatPassword'].touched && f['repeatPassword'].invalid" class="alert alert-danger"></div>
 
-                    <mat-error *ngIf="f['email'].hasError('required')">
+                    <mat-error *ngIf="f['repeatPassword'].hasError('required')">
                         Hasło jest <strong>wymagane</strong>
                     </mat-error>
                 </mat-form-field>
@@ -68,7 +68,10 @@
             </div>
             <div class="error" *ngIf="customError">
                 <strong>{{customError}}</strong>
-           </div>
+            </div>
+            <div class="error" *ngIf="registerForm.hasError('errorThisSamePassword')">
+                <p>Wpisz poprawnie dane</p>
+            </div>
 
             
             

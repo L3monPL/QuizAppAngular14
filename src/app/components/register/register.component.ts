@@ -4,6 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CustomValidators } from 'src/app/custom-validators/custom-validators';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -23,10 +24,21 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     username: new FormControl('',Validators.required),
-    password: new FormControl('',Validators.required),
-    passwordSecond: new FormControl('',Validators.required),
+    password: new FormControl<null>(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(64)
+      ]),
+    repeatPassword: new FormControl<null>(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(64)
+      ]),
     email: new FormControl('',[Validators.required, Validators.email]),
     roleId: new FormControl<number>(0,Validators.required),
+    }, { 
+    validators: new CustomValidators()
+      .validatorThisSameValue("password", "repeatPassword"),
   });
 
   constructor(
@@ -74,6 +86,10 @@ export class RegisterComponent implements OnInit {
           }
         }
       )
+      if(this.registerForm.invalid) {
+        this.registerForm.setErrors({ ...this.registerForm.errors, 'errorThisSamePassword': true });
+        return;
+      }
 
 
   }
