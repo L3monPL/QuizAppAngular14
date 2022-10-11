@@ -4,6 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private userRest: UserRestService
   ) { }
 
   ngOnInit(): void {
@@ -36,12 +38,35 @@ export class LoginComponent implements OnInit {
 
   submit(){
     if (this.loginForm.valid) {
+      this.loading = true;
       let loginValue = this.loginForm.get('email')!.value;
       let passwordValue = this.loginForm.get('password')!.value;
-      if (loginValue == "admin@gmail.com" && passwordValue == "admin123") {
-        this.router.navigateByUrl('home')
+      this.userLogin = this.userRest.postUserLogin(loginValue!, passwordValue!).subscribe({
+        next: (response) => {
+          
+          this.router.navigateByUrl('/home');
+        },
+        error: (errorResponse) => {
+          // console.log(errorResponse);
+          switch (errorResponse.status) {
+            case 401:
+            case 403:
+              this.customError = errorResponse.error.message;
+              this.loading = false;
+              break;
+          
+            default:
+              this.customError = 'Błąd serwera'
+              this.loading = false;
+              break;
+          }
+          // console.log(this.customError);
+        },
+        complete: () => {
+          this.loading = false;
+        }
       }
-    }
+    )}
   }
 
   get f(){

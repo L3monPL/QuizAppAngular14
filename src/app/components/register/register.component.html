@@ -3,7 +3,19 @@
         <!-- <mat-card-title>Zaloguj</mat-card-title> -->
         <mat-card-content class="form-container">
             <form [formGroup]="registerForm" (submit)="submit()">
-                <div *ngIf="!loading">  
+                <div *ngIf="!loading"> 
+                <mat-form-field class="form-field" appearance="outline">
+                    
+                    <mat-label> Nazwa użytkownika</mat-label>
+                        
+                    <input matInput formControlName="username">
+                        
+                    <div *ngIf="f['username'].touched && f['username'].invalid" class="alert alert-danger"></div>
+    
+                    <mat-error *ngIf="f['username'].hasError('username')">
+                        Nazwa użytkownika jest <strong>wymagana</strong>
+                    </mat-error>
+                </mat-form-field> 
                 <mat-form-field class="form-field" appearance="outline">
                     
                     <mat-label> E-mail</mat-label>
@@ -46,7 +58,7 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-            <!-- <div *ngIf="loading" class="spinner">
+            <div *ngIf="loading" class="spinner">
                 <mat-progress-spinner
                     class="example-margin"
                     [color]="color"
@@ -57,15 +69,11 @@
             <div class="error" *ngIf="customError">
                 <strong>{{customError}}</strong>
            </div>
-                <div *ngIf="!loading" class="input_margin">
-                    <button class="button_margin" mat-raised-button color="primary" type="submit">Zaloguj się</button>
-                </div>
-            </form>
-            <button *ngIf="!loading" routerLink="/remind-password" mat-button color="primary">Przypomnij hasło</button> -->
+
             
             
                 <div class="input_margin">
-                    <button class="button_margin" mat-raised-button color="primary" type="submit">Zarejestruj się</button>
+                    <button class="button_margin" mat-raised-button color="primary" type="submit">Utwórz konto</button>
                     
                 </div>
             </form>
