@@ -4,7 +4,7 @@
     height: 200px;
     background-color: $header_card;
     border: 4px solid #fff;
-    border-radius: 30px;
+    border-radius: 10px;
     margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
@@ -56,7 +56,7 @@ app-quick-quiz-panel-list{
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 1rem;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: $box_shadow;
     background-color: $quiz_list_bg;
 }
