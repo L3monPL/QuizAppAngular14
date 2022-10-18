@@ -45,7 +45,7 @@
         <div class="bg">
             <div class="main_content">
                 <div class="content">
-                    <div class="main">
+                    <div id="main" class="main">
                         <div class="paddings">
                             <router-outlet></router-outlet>
                         </div>
@@ -53,6 +53,9 @@
                     <!-- <div class="profile_card">
                         <app-profile-right-panel></app-profile-right-panel>
                     </div> -->
+                    <div *ngIf="smallRightPanel" class="openRightPanel">
+                        <mat-icon (click)="showRightPanel()">arrow_back</mat-icon>
+                    </div>
                 </div>
             </div>
             
@@ -61,7 +64,7 @@
     </mat-drawer-content>
     <mat-drawer position="end" [opened]="menushow" #drawer [mode]="menuMode">
         <div class="profile_card">
-            <app-profile-right-panel></app-profile-right-panel>
+            <app-profile-right-panel (hideReightPanel)="hideReightPanel($event)"></app-profile-right-panel>
         </div>
     </mat-drawer>
 </mat-drawer-container>
