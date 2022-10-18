@@ -6,6 +6,7 @@ import { QuickQuizPanelListModule } from 'src/app/components/quick-quiz-panel-li
 import { QuizListModule } from 'src/app/components/quiz-list/quiz-list.module';
 import { QuizLearnMapModule } from 'src/app/components/quiz-learn-map/quiz-learn-map.module';
 
+
 const routes: Routes = [
   {
     path: '',

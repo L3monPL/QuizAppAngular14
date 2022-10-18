@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 
@@ -8,6 +9,9 @@ import { CategoryRestService } from 'src/app/services/category-rest.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+
+  menuMode: MatDrawerMode = 'side';
+  menushow?: boolean = true
 
   constructor(
     private router: Router,

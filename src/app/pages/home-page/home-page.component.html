@@ -1,56 +1,70 @@
-<div class="page">
-    <div class="menu">
-        <div class="top_menu">
-            <div class="avatar">
-                <img src="../../../assets/logo.jpg" alt="">
+
+    <mat-drawer-container class="example-container" autosize>
+    
+    <mat-drawer-content class="page"> 
+
+        <div class="menu">
+            <div class="top_menu">
+                <div class="avatar">
+                    <img src="../../../assets/logo.jpg" alt="">
+                </div>
+                <div class="text_name">
+                    <p>E-learning</p>
+                </div>
             </div>
-            <div class="text_name">
-                <p>E-learning</p>
+            <div class="mid_menu">
+                <div class="nav_menu">
+                    <a routerLink="/home/dashboard">
+                        <mat-icon class="menu_btn active" aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
+                    </a>
+                    <a routerLink="/home/quiz-maps">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">view_cozy</mat-icon>
+                    </a>
+                    <!-- <a href=""> -->
+                        <!-- <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">fact_check</mat-icon> -->
+                    <!-- </a> -->
+                    <a href="">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
+                    </a>
+                    <a routerLink="/home/admin-panel">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">co_present</mat-icon>
+                    </a>
+                    <a href="">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">settings</mat-icon>
+                    </a>
+                    
+                </div>
             </div>
-        </div>
-        <div class="mid_menu">
-            <div class="nav_menu">
-                <a routerLink="/home/dashboard">
-                    <mat-icon class="menu_btn active" aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
-                </a>
-                <a routerLink="/home/quiz-maps">
-                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">view_cozy</mat-icon>
-                </a>
-                <!-- <a href=""> -->
-                    <!-- <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">fact_check</mat-icon> -->
-                <!-- </a> -->
+            <div class="bottom_menu">
                 <a href="">
-                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
+                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">logout</mat-icon>
                 </a>
-                <a routerLink="/home/admin-panel">
-                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">co_present</mat-icon>
-                </a>
-                <a href="">
-                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">settings</mat-icon>
-                </a>
-                
             </div>
+            
         </div>
-        <div class="bottom_menu">
-            <a href="">
-                <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">logout</mat-icon>
-            </a>
-        </div>
-        
-    </div>
-    <div class="bg">
-        <div class="main_content">
-            <div class="content">
-                <div class="main">
-                    <div class="paddings">
-                        <router-outlet></router-outlet>
+        <div class="bg">
+            <div class="main_content">
+                <div class="content">
+                    <div class="main">
+                        <div class="paddings">
+                            <router-outlet></router-outlet>
+                        </div>
                     </div>
-                </div>
-                <div class="profile_card">
-                    <app-profile-right-panel></app-profile-right-panel>
+                    <!-- <div class="profile_card">
+                        <app-profile-right-panel></app-profile-right-panel>
+                    </div> -->
                 </div>
             </div>
+            
         </div>
-        
-    </div>
-</div>
+
+    </mat-drawer-content>
+    <mat-drawer position="end" [opened]="menushow" #drawer [mode]="menuMode">
+        <div class="profile_card">
+            <app-profile-right-panel></app-profile-right-panel>
+        </div>
+    </mat-drawer>
+</mat-drawer-container>
+
+   
+
