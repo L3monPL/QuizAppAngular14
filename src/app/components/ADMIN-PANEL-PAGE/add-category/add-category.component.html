@@ -31,24 +31,27 @@
         
         
         <div class="row">
-            <mat-form-field class="form-field auto_width" appearance="outline">
+            <div class="half_in_row">
+                <mat-form-field class="form-field auto_width" appearance="outline">
                     
-                <mat-label>Ilość pytań na lekcje</mat-label>
-                
-                <input type="number" matInput formControlName="questionsPerLesson">
-                
-                <div *ngIf="f['questionsPerLesson'].touched && f['questionsPerLesson'].invalid" class="alert alert-danger"></div>
-            
-            </mat-form-field>
-            <mat-form-field class="form-field auto_width" appearance="outline">
+                    <mat-label>Ilość pytań na lekcje</mat-label>
                     
-                <mat-label>Ilość lekcji na poziom</mat-label>
+                    <input type="number" matInput formControlName="questionsPerLesson">
+                    
+                    <div *ngIf="f['questionsPerLesson'].touched && f['questionsPerLesson'].invalid" class="alert alert-danger"></div>
                 
-                <input type="number" matInput formControlName="lessonsPerLevel">
+                </mat-form-field>
+                <mat-form-field class="form-field auto_width" appearance="outline">
+                        
+                    <mat-label>Ilość lekcji na poziom</mat-label>
+                    
+                    <input type="number" matInput formControlName="lessonsPerLevel">
+                    
+                    <div *ngIf="f['lessonsPerLevel'].touched && f['lessonsPerLevel'].invalid" class="alert alert-danger"></div>
                 
-                <div *ngIf="f['lessonsPerLevel'].touched && f['lessonsPerLevel'].invalid" class="alert alert-danger"></div>
+                </mat-form-field>
+            </div>
             
-            </mat-form-field>
             <mat-form-field class="form-field question_width" appearance="outline">
                     
                 <mat-label>Link url do ikony</mat-label>

@@ -9,16 +9,22 @@
     flex-direction: row;
     // justify-content: space-between;
     // flex-wrap: wrap;
-    column-gap: 1rem;
+    justify-content: space-between;
 }
 .question_width{
-    width: 100%;
+    width: 49%;
 }
 .row .auto_width{
-    width: 24%;
+    width: 48%;
 }
 .half_width{
-    width: 50%;
+    width: 49%;
+}
+.half_in_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 49%;
 }
 .input_margin{
     display: flex;
