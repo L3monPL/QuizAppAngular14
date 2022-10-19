@@ -57,7 +57,8 @@ export class HomePageComponent implements OnInit {
       this.input.toggle()
       // const main = document.getElementById('main')
       // main?.classList.add('main_panel_hide')
-      setTimeout(() => this.smallRightPanel = true,800)
+      // setTimeout(() => this.smallRightPanel = true,800)
+      this.smallRightPanel = true
     }
   }
 
@@ -87,6 +88,7 @@ export class HomePageComponent implements OnInit {
      }
      if (window.innerWidth < 1200) {
       this.menuMode = 'over'
+
      }
      else if (window.innerWidth >= 1200) {
       this.menuMode = 'side'
