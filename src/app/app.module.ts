@@ -10,13 +10,15 @@ import { RemindPasswordModule } from './components/remind-password/remind-passwo
 import { RegisterModule } from './components/register/register.module';
 import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-login-page.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AppGlobalLoadingComponent } from './components/app-global-loading/app-global-loading.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,    
+    LoginPageComponent,
+    AppGlobalLoadingComponent,    
     
     
   ],
