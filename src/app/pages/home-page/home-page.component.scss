@@ -142,10 +142,10 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
 
 @media only screen and (max-width: 1200px){
 .profile_card{
-    display: none;
+    // display: none;
 }
 .main{
-    width: calc(100vw - 152px - 3rem);
+    width: calc(100vw - 152px - 5.5rem);
     margin-left: 3rem;
 }
 .main_panel_hide{
