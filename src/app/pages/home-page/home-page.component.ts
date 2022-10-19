@@ -57,18 +57,21 @@ export class HomePageComponent implements OnInit {
       this.input.toggle()
       // const main = document.getElementById('main')
       // main?.classList.add('main_panel_hide')
-      // setTimeout(() => this.smallRightPanel = true,800)
-      this.smallRightPanel = true
+      setTimeout(() => this.smallRightPanel = true,30)
+      // this.smallRightPanel = true
     }
   }
 
   showRightPanel(){
     // this.smallRightPanel = false
     this.input.toggle()
+    // setTimeout(() => this.input.toggle(),10)
     const main = document.getElementById('main')
       main?.classList.remove('main_panel_hide')
-      this.smallRightPanel = false
+      setTimeout(() => this.smallRightPanel = false,30)
+      // this.smallRightPanel = false
   }
+  tablet?: boolean
 
   setSizeOptions(width: number){
     if(window.innerWidth < 600){
@@ -85,13 +88,20 @@ export class HomePageComponent implements OnInit {
      }
      else if (window.innerWidth >= 800) {
       this.mobileView = false
+      this.menushow = true
+      // this.smallRightPanel = false
      }
      if (window.innerWidth < 1200) {
       this.menuMode = 'over'
+      this.tablet = true
 
      }
      else if (window.innerWidth >= 1200) {
       this.menuMode = 'side'
+      if (this.menushow == true && this.tablet == true) {
+        this.smallRightPanel = false
+      }
+      this.tablet = false
      }
 
 
