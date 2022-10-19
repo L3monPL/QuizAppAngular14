@@ -2,6 +2,13 @@
     <mat-drawer-container class="example-container" autosize>
     
     <mat-drawer-content class="page"> 
+        <mat-toolbar *ngIf="mobileView" class="mobile_toolbar" color="primary">
+            <button (click)="mobileMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span class="example-spacer"></span>
+            <h2>USER_user</h2>
+        </mat-toolbar>
 
         <div class="menu">
             <div class="top_menu">
@@ -62,9 +69,49 @@
         </div>
 
     </mat-drawer-content>
-    <mat-drawer position="end" [opened]="menushow" #drawer [mode]="menuMode">
+    <mat-drawer *ngIf="!mobileView" position="end" [opened]="menushow" #drawer [mode]="menuMode">
         <div class="profile_card">
             <app-profile-right-panel (hideReightPanel)="hideReightPanel($event)"></app-profile-right-panel>
+        </div>
+    </mat-drawer>
+    <mat-drawer *ngIf="mobileView" [opened]="mobileMenuShow" #mobileDrawer [mode]="mobileMenuMode">
+        <div class="mobile_menu">
+            <div class="top_menu">
+                <div class="avatar">
+                    <img src="../../../assets/logo.jpg" alt="">
+                </div>
+                <div class="text_name">
+                    <p>E-learning</p>
+                </div>
+            </div>
+            <div class="mid_menu">
+                <div class="nav_menu">
+                    <a routerLink="/home/dashboard">
+                        <mat-icon class="menu_btn active" aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
+                    </a>
+                    <a routerLink="/home/quiz-maps">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">view_cozy</mat-icon>
+                    </a>
+                    <!-- <a href=""> -->
+                        <!-- <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">fact_check</mat-icon> -->
+                    <!-- </a> -->
+                    <a href="">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
+                    </a>
+                    <a routerLink="/home/admin-panel">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">co_present</mat-icon>
+                    </a>
+                    <a href="">
+                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">settings</mat-icon>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="bottom_menu">
+                <a href="">
+                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">logout</mat-icon>
+                </a>
+            </div>
         </div>
     </mat-drawer>
 </mat-drawer-container>

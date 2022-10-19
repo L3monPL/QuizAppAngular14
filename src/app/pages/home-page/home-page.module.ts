@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { ProfileRightPanelModule } from 'src/app/components/profile-right-panel/profile-right-panel.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
 
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatIconModule,
     ProfileRightPanelModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   exports: [
     RouterModule

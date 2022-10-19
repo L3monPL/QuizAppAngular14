@@ -12,10 +12,14 @@ import { CategoryRestService } from 'src/app/services/category-rest.service';
 export class HomePageComponent implements OnInit {
 
   menuMode: MatDrawerMode = 'side';
+  mobileMenuMode: MatDrawerMode = 'over';
   menushow?: boolean = true
+  mobileMenuShow?: boolean = false
   smallRightPanel = false
+  mobileView?: boolean
 
-  @ViewChild('drawer') input!: MatDrawer; 
+  @ViewChild('drawer') input!: MatDrawer
+  @ViewChild('mobileDrawer') mobileDrawer!: MatDrawer
 
   @HostListener('window:resize', ['$event'])
      onResize(event: any){
@@ -64,7 +68,16 @@ export class HomePageComponent implements OnInit {
       // this.menuMode = 'over';
       this.smallRightPanel = false
      }
+     if (window.innerWidth < 800) {
+      this.mobileView = true
+     }
+     else if (window.innerWidth >= 800) {
+      this.mobileView = false
+     }
 
    }// TRZEBA POPRAWIĆ (SCHOWAJ PRAWY PANEL ZMIEN NA MOBILE I ROZSZERZ (NIE DZIALA WTEDY PRAWY PANEL))
 
+   mobileMenu(){
+    this.mobileDrawer.toggle()
+   }
 }

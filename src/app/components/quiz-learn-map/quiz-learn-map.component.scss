@@ -94,7 +94,7 @@
         margin-left: 0rem;
     }
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
 .item{
     width: 60px;
     height: 60px;
@@ -102,5 +102,11 @@
 .item img{
     width: 30px;
     height: 30px;
+}
+.element{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    align-items: center;
 }
 }

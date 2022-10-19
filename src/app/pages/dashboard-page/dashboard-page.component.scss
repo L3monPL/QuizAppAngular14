@@ -98,8 +98,14 @@ app-quiz-learn-map{
         margin-bottom: 8px;
     }
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 800px){
 .txt_container{
     margin-left: 1rem;
 }
+.image img{
+    width: 100px;
+    float: right;
+    margin-right: 0rem;
+}
+
 }
