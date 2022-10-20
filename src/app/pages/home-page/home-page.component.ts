@@ -78,57 +78,38 @@ export class HomePageComponent implements OnInit {
       this.menuMode = 'over'
       this.tablet = true
       this.smallRightPanel = true
-      console.log('<1200')
      }
      if (window.innerWidth < 800) {
       this.mobileView = true
       this.smallRightPanel = false
       this.menushow = false
-      console.log('<800')
      }
-     else if (window.innerWidth >= 800 && window.innerWidth <1200) {
+     if (window.innerWidth >= 800 && window.innerWidth <1200) {
       this.mobileView = false
-      this.menushow = true
-      // this.smallRightPanel = false
-      console.log('>=800<1200')
+      this.menushow = false
      }
      
      if (window.innerWidth >= 1200) {
       this.menuMode = 'side'
       if (this.menushow && this.tablet) {
         this.smallRightPanel = false
-        console.log('>=1200  1')
       }
-      // if (this.smallRightPanel == false && this.menushow == false) {
-      //   this.smallRightPanel = true
-      // }
-      if (this.tablet == true && !this.menushow) {
-        // this.menushow = true
+      if (this.tablet && !this.menushow) {
         this.smallRightPanel = true
-        console.log('2')
       }
       if (this.menushow == false) {
         this.menushow = true
         this.smallRightPanel = false
-        console.log('3')
       }
-      if (this.tablet == true && !this.menushow ) {
-        // this.menushow = true
+      if (this.tablet && !this.menushow ) {
         this.smallRightPanel = true
-        console.log('4')
       }
       this.tablet = false
-      
-      // if (this.menushow == true) {
-      //   this.smallRightPanel = false
-
-      // }
-
-      
+     
      }
 
 
-   }// TRZEBA POPRAWIĆ (SCHOWAJ PRAWY PANEL ZMIEN NA MOBILE I ROZSZERZ (NIE DZIALA WTEDY PRAWY PANEL))
+   }
 
    mobileMenu(){
     this.mobileDrawer.toggle()
