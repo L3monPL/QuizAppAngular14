@@ -138,6 +138,9 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
 .main_content{
     background-color: $page_bg_main;
 }
+.btn_arrow_back{
+    cursor: pointer;
+}
 
 
 @media only screen and (max-width: 1200px){

@@ -86,4 +86,20 @@
     .card{
         width: 100%;
     }
+    .questions_component{
+        margin-top: 2rem;
+    }
+    .main_text{
+        margin-top: 0rem;
+    }
+    .results{
+        margin-top: 4rem;
+    }
+    .results mat-progress-bar{
+        width: 60%;
+        height: 30px;
+    }
+    .results h2{
+        text-align: center;
+    }
 }
