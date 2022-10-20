@@ -101,7 +101,11 @@ export class HomePageComponent implements OnInit {
       if (this.menushow == true && this.tablet == true) {
         this.smallRightPanel = false
       }
+      // if (this.smallRightPanel == false && this.menushow == false) {
+      //   this.smallRightPanel = true
+      // }
       this.tablet = false
+      
      }
 
 
