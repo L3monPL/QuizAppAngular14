@@ -40,3 +40,11 @@
 .green_txt{
     color: rgb(40, 207, 82);
 }
+@media only screen and (max-width: 800px){
+.row{
+    flex-direction: column;
+}
+.row .auto_width{
+    width: 100%;
+}
+}

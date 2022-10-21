@@ -90,6 +90,7 @@ export class HomePageComponent implements OnInit {
      }
      
      if (window.innerWidth >= 1200) {
+      this.mobileView = false
       this.menuMode = 'side'
       if (this.menushow && this.tablet) {
         this.smallRightPanel = false

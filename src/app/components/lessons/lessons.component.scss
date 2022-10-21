@@ -17,12 +17,20 @@
         // justify-content: space-between;
         // margin-left: 10%;
         // margin-right: 10%;
-        // margin-top: 25%;
+        margin-top: 2rem;
         row-gap: 2rem;
+        text-align: center;
     }
 }
-@media only screen and (max-width: 600px){
-    .container mat-card h1{
+@media only screen and (max-width: 800px){
+    .container{
+        margin-top: 2rem;
+    }
+    .container h1{
         text-align: center;
+    }
+    .container mat-card{
+        padding: 3rem;
+        cursor: pointer;
     }
 }
