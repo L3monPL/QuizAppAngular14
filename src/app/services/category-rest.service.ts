@@ -60,6 +60,15 @@ export class CategoryRestService {
     })
   }
 
+  deleteCategory(
+    id: number, 
+    ):Observable<HttpResponse<Category>>{
+    return this.http.delete<Category>(this.PATH + `/category/${id}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
   getCategoryList(){
     this.subCategoryList = this.getCategory().subscribe({
       next: (response) => {

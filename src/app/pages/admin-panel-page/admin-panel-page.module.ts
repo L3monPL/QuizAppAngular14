@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { AddQuestionModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-question/add-question.module';
 import { AddCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-category/add-category.module';
+import { DeleteCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-category/delete-category.module';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     AddQuestionModule,
-    AddCategoryModule
+    AddCategoryModule,
+    DeleteCategoryModule
   ],
   exports: [
     AdminPanelPageComponent

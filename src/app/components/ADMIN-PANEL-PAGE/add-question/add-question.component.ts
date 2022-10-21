@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
@@ -10,7 +10,7 @@ import { QuestionRestService } from 'src/app/services/question-rest.service';
   templateUrl: './add-question.component.html',
   styleUrls: ['./add-question.component.scss']
 })
-export class AddQuestionComponent implements OnInit {
+export class AddQuestionComponent implements OnInit, OnDestroy {
 
   subQuestionAddToCategory?: Subscription
   customError?: string
