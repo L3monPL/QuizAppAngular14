@@ -38,3 +38,20 @@
 .green_txt{
     color: rgb(40, 207, 82);
 }
+@media only screen and (max-width: 800px){
+    .row{
+        flex-direction: column;
+    }
+    .row .half_width{
+        width: 100%;
+    }
+    .half_in_row{
+        width: 100%;
+    }
+    .question_width{
+        width: 100%;
+    }
+    .input_margin button{
+        width: 100%;
+    }
+    }
