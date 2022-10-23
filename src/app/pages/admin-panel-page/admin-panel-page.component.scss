@@ -1,7 +1,7 @@
 .components{
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+    // row-gap: 2rem;
     width: auto;
 }
 .div{
@@ -13,3 +13,24 @@
 // app-add-question{
 //     width: 100%;
 // }
+mat-panel-title{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+mat-expansion-panel-header{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.margin_right{
+    margin-right: 1.5rem;
+    font-size: 1.8rem;
+    padding-bottom: 4px;
+}
+.font_green{
+    color: rgb(2, 255, 87);
+}
+.font_red{
+    color: rgb(196, 18, 18);
+}

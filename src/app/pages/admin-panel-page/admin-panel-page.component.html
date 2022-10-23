@@ -1,6 +1,43 @@
 <div class="components">
-    <app-add-category></app-add-category>
-    <app-add-question></app-add-question>
-    <app-delete-category></app-delete-category>
+    <h2>Panel zarządzania quizami</h2>
+    <mat-accordion multi>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="font_green margin_right material-symbols-outlined">create_new_folder</mat-icon>
+                Dodaj quiz
+              </mat-panel-title>
+              
+            </mat-expansion-panel-header>
+            <app-add-category></app-add-category>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon class="font_green margin_right material-symbols-outlined">add_comment</mat-icon>
+                Dodaj pytanie do quizu
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <app-add-question></app-add-question>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="font_red margin_right material-symbols-outlined">folder_delete</mat-icon>
+                Usuń quiz
+              </mat-panel-title>
+              
+            </mat-expansion-panel-header>
+            <app-delete-category></app-delete-category>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
+    <!-- <app-add-category></app-add-category> -->
+    <!-- <app-add-question></app-add-question> -->
+    <!-- <app-delete-category></app-delete-category> -->
 </div>
 

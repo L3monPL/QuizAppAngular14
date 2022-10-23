@@ -10,6 +10,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { AddQuestionModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-question/add-question.module';
 import { AddCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-category/add-category.module';
 import { DeleteCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-category/delete-category.module';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
 
 
 const routes: Routes = [
@@ -28,7 +30,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     AddQuestionModule,
     AddCategoryModule,
-    DeleteCategoryModule
+    DeleteCategoryModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   exports: [
     AdminPanelPageComponent
