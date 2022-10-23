@@ -16,15 +16,15 @@
         </div>
     </div>
     <div class="list_container">
-        <div class="item">
+        <div class="item" *ngFor="let player of ranking; let i = index">
             <div class="right_in_item">
-                <h2>1.</h2>
+                <h2>{{i+1}}.</h2>
                 <div class="image_profile_in_list">
                     <img src="../../../assets/quiz_logo.jpg" alt="">
                 </div>
-                <h2>User_user</h2>
+                <h2>{{player.name}}</h2>
             </div>
-            <h2>999 punktów</h2>
+            <h2>{{player.points}} punktów</h2>
         </div>
     </div>
 </div>

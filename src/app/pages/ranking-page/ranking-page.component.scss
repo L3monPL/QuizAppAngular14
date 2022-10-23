@@ -1,3 +1,4 @@
+@import '/src/style/colors.scss';
 .container{
     display: flex;
     flex-direction: column;
@@ -8,12 +9,16 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border: 5px solid rgb(148, 53, 151);
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 5px;
+
 }
 .margins{
     padding: 1rem;
 }
 .list_container{
-    
+    // box-shadow: rgb(0 0 0 / 15%) 0px 2px 5px;
+    padding-top: 2rem;
+    background-color: #fff;
 }
 .item{
     display: flex;
@@ -40,7 +45,6 @@
     height: 35px;
     border-radius: 50%;
     border: 2px solid rgb(121, 121, 121);
-    
 }
 .row{
     display: flex;
