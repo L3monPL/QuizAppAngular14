@@ -29,6 +29,10 @@ const routes: Routes = [
         path: 'admin-panel',
         loadChildren: () => import('../admin-panel-page/admin-panel-page.module').then(m => m.AdminPanelPageModule),
       },
+      {
+        path: 'ranking',
+        loadChildren: () => import('../ranking-page/ranking-page.module').then(m => m.RankingPageModule),
+      },
     ]
   }
 ]

@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppGlobalLoadingComponent } from './components/app-global-loading/app-global-loading.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
