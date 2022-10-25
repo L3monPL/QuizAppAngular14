@@ -43,16 +43,21 @@ export class LoginComponent implements OnInit {
       let passwordValue = this.loginForm.get('password')!.value;
       this.userLogin = this.userRest.postUserLogin(loginValue!, passwordValue!).subscribe({
         next: (response) => {
-          
-          this.router.navigateByUrl('/home');
+            
+            this.router.navigateByUrl('/home');
+
         },
         error: (errorResponse) => {
           // console.log(errorResponse);
           switch (errorResponse.status) {
+            case 400:
             case 401:
             case 403:
-              this.customError = errorResponse.error.message;
+              this.customError = errorResponse.error;
               this.loading = false;
+              break;
+            case 200:
+              this.router.navigateByUrl('/home');
               break;
           
             default:

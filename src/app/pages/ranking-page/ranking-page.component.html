@@ -1,22 +1,51 @@
 <div class="container">
     <div class="header_container">
         <div class="margins">
-            <div class="row">
-                <div class="image_profile">
+            <div class="row space_btw">
+                <!-- <div class="image_profile">
                     <img src="../../../assets/quiz_logo.jpg" alt="">
-                </div>
+                </div> -->
                 <div class="profil_name">
-                    <h2>User_user</h2>
-                    <h3>Początkujący</h3>
+                    <h2 class="user_txt">User_user</h2>
+                    <h3 class="lvl_user">Początkujący</h3>
                 </div>
                 <div class="btn_container">
-                    <!-- <button></button> -->
+                    <div class="row_achievement">
+                        <div class="achievement">
+                            <mat-icon aria-hidden="false" fontIcon="hotel_class">hotel_class</mat-icon>
+                        </div>
+                        <div class="achievement">
+                            <mat-icon aria-hidden="false" fontIcon="school">school</mat-icon>
+                        </div>
+                        <div class="achievement">
+                            <mat-icon aria-hidden="false" fontIcon="star_half">star_half</mat-icon>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="search_ranking_page">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <!-- <mat-label>Favorite food</mat-label> -->
+                    <input matInput placeholder="Wyszukiwarka" value="">
+                </mat-form-field>
+                <button mat-button color="primary">Szukaj</button>
             </div>
         </div>
     </div>
     <div class="list_container">
-        <div class="item" *ngFor="let player of ranking; let i = index">
+        <div class="list_info">
+            <div class="item item_list_info">
+                <div class="right_in_item">
+                    <h3>Nr.</h3>
+                    <div class="image_profile_in_list">
+                        <h3>Użytkownik</h3>
+                    </div>
+                    <!-- <h2>{{player.name}}</h2> -->
+                </div>
+                <h3>Punkty</h3>
+            </div>
+        </div>
+        <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
             <div class="right_in_item">
                 <h2>{{i+1}}.</h2>
                 <div class="image_profile_in_list">

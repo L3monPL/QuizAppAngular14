@@ -8,17 +8,23 @@
     background-color: #fff;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    border: 5px solid rgb(148, 53, 151);
+    border: 3px solid $bg_layout;
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 5px;
 
 }
 .margins{
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 .list_container{
     // box-shadow: rgb(0 0 0 / 15%) 0px 2px 5px;
-    padding-top: 2rem;
+    padding-top: 0.5rem;
     background-color: #fff;
+    border-bottom: 3px solid $bg_layout;
+    border-left: 3px solid $bg_layout;
+    border-right: 3px solid $bg_layout;
 }
 .item{
     display: flex;
@@ -30,6 +36,7 @@
     align-items: center;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    row-gap: border-bottom 1px solid #ccc;
 }
 .item h2{
     margin: 0px;
@@ -62,4 +69,72 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.profil_name h2{
+    margin: 0px;
+}
+::ng-deep .search_ranking_page .mat-form-field-outline-start {
+    border-radius: 28px 0 0 28px !important;
+    min-width: 28px !important;
+  }
+  
+  ::ng-deep .search_ranking_page .mat-form-field-outline-end {
+    border-radius: 0 28px 28px 0 !important;
+  }
+  ::ng-deep .search_ranking_page .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding: 10px;
+}
+::ng-deep .search_ranking_page .mat-form-field-infix {
+    padding: 0.5em 0;
+    border-top: 0.44375em solid transparent;
+}
+::ng-deep .search_ranking_page .mat-form-field{
+    width: 100%;
+}
+.search_ranking_page{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: center;
+}
+::ng-deep .search_ranking_page .mat-form-field-wrapper {
+    padding-bottom: 0em; 
+}
+.lvl_user{
+    font-size: 0.8rem;
+    color: $green;
+}
+.user_txt{
+    font-size: 1.4rem;
+}
+.space_btw{
+    justify-content: space-between;
+    // align-items: center;
+}
+.row_achievement{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5rem;
+    column-gap: 0.7rem;
+}
+.achievement{
+    width: 45px;
+    height: 45px;
+    // background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid rgb(221, 52, 145);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.item_list_info{
+    padding-bottom: 0px!important;
+    border-bottom: 1px solid #ccc;
+}
+.achievement mat-icon{
+    color: rgb(255, 123, 47);
+}
+.border_bottom{
+    border-bottom: 1px solid #ccc;
 }
