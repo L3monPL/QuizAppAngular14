@@ -14,6 +14,13 @@ export interface Register{
   roleId : number
 }
 
+export interface User{
+  id: number;
+  name: string;
+  email: string;
+  type: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,6 +55,20 @@ export class UserRestService {
       observe: 'response',
       responseType: 'json',
       
+    })
+  }
+
+  getUser():Observable<HttpResponse<User>>{
+    return this.http.get<User>(this.PATH,{
+      observe: 'response',
+      responseType: 'json',
+    })
+  }
+
+  putLogoutUser():Observable<HttpResponse<Message>>{
+    return this.http.put<Message>(this.PATH + `/logout`,{},{
+      observe: 'response',
+      responseType: 'json',
     })
   }
 }
