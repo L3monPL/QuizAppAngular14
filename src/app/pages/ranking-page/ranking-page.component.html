@@ -45,15 +45,17 @@
                 <h3>Punkty</h3>
             </div>
         </div>
-        <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
-            <div class="right_in_item">
-                <h2>{{i+1}}.</h2>
-                <div class="image_profile_in_list">
-                    <img src="../../../assets/quiz_logo.jpg" alt="">
+        <div class="scroll_container">
+            <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
+                <div class="right_in_item">
+                    <h2>{{i+1}}.</h2>
+                    <div class="image_profile_in_list">
+                        <img src="../../../assets/quiz_logo.jpg" alt="">
+                    </div>
+                    <h2>{{player.name}}</h2>
                 </div>
-                <h2>{{player.name}}</h2>
+                <h2>{{player.points}} pkt.</h2>
             </div>
-            <h2>{{player.points}} punktów</h2>
         </div>
     </div>
 </div>

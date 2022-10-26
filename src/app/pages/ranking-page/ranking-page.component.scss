@@ -25,6 +25,11 @@
     border-bottom: 3px solid $bg_layout;
     border-left: 3px solid $bg_layout;
     border-right: 3px solid $bg_layout;
+    
+}
+.scroll_container{
+    height: calc(100vh - 2rem - 285px);
+    overflow-y: scroll;
 }
 .item{
     display: flex;
@@ -137,4 +142,17 @@
 }
 .border_bottom{
     border-bottom: 1px solid #ccc;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 800px){
+.scroll_container{
+    height: calc(100vh - 277px - $mobile_top_menu_height);
+    overflow-y: scroll;
+}
 }
