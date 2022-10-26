@@ -7,7 +7,7 @@
     // height: 200px; // to del
     background-color: #fff;
     border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    // border-bottom-left-radius: 30px;
     border: 3px solid $bg_layout;
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 5px;
 
@@ -25,7 +25,8 @@
     border-bottom: 3px solid $bg_layout;
     border-left: 3px solid $bg_layout;
     border-right: 3px solid $bg_layout;
-    
+    border-bottom-left-radius: 30px;
+    overflow: hidden;
 }
 .scroll_container{
     height: calc(100vh - 2rem - 285px);
@@ -154,5 +155,11 @@
 .scroll_container{
     height: calc(100vh - 277px - $mobile_top_menu_height);
     overflow-y: scroll;
+}
+.header_container{
+    border-top-right-radius: 30px;
+}
+.list_container{
+    border-bottom-right-radius: 30px;
 }
 }
