@@ -35,8 +35,8 @@
     <div class="list_container">
         <div class="list_info">
             <div class="item item_list_info">
-                <div class="right_in_item">
-                    <h3>Nr.</h3>
+                <div class="left_in_item">
+                    <h3 class="number">Nr.</h3>
                     <div class="image_profile_in_list">
                         <h3>Użytkownik</h3>
                     </div>
@@ -47,8 +47,8 @@
         </div>
         <div class="scroll_container">
             <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
-                <div class="right_in_item">
-                    <h2>{{i+1}}.</h2>
+                <div class="left_in_item">
+                    <h2 class="number">{{i+1}}.</h2>
                     <div class="image_profile_in_list">
                         <img src="../../../assets/quiz_logo.jpg" alt="">
                     </div>

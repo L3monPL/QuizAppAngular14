@@ -47,7 +47,7 @@
 .item h2{
     margin: 0px;
 }
-.right_in_item{
+.left_in_item{
     display: flex;
     flex-direction: row;
     column-gap: 1rem;
@@ -144,8 +144,12 @@
 .border_bottom{
     border-bottom: 1px solid #ccc;
 }
-
-
+.image_profile_in_list img{
+    margin-top: 4px;
+}
+.number{
+    width: 30px;
+}
 
 
 
@@ -161,5 +165,18 @@
 }
 .list_container{
     border-bottom-right-radius: 30px;
+}
+.scroll_container h2{
+    font-size: 1rem;
+}
+.image_profile_in_list img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgb(121, 121, 121);
+}
+.item{
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
 }
 }
