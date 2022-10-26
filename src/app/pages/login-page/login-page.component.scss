@@ -70,9 +70,14 @@
 
 
 
-
-
-
+@media only screen and (max-width: 1200px){
+.left_panel{
+    display: none;
+}
+.right_panel{
+    width: 100%;
+}
+}
 /////////////////////////////MOBILE////////////////////////////////
 
 @media only screen and (max-width: 800px){
@@ -92,13 +97,12 @@
 .page_body{
     width: 100vw;
 }
-// .bg{
-//     width: 100vw;
-// }
-// .login_body{
-//     width: 100%;
-// }
-
+.text_header h1{
+    font-size: 1.6rem;
+}
+.text_login_form{
+    margin-left: 1rem;
+}
 }
 
 
