@@ -28,7 +28,7 @@
                     <!-- <mat-label>Favorite food</mat-label> -->
                     <input matInput placeholder="Wyszukiwarka" value="">
                 </mat-form-field>
-                <button mat-button color="primary">Szukaj</button>
+                <button mat-button class="btn_search" color="primary">Szukaj</button>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <h3>Punkty</h3>
             </div>
         </div>
-        <div class="scroll_container">
+        <div class="scroll_container" id="style-scroll">
             <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
                 <div class="left_in_item">
                     <h2 class="number">{{i+1}}.</h2>
