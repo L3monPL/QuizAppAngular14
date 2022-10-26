@@ -33,7 +33,7 @@ export class UserRestService {
   ) { }
 
   postUserLogin(login: string, password: string):Observable<HttpResponse<Message>>{
-    return this.http.post<Message>(this.PATH + `/user/login`,{
+    return this.http.post<Message>(this.PATH + `/account/login`,{
       login:login,
       password: password,
     }, {
@@ -45,7 +45,7 @@ export class UserRestService {
 
   postUserRegister(username: string, password: string, repeatPassword: string,
     emailAdress: string, roleId: number):Observable<HttpResponse<Register>>{
-    return this.http.post<Register>(this.PATH + `/user/register`,{
+    return this.http.post<Register>(this.PATH + `/account/register`,{
       username: username,
       password: password,
       repeatPassword: repeatPassword,
