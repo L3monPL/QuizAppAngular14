@@ -189,7 +189,7 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
 }
 .paddings{
     padding-top: 22px;
-    padding-right: 22px;
+    padding-right: 1rem;
 }
 .page{
     flex-direction: column;
@@ -200,9 +200,6 @@ box-shadow: -4px 0px 11px -1px rgba(66, 68, 90, 1);
 .mobile_toolbar{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-}
-.paddings{
-    // padding-bottom: 6rem;
 }
 .mobile_menu{
     background-color: $bg_layout;
