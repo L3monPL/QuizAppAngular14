@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
             this.router.navigateByUrl('/home');
             console.log(response.body)
-            
+            localStorage.setItem('currentUser',response.body);
         },
         error: (errorResponse) => {
           // console.log(errorResponse);

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="title_row">
         <!-- <h2>Usuń quiz</h2> -->
-        <h2 *ngIf="deleteCategoryDone" class="green_txt">Dodano poprawnie</h2>
+        <h2 *ngIf="deleteCategoryDone" class="green_txt">Usunięto poprawnie</h2>
     </div>
     
     <form [formGroup]="categoryDeleteForm" (submit)="deleteCategorySubmit()">

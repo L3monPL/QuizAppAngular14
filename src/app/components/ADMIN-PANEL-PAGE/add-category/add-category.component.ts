@@ -80,8 +80,13 @@ export class AddCategoryComponent implements OnInit {
         },
         error: (errorResponse) => {
           switch (errorResponse.status) {
-            case 400|401:
-              this.customError = errorResponse.error.message;
+            case 400:
+              this.customError = errorResponse.error;
+              break;
+            case 201:
+              this.customError = undefined
+              this.resetForm()
+              this.categoryManagerService.getCategoryList()
               break;
           
             default:
@@ -89,8 +94,7 @@ export class AddCategoryComponent implements OnInit {
               break;
           }
           console.log('return getCategory')
-          this.resetForm()
-          this.categoryManagerService.getCategoryList()
+          
         },
         
         complete: () => {

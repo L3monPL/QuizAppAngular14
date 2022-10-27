@@ -2,6 +2,7 @@
     <div class="title_row">
         <!-- <h2>Dodaj quiz</h2> -->
         <h2 *ngIf="addCategoryDone" class="green_txt">Dodano poprawnie</h2>
+        <h2 *ngIf="customError">{{customError}}</h2>
     </div>
     
     <form [formGroup]="addCategoryForm" (submit)="postQuestionToCategory()">

@@ -63,6 +63,7 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
               break;
           }
           this.resetForm()
+          this.categoryManagerService.getCategoryList()
         },
         complete: () => {
           

@@ -37,8 +37,8 @@ export class UserRestService {
     private http: HttpClient
   ) { }
 
-  postUserLogin(login: string, password: string):Observable<HttpResponse<Login>>{
-    return this.http.post<Login>(this.PATH + `/account/login`,{
+  postUserLogin(login: string, password: string):Observable<HttpResponse<any>>{
+    return this.http.post<any>(this.PATH + `/account/login`,{
       login:login,
       password: password,
     }, {
