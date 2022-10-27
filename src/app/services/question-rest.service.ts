@@ -69,7 +69,7 @@ export class QuestionRestService {
       level: level
     },{
       observe: 'response',
-      responseType: 'json'
+      responseType: 'text' as 'json'
     })
   }
 

@@ -56,7 +56,7 @@ export class CategoryRestService {
       lessonsPerLevel: lessonsPerLevel,
     },{
       observe: 'response',
-      responseType: 'json'
+      responseType: 'text' as 'json'
     })
   }
 
@@ -65,7 +65,7 @@ export class CategoryRestService {
     ):Observable<HttpResponse<Category>>{
     return this.http.delete<Category>(this.PATH + `/category/${id}`,{
       observe: 'response',
-      responseType: 'json'
+      responseType: 'text' as 'json'
     })
   }
 

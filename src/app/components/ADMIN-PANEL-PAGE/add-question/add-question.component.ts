@@ -97,7 +97,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
       error: (errorResponse) => {
         switch (errorResponse.status) {
           case 400|401:
-            this.customError = errorResponse.error.message;
+            this.customError = errorResponse.error;
             break;
         
           default:
@@ -125,7 +125,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
         ).subscribe({
         next: (response) => {
           if (response.body) {
-            // this.resetForm()
+            this.resetForm()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
@@ -134,14 +134,13 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
         error: (errorResponse) => {
           switch (errorResponse.status) {
             case 400|401:
-              this.customError = errorResponse.error.message;
+              this.customError = errorResponse.error;
               break;
           
             default:
               this.customError = 'Błąd servera'
               break;
           }
-          this.resetForm()
         },
         complete: () => {
           

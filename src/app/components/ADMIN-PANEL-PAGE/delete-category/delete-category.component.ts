@@ -46,7 +46,8 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
       this.subQuestionCategoryDelete = this.categoryRestService.deleteCategory(categoryId!).subscribe({
         next: (response) => {
           if (response.body) {
-
+            this.resetForm()
+            this.categoryManagerService.getCategoryList()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
@@ -55,15 +56,13 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
         error: (errorResponse) => {
           switch (errorResponse.status) {
             case 400|401:
-              this.customError = errorResponse.error.message;
+              this.customError = errorResponse.error;
               break;
           
             default:
               this.customError = 'Błąd servera'
               break;
           }
-          this.resetForm()
-          this.categoryManagerService.getCategoryList()
         },
         complete: () => {
           

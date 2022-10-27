@@ -71,7 +71,9 @@ export class AddCategoryComponent implements OnInit {
         ).subscribe({
         next: (response) => {
           if (response.body) {
-
+            this.customError = undefined
+            this.resetForm()
+            this.categoryManagerService.getCategoryList()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
@@ -82,11 +84,6 @@ export class AddCategoryComponent implements OnInit {
           switch (errorResponse.status) {
             case 400:
               this.customError = errorResponse.error;
-              break;
-            case 201:
-              this.customError = undefined
-              this.resetForm()
-              this.categoryManagerService.getCategoryList()
               break;
           
             default:
