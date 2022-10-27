@@ -1,9 +1,14 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Message{
   message: string;
+}
+
+export interface Login{
+  login: string,
+  password: string
 }
 
 export interface Register{
@@ -32,14 +37,13 @@ export class UserRestService {
     private http: HttpClient
   ) { }
 
-  postUserLogin(login: string, password: string):Observable<HttpResponse<Message>>{
-    return this.http.post<Message>(this.PATH + `/account/login`,{
+  postUserLogin(login: string, password: string):Observable<HttpResponse<Login>>{
+    return this.http.post<Login>(this.PATH + `/account/login`,{
       login:login,
       password: password,
     }, {
       observe: 'response',
-      responseType: 'json',
-      
+      responseType: 'text' as 'json'
     })
   }
 

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userRest: UserRestService
+    private userRest: UserRestService,
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
       let passwordValue = this.loginForm.get('password')!.value;
       this.userLogin = this.userRest.postUserLogin(loginValue!, passwordValue!).subscribe({
         next: (response) => {
-            
             this.router.navigateByUrl('/home');
-
+            console.log(response.body)
+            
         },
         error: (errorResponse) => {
           // console.log(errorResponse);
@@ -55,9 +55,6 @@ export class LoginComponent implements OnInit {
             case 403:
               this.customError = errorResponse.error;
               this.loading = false;
-              break;
-            case 200:
-              this.router.navigateByUrl('/home');
               break;
           
             default:

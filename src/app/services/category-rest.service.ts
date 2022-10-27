@@ -5,8 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 export interface Category{
   id: number,
   name: string,
-  description: string,
-  iconUrl: string,
+  description?: string,
+  iconUrl?: string,
   questionsPerLesson: number,
   lessonsPerLevel: number
 }
