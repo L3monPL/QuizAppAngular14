@@ -1,0 +1,16 @@
+<div *ngIf="!usersList" class="input_margin">
+    <button (click)="getUsersList()" class="button_margin" mat-raised-button color="primary">Wyświetl wszystkich użytkowników</button>
+</div>
+<div *ngIf="usersList" class="container" id="style-scroll">
+    <div *ngFor="let user of usersList" class="item">
+        <div class="username">
+            {{user.username}}
+        </div>
+        <div class="role">
+            {{user.role.name}}
+        </div>
+        <div class="email">
+            {{user.emailAddress}}
+        </div>
+    </div>
+</div>

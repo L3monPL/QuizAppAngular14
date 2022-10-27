@@ -26,6 +26,16 @@ export interface User{
   type: string;
 }
 
+export interface UserList{
+  id: number,
+  username: string,
+  emailAddress: string,
+  role: {
+    id: number,
+    name: string
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -69,8 +79,15 @@ export class UserRestService {
     })
   }
 
-  putLogoutUser():Observable<HttpResponse<Message>>{
-    return this.http.put<Message>(this.PATH + `/logout`,{},{
+  // putLogoutUser():Observable<HttpResponse<Message>>{
+  //   return this.http.put<Message>(this.PATH + `/logout`,{},{
+  //     observe: 'response',
+  //     responseType: 'json',
+  //   })
+  // }
+
+  getUsersList():Observable<HttpResponse<Array<UserList>>>{
+    return this.http.get<Array<UserList>>(this.PATH + `/user`,{
       observe: 'response',
       responseType: 'json',
     })

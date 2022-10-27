@@ -35,9 +35,49 @@
         </mat-expansion-panel>
 
       </mat-accordion>
+      <div class="selection">
+        <h2>Panel zarządzania użytkownikami</h2>
+        <mat-accordion multi>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon class="font_green margin_right material-symbols-outlined">group</mat-icon>
+                  Lista użytkowników
+                </mat-panel-title>
+                
+              </mat-expansion-panel-header>
+              <app-get-users-list></app-get-users-list>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="font_red margin_right material-symbols-outlined">person</mat-icon>
+                Usuń użytkownika
+              </mat-panel-title>
+              
+            </mat-expansion-panel-header>
+            <!-- <app-get-users-list></app-get-users-list> -->
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_yellow margin_right material-symbols-outlined">manage_accounts</mat-icon>
+              Edycja użytkownika
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <!-- <app-get-users-list></app-get-users-list> -->
+      </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      
 
     <!-- <app-add-category></app-add-category> -->
     <!-- <app-add-question></app-add-question> -->
     <!-- <app-delete-category></app-delete-category> -->
+    <!-- <app-get-users-list></app-get-users-list> -->
 </div>
 

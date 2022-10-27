@@ -12,6 +12,7 @@ import { AddCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-categ
 import { DeleteCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-category/delete-category.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { GetUsersListModule } from 'src/app/components/ADMIN-PANEL-PAGE/get-users-list/get-users-list.module';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     AddCategoryModule,
     DeleteCategoryModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    GetUsersListModule
   ],
   exports: [
     AdminPanelPageComponent

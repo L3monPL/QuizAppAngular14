@@ -11,7 +11,7 @@ import { RegisterModule } from './components/register/register.module';
 import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-login-page.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppGlobalLoadingComponent } from './components/app-global-loading/app-global-loading.component';
-import { AuthInterceptor } from './auth/auth.interceptor'
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 @NgModule({
