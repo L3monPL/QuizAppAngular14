@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserList, UserRestService } from 'src/app/services/user-rest.service';
 
@@ -7,7 +7,7 @@ import { UserList, UserRestService } from 'src/app/services/user-rest.service';
   templateUrl: './get-users-list.component.html',
   styleUrls: ['./get-users-list.component.scss']
 })
-export class GetUsersListComponent implements OnInit {
+export class GetUsersListComponent implements OnInit, OnDestroy {
 
   subUsersList?: Subscription
   usersList?: Array<UserList>
@@ -20,13 +20,17 @@ export class GetUsersListComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  ngOnDestroy(): void {
+    this.subUsersList?.unsubscribe()
+  }
 
   getUsersList(){
     this.subUsersList = this.userRest.getUsersList().subscribe({
       next: (response) => {
         if (response.body) {
           this.usersList = response.body
-          console.log(this.usersList)
+          // console.log(this.usersList)
+
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'

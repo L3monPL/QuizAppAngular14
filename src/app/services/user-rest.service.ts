@@ -92,4 +92,13 @@ export class UserRestService {
       responseType: 'json',
     })
   }
+
+  deleteUser(
+    id: number, 
+    ):Observable<HttpResponse<User>>{
+    return this.http.delete<User>(this.PATH + `/user/${id}`,{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
 }
