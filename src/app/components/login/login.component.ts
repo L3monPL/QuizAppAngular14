@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
+import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -22,6 +24,10 @@ export class LoginComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 100;
 
+  helper = new JwtHelperService();
+
+  obj0 = Array<any>()
+
   loginForm = new FormGroup({
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',Validators.required)
@@ -30,6 +36,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private userRest: UserRestService,
+    private userData: UserDataService
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +53,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/home');
             console.log(response.body)
             localStorage.setItem('currentUser',response.body);
+            this.getUserStart()
         },
         error: (errorResponse) => {
           // console.log(errorResponse);
@@ -76,6 +84,38 @@ export class LoginComponent implements OnInit {
   }
   remindPassword(){
     this.router.navigateByUrl('remind-password')
+  }
+
+  getUserStart(){
+    let urlId = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+    let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
+    // console.log(token)
+    let elo = urlId.valueOf()
+    // console.log(urlId.valueOf())
+    // console.log(token)
+    const myJSON = JSON.stringify(token);
+    // console.log(myJSON.slice(-40))
+    // console.log(myJSON)
+    // const obj = Object.fromEntries(token);
+    // console.log(obj)
+
+    const object2 = Object.fromEntries(
+      Object.entries(token)
+      .map(([ key, val ]) => [ key, val ])
+    );
+    // console.log(object2)
+
+
+    for (let [key, value] of Object.entries(token)) {
+      // console.log(`${key}: ${value}`)
+      this.obj0.push(`${key}: ${value}`)
+    }
+    let indexOfToken = this.obj0[0]
+    // console.log(indexOfToken)
+
+    console.log(indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', ''))
+    let userIdFromToken = indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', '')
+    this.userData.userIdByToken = userIdFromToken
   }
 
 }
