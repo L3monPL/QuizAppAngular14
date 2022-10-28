@@ -6,6 +6,9 @@
     <div class="text_name">
         <p>{{this.userData.getName()}}</p>
     </div>
+    <div *ngIf="this.userData.isAdmin()" class="text_role">
+        <p class="text_role">Admin</p>
+    </div>
     <div class="text_rank">
         <p>Początkujący</p>
     </div>

@@ -33,7 +33,7 @@
                     <a routerLink="/home/ranking">
                         <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
                     </a>
-                    <a routerLink="/home/admin-panel">
+                    <a *ngIf="this.userDataService.isAdmin()" routerLink="/home/admin-panel">
                         <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">admin_panel_settings</mat-icon>
                     </a>
                     <a routerLink="/home/settings">

@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userDataService: UserDataService,
+    public userDataService: UserDataService,
     ) { }
 
   ngOnInit(): void {
