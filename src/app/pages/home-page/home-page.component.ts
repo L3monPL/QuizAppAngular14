@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 
 
@@ -17,6 +18,10 @@ export class HomePageComponent implements OnInit {
   mobileMenuShow?: boolean = false
   smallRightPanel = false
   mobileView?: boolean
+
+  helper = new JwtHelperService();
+
+  obj0 = Array<any>()
 
   @ViewChild('drawer') input!: MatDrawer
   @ViewChild('mobileDrawer') mobileDrawer!: MatDrawer
@@ -37,6 +42,8 @@ export class HomePageComponent implements OnInit {
     {
       this.router.navigate(['./home/dashboard'])
     }
+
+    this.getUserIdFromToken()
 
     this.setSizeOptions(window.innerWidth)
     // this.smallRightPanel = false
@@ -112,7 +119,36 @@ export class HomePageComponent implements OnInit {
 
    }
 
-   mobileMenu(){
+  mobileMenu(){
     this.mobileDrawer.toggle()
-   }
+  }
+
+  getUserIdFromToken(){
+    let urlId = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+    let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
+    // console.log(token)
+    let elo = urlId.valueOf()
+    // console.log(urlId.valueOf())
+    // console.log(token)
+    const myJSON = JSON.stringify(token);
+    // console.log(myJSON.slice(-40))
+    // console.log(myJSON)
+    // const obj = Object.fromEntries(token);
+    // console.log(obj)
+
+    const object2 = Object.fromEntries(
+      Object.entries(token)
+      .map(([ key, val ]) => [ key, val ])
+    );
+    // console.log(object2)
+
+
+    for (let [key, value] of Object.entries(token)) {
+      // console.log(`${key}: ${value}`)
+      this.obj0.push(`${key}: ${value}`)
+    }
+    let indexOfToken = this.obj0[0]
+    // console.log(indexOfToken)
+    console.log(indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', ''))
+  }
 }
