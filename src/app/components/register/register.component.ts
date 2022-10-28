@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
       let password = this.registerForm.get('password')!.value
       let passwordSecond = this.registerForm.get('password')!.value
       let emailValue = this.registerForm.get('email')!.value
-      let roleId = 0
+      let roleId = 2
         this.postRegisterUser = this.userRest.postUserRegister(username!, password!,
           passwordSecond!, emailValue!, roleId!).subscribe({
           next: (response) => { 

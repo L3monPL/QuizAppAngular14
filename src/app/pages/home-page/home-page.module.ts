@@ -33,6 +33,10 @@ const routes: Routes = [
         path: 'ranking',
         loadChildren: () => import('../ranking-page/ranking-page.module').then(m => m.RankingPageModule),
       },
+      {
+        path: 'settings',
+        loadChildren: () => import('../settings-page/settings-page.module').then(m => m.SettingsPageModule),
+      },
     ]
   }
 ]

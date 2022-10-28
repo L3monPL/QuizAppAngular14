@@ -92,6 +92,38 @@ export class RankingPageComponent implements OnInit {
       name: 'Witold',
       points: 232
     },
+    {
+      name: 'Franek',
+      points: 879
+    },
+    {
+      name: 'Teodor',
+      points: 700
+    },
+    {
+      name: 'Kajetan',
+      points: 546
+    },
+    {
+      name: 'Witold',
+      points: 232
+    },
+    {
+      name: 'Franek',
+      points: 879
+    },
+    {
+      name: 'Teodor',
+      points: 700
+    },
+    {
+      name: 'Kajetan',
+      points: 546
+    },
+    {
+      name: 'Witold',
+      points: 232
+    },
   ]
 
   constructor() { }

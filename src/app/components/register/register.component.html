@@ -24,7 +24,7 @@
                     
                     <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger"></div>
 
-                    <mat-error *ngIf="f['email'].hasError('email') && !registerForm.hasError('required')">
+                    <mat-error *ngIf="f['email'].hasError('emailAddress') && !registerForm.hasError('required')">
                         Wprowadz poprawny adres email
                     </mat-error>
 

@@ -19,8 +19,7 @@ import { UserDataService } from './services/global-services/user-data.service';
   declarations: [
     AppComponent,
     LoginPageComponent,
-    AppGlobalLoadingComponent,    
-    
+    AppGlobalLoadingComponent,  
     
   ],
   imports: [
