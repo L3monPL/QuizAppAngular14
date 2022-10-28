@@ -72,8 +72,8 @@ export class UserRestService {
     })
   }
 
-  getUser():Observable<HttpResponse<User>>{
-    return this.http.get<User>(this.PATH,{
+  getUserById(id: number):Observable<HttpResponse<UserList>>{
+    return this.http.get<UserList>(this.PATH + `/user/${id}`,{
       observe: 'response',
       responseType: 'json',
     })

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { UserDataService } from '../services/global-services/user-data.service';
 import { UserRestService } from '../services/user-rest.service';
@@ -9,10 +10,15 @@ import { UserRestService } from '../services/user-rest.service';
 })
 export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
 
+  helper = new JwtHelperService();
+
+  obj0 = Array<any>()
+
   constructor(
     private userGlobalService: UserDataService,
     private router: Router,
     private userRest: UserRestService,
+    private userDataService: UserDataService
   ){}
   
   canActivate(
@@ -32,14 +38,43 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
     return this.check(false);
   }
 
-  private check(onlyAdmin: boolean):Promise<boolean>{
+  check(onlyAdmin: boolean):Promise<boolean>{
     return new Promise<boolean>((resolve, rejects) => {
-      this.userRest.getUser()
+      let urlId = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+    let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
+    // console.log(token)
+    let elo = urlId.valueOf()
+    // console.log(urlId.valueOf())
+    // console.log(token)
+    const myJSON = JSON.stringify(token);
+    // console.log(myJSON.slice(-40))
+    // console.log(myJSON)
+    // const obj = Object.fromEntries(token);
+    // console.log(obj)
+
+    const object2 = Object.fromEntries(
+      Object.entries(token)
+      .map(([ key, val ]) => [ key, val ])
+    );
+    // console.log(object2)
+
+
+    for (let [key, value] of Object.entries(token)) {
+      // console.log(`${key}: ${value}`)
+      this.obj0.push(`${key}: ${value}`)
+    }
+    let indexOfToken = this.obj0[0]
+    // console.log(indexOfToken)
+
+    console.log(indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', ''))
+    let userIdFromToken = indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', '')
+
+      this.userRest.getUserById(userIdFromToken)
       .subscribe({
         next: (response) => {
           if(response.body){
             if(onlyAdmin){
-              if(response.body.type == 'Admin'){
+              if(response.body.role.name == 'Admin'){
                 this.userGlobalService.setUser(response.body);
                 resolve(true)
               }
@@ -59,16 +94,18 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
           }
         },
         error: (errorResponse) => {
-          // console.log(errorResponse);
+          console.log(errorResponse);
           this.router.navigateByUrl('/login');
           resolve(false)
 
         },
         complete: () => {
-
+          console.log(this.userGlobalService.getName())
         }
       }
     )
   }
-  )}
+  )
+}
+
 }

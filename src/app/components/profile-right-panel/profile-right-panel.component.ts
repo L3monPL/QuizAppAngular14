@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserDataService } from 'src/app/services/global-services/user-data.service';
 
 
 @Component({
@@ -10,7 +11,10 @@ export class ProfileRightPanelComponent implements OnInit {
 
   @Output() hideReightPanel = new EventEmitter<boolean>()
 
-  constructor() { }
+
+  constructor(
+    public userData: UserDataService
+  ) { }
 
   ngOnInit(): void {
   }

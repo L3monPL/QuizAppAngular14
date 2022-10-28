@@ -12,6 +12,7 @@ import { WelcomeLoginPageModule } from './components/welcome-login-page/welcome-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppGlobalLoadingComponent } from './components/app-global-loading/app-global-loading.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserDataService } from './services/global-services/user-data.service';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+      UserDataService
   ],
   bootstrap: [AppComponent]
 })

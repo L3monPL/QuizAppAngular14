@@ -1,27 +1,32 @@
-import { Injectable } from '@angular/core';
-import { User } from '../user-rest.service';
+import { EventEmitter, Injectable } from '@angular/core';
+import { User, UserList } from '../user-rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
-  
-  private user?: User;
+
+  userDataEmitter: EventEmitter<any> = new EventEmitter();
+
+  private user?: UserList;
+
+  userIdByToken?: number
 
   constructor() { }
 
-  setUser(user: User){
+  setUser(user: UserList){
     this.user = user;
   }
 
 
   getName():string|undefined{
-    return this.user?.name;
+    return this.user?.username;
   }
   getId(): number{
     return this.user!.id
   }
   isAdmin():boolean|undefined{
-    return this.user?.type == 'Admin';
+    return this.user?.role.name == 'Admin';
   }
+
 }

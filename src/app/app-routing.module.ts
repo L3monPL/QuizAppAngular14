@@ -25,12 +25,12 @@ const routes: Routes = [
       },
     ]},
     { path: 'home', loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule),
-    // canLoad: [CheckLoginGuard],
-    // canActivate: [CheckLoginGuard],
-    // canActivateChild: [CheckLoginGuard],
-    // data: {
-    //   onlyAdmin: true,
-    // }
+    canLoad: [CheckLoginGuard],
+    canActivate: [CheckLoginGuard],
+    canActivateChild: [CheckLoginGuard],
+    data: {
+      onlyAdmin: false,
+    }
   },
   { path: '**',   redirectTo: '/login', pathMatch: 'full' },
 ];
