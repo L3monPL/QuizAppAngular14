@@ -7,6 +7,7 @@ import { ProfileRightPanelModule } from 'src/app/components/profile-right-panel/
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
 
 
 const routes: Routes = [
@@ -28,6 +29,12 @@ const routes: Routes = [
       {
         path: 'admin-panel',
         loadChildren: () => import('../admin-panel-page/admin-panel-page.module').then(m => m.AdminPanelPageModule),
+        canLoad: [CheckLoginGuard],
+        canActivate: [CheckLoginGuard],
+        canActivateChild: [CheckLoginGuard],
+        data: {
+          onlyAdmin: true,
+        }
       },
       {
         path: 'ranking',
