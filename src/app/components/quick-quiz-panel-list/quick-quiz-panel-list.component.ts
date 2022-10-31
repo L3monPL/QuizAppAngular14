@@ -24,15 +24,15 @@ export class QuickQuizPanelListComponent implements OnInit {
   mobileMini?: boolean
 
   constructor(
-    public categoryRest: CategoryRestService,
+    // public categoryRest: CategoryRestService,
     public categoryManagerService: CategoryManagerRestService
   ) { }
 
   ngOnInit(): void {
-    this.categoryManagerService.getCategoryList()
+    // this.categoryManagerService.getCategoryList()
     // this.items = this.categoryRest.categoryList!
     this.categoryManagerService.serviceCategory.subscribe(res => {
-      this.itemsRest = this.categoryRest.categoryList!
+      this.itemsRest = this.categoryManagerService.categoryList!
        // console.log(this.categoryRest.categoryList)
     if(window.innerWidth < 400){
       this.mobile = true
@@ -148,7 +148,7 @@ export class QuickQuizPanelListComponent implements OnInit {
     if (this.itemsRest!.length! > this.value! && this.mobileMini == true) {
       this.valueFirst! += 1
       this.value! += 1
-      this.items = this.categoryRest.categoryList!.slice(this.valueFirst, this.value)
+      this.items = this.categoryManagerService.categoryList!.slice(this.valueFirst, this.value)
     }
   }
 
