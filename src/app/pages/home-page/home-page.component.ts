@@ -47,8 +47,6 @@ export class HomePageComponent implements OnInit {
       this.router.navigate(['./home/dashboard'])
     }
 
-
-    this.setSizeOptions(window.innerWidth)
     // this.smallRightPanel = false
     if(window.innerWidth < 1200){
       // this.menuMode = 'side';
@@ -60,6 +58,8 @@ export class HomePageComponent implements OnInit {
       this.menushow = false
       this.smallRightPanel = false
      }
+
+     this.setSizeOptions(window.innerWidth)
   }
 
   hideReightPanel(value: boolean){

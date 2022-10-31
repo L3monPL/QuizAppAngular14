@@ -8,9 +8,19 @@
     // overflow-y: hidden;
     // overflow-x: scroll;
     white-space: nowrap;
-    // -webkit-overflow-scrolling: touch;
-    flex-wrap: wrap;
+    -webkit-overflow-scrolling: touch;
+    // flex-wrap: wrap;
     padding-bottom: 1rem;
+    // max-width: 100px;
+    // overflow: scroll;
+    align-items: center;
+    justify-content: space-between;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1.4rem;
+    justify-content: flex-start;
 }
 
 .btn_element p{
@@ -44,7 +54,10 @@
 .item{
     cursor: pointer;
 }
-
+.btn_panel{
+    padding-top: 6px;
+    cursor: pointer;
+}
 
 
 .info-widget {
@@ -60,6 +73,5 @@
     /*will change this to hidden later to deny scolling to user*/
     white-space: nowrap;
   }
-
 
 
