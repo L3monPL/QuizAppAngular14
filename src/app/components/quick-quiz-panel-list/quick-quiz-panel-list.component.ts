@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
+import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 
 @Component({
   selector: 'app-quick-quiz-panel-list',
@@ -18,41 +19,72 @@ export class QuickQuizPanelListComponent implements OnInit {
   value?: number
   valueFirst?: number
   items: any
+  itemsRest?: any
   mobile?: boolean
+  mobileMini?: boolean
 
   constructor(
-    public categoryRest: CategoryRestService
+    public categoryRest: CategoryRestService,
+    public categoryManagerService: CategoryManagerRestService
   ) { }
 
   ngOnInit(): void {
-    if(window.innerWidth < 800){
+    this.categoryManagerService.getCategoryList()
+    // this.items = this.categoryRest.categoryList!
+    this.categoryManagerService.serviceCategory.subscribe(res => {
+      this.itemsRest = this.categoryRest.categoryList!
+       // console.log(this.categoryRest.categoryList)
+    if(window.innerWidth < 400){
       this.mobile = true
+      this.mobileMini = true
+      this.value = 2
+      this.valueFirst = 0
+    }
+    if(window.innerWidth < 800 && window.innerWidth >= 400){
+      this.mobile = true
+      this.mobileMini = false
       this.value = 3
       this.valueFirst = 0
     }
     if(window.innerWidth >= 800){
       this.mobile = false
+      this.mobileMini = false
       this.value = 5
       this.valueFirst = 0
     }
-    this.items = this.element.slice(this.valueFirst, this.value)
+    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
     console.log(this.items)
 
-    this.setSizeOptions(window.innerWidth)
+    // this.setSizeOptions(window.innerWidth)
+    })
+   
   }
 
   setSizeOptions(width: number){
-  if(window.innerWidth < 800){
+  if(window.innerWidth < 400){
     this.mobile = true
+    this.mobileMini = true
+    this.value = 2
+    this.valueFirst = 0
+    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
+    console.log('mobile mini')
+    console.log(this.value, this.valueFirst)
+  }
+  if(window.innerWidth < 800 && window.innerWidth >= 400){
+    this.mobile = true
+    this.mobileMini = false
     this.value = 3
     this.valueFirst = 0
+    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
     console.log('mobile')
     console.log(this.value, this.valueFirst)
   }
   if(window.innerWidth >= 800){
     this.mobile = false
+    this.mobileMini = false
     this.value = 5
     this.valueFirst = 0
+    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
     console.log('desktop')
     console.log(this.value, this.valueFirst)
   }
@@ -94,19 +126,29 @@ export class QuickQuizPanelListComponent implements OnInit {
   ]
 
   left(){
-    if (this.valueFirst! > 0) {
+    if (this.valueFirst! > 0 && this.mobileMini == false) {
       this.valueFirst! -= 3
       this.value! -= 3
-      this.items = this.element.slice(this.valueFirst, this.value)
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
       console.log('left')
+    }
+    if (this.valueFirst! > 0 && this.mobileMini == true) {
+      this.valueFirst! -= 1
+      this.value! -= 1
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
     }
   }
   right(){
-    if (this.element.length > this.value!) {
+    if (this.itemsRest!.length! > this.value! && this.mobileMini == false) {
       this.valueFirst! += 3
       this.value! += 3
-      this.items = this.element.slice(this.valueFirst, this.value)
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
       console.log('left') 
+    }
+    if (this.itemsRest!.length! > this.value! && this.mobileMini == true) {
+      this.valueFirst! += 1
+      this.value! += 1
+      this.items = this.categoryRest.categoryList!.slice(this.valueFirst, this.value)
     }
   }
 

@@ -4,12 +4,11 @@
         <mat-icon>arrow_back_ios</mat-icon>
     </div>
     <div class="content">
-        <div #widgetsContent id="container" class="btn_element" *ngFor="let category of items; let i = index">
-            <div routerLink='/home/level/{{category}}' class="item">
+        <div #widgetsContent id="container" class="btn_element" *ngFor="let category of this.items; let i = index">
+            <div routerLink='/home/level/{{category.id}}' class="item">
                 <div class="element">
-                    {{category.user}}
+                    <img src={{category.iconUrl}} alt="">
                 </div>
-                <!-- <p>{{category.name}}</p> -->
             </div>
         </div>
     </div>
@@ -26,6 +25,27 @@
                 <img src={{category.iconUrl}} alt="">
             </div>
         </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="list_container">
+    <div (click)="left()" class="btn_panel">
+        <mat-icon>arrow_back_ios</mat-icon>
+    </div>
+    <div class="content">
+        <div #widgetsContent id="container" class="btn_element" *ngFor="let category of items; let i = index">
+            <div routerLink='/home/level/{{category}}' class="item">
+                <div class="element">
+                    {{category.user}}
+                </div> -->
+                <!-- <p>{{category.name}}</p> -->
+            <!-- </div>
+        </div>
+    </div>
+    
+    <div (click)="right()" class="btn_panel">
+        <mat-icon>arrow_forward_ios</mat-icon>
     </div>
 </div> -->
 

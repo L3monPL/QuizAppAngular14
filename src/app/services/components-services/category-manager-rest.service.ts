@@ -25,7 +25,7 @@ export class CategoryManagerRestService {
       next: (response) => {
         if (response.body) {
           this.categoryList = response.body
-          console.log(this.categoryList)
+          // console.log(this.categoryList + "response this aaaa")
           this.serviceCategory.emit(response.body)
         }
         else{
