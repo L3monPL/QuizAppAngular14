@@ -39,7 +39,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getCategoryList()
+    // this.getCategoryList()
     this.subscribeCategoryList()
   }
   ngOnDestroy(): void {
@@ -82,32 +82,32 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
   }, 4000);
   }
 
-  getCategoryList(){
-    this.subCategoryList = this.categoryRestService.getCategory().subscribe({
-      next: (response) => {
-        if (response.body) {
-          this.categoryList = response.body
-          console.log(this.categoryList)
+  // getCategoryList(){
+  //   this.subCategoryList = this.categoryRestService.getCategory().subscribe({
+  //     next: (response) => {
+  //       if (response.body) {
+  //         this.categoryList = response.body
+  //         console.log(this.categoryList)
 
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-        } 
-      },
-      error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error;
-            break;
+  //       }
+  //       else{
+  //         this.customError = 'Brak obiektu odpowiedzi'
+  //       } 
+  //     },
+  //     error: (errorResponse) => {
+  //       switch (errorResponse.status) {
+  //         case 400|401:
+  //           this.customError = errorResponse.error;
+  //           break;
         
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
-      },
-      complete: () => {}
-    })
-  }
+  //         default:
+  //           this.customError = 'Błąd servera'
+  //           break;
+  //       }
+  //     },
+  //     complete: () => {}
+  //   })
+  // }
 
   postQuestionToCategory(){
     let categoryId = this.questionAddToCategoryForm.get('categoryId')?.value
@@ -126,6 +126,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
         next: (response) => {
           if (response.body) {
             this.resetForm()
+            this.categoryManagerService.getCategoryList()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'

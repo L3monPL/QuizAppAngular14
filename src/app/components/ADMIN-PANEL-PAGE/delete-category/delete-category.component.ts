@@ -28,7 +28,7 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getCategoryList()
+    // this.getCategoryList()
     this.subscribeCategoryList()
   }
   ngOnDestroy(): void {
@@ -74,32 +74,32 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  getCategoryList(){
-    this.subCategoryList = this.categoryRestService.getCategory().subscribe({
-      next: (response) => {
-        if (response.body) {
-          this.categoryList = response.body
-          console.log(this.categoryList)
+  // getCategoryList(){
+  //   this.subCategoryList = this.categoryRestService.getCategory().subscribe({
+  //     next: (response) => {
+  //       if (response.body) {
+  //         this.categoryList = response.body
+  //         console.log(this.categoryList)
 
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-        } 
-      },
-      error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
+  //       }
+  //       else{
+  //         this.customError = 'Brak obiektu odpowiedzi'
+  //       } 
+  //     },
+  //     error: (errorResponse) => {
+  //       switch (errorResponse.status) {
+  //         case 400|401:
+  //           this.customError = errorResponse.error.message;
+  //           break;
         
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
-      },
-      complete: () => {}
-    })
-  }
+  //         default:
+  //           this.customError = 'Błąd servera'
+  //           break;
+  //       }
+  //     },
+  //     complete: () => {}
+  //   })
+  // }
 
   resetForm(){
     this.categoryDeleteForm.controls['categoryId'].setValue(null)

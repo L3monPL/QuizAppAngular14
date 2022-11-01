@@ -14,6 +14,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { GetUsersListModule } from 'src/app/components/ADMIN-PANEL-PAGE/get-users-list/get-users-list.module';
 import { DeleteUserModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-user/delete-user.module';
+import { EditCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-category/edit-category.module';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     MatExpansionModule,
     MatIconModule,
     GetUsersListModule,
-    DeleteUserModule
+    DeleteUserModule,
+    EditCategoryModule
   ],
   exports: [
     AdminPanelPageComponent

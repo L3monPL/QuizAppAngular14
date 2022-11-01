@@ -53,7 +53,7 @@ export class QuickQuizPanelListComponent implements OnInit {
       this.valueFirst = 0
     }
     this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-    console.log(this.items)
+    // console.log(this.items)
 
     // this.setSizeOptions(window.innerWidth)
     })
@@ -61,76 +61,42 @@ export class QuickQuizPanelListComponent implements OnInit {
   }
 
   setSizeOptions(width: number){
-  if(window.innerWidth < 400){
-    this.mobile = true
-    this.mobileMini = true
-    this.value = 2
-    this.valueFirst = 0
-    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-    console.log('mobile mini')
-    console.log(this.value, this.valueFirst)
+    if(window.innerWidth < 400){
+      this.mobile = true
+      this.mobileMini = true
+      this.value = 2
+      this.valueFirst = 0
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
+      // console.log('mobile mini')
+      // console.log(this.value, this.valueFirst)
+    }
+    if(window.innerWidth < 800 && window.innerWidth >= 400){
+      this.mobile = true
+      this.mobileMini = false
+      this.value = 3
+      this.valueFirst = 0
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
+      // console.log('mobile')
+      // console.log(this.value, this.valueFirst)
+    }
+    if(window.innerWidth >= 800){
+      this.mobile = false
+      this.mobileMini = false
+      this.value = 5
+      this.valueFirst = 0
+      this.items = this.itemsRest!.slice(this.valueFirst, this.value)
+      // console.log('desktop')
+      // console.log(this.value, this.valueFirst)
+    }
   }
-  if(window.innerWidth < 800 && window.innerWidth >= 400){
-    this.mobile = true
-    this.mobileMini = false
-    this.value = 3
-    this.valueFirst = 0
-    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-    console.log('mobile')
-    console.log(this.value, this.valueFirst)
-  }
-  if(window.innerWidth >= 800){
-    this.mobile = false
-    this.mobileMini = false
-    this.value = 5
-    this.valueFirst = 0
-    this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-    console.log('desktop')
-    console.log(this.value, this.valueFirst)
-  }
-  }
-  element = [
-    {
-      user: "elo1"
-    },
-    {
-      user: "elo2"
-    },
-    {
-      user: "elo3"
-    },
-    {
-      user: "elo4"
-    },
-    {
-      user: "elo5"
-    },
-    {
-      user: "elo6"
-    },
-    {
-      user: "elo7"
-    },
-    {
-      user: "elo8"
-    },
-    {
-      user: "elo9"
-    },
-    {
-      user: "elo10"
-    },
-    {
-      user: "elo11"
-    },
-  ]
+
 
   left(){
     if (this.valueFirst! > 0 && this.mobileMini == false) {
       this.valueFirst! -= 3
       this.value! -= 3
       this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-      console.log('left')
+      // console.log('left')
     }
     if (this.valueFirst! > 0 && this.mobileMini == true) {
       this.valueFirst! -= 1
@@ -143,7 +109,7 @@ export class QuickQuizPanelListComponent implements OnInit {
       this.valueFirst! += 3
       this.value! += 3
       this.items = this.itemsRest!.slice(this.valueFirst, this.value)
-      console.log('left') 
+      // console.log('left') 
     }
     if (this.itemsRest!.length! > this.value! && this.mobileMini == true) {
       this.valueFirst! += 1

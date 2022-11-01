@@ -1,0 +1,116 @@
+.container2{
+    // border: 1px solid #ccc;
+    // padding: 2rem;
+    // border-radius: 10px;
+    // box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+}
+.row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.question_width2{
+    width: 100%;
+}
+.auto_width2{
+    width: 100%;
+}
+.input_margin2{
+    display: flex;
+    justify-content: flex-end;
+}
+.image_select2{
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+.auto_width2 ::ng-deep.mat-option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.title_row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.green_txt2{
+    color: rgb(40, 207, 82);
+}
+.second_form{
+    margin-top: 2rem;
+}
+@media only screen and (max-width: 800px){
+.row2{
+    flex-direction: column;
+}
+.row2 .auto_width2{
+    width: 100%;
+}
+.input_margin2 button{
+    width: 100%;
+}
+}
+
+
+
+.container{
+    // border: 1px solid #ccc;
+    // padding: 2rem;
+    border-radius: 10px;
+    // box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 0px 2px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+}
+.question_width{
+    width: 49%;
+}
+.row .auto_width{
+    width: 48%;
+}
+.half_width{
+    width: 49%;
+}
+.half_in_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 49%;
+}
+.input_margin{
+    display: flex;
+    justify-content: flex-end;
+}
+.title_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.green_txt{
+    color: rgb(40, 207, 82);
+}
+@media only screen and (max-width: 800px){
+    .row{
+        flex-direction: column;
+    }
+    .row .half_width{
+        width: 100%;
+    }
+    .half_in_row{
+        width: 100%;
+    }
+    .question_width{
+        width: 100%;
+    }
+    .input_margin button{
+        width: 100%;
+    }
+    }
