@@ -27,6 +27,11 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
 
   categoryById?: Category
 
+  subEditCategoryId?: Subscription
+  customErrorEditCategoryId?: string
+
+  categoryEditById?: Category
+
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
@@ -70,7 +75,39 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
 
 
   editCategory(){
-
+    let categoryId = this.categoryEditForm.get('categoryId')?.value
+    let name = this.addCategoryForm.get('name')?.value
+    let description = this.addCategoryForm.get('description')?.value
+    let iconUrl = this.addCategoryForm.get('iconUrl')?.value
+    let questionsPerLesson = this.addCategoryForm.get('questionsPerLesson')?.value
+    let lessonsPerLevel = this.addCategoryForm.get('lessonsPerLevel')?.value
+    this.subEditCategoryId = this.categoryRestService.editCategory(
+      categoryId!, name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
+    ).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.categoryById = response.body
+          this.showValuesToEditCategory = false
+          this.resetForm()
+          // console.log(this.categoryById)
+        }
+        else{
+          this.customErrorEditCategoryId = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+        switch (errorResponse.status) {
+          case 400|401:
+            this.customErrorEditCategoryId = errorResponse.error.message;
+            break;
+        
+          default:
+            this.customErrorEditCategoryId = 'Błąd servera'
+            break;
+        }
+      },
+      complete: () => {}
+    })
   }
 
   resetForm(){

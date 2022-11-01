@@ -18,11 +18,6 @@ export class CategoryRestService {
 
   private PATH = 'https://wsblearn-api.azurewebsites.net/api'
 
-  categoryList?: Array<Category>
-
-  subCategoryList?: Subscription
-  customError?: string
-
   constructor(
     private http: HttpClient
   ) { }
@@ -69,31 +64,27 @@ export class CategoryRestService {
     })
   }
 
-  getCategoryList(){
-    this.subCategoryList = this.getCategory().subscribe({
-      next: (response) => {
-        if (response.body) {
-          this.categoryList = response.body
-          console.log(this.categoryList)
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-        } 
-      },
-      error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
-      },
-      complete: () => {}
+  editCategory(
+    id: number,
+    name: string, 
+    description: string, 
+    iconUrl: string, 
+    questionsPerLesson: number, 
+    lessonsPerLevel: number, 
+    ):Observable<HttpResponse<Category>>{
+    return this.http.put<Category>(this.PATH + `/category/${id}`,{
+      name: name, 
+      description: description,
+      iconUrl: iconUrl,
+      questionsPerLesson: questionsPerLesson,
+      lessonsPerLevel: lessonsPerLevel,
+    },{
+      observe: 'response',
+      responseType: 'text' as 'json'
     })
   }
+
+  
 
 
 
