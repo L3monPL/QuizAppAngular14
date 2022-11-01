@@ -22,14 +22,14 @@
     </form>
 
 
-    <form class="second_form" *ngIf="showValuesToEditCategory" [formGroup]="addCategoryForm" (submit)="putQuestionToCategory()">
+    <form class="second_form" *ngIf="showValuesToEditCategory" [formGroup]="addCategoryForm" (submit)="editCategory()">
         <div class="row">
 
             <mat-form-field class="form-field half_width" appearance="outline">
                     
                 <mat-label>Nazwa Quizu</mat-label>
                 
-                <input matInput formControlName="name" >
+                <input matInput formControlName="name">
                 
                 <div *ngIf="f2['name'].touched && f2['name'].invalid" class="alert alert-danger"></div>
             
@@ -83,7 +83,7 @@
         
 
         <div class="input_margin">
-            <button class="button_margin" mat-raised-button color="primary" type="submit">Dodaj quiz</button>
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Edytuj quiz</button>
         </div>
     </form>
 

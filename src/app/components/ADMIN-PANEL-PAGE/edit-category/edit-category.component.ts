@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CategoryRestService } from 'src/app/services/category-rest.service';
+import { Category, CategoryRestService } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 
 @Component({
@@ -21,6 +21,11 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   addCategoryDone = false
 
   showValuesToEditCategory = false
+
+  subCategoryId?: Subscription
+  customErrorCategoryId?: string
+
+  categoryById?: Category
 
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
@@ -59,67 +64,12 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
     let categoryId = this.categoryEditForm.get('categoryId')?.value
    
     if (this.categoryEditForm.valid) {
-      this.showValuesToEditCategory = true
+      this.getCategoryId(categoryId!)
     }
-    //   this.subQuestionCategoryEdit = this.categoryRestService.deleteCategory(categoryId!).subscribe({
-    //     next: (response) => {
-    //       if (response.body) {
-    //         this.resetForm()
-    //         this.categoryManagerService.getCategoryList()
-    //       }
-    //       else{
-    //         this.customError = 'Brak obiektu odpowiedzi'
-    //       } 
-    //     },
-    //     error: (errorResponse) => {
-    //       switch (errorResponse.status) {
-    //         case 400|401:
-    //           this.customError = errorResponse.error;
-    //           break;
-          
-    //         default:
-    //           this.customError = 'Błąd servera'
-    //           break;
-    //       }
-    //     },
-    //     complete: () => {
-          
-    //     }
-    //   })
-    // }
-    // else{
-    //   this.editCategoryDone = false
-    // }
   }
 
-  // getCategoryList(){
-  //   this.subCategoryList = this.categoryRestService.getCategory().subscribe({
-  //     next: (response) => {
-  //       if (response.body) {
-  //         this.categoryList = response.body
-  //         console.log(this.categoryList)
 
-  //       }
-  //       else{
-  //         this.customError = 'Brak obiektu odpowiedzi'
-  //       } 
-  //     },
-  //     error: (errorResponse) => {
-  //       switch (errorResponse.status) {
-  //         case 400|401:
-  //           this.customError = errorResponse.error.message;
-  //           break;
-        
-  //         default:
-  //           this.customError = 'Błąd servera'
-  //           break;
-  //       }
-  //     },
-  //     complete: () => {}
-  //   })
-  // }
-
-  putQuestionToCategory(){
+  editCategory(){
 
   }
 
@@ -144,6 +94,38 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
       error => {}, 
       () => {})
 
+  }
+
+  getCategoryId(id: number){
+    this.subCategoryId = this.categoryRestService.getCategoryId(id).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.categoryById = response.body
+          this.addCategoryForm.controls['name'].setValue(this.categoryById.name)
+          this.addCategoryForm.controls['description'].setValue(this.categoryById.description!)
+          this.addCategoryForm.controls['iconUrl'].setValue(this.categoryById.iconUrl!)
+          this.addCategoryForm.controls['questionsPerLesson'].setValue(this.categoryById.questionsPerLesson)
+          this.addCategoryForm.controls['lessonsPerLevel'].setValue(this.categoryById.lessonsPerLevel)
+          this.showValuesToEditCategory = true
+          console.log(this.categoryById)
+        }
+        else{
+          this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+        switch (errorResponse.status) {
+          case 400|401:
+            this.customErrorCategoryId = errorResponse.error.message;
+            break;
+        
+          default:
+            this.customErrorCategoryId = 'Błąd servera'
+            break;
+        }
+      },
+      complete: () => {}
+    })
   }
 
 }

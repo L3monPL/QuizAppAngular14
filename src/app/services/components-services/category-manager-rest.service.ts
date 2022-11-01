@@ -14,6 +14,7 @@ export class CategoryManagerRestService {
   subCategoryList?: Subscription
   customError?: string
 
+
   serviceCategory: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -46,6 +47,8 @@ export class CategoryManagerRestService {
       complete: () => {}
     })
   }
+
+  
 
 
 }
