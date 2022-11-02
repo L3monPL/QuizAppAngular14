@@ -27,7 +27,7 @@ export class AddCategoryComponent implements OnInit {
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
-    iconUrl: new FormControl<string>('',Validators.required),
+    iconUrl: new FormControl<string|null>('https://cdn-icons-png.flaticon.com/512/5705/5705144.png',Validators.required),
     questionsPerLesson: new FormControl<number|null>(null,Validators.required),
     lessonsPerLevel: new FormControl<number|null>(null,Validators.required),
   });
@@ -68,33 +68,9 @@ export class AddCategoryComponent implements OnInit {
   }
 
   postQuestionToCategory(){
-    let name = this.addCategoryForm.get('name')?.value
-    let description = this.addCategoryForm.get('description')?.value
-    let iconUrl = this.addCategoryForm.get('iconUrl')?.value
-    let questionsPerLesson = this.addCategoryForm.get('questionsPerLesson')?.value
-    let lessonsPerLevel = this.addCategoryForm.get('lessonsPerLevel')?.value
     if (this.addCategoryForm.valid) {
-      this.subAddCategory = this.categoryRestService.postCategory(
-        name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
-        ).subscribe({
-        next: (response) => {
-          if (response.body) {
-            this.customError = undefined
-            this.resetForm()
-            this.categoryManagerService.getCategoryList()
-          }
-          else{
-            this.customError = 'Brak obiektu odpowiedzi'
-            console.log('wykonało')
-          } 
-        },
-        error: (errorResponse) => {
-              this.customError = errorResponse.error;
-        },
-        
-        complete: () => {
-        }
-      })
+      this.uploadedRequest()
+      console.log('działa')
 
     }
     else{
@@ -104,7 +80,9 @@ export class AddCategoryComponent implements OnInit {
 
   uploadFile(file: any){
     this.fileToUpload = file.files[0]
+  }
 
+  uploadedRequest(){
     this.subUploadFile = this.imageRestService.postImage(
       this.fileToUpload!).subscribe({
       next: (response) => {
@@ -117,6 +95,7 @@ export class AddCategoryComponent implements OnInit {
           this.fileImageURL = this.uploadedFile.blob.uri
           console.log(this.fileImageURL)
           this.addCategoryForm.controls['iconUrl'].setValue(this.fileImageURL!)
+          this.postCategoryRequest()
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
@@ -125,6 +104,36 @@ export class AddCategoryComponent implements OnInit {
       },
       error: (errorResponse) => {
             this.customError = errorResponse.error.errors.file;
+            this.postCategoryRequest()
+      },
+      
+      complete: () => {
+      }
+    })
+  }
+
+  postCategoryRequest(){
+    let name = this.addCategoryForm.get('name')?.value
+    let description = this.addCategoryForm.get('description')?.value
+    let iconUrl = this.addCategoryForm.get('iconUrl')?.value
+    let questionsPerLesson = this.addCategoryForm.get('questionsPerLesson')?.value
+    let lessonsPerLevel = this.addCategoryForm.get('lessonsPerLevel')?.value
+    this.subAddCategory = this.categoryRestService.postCategory(
+      name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
+      ).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.customError = undefined
+          this.resetForm()
+          this.categoryManagerService.getCategoryList()
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          console.log('wykonało')
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error;
       },
       
       complete: () => {
