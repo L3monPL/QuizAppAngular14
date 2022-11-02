@@ -54,15 +54,7 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
           } 
         },
         error: (errorResponse) => {
-          switch (errorResponse.status) {
-            case 400|401:
               this.customError = errorResponse.error;
-              break;
-          
-            default:
-              this.customError = 'Błąd servera'
-              break;
-          }
         },
         complete: () => {
           
@@ -87,15 +79,7 @@ export class DeleteCategoryComponent implements OnInit, OnDestroy {
   //       } 
   //     },
   //     error: (errorResponse) => {
-  //       switch (errorResponse.status) {
-  //         case 400|401:
-  //           this.customError = errorResponse.error.message;
-  //           break;
-        
-  //         default:
-  //           this.customError = 'Błąd servera'
-  //           break;
-  //       }
+  //           this.customError = errorResponse.error;
   //     },
   //     complete: () => {}
   //   })

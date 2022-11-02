@@ -1,5 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserList, UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -13,42 +16,30 @@ export class GetUsersListComponent implements OnInit, OnDestroy {
   usersList?: Array<UserList>
   customError?: string
 
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 100;
+
   constructor(
-    public userRest: UserRestService
+    public userRest: UserRestService,
+    public userManagerService: UserManagerRestService
   ) { }
 
   ngOnInit(): void {
-
+    this.subscribeUserRest()
   }
   ngOnDestroy(): void {
-    this.subUsersList?.unsubscribe()
+    
   }
 
-  getUsersList(){
-    this.subUsersList = this.userRest.getUsersList().subscribe({
-      next: (response) => {
-        if (response.body) {
-          this.usersList = response.body
-          // console.log(this.usersList)
+  subscribeUserRest(){
+    this.userManagerService.serviceUser.subscribe(
+      res => {
+        this.usersList = res
+      },
+      error => {}, 
+      () => {})
 
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-        } 
-      },
-      error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
-      },
-      complete: () => {}
-    })
   }
 
 }

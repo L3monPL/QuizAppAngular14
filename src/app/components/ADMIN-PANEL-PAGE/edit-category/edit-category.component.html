@@ -2,7 +2,7 @@
     <div class="title_row2">
         <!-- <h2>Usuń quiz</h2> -->
         <h2 *ngIf="editCategoryDone" class="green_txt2">Edytowano poprawnie</h2>
-        <h2 *ngIf="customError">{{customError}}</h2>
+        <h2 *ngIf="customErrorCategoryId">{{customErrorCategoryId}}</h2>
     </div>
     <form [formGroup]="categoryEditForm" (submit)="editCategorySubmit()">
 
@@ -23,6 +23,7 @@
 
 
     <form class="second_form" *ngIf="showValuesToEditCategory" [formGroup]="addCategoryForm" (submit)="editCategory()">
+        <h2 *ngIf="customErrorEditCategoryId">{{customErrorEditCategoryId}}</h2>
         <div class="row">
 
             <mat-form-field class="form-field half_width" appearance="outline">

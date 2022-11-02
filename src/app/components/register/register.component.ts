@@ -63,23 +63,8 @@ export class RegisterComponent implements OnInit {
             this.router.navigateByUrl('login');
           },
           error: (errorResponse) => {
-            // console.log(errorResponse);
-            switch (errorResponse.status) {
-              case 403:
-                this.customError = errorResponse.error.message;
+                this.customError = errorResponse.error;
                 this.loading = false;
-                break;
-              case 404:
-                this.customError = errorResponse.error.message;
-                this.loading = false;
-                break;
-            
-              default:
-                this.customError = 'Błąd serwera'
-                this.loading = false;
-                break;
-            }
-            // console.log(this.customError);
           },
           complete: () => {
             

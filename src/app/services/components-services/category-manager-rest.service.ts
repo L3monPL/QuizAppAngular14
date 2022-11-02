@@ -7,13 +7,11 @@ import { Category, CategoryRestService } from '../category-rest.service';
 })
 export class CategoryManagerRestService {
 
-  private PATH = 'https://wsblearn-api.azurewebsites.net/api'
-
   categoryList?: Array<Category>
 
   subCategoryList?: Subscription
   customError?: string
-
+  loading = true;
 
   serviceCategory: EventEmitter<any> = new EventEmitter();
 
@@ -28,21 +26,16 @@ export class CategoryManagerRestService {
           this.categoryList = response.body
           // console.log(this.categoryList + "response this aaaa")
           this.serviceCategory.emit(response.body)
+          this.loading = false
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
         } 
       },
       error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
+            this.customError = errorResponse.error;
+            this.loading = false
       },
       complete: () => {}
     })

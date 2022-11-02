@@ -38,7 +38,8 @@ const routes: Routes = [
     MatIconModule,
     GetUsersListModule,
     DeleteUserModule,
-    EditCategoryModule
+    EditCategoryModule,
+    
   ],
   exports: [
     AdminPanelPageComponent

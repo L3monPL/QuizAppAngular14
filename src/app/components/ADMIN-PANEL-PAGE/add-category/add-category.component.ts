@@ -81,17 +81,7 @@ export class AddCategoryComponent implements OnInit {
           } 
         },
         error: (errorResponse) => {
-          switch (errorResponse.status) {
-            case 400:
               this.customError = errorResponse.error;
-              break;
-          
-            default:
-              this.customError = 'Błąd servera'
-              break;
-          }
-          console.log('return getCategory')
-          
         },
         
         complete: () => {

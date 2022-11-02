@@ -96,15 +96,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
         } 
       },
       error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customErrorEditCategoryId = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customErrorEditCategoryId = 'Błąd servera'
-            break;
-        }
+            this.customErrorEditCategoryId = errorResponse.error;
       },
       complete: () => {}
     })
@@ -151,15 +143,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
         } 
       },
       error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customErrorCategoryId = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customErrorCategoryId = 'Błąd servera'
-            break;
-        }
+            this.customErrorCategoryId = errorResponse.error;
       },
       complete: () => {}
     })

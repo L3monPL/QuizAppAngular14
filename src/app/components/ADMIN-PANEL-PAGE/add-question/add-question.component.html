@@ -5,7 +5,7 @@
         <h2 *ngIf="customError">{{customError}}</h2>
     </div>
     
-    <form [formGroup]="questionAddToCategoryForm" (submit)="addQuestionSubmit()">
+    <form *ngIf="!this.categoryManagerService.loading" [formGroup]="questionAddToCategoryForm" (submit)="addQuestionSubmit()">
         <!-- <mat-form-field class="form-field" appearance="outline">
                     
             <mat-label>ID Quizu</mat-label>
@@ -114,4 +114,12 @@
             <button type="submit" class="button_margin" mat-raised-button color="primary">Dodaj pytanie</button>
         </div>
     </form>
+    <div *ngIf="this.categoryManagerService.loading" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div>
 </div>

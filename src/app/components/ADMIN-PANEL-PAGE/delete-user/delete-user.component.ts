@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserList, UserRestService } from 'src/app/services/user-rest.service';
 
 @Component({
@@ -14,7 +17,11 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
   customError?: string
   deleteUserDone = false
 
-  subUsersList?: Subscription
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 100;
+
+  // subUsersList?: Subscription
   usersList?: Array<UserList>
 
   userDeleteForm = new FormGroup({
@@ -22,14 +29,15 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
   });
 
   constructor(
-    public userRest: UserRestService
+    public userRest: UserRestService,
+    public userManagerService: UserManagerRestService
   ) { }
 
   ngOnInit(): void {
-    this.getUsersList()
+    this.subscribeUserRest()
   }
   ngOnDestroy(): void {
-    this.subUsersList?.unsubscribe()
+
   }
 
   get f(){
@@ -48,32 +56,24 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
   }, 4000);
   }
 
-  getUsersList(){
-    this.subUsersList = this.userRest.getUsersList().subscribe({
-      next: (response) => {
-        if (response.body) {
-          this.usersList = response.body
-          // console.log(this.usersList)
+  // getUsersList(){
+  //   this.subUsersList = this.userRest.getUsersList().subscribe({
+  //     next: (response) => {
+  //       if (response.body) {
+  //         this.usersList = response.body
+  //         // console.log(this.usersList)
 
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-        } 
-      },
-      error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
-      },
-      complete: () => {}
-    })
-  }
+  //       }
+  //       else{
+  //         this.customError = 'Brak obiektu odpowiedzi'
+  //       } 
+  //     },
+  //     error: (errorResponse) => {
+  //           this.customError = errorResponse.error;
+  //     },
+  //     complete: () => {}
+  //   })
+  // }
 
   deleteUser(){
     let userId = this.userDeleteForm.get('userId')?.value
@@ -82,22 +82,14 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
         next: (response) => {
           if (response.body) {
             this.resetForm()
-            this.getUsersList()
+            this.userManagerService.getUsersList()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'
           } 
         },
         error: (errorResponse) => {
-          switch (errorResponse.status) {
-            case 400|401:
               this.customError = errorResponse.error;
-              break;
-          
-            default:
-              this.customError = 'Błąd servera'
-              break;
-          }
         },
         complete: () => {
           
@@ -107,6 +99,16 @@ export class DeleteUserComponent implements OnInit, OnDestroy {
     else{
       this.deleteUserDone = false
     }
+  }
+
+  subscribeUserRest(){
+    this.userManagerService.serviceUser.subscribe(
+      res => {
+        this.usersList = res
+      },
+      error => {}, 
+      () => {})
+
   }
 
 }

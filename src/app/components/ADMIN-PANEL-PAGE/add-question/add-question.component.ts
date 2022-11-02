@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
@@ -19,6 +21,10 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
   categoryList?: any
 
   addQuestionDone = false
+
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 100;
 
   questionAddToCategoryForm = new FormGroup({
     categoryId: new FormControl<number|null>(null,Validators.required),
@@ -133,15 +139,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
           } 
         },
         error: (errorResponse) => {
-          switch (errorResponse.status) {
-            case 400|401:
               this.customError = errorResponse.error;
-              break;
-          
-            default:
-              this.customError = 'Błąd servera'
-              break;
-          }
         },
         complete: () => {
           

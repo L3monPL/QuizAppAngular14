@@ -1,8 +1,8 @@
 <h2 *ngIf="customError">{{customError}}</h2>
-<div *ngIf="!usersList" class="input_margin">
+<!-- <div *ngIf="!usersList" class="input_margin">
     <button (click)="getUsersList()" class="button_margin" mat-raised-button color="primary">Wyświetl wszystkich użytkowników</button>
-</div>
-<div *ngIf="usersList" class="container" id="style-scroll">
+</div> -->
+<div *ngIf="usersList && !this.userManagerService.loading" class="container" id="style-scroll">
     <div *ngFor="let user of usersList" class="item">
         <div class="username">
             {{user.username}}
@@ -14,4 +14,12 @@
             {{user.emailAddress}}
         </div>
     </div>
+</div>
+<div *ngIf="this.userManagerService.loading" class="spinner">
+    <mat-progress-spinner
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+    </mat-progress-spinner>  
 </div>

@@ -40,6 +40,13 @@
 .green_txt{
     color: rgb(40, 207, 82);
 }
+.spinner{
+    display: flex;
+    justify-content: center;
+}
+
+
+
 @media only screen and (max-width: 800px){
 .row{
     flex-direction: column;

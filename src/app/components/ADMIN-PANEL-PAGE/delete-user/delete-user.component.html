@@ -5,7 +5,7 @@
         <h2 *ngIf="customError">{{customError}}</h2>
     </div>
     
-    <form [formGroup]="userDeleteForm" (submit)="deleteUser()">
+    <form *ngIf="!this.userManagerService.loading" [formGroup]="userDeleteForm" (submit)="deleteUser()">
 
             <mat-form-field class="auto_width" appearance="outline">
                 <mat-label>Wybierz użytkownika</mat-label>
@@ -17,12 +17,16 @@
                 </mat-select>
                 <div *ngIf="f['userId'].touched && f['userId'].invalid" class="alert alert-danger"></div>
             </mat-form-field>
-    
-           
-        
-
         <div class="input_margin">
             <button type="submit" class="button_margin" mat-raised-button color="primary">Usuń użytkownika</button>
         </div>
     </form>
+    <div *ngIf="this.userManagerService.loading" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div>
 </div>

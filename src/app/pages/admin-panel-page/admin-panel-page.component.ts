@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 
 
 @Component({
@@ -11,11 +12,13 @@ export class AdminPanelPageComponent implements OnInit {
 
 
   constructor(
-    private categoryManagerService: CategoryManagerRestService
+    public categoryManagerService: CategoryManagerRestService,
+    public userManagerService: UserManagerRestService
   ) { }
 
   ngOnInit(): void {
     this.categoryManagerService.getCategoryList()
+    this.userManagerService.getUsersList()
   }
  
 

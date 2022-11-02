@@ -45,10 +45,10 @@
           <app-edit-category></app-edit-category>
       </mat-expansion-panel>
 
-      </mat-accordion>
+    </mat-accordion>
       <div class="selection">
         <h2>Panel zarządzania użytkownikami</h2>
-        <mat-accordion multi>
+        <mat-accordion multi *ngIf="true">
           <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -80,7 +80,7 @@
             
           </mat-expansion-panel-header>
           <!-- <app-get-users-list></app-get-users-list> -->
-      </mat-expansion-panel>
+        </mat-expansion-panel>
 
         </mat-accordion>
       </div>

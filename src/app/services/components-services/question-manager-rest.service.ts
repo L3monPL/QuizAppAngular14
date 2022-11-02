@@ -16,6 +16,8 @@ export class QuestionManagerRestService {
   categoryId?: number
   level?: number
 
+  loading = true
+
   constructor(
     private quiestionRestService: QuestionRestService
   ) { }
@@ -29,21 +31,16 @@ export class QuestionManagerRestService {
           // let selectedCategory = this.questionsList![0]
           // console.log(selectedCategory)
           this.quizEmitterRest.emit(this.questionsList)
+          this.loading = false
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
         } 
       },
       error: (errorResponse) => {
-        switch (errorResponse.status) {
-          case 400|401:
-            this.customError = errorResponse.error.message;
-            break;
-        
-          default:
-            this.customError = 'Błąd servera'
-            break;
-        }
+            this.customError = errorResponse.error;
+            this.loading = false
       },
       complete: () => {}
     })
