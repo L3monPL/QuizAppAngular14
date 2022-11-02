@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
+import { ImageRestService } from 'src/app/services/image-rest.service';
 import { QuestionRestService } from 'src/app/services/question-rest.service';
 
 @Component({
@@ -17,6 +18,12 @@ export class AddCategoryComponent implements OnInit {
 
   addCategoryDone = false
 
+  subUploadFile?: Subscription
+  fileToUpload?: File
+
+  uploadedFile: any
+  fileImageURL?: string
+
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
@@ -28,7 +35,8 @@ export class AddCategoryComponent implements OnInit {
   constructor(
     public questionRestService: QuestionRestService,
     public categoryManagerService: CategoryManagerRestService,
-    public categoryRestService: CategoryRestService
+    public categoryRestService: CategoryRestService,
+    public imageRestService: ImageRestService
   ) { }
 
   ngOnInit(): void {
@@ -92,6 +100,36 @@ export class AddCategoryComponent implements OnInit {
     else{
       console.log('reset')
     }
+  }
+
+  uploadFile(file: any){
+    this.fileToUpload = file.files[0]
+
+    this.subUploadFile = this.imageRestService.postImage(
+      this.fileToUpload!).subscribe({
+      next: (response) => {
+        if (response.body) {
+          // this.customError = undefined
+          // this.resetForm()
+          // this.categoryManagerService.getCategoryList()
+          console.log(response.body)
+          this.uploadedFile = response.body
+          this.fileImageURL = this.uploadedFile.blob.uri
+          console.log(this.fileImageURL)
+          this.addCategoryForm.controls['iconUrl'].setValue(this.fileImageURL!)
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          console.log('wykonało')
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error.errors.file;
+      },
+      
+      complete: () => {
+      }
+    })
   }
 
 }

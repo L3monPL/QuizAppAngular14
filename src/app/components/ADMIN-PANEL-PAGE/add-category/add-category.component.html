@@ -53,15 +53,15 @@
                 </mat-form-field>
             </div>
             
-            <mat-form-field class="form-field question_width" appearance="outline">
+            <!-- <input class="form-field question_width" appearance="outline"> -->
                     
-                <mat-label>Link url do ikony</mat-label>
+                <!-- <mat-label>Link url do ikony</mat-label> -->
                 
-                <input matInput formControlName="iconUrl">
+                <input type="file" #imageInput accept="image/*" (change)="uploadFile(imageInput)">
                 
-                <div *ngIf="f['iconUrl'].touched && f['iconUrl'].invalid" class="alert alert-danger"></div>
+                <!-- <div *ngIf="f['iconUrl'].touched && f['iconUrl'].invalid" class="alert alert-danger"></div> -->
             
-            </mat-form-field>
+            <!-- </input> -->
         </div>
         
 
