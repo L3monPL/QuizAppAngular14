@@ -38,6 +38,26 @@
 .green_txt{
     color: rgb(40, 207, 82);
 }
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
+  }
+  input[type=file]{
+    padding-top: 0.7rem;
+  }
+
+
+
 @media only screen and (max-width: 800px){
     .row{
         flex-direction: column;
@@ -54,4 +74,10 @@
     .input_margin button{
         width: 100%;
     }
+    .container_file{
+        padding-bottom: 1.4rem;
+    }
+    input[type=file]{
+        padding-top: 0rem;
+      }
     }

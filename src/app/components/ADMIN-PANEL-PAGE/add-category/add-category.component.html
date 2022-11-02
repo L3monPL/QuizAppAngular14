@@ -54,11 +54,14 @@
             </div>
             
             <!-- <input class="form-field question_width" appearance="outline"> -->
-                    
-                <!-- <mat-label>Link url do ikony</mat-label> -->
+            <div class="container_file form-field question_width">
+                <label class="file">
                 
-                <input type="file" #imageInput accept="image/*" (change)="uploadFile(imageInput)">
+                    <input type="file" #imageInput accept="image/*" (change)="uploadFile(imageInput)">
                 
+                </label>
+            </div>
+            
                 <!-- <div *ngIf="f['iconUrl'].touched && f['iconUrl'].invalid" class="alert alert-danger"></div> -->
             
             <!-- </input> -->
