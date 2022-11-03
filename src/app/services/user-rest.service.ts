@@ -36,6 +36,13 @@ export interface UserList{
   }
 }
 
+export interface UserPatch{
+  username: number,
+  password: string,
+  emailAddress: string,
+  roleId?: number
+}
+
 @Injectable({
   providedIn: 'root'
 })

@@ -54,8 +54,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
     this.subscribeCategoryList()
   }
   ngOnDestroy(): void {
-    this.subQuestionCategoryEdit?.unsubscribe()
-    this.subCategoryList?.unsubscribe()
+    // this.subQuestionCategoryEdit?.unsubscribe()
+    // this.subCategoryList?.unsubscribe()
   }
   get f(){
     return this.categoryEditForm.controls;

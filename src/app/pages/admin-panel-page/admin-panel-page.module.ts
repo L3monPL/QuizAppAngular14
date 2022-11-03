@@ -18,6 +18,7 @@ import { EditCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-cat
 import { GetImagesListModule } from 'src/app/components/ADMIN-PANEL-PAGE/get-images-list/get-images-list.module';
 import { DeleteImageModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-image/delete-image.module';
 import { AddImageModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-image/add-image.module';
+import { EditUserModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-user/edit-user.module';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
     GetImagesListModule,
     DeleteImageModule,
     AddImageModule,
+    EditUserModule,
   ],
   exports: [
     AdminPanelPageComponent
