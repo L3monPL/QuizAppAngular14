@@ -1,0 +1,25 @@
+<h2 *ngIf="this.imageManagerService.customError">{{this.imageManagerService.customError}}</h2>
+<!-- <div *ngIf="!usersList" class="input_margin">
+    <button (click)="getUsersList()" class="button_margin" mat-raised-button color="primary">Wyświetl wszystkich użytkowników</button>
+</div> -->
+<div *ngIf="imagesList && !this.imageManagerService.loading" class="container" id="style-scroll">
+    <div *ngFor="let image of imagesList" class="item">
+        <div class="img">
+            <img src={{image.uri}} alt="">
+        </div>
+        <div class="name">
+            {{image.name}}
+        </div>
+        <!-- <div class="email">
+            {{image.emailAddress}}
+        </div> -->
+    </div>
+</div>
+<div *ngIf="this.imageManagerService.loading" class="spinner">
+    <mat-progress-spinner
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+    </mat-progress-spinner>  
+</div>

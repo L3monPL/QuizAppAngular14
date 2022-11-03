@@ -20,7 +20,7 @@ export class ImageRestService {
     private http: HttpClient
   ) { }
 
-  getImage():Observable<HttpResponse<Array<Image>>>{
+  getImagesList():Observable<HttpResponse<Array<Image>>>{
     return this.http.get<Array<Image>>(this.PATH + `/get`,{
       observe: 'response',
       responseType: 'json'

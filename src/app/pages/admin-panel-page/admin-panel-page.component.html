@@ -1,40 +1,40 @@
 <div class="components">
     <h2>Panel zarządzania quizami</h2>
     <mat-accordion multi>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <mat-icon class="font_green margin_right material-symbols-outlined">create_new_folder</mat-icon>
-                Dodaj quiz
-              </mat-panel-title>
-              
-            </mat-expansion-panel-header>
-            <app-add-category></app-add-category>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
+      <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                <mat-icon class="font_green margin_right material-symbols-outlined">add_comment</mat-icon>
-                Dodaj pytanie do quizu
+              <mat-icon class="font_green margin_right material-symbols-outlined">create_new_folder</mat-icon>
+              Dodaj quiz
             </mat-panel-title>
-            
-          </mat-expansion-panel-header>
-          <app-add-question></app-add-question>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <mat-icon class="font_red margin_right material-symbols-outlined">folder_delete</mat-icon>
-                Usuń quiz
-              </mat-panel-title>
               
-            </mat-expansion-panel-header>
-            <app-delete-category></app-delete-category>
-        </mat-expansion-panel>
+          </mat-expansion-panel-header>
+          <app-add-category></app-add-category>
+      </mat-expansion-panel>
 
-        <mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <mat-icon class="font_green margin_right material-symbols-outlined">add_comment</mat-icon>
+              Dodaj pytanie do quizu
+          </mat-panel-title>
+            
+        </mat-expansion-panel-header>
+        <app-add-question></app-add-question>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_red margin_right material-symbols-outlined">folder_delete</mat-icon>
+              Usuń quiz
+            </mat-panel-title>
+              
+          </mat-expansion-panel-header>
+          <app-delete-category></app-delete-category>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon class="font_yellow margin_right material-symbols-outlined">edit_document</mat-icon>
@@ -44,31 +44,32 @@
           </mat-expansion-panel-header>
           <app-edit-category></app-edit-category>
       </mat-expansion-panel>
-
     </mat-accordion>
-      <div class="selection">
-        <h2>Panel zarządzania użytkownikami</h2>
-        <mat-accordion multi *ngIf="true">
-          <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon class="font_green margin_right material-symbols-outlined">group</mat-icon>
-                  Lista użytkowników
-                </mat-panel-title>
-                
-              </mat-expansion-panel-header>
-              <app-get-users-list></app-get-users-list>
-          </mat-expansion-panel>
 
-          <mat-expansion-panel>
+
+    <div class="selection">
+      <h2>Panel zarządzania użytkownikami</h2>
+      <mat-accordion multi *ngIf="true">
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <mat-icon class="font_red margin_right material-symbols-outlined">person</mat-icon>
-                Usuń użytkownika
+                <mat-icon class="font_blue margin_right material-symbols-outlined">group</mat-icon>
+                Lista użytkowników
               </mat-panel-title>
               
             </mat-expansion-panel-header>
-            <app-delete-user></app-delete-user>
+            <app-get-users-list></app-get-users-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_red margin_right material-symbols-outlined">person</mat-icon>
+              Usuń użytkownika
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <app-delete-user></app-delete-user>
         </mat-expansion-panel>
 
         <mat-expansion-panel>
@@ -76,14 +77,56 @@
             <mat-panel-title>
               <mat-icon class="font_yellow margin_right material-symbols-outlined">manage_accounts</mat-icon>
               Edycja użytkownika
-            </mat-panel-title>
-            
+          </mat-panel-title>
+          
           </mat-expansion-panel-header>
           <!-- <app-get-users-list></app-get-users-list> -->
         </mat-expansion-panel>
 
-        </mat-accordion>
-      </div>
+      </mat-accordion>
+
+    <div class="selection">
+      <h2>Panel zarządzania obrazkami</h2>
+      <mat-accordion multi *ngIf="true">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="font_blue margin_right material-symbols-outlined">image</mat-icon>
+                Lista obrazów
+              </mat-panel-title>
+              
+            </mat-expansion-panel-header>
+            <app-get-images-list></app-get-images-list>
+        </mat-expansion-panel>
+
+        <!-- <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_red margin_right material-symbols-outlined">person</mat-icon>
+              Usuń użytkownika
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <app-delete-user></app-delete-user>
+        </mat-expansion-panel> -->
+
+      <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_yellow margin_right material-symbols-outlined">manage_accounts</mat-icon>
+              Edycja użytkownika
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+        
+      </mat-expansion-panel> -->
+
+    </mat-accordion>
+  </div>
+
+
+
+  </div>
       
 
     <!-- <app-add-category></app-add-category> -->
@@ -92,5 +135,6 @@
     <!-- <app-get-users-list></app-get-users-list> -->
     <!-- <app-delete-user></app-delete-user> -->
     <!-- <app-edit-category></app-edit-category> -->
+    <!-- <app-get-images-list></app-get-images-list> -->
 </div>
 

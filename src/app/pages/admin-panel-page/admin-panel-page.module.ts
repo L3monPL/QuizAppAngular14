@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { GetUsersListModule } from 'src/app/components/ADMIN-PANEL-PAGE/get-users-list/get-users-list.module';
 import { DeleteUserModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-user/delete-user.module';
 import { EditCategoryModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-category/edit-category.module';
+import { GetImagesListModule } from 'src/app/components/ADMIN-PANEL-PAGE/get-images-list/get-images-list.module';
 
 
 const routes: Routes = [
@@ -39,7 +40,7 @@ const routes: Routes = [
     GetUsersListModule,
     DeleteUserModule,
     EditCategoryModule,
-    
+    GetImagesListModule,
   ],
   exports: [
     AdminPanelPageComponent

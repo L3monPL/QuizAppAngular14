@@ -12,9 +12,9 @@ import { UserList, UserRestService } from 'src/app/services/user-rest.service';
 })
 export class GetUsersListComponent implements OnInit, OnDestroy {
 
-  subUsersList?: Subscription
+  // subUsersList?: Subscription
   usersList?: Array<UserList>
-  customError?: string
+  // customError?: string
 
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
