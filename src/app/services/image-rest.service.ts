@@ -41,4 +41,13 @@ export class ImageRestService {
     }
     )
   }
+
+  deleteImage(
+    filename: string, 
+    ):Observable<HttpResponse<Image>>{
+    return this.http.delete<Image>(this.PATH + `/filename?filename=${filename}`,{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
 }

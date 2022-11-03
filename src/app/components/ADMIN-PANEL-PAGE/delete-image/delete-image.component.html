@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="title_row">
+        <!-- <h2>Usuń quiz</h2> -->
+        <h2 *ngIf="deleteImageDone" class="green_txt">Usunięto poprawnie</h2>
+        <h2 *ngIf="this.imageManagerService.customError">{{this.imageManagerService.customError}}</h2>
+    </div>
+    
+    <form *ngIf="!this.imageManagerService.loading" [formGroup]="imageDeleteForm" (submit)="deleteImage()">
+
+            <mat-form-field class="auto_width" appearance="outline">
+                <mat-label>Wybierz użytkownika</mat-label>
+                <mat-select formControlName="imageName" required>
+                  <mat-option class="image_row" *ngFor="let image of imagesList" [value]=image.name><img class="image" src={{image.uri}} alt="">{{image.name}}</mat-option>
+                  <!-- <mat-option value=2>2</mat-option>
+                  <mat-option value=3>3</mat-option> -->
+                  
+                </mat-select>
+                <div *ngIf="f['imageName'].touched && f['imageName'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+        <div class="input_margin">
+            <button type="submit" class="button_margin" mat-raised-button color="primary">Usuń obrazek</button>
+        </div>
+    </form>
+    <div *ngIf="this.imageManagerService.loading" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="bg">
     <mat-icon class="btn_hide" (click)="hideRightPanel()">arrow_forward</mat-icon>
     <div class="image_profile">
-        <img src="../../../assets/quiz_logo.jpg" alt="">
+        <img src={{this.userData.getProfileIcon()}} alt="">
     </div>
     <div class="text_name">
         <p>{{this.userData.getName()}}</p>

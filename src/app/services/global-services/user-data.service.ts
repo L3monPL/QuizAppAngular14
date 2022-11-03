@@ -28,5 +28,10 @@ export class UserDataService {
   isAdmin():boolean|undefined{
     return this.user?.role.name == 'Admin';
   }
+  getProfileIcon(): string|undefined{
+    // return this.user?.iconUrl
+    let url = 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0'
+    return url
+  }
 
 }
