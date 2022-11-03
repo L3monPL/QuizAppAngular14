@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="title_row">
+        <!-- <h2>Dodaj quiz</h2> -->
+        <h2 *ngIf="addImageDone" class="green_txt">Dodano poprawnie</h2>
+        <h2 *ngIf="customError">{{customError}}</h2>
+    </div>
+    
+    <form [formGroup]="addImageForm" (submit)="postImage()">
+        <div class="row">
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Nazwa Quizu</mat-label>
+                
+                <input matInput formControlName="name" >
+                
+                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <div class="container_file form-field question_width">
+                <label class="file">
+                
+                    <input type="file" #imageInput accept="image/*" (change)="uploadFile(imageInput)">
+                
+                </label>
+            </div>
+        </div>
+        
+
+        <div class="input_margin">
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Dodaj quiz</button>
+        </div>
+    </form>
+</div>

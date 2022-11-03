@@ -89,6 +89,17 @@
       <h2>Panel zarządzania obrazkami</h2>
       <mat-accordion multi *ngIf="true">
         <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon class="font_green margin_right material-symbols-outlined">photo_library</mat-icon>
+                Dodaj obrazek
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <app-add-image></app-add-image>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <mat-icon class="font_blue margin_right material-symbols-outlined">image</mat-icon>
@@ -110,17 +121,6 @@
           <app-delete-image></app-delete-image>
         </mat-expansion-panel>
 
-      <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon class="font_yellow margin_right material-symbols-outlined">manage_accounts</mat-icon>
-              Edycja użytkownika
-          </mat-panel-title>
-          
-        </mat-expansion-panel-header>
-        
-      </mat-expansion-panel> -->
-
     </mat-accordion>
   </div>
 
@@ -137,5 +137,6 @@
     <!-- <app-edit-category></app-edit-category> -->
     <!-- <app-get-images-list></app-get-images-list> -->
     <!-- <app-delete-image></app-delete-image> -->
+    <!-- <app-add-image></app-add-image> -->
 </div>
 
