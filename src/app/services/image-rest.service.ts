@@ -29,9 +29,10 @@ export class ImageRestService {
 
   postImage(
     file: File, 
+    fileName: string
     ){
       let formData = new FormData()
-      formData.append('file', file)
+      formData.append('file', file, fileName)
     return this.http.post(this.PATH + `/upload`,
     formData
     ,{

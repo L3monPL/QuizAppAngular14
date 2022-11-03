@@ -80,12 +80,18 @@ export class AddCategoryComponent implements OnInit {
 
   uploadFile(file: any){
     this.fileToUpload = file.files[0]
+
+    console.log(file.files[0])
+
+    console.log(file.files[0].name)
+
   }
 
   uploadedRequest(){
     if (this.fileToUpload) {
+      let name = this.addCategoryForm.get('name')?.value
       this.subUploadFile = this.imageRestService.postImage(
-        this.fileToUpload!).subscribe({
+        this.fileToUpload!, name!).subscribe({
         next: (response) => {
           if (response.body) {
             console.log(response.body)
