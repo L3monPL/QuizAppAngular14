@@ -70,11 +70,11 @@ export class AddCategoryComponent implements OnInit {
   postQuestionToCategory(){
     if (this.addCategoryForm.valid) {
       this.uploadedRequest()
-      console.log('działa')
+      // console.log('działa')
 
     }
     else{
-      console.log('reset')
+      // console.log('wypełnij danymi')
     }
   }
 
@@ -83,33 +83,35 @@ export class AddCategoryComponent implements OnInit {
   }
 
   uploadedRequest(){
-    this.subUploadFile = this.imageRestService.postImage(
-      this.fileToUpload!).subscribe({
-      next: (response) => {
-        if (response.body) {
-          // this.customError = undefined
-          // this.resetForm()
-          // this.categoryManagerService.getCategoryList()
-          console.log(response.body)
-          this.uploadedFile = response.body
-          this.fileImageURL = this.uploadedFile.blob.uri
-          console.log(this.fileImageURL)
-          this.addCategoryForm.controls['iconUrl'].setValue(this.fileImageURL!)
-          this.postCategoryRequest()
-        }
-        else{
-          this.customError = 'Brak obiektu odpowiedzi'
-          console.log('wykonało')
-        } 
-      },
-      error: (errorResponse) => {
-            this.customError = errorResponse.error.errors.file;
+    if (this.fileToUpload) {
+      this.subUploadFile = this.imageRestService.postImage(
+        this.fileToUpload!).subscribe({
+        next: (response) => {
+          if (response.body) {
+            console.log(response.body)
+            this.uploadedFile = response.body
+            this.fileImageURL = this.uploadedFile.blob.uri
+            console.log(this.fileImageURL)
+            this.addCategoryForm.controls['iconUrl'].setValue(this.fileImageURL!)
             this.postCategoryRequest()
-      },
-      
-      complete: () => {
-      }
-    })
+          }
+          else{
+            this.customError = 'Brak obiektu odpowiedzi'
+            console.log('wykonało')
+          } 
+        },
+        error: (errorResponse) => {
+              this.customError = errorResponse.error.errors.file;
+        },
+        
+        complete: () => {
+        }
+      })
+    }
+    else if(this.fileToUpload == undefined){
+      this.postCategoryRequest()
+    }
+    
   }
 
   postCategoryRequest(){
