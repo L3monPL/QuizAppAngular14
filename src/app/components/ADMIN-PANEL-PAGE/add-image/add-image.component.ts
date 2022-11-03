@@ -48,7 +48,7 @@ export class AddImageComponent implements OnInit {
         // this.uploadedRequest()
         // console.log('przeszło')
       }
-      else if(!this.imageForm.valid){
+      else if(this.fileToUpload = undefined){
         // console.log(this.imageForm.valid)
         // console.log('wypełnij danymi')
         this.customError = 'Nie załączono pliku'
