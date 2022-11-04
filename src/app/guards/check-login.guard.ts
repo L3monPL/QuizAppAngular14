@@ -66,7 +66,7 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
     let indexOfToken = this.obj0[0]
     // console.log(indexOfToken)
 
-    console.log(indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', ''))
+    // console.log(indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', ''))
     let userIdFromToken = indexOfToken.replace('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier: ', '')
     if (!this.userDataService.userIdByToken) {
       this.userDataService.userIdByToken = userIdFromToken
@@ -102,7 +102,7 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
 
         },
         complete: () => {
-          console.log(this.userGlobalService.getName())
+          // console.log(this.userGlobalService.getName())
         }
       }
     )

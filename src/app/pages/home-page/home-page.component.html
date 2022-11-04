@@ -22,29 +22,32 @@
             <div class="mid_menu">
                 <div class="nav_menu">
                     <a routerLink="/home/dashboard">
-                        <mat-icon class="menu_btn active" aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
+                        <mat-icon class="menu_btn active" fontIcon="home">home</mat-icon>
+                    </a>
+                    <a routerLink="/home/profile">
+                        <mat-icon class="menu_btn" fontIcon="home">person_4</mat-icon>
                     </a>
                     <a routerLink="/home/quiz-maps">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">view_cozy</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">web</mat-icon>
                     </a>
                     <!-- <a href=""> -->
                         <!-- <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">fact_check</mat-icon> -->
                     <!-- </a> -->
                     <a routerLink="/home/ranking">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">military_tech</mat-icon>
                     </a>
                     <a *ngIf="this.userDataService.isAdmin()" routerLink="/home/admin-panel">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">admin_panel_settings</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">admin_panel_settings</mat-icon>
                     </a>
                     <a routerLink="/home/settings">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">settings</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">settings</mat-icon>
                     </a>
                     
                 </div>
             </div>
             <div class="bottom_menu">
                 <a class="logout" (click)="logout()">
-                    <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">logout</mat-icon>
+                    <mat-icon class="menu_btn" fontIcon="home">logout</mat-icon>
                 </a>
             </div>
             
@@ -87,22 +90,25 @@
             <div class="mid_menu">
                 <div class="nav_menu">
                     <a routerLink="/home/dashboard">
-                        <mat-icon class="menu_btn active" aria-hidden="false" aria-label="Example home icon" fontIcon="home">home</mat-icon>
+                        <mat-icon class="menu_btn active" fontIcon="home">home</mat-icon>
+                    </a>
+                    <a routerLink="/home/profile">
+                        <mat-icon class="menu_btn" fontIcon="home">person_4</mat-icon>
                     </a>
                     <a routerLink="/home/quiz-maps">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">view_cozy</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">web</mat-icon>
                     </a>
                     <!-- <a href=""> -->
                         <!-- <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">fact_check</mat-icon> -->
                     <!-- </a> -->
                     <a routerLink="/home/ranking">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">military_tech</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">military_tech</mat-icon>
                     </a>
                     <a *ngIf="this.userDataService.isAdmin()" routerLink="/home/admin-panel">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">admin_panel_settings</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">admin_panel_settings</mat-icon>
                     </a>
                     <a routerLink="/home/settings">
-                        <mat-icon class="menu_btn" aria-hidden="false" aria-label="Example home icon" fontIcon="home">settings</mat-icon>
+                        <mat-icon class="menu_btn" fontIcon="home">settings</mat-icon>
                     </a>
                     
                 </div>

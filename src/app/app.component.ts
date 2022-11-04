@@ -53,7 +53,7 @@ export class AppComponent {
             this.display=this.time
             // console.log(this.display)
             this.valueSpeed = this.valueSpeed + 1
-            console.log(this.valueSpeed)
+            // console.log(this.valueSpeed)
             if (this.valueSpeed! > 15) {
               this.loading = true
             }
