@@ -68,22 +68,26 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   editCategorySubmit(){
     let categoryId = this.categoryEditForm.get('categoryId')?.value
    
-    if (this.categoryEditForm.valid) {
+    if (categoryId != null) {
+      if (this.categoryEditForm.valid) {
       this.getCategoryId(categoryId!)
+      }
     }
+    
   }
 
 
   editCategory(){
-    let categoryId = this.categoryEditForm.get('categoryId')?.value
-    let name = this.addCategoryForm.get('name')?.value
-    let description = this.addCategoryForm.get('description')?.value
-    let iconUrl = this.addCategoryForm.get('iconUrl')?.value
-    let questionsPerLesson = this.addCategoryForm.get('questionsPerLesson')?.value
-    let lessonsPerLevel = this.addCategoryForm.get('lessonsPerLevel')?.value
-    this.subEditCategoryId = this.categoryRestService.editCategory(
+    if (this.addCategoryForm.valid) {
+      let categoryId = this.categoryEditForm.get('categoryId')?.value
+      let name = this.addCategoryForm.get('name')?.value
+      let description = this.addCategoryForm.get('description')?.value
+      let iconUrl = this.addCategoryForm.get('iconUrl')?.value
+      let questionsPerLesson = this.addCategoryForm.get('questionsPerLesson')?.value
+      let lessonsPerLevel = this.addCategoryForm.get('lessonsPerLevel')?.value
+      this.subEditCategoryId = this.categoryRestService.editCategory(
       categoryId!, name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
-    ).subscribe({
+      ).subscribe({
       next: (response) => {
         if (response.body) {
           this.categoryById = response.body
@@ -99,7 +103,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
             this.customErrorEditCategoryId = errorResponse.error;
       },
       complete: () => {}
-    })
+    }) 
+    }
   }
 
   resetForm(){

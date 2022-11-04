@@ -65,18 +65,22 @@ export class EditUserComponent implements OnInit {
   chooseUser(){
     this.editUserForm.controls['password'].setErrors(null)
     let userId = this.userListForm.get('userId')?.value
-   
-    if (this.userListForm.valid) {
+    if (this.userListForm.get('userId')?.value != null) {
+      if (this.userListForm.valid) {
+      console.log(this.userListForm.valid)
       this.showUserValues(userId!)
     }
+    }
+    
   }
 
   editUser(){
-    let username = this.editUserForm.get('username')?.value
-    let password = this.editUserForm.get('password')?.value
-    let emailAddress = this.editUserForm.get('emailAddress')?.value
-    let roleId = this.editUserForm.get('roleId')?.value
-    let userId = this.userListForm.get('userId')?.value
+    if (this.editUserForm.valid) {
+      let username = this.editUserForm.get('username')?.value
+      let password = this.editUserForm.get('password')?.value
+      let emailAddress = this.editUserForm.get('emailAddress')?.value
+      let roleId = this.editUserForm.get('roleId')?.value
+      let userId = this.userListForm.get('userId')?.value
       this.subEditUserId = this.userRestService.postUserEdit(
         userId!, username!, password!, emailAddress!, roleId!
       ).subscribe({
@@ -92,11 +96,13 @@ export class EditUserComponent implements OnInit {
           } 
         },
         error: (errorResponse) => {
-              this.customErrorEditUserId = errorResponse.error;
+              this.customErrorEditUserId = errorResponse.error.title;
+              console.log(this.customErrorEditUserId)
               this.loadingValuesToEdit = false
         },
         complete: () => {}
       })
+    }
     
   }
 

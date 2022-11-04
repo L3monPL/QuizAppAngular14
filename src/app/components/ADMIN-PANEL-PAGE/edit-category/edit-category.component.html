@@ -4,11 +4,11 @@
         <h2 *ngIf="editCategoryDone" class="green_txt2">Edytowano poprawnie</h2>
         <h2 *ngIf="customErrorCategoryId">{{customErrorCategoryId}}</h2>
     </div>
-    <form [formGroup]="categoryEditForm" (submit)="editCategorySubmit()">
+    <form [formGroup]="categoryEditForm">
 
             <mat-form-field class="auto_width2" appearance="outline">
                 <mat-label>Wybierz Quiz</mat-label>
-                <mat-select formControlName="categoryId" required>
+                <mat-select (ngModelChange)="editCategorySubmit()" formControlName="categoryId" required>
                   <mat-option *ngFor="let element of categoryList" [value]=element.id><img class="image_select2" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
                   <!-- <mat-option value=2>2</mat-option>
                   <mat-option value=3>3</mat-option> -->
@@ -16,9 +16,9 @@
                 </mat-select>
                 <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
             </mat-form-field>
-        <div class="input_margin2">
+        <!-- <div class="input_margin2">
             <button type="submit" class="button_margin2" mat-raised-button color="primary">Wybierz quiz</button>
-        </div>
+        </div> -->
     </form>
 
 
