@@ -43,20 +43,10 @@
 .second_form{
     margin-top: 2rem;
 }
-@media only screen and (max-width: 800px){
-.row2{
-    flex-direction: column;
+.spinner{
+    display: flex;
+    justify-content: center;
 }
-.row2 .auto_width2{
-    width: 100%;
-}
-.input_margin2 button{
-    width: 100%;
-}
-}
-
-
-
 .container{
     // border: 1px solid #ccc;
     // padding: 2rem;
@@ -111,6 +101,15 @@
         width: 100%;
     }
     .input_margin button{
+        width: 100%;
+    }
+    .row2{
+        flex-direction: column;
+    }
+    .row2 .auto_width2{
+        width: 100%;
+    }
+    .input_margin2 button{
         width: 100%;
     }
     }

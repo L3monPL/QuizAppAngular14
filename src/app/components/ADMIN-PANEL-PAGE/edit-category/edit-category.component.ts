@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 import { Category, CategoryRestService } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
@@ -31,6 +33,13 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   customErrorEditCategoryId?: string
 
   categoryEditById?: Category
+
+  loadingEditingQuiz = false
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 100;
+
+  btnEditQuizDone = true
 
   addCategoryForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
@@ -79,6 +88,9 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
 
   editCategory(){
     if (this.addCategoryForm.valid) {
+
+      this.btnEditQuizDone = false
+
       let categoryId = this.categoryEditForm.get('categoryId')?.value
       let name = this.addCategoryForm.get('name')?.value
       let description = this.addCategoryForm.get('description')?.value
@@ -93,14 +105,16 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
           this.categoryById = response.body
           this.showValuesToEditCategory = false
           this.resetForm()
-          // console.log(this.categoryById)
+          this.btnEditQuizDone = true
         }
         else{
           this.customErrorEditCategoryId = 'Brak obiektu odpowiedzi'
+          this.btnEditQuizDone = true
         } 
       },
       error: (errorResponse) => {
             this.customErrorEditCategoryId = errorResponse.error;
+            this.btnEditQuizDone = true
       },
       complete: () => {}
     }) 
@@ -131,6 +145,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
   }
 
   getCategoryId(id: number){
+    this.loadingEditingQuiz = true
     this.subCategoryId = this.categoryRestService.getCategoryId(id).subscribe({
       next: (response) => {
         if (response.body) {
@@ -141,14 +156,17 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
           this.addCategoryForm.controls['questionsPerLesson'].setValue(this.categoryById.questionsPerLesson)
           this.addCategoryForm.controls['lessonsPerLevel'].setValue(this.categoryById.lessonsPerLevel)
           this.showValuesToEditCategory = true
-          console.log(this.categoryById)
+          this.loadingEditingQuiz = false
+          // console.log(this.categoryById)
         }
         else{
           this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
+          this.loadingEditingQuiz = false
         } 
       },
       error: (errorResponse) => {
             this.customErrorCategoryId = errorResponse.error;
+            this.loadingEditingQuiz = false
       },
       complete: () => {}
     })

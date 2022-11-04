@@ -22,7 +22,7 @@
     </form>
 
 
-    <form class="second_form" *ngIf="showValuesToEditCategory" [formGroup]="addCategoryForm" (submit)="editCategory()">
+    <form class="second_form" *ngIf="showValuesToEditCategory && this.loadingEditingQuiz == false" [formGroup]="addCategoryForm" (submit)="editCategory()">
         <h2 *ngIf="customErrorEditCategoryId">{{customErrorEditCategoryId}}</h2>
         <div class="row">
 
@@ -84,9 +84,17 @@
         
 
         <div class="input_margin">
-            <button class="button_margin" mat-raised-button color="primary" type="submit">Edytuj quiz</button>
+            <button [disabled]="!btnEditQuizDone" class="button_margin" mat-raised-button color="primary" type="submit">Edytuj quiz</button>
         </div>
     </form>
+    <div *ngIf="this.loadingEditingQuiz" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div>
 
 
 </div>
