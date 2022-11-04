@@ -4,44 +4,44 @@
         <h2 *ngIf="editUserDone" class="green_txt2">Edytowano poprawnie</h2>
         <h2 *ngIf="customErrorUserId">{{customErrorUserId}}</h2>
     </div>
-    <form [formGroup]="userEditForm" (submit)="editCategorySubmit()">
+    <form [formGroup]="userListForm" (submit)="chooseUser()">
 
             <mat-form-field class="auto_width2" appearance="outline">
-                <mat-label>Wybierz Quiz</mat-label>
-                <mat-select formControlName="categoryId" required>
-                  <mat-option *ngFor="let element of categoryList" [value]=element.id><img class="image_select2" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
+                <mat-label>Wybierz Użytkownika</mat-label>
+                <mat-select formControlName="userId" required>
+                  <mat-option *ngFor="let user of usersList" [value]=user.id>{{user.username}}</mat-option>
 
                   
                 </mat-select>
-                <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
+                <div *ngIf="f['userId'].touched && f['userId'].invalid" class="alert alert-danger"></div>
             </mat-form-field>
         <div class="input_margin2">
-            <button type="submit" class="button_margin2" mat-raised-button color="primary">Wybierz quiz</button>
+            <button type="submit" class="button_margin2" mat-raised-button color="primary">Wybierz użytkownika</button>
         </div>
     </form>
 
 
-    <form class="second_form" *ngIf="showValuesToEditCategory" [formGroup]="addCategoryForm" (submit)="editCategory()">
-        <h2 *ngIf="customErrorEditCategoryId">{{customErrorEditCategoryId}}</h2>
+    <form class="second_form" *ngIf="showValuesToEditUser" [formGroup]="editUserForm" (submit)="editUser()">
+        <h2 *ngIf="customErrorEditUserId">{{customErrorEditUserId}}</h2>
         <div class="row">
 
             <mat-form-field class="form-field half_width" appearance="outline">
                     
-                <mat-label>Nazwa Quizu</mat-label>
+                <mat-label>Nazwa użytkownika</mat-label>
                 
-                <input matInput formControlName="name">
+                <input matInput formControlName="username">
                 
-                <div *ngIf="f2['name'].touched && f2['name'].invalid" class="alert alert-danger"></div>
+                <div *ngIf="f2['username'].touched && f2['username'].invalid" class="alert alert-danger"></div>
             
             </mat-form-field>
 
             <mat-form-field class="form-field half_width" appearance="outline">
                     
-                <mat-label>Opis</mat-label>
+                <mat-label>Rola</mat-label>
                 
-                <input matInput formControlName="description">
+                <input matInput formControlName="roleId">
                 
-                <div *ngIf="f2['description'].touched && f2['description'].invalid" class="alert alert-danger"></div>
+                <div *ngIf="f2['roleId'].touched && f2['roleId'].invalid" class="alert alert-danger"></div>
             
             </mat-form-field>
         </div>
@@ -49,28 +49,27 @@
         
         
         <div class="row">
-            <div class="half_in_row">
-                <mat-form-field class="form-field auto_width" appearance="outline">
+                <mat-form-field class="form-field half_width" appearance="outline">
                     
-                    <mat-label>Ilość pytań na lekcje</mat-label>
+                    <mat-label>emailAddress</mat-label>
                     
-                    <input type="number" matInput formControlName="questionsPerLesson">
+                    <input matInput formControlName="emailAddress">
                     
-                    <div *ngIf="f2['questionsPerLesson'].touched && f2['questionsPerLesson'].invalid" class="alert alert-danger"></div>
+                    <div *ngIf="f2['emailAddress'].touched && f2['emailAddress'].invalid" class="alert alert-danger"></div>
                 
                 </mat-form-field>
-                <mat-form-field class="form-field auto_width" appearance="outline">
+                <mat-form-field class="form-field half_width" appearance="outline">
                         
-                    <mat-label>Ilość lekcji na poziom</mat-label>
+                    <mat-label>Hasło</mat-label>
                     
-                    <input type="number" matInput formControlName="lessonsPerLevel">
+                    <input type="password" matInput formControlName="password">
                     
-                    <div *ngIf="f2['lessonsPerLevel'].touched && f2['lessonsPerLevel'].invalid" class="alert alert-danger"></div>
+                    <div *ngIf="f2['password'].touched && f2['password'].invalid" class="alert alert-danger"></div>
                 
                 </mat-form-field>
-            </div>
+        </div>
             
-            <mat-form-field class="form-field question_width" appearance="outline">
+            <!-- <mat-form-field class="form-field question_width" appearance="outline">
                     
                 <mat-label>Link url do ikony</mat-label>
                 
@@ -78,12 +77,12 @@
                 
                 <div *ngIf="f2['iconUrl'].touched && f2['iconUrl'].invalid" class="alert alert-danger"></div>
             
-            </mat-form-field>
-        </div>
+            </mat-form-field> -->
+
         
 
         <div class="input_margin">
-            <button class="button_margin" mat-raised-button color="primary" type="submit">Edytuj quiz</button>
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Edytuj użytkownika</button>
         </div>
     </form>
 

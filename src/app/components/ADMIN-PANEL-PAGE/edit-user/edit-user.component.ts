@@ -1,141 +1,162 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { Subscription } from 'rxjs';
-// import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
-// import { UserList, UserRestService } from 'src/app/services/user-rest.service';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
+import { UserList, UserPatch, UserRestService } from 'src/app/services/user-rest.service';
 
-// @Component({
-//   selector: 'app-edit-user',
-//   templateUrl: './edit-user.component.html',
-//   styleUrls: ['./edit-user.component.scss']
-// })
-// export class EditUserComponent implements OnInit {
+@Component({
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
+})
+export class EditUserComponent implements OnInit {
 
-//   subUserEdit?: Subscription
-//   customError?: string
-//   editUserDone = false
+  subUserEdit?: Subscription
+  customError?: string
+  editUserDone = false
 
-//   subUsersList?: Subscription
-//   usersList?: any
+  subUsersList?: Subscription
+  usersList?: Array<UserList>
 
-//   editUsersDone = false
+  editUsersDone = false
 
-//   showValuesToEditCategory = false
+  showValuesToEditUser = false
 
-//   subUserId?: Subscription
-//   customErrorUserId?: string
+  subUserId?: Subscription
+  customErrorUserId?: string
 
-//   userById?: UserList
+  userById?: UserList
 
-//   subEditUserId?: Subscription
-//   customErrorEditUserId?: string
+  subEditUserId?: Subscription
+  customErrorEditUserId?: string
 
-//   userEditById?: UserList
+  userEditById?: UserList
 
-//   editUserForm = new FormGroup({
-//     username: new FormControl<string>('',Validators.required),
-//     password: new FormControl<string>('',Validators.required),
-//     emailAddress: new FormControl<string>('',Validators.required),
-//     roleId: new FormControl<number>(0,Validators.required)
-//   });
+  loadingValuesToEdit?: boolean
 
-//   userEditForm = new FormGroup({
-//     userId: new FormControl<number|null>(null,Validators.required),
-//   });
+  editUserForm = new FormGroup({
+    username: new FormControl<string>('',Validators.required),
+    password: new FormControl<string>('',Validators.required),
+    emailAddress: new FormControl<string>('',Validators.required),
+    roleId: new FormControl<number>(0,Validators.required)
+  });
 
-//   constructor(
-//     public userRestService: UserRestService,
-//     public userManagerService: UserManagerRestService 
-//   ) { }
+  userListForm = new FormGroup({
+    userId: new FormControl<number|null>(null,Validators.required),
+  });
 
-//   ngOnInit(): void {
-//   }
+  constructor(
+    public userRestService: UserRestService,
+    public userManagerService: UserManagerRestService 
+  ) { }
 
-//   get f(){
-//     return this.editUserForm.controls;
-//   }
+  ngOnInit(): void {
+    this.subscribeUserList()
+  }
 
-//   get f2(){
-//     return this.userEditForm.controls;
-//   }
+  get f(){
+    return this.userListForm.controls;
+  }
 
-//   editCategorySubmit(){
-//     let categoryId = this.userEditForm.get('categoryId')?.value
+  get f2(){
+    return this.editUserForm.controls;
+  }
+
+  chooseUser(){
+    this.editUserForm.controls['password'].setErrors(null)
+    let userId = this.userListForm.get('userId')?.value
    
-//     if (this.userEditForm.valid) {
-//       this.getCategoryId(categoryId!)
-//     }
-//   }
+    if (this.userListForm.valid) {
+      this.showUserValues(userId!)
+    }
+  }
 
-//   editUser(){
-//     let username = this.editUserForm.get('username')?.value
-//     let password = this.editUserForm.get('password')?.value
-//     let emailAddress = this.editUserForm.get('emailAddress')?.value
-//     let roleId = this.editUserForm.get('roleId')?.value
-//     this.subEditUserId = this.userRestService.editCategory(
-//       categoryId!, name!, description!, iconUrl!, questionsPerLesson!, lessonsPerLevel!
-//     ).subscribe({
-//       next: (response) => {
-//         if (response.body) {
-//           this.categoryById = response.body
-//           this.showValuesToEditCategory = false
-//           this.resetForm()
-//         }
-//         else{
-//           this.customErrorEditCategoryId = 'Brak obiektu odpowiedzi'
-//         } 
-//       },
-//       error: (errorResponse) => {
-//             this.customErrorEditCategoryId = errorResponse.error;
-//       },
-//       complete: () => {}
-//     })
-//   }
+  editUser(){
+    let username = this.editUserForm.get('username')?.value
+    let password = this.editUserForm.get('password')?.value
+    let emailAddress = this.editUserForm.get('emailAddress')?.value
+    let roleId = this.editUserForm.get('roleId')?.value
+    let userId = this.userListForm.get('userId')?.value
+      this.subEditUserId = this.userRestService.postUserEdit(
+        userId!, username!, password!, emailAddress!, roleId!
+      ).subscribe({
+        next: (response) => {
+          if (response.body) {
+            this.loadingValuesToEdit = false
+            this.resetForm()
+            this.userManagerService.getUsersList()
+          }
+          else{
+            this.customErrorEditUserId = 'Brak obiektu odpowiedzi'
+            this.loadingValuesToEdit = false
+          } 
+        },
+        error: (errorResponse) => {
+              this.customErrorEditUserId = errorResponse.error;
+              this.loadingValuesToEdit = false
+        },
+        complete: () => {}
+      })
+    
+  }
 
-//   resetForm(){
-//     this.userEditForm.controls['userId'].setValue(null)
+  resetForm(){
+    this.userListForm.controls['userId'].setValue(null)
+    this.userListForm.controls['userId'].setErrors(null)
 
-//     this.userEditForm.controls['userId'].setErrors(null)
+    // this.editUserForm.controls['username'].setValue(null)
+    // this.editUserForm.controls['username'].setErrors(null)
 
-//     this.editUserDone = true
+    // this.editUserForm.controls['password'].setValue(null)
+    // this.editUserForm.controls['password'].setErrors(null)
 
-//     setTimeout(() => {
-//       this.editUserDone = false
-//   }, 4000);
-//   }
+    // this.editUserForm.controls['emailAddress'].setValue(null)
+    // this.editUserForm.controls['emailAddress'].setErrors(null)
 
-//   subscribeUserList(){
-//     this.userManagerService.serviceUser.subscribe(
-//       res => {
-//         this.usersList = res
-//         console.log(this.usersList)
-//       },
-//       error => {}, 
-//       () => {})
+    // this.editUserForm.controls['roleId'].setValue(null)
+    // this.editUserForm.controls['roleId'].setErrors(null)
 
-//   }
+    this.editUserDone = true
 
-//   getUserId(id: number){
-//     this.subUserId = this.userRestService.getUserById(id).subscribe({
-//       next: (response) => {
-//         if (response.body) {
-//           this.userById = response.body
-//           this.editUserForm.controls['username'].setValue(this.userById.username)
-//           this.editUserForm.controls['password'].setValue(this.userById.password!)
-//           this.editUserForm.controls['emailAddress'].setValue(this.userById.emailAddress!)
-//           this.editUserForm.controls['roleId'].setValue(this.userById.roleId))
-//           this.showValuesToEditCategory = true
-//           console.log(this.categoryById)
-//         }
-//         else{
-//           this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
-//         } 
-//       },
-//       error: (errorResponse) => {
-//             this.customErrorCategoryId = errorResponse.error;
-//       },
-//       complete: () => {}
-//     })
-//   }
+    this.showValuesToEditUser = false
 
-// }
+    setTimeout(() => {
+      this.editUserDone = false
+  }, 4000);
+  }
+
+  subscribeUserList(){
+    this.userManagerService.serviceUser.subscribe(
+      res => {
+        this.usersList = res
+        console.log(this.usersList)
+      },
+      error => {}, 
+      () => {})
+
+  }
+
+  showUserValues(id: number){
+    this.subUserId = this.userRestService.getUserById(id).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.userById = response.body
+          this.editUserForm.controls['username'].setValue(this.userById.username)
+          this.editUserForm.controls['password'].setValue(null)
+          this.editUserForm.controls['emailAddress'].setValue(this.userById.emailAddress!)
+          this.editUserForm.controls['roleId'].setValue(this.userById.role.id)
+          this.showValuesToEditUser = true
+          // console.log(this.userById)
+        }
+        else{
+          this.customErrorUserId = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+            this.customErrorUserId = errorResponse.error;
+      },
+      complete: () => {}
+    })
+  }
+
+}

@@ -108,4 +108,17 @@ export class UserRestService {
       responseType: 'text' as 'json'
     })
   }
+
+  postUserEdit(userId: number, username: string, password: string,
+    emailAddress: string, roleId: number):Observable<HttpResponse<UserPatch>>{
+    return this.http.patch<UserPatch>(this.PATH + `/user/${userId}`,{
+      username: username,
+      password: password,
+      emailAddress: emailAddress,
+      roleId: roleId
+    }, {
+      observe: 'response',
+      responseType: 'json',
+    })
+  }
 }
