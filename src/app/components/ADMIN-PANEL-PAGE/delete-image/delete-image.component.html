@@ -8,7 +8,7 @@
     <form *ngIf="!this.imageManagerService.loading" [formGroup]="imageDeleteForm" (submit)="deleteImage()">
 
             <mat-form-field class="auto_width" appearance="outline">
-                <mat-label>Wybierz użytkownika</mat-label>
+                <mat-label>Wybierz obrazek</mat-label>
                 <mat-select formControlName="imageName" required>
                   <mat-option class="image_row" *ngFor="let image of imagesList" [value]=image.name><img class="image" src={{image.uri}} alt="">{{image.name}}</mat-option>
                   <!-- <mat-option value=2>2</mat-option>
