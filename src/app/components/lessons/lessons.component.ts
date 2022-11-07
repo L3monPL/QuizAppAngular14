@@ -28,6 +28,7 @@ export class LessonsComponent implements OnInit {
     this.loading = true
     this.takeValueFromUrl()
     this.getCategoryById()
+
   }
 
   takeValueFromUrl(){
