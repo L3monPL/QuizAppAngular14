@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription, timer } from 'rxjs';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { QuestionManagerRestService } from 'src/app/services/components-services
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
 
   idParam?: any
 
@@ -24,6 +25,10 @@ export class QuizComponent implements OnInit {
   btnNextEnable = false
   btnShowResult = false
 
+  countDown?: Subscription
+  counter?: number
+  tick = 1000;
+
   constructor(
     private route: ActivatedRoute,
     public questionManagerService: QuestionManagerRestService,
@@ -37,7 +42,10 @@ export class QuizComponent implements OnInit {
       this.router.navigate(['./home/dashboard'])
     }
     this.takeValueFromRest()
-
+    this.timer()
+  }
+  ngOnDestroy(): void{
+    this.countDown?.unsubscribe()
   }
 
   checkUrl(){
@@ -53,6 +61,8 @@ export class QuizComponent implements OnInit {
     
     this.indexOfQuiz = this.indexOfQuiz + 1
     this.progressBarQuizLength = ((this.indexOfQuiz)/this.quizList.length)*100
+
+    this.timer()
 
     if (this.indexOfQuiz < this.quizList.length) {
       this.quizes = this.quizList[this.indexOfQuiz]
@@ -127,5 +137,36 @@ export class QuizComponent implements OnInit {
     // console.log(this.selectedQuestion)
   }
 
+  timer(){
+    this.counter = 30
+    this.acceptAnswer = 'time'
+    this.valueAnswer = 0 
+    if (this.counter > 0) {
+      this.countDown = timer(0, this.tick).subscribe(() => 
+      {
+        --this.counter!
+        if (this.counter == 0) {
+          this.countDown?.unsubscribe()
+          this.nextQuestion()
+        }
+      }) 
+    }
+  }
 
+
+}
+
+
+@Pipe({
+  name: "formatTime"
+})
+export class FormatTimePipe implements PipeTransform {
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    return (
+      ("00" + minutes).slice(-2) +
+      ":" +
+      ("00" + Math.floor(value - minutes * 60)).slice(-2)
+    );
+  }
 }

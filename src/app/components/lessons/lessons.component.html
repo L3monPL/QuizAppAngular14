@@ -1,6 +1,7 @@
-<div class="container">
+<div *ngIf="!this.loading" class="container">
     <mat-card routerLink='/home/level/{{idParam}}/1'>
         <h1>ŁATWY</h1>
+        <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
     </mat-card>
     <mat-card routerLink='/home/level/{{idParam}}/2'>
         <h1>ŚREDNI</h1>

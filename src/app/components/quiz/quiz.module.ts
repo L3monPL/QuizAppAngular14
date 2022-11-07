@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizComponent } from './quiz.component';
+import { FormatTimePipe, QuizComponent } from './quiz.component';
 import { RouterModule, Routes } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -14,7 +14,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    QuizComponent
+    QuizComponent,
+    FormatTimePipe
   ],
   imports: [
     CommonModule,

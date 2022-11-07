@@ -14,6 +14,7 @@
     </div>
 
     <div *ngIf="!btnShowResult" class="questions_component">
+        <h3 class="timer">{{counter! | formatTime}}</h3>
         <div class="card" (click)="onClickAnswerSelect(quizes.a)" [ngClass]="{ 'selected': quizes.a == this.selectedQuestion}">
             <div class="value">A</div>
             <div class="answer">{{quizes.a}}</div>
