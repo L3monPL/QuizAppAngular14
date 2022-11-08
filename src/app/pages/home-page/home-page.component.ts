@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
     }
 
     // this.smallRightPanel = false
-    if(window.innerWidth < 1200){
+    if(window.innerWidth < 1400){
       // this.menuMode = 'side';
       this.menushow = false
       this.smallRightPanel = true
@@ -84,7 +84,7 @@ export class HomePageComponent implements OnInit {
   tablet?: boolean
 
   setSizeOptions(width: number){
-    if (window.innerWidth < 1200) {
+    if (window.innerWidth < 1400) {
       this.menuMode = 'over'
       this.tablet = true
       this.smallRightPanel = true
@@ -94,12 +94,12 @@ export class HomePageComponent implements OnInit {
       this.smallRightPanel = false
       this.menushow = false
      }
-     if (window.innerWidth >= 800 && window.innerWidth <1200) {
+     if (window.innerWidth >= 800 && window.innerWidth <1400) {
       this.mobileView = false
       this.menushow = false
      }
      
-     if (window.innerWidth >= 1200) {
+     if (window.innerWidth >= 1400) {
       this.mobileView = false
       this.menuMode = 'side'
       if (this.menushow && this.tablet) {
