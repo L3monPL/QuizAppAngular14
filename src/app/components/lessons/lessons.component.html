@@ -5,6 +5,11 @@
             <h2>{{categoryById?.description}}</h2>
         </div>
     </div>
+
+    <div class="info">
+        <h2>Sprawdz swoją wiedzę na temat danego quizu i oceń swoje umiejętności dzięki dobranym przez nas pytaniom do odpowiedniego poziomu trudności.</h2>
+    </div>
+
     <div class="container_level">
         <div class="items" routerLink='/home/level/{{idParam}}/1'>
             <div class="item green_bg">
@@ -12,8 +17,8 @@
                 <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
             </div>
             <div class="under_title_level">
-                <h2 class="mod">Moduły</h2>
-                <h2 class="score_mod">3/{{categoryById?.lessonsPerLevel}}</h2>
+                <!-- <h2 class="mod">Moduły</h2> -->
+                <!-- <h2 class="score_mod">3/{{categoryById?.lessonsPerLevel}}</h2> -->
                 <h2 class="percent">75%</h2>
             </div>
         </div>
@@ -23,9 +28,10 @@
                 <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
             </div>
             <div class="under_title_level">
-                <h2 class="mod">Moduły</h2>
-                <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2>
-                <h2 class="percent">25%</h2>
+                <!-- <h2 class="mod">Moduły</h2> -->
+                <!-- <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2> -->
+                <h2 class="info_block">Zablokowane</h2>
+                <!-- <h2 class="percent">25%</h2> -->
             </div>
         </div>
         <div class="items" routerLink='/home/level/{{idParam}}/3'>
@@ -34,9 +40,10 @@
                 <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
             </div>
             <div class="under_title_level">
-                <h2 class="mod">Moduły</h2>
-                <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2>
-                <h2 class="percent">0%</h2>
+                <!-- <h2 class="mod">Moduły</h2> -->
+                <!-- <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2> -->
+                <h2 class="info_block">Zablokowane</h2>
+                <!-- <h2 class="percent">0%</h2> -->
             </div>
         </div>
         

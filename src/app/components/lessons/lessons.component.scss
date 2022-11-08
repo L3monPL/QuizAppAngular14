@@ -47,7 +47,7 @@
     text-align: center;
 }
 .under_title_level{
-    height: 400px;
+    // height: 400px;
     background-color: rgb(236, 236, 236);
     margin-left: 1rem;
     margin-right: 1rem;
@@ -77,8 +77,23 @@
 }
 .percent{
     text-align: center;
-    font-size: 4rem;
-    padding-top: 5rem;
+    font-size: 1.8rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0px;
+}
+.info_block{
+    font-size: 1.8rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    margin: 0px;
+}
+.info h2{
+    margin-top: 3rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
 }
 
 
@@ -96,6 +111,11 @@
     .items{
         width: 98%;
     }
+    .info h2{
+        margin-top: 3rem;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
 @media only screen and (max-width: 800px){
     .container_level .item{
@@ -103,5 +123,10 @@
     }
     .container_level{
         padding-bottom: 4rem;
+    }
+    .info h2{
+        margin-top: 3rem;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 }
