@@ -85,18 +85,18 @@
 
 
 
-// @media only screen and (max-width: 1600px){
-//     .container{
-//         display: flex;
-//         flex-direction: column;
-//         // justify-content: space-between;
-//         // margin-left: 10%;
-//         // margin-right: 10%;
-//         margin-top: 2rem;
-//         row-gap: 2rem;
-//         text-align: center;
-//     }
-// }
+@media only screen and (max-width: 1200px){
+    .container_level{
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        row-gap: 2rem;
+        text-align: center;
+    }
+    .items{
+        width: 98%;
+    }
+}
 @media only screen and (max-width: 800px){
     .container_level .item{
         width: 100%;
