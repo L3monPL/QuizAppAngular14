@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LessonsComponent } from './lessons.component';
 import {MatCardModule} from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     MatCardModule,
     RouterModule,
     RouterModule.forChild(routes),
+    MatIconModule
   ],
   exports: [
     LessonsComponent
