@@ -38,7 +38,7 @@
 .items{
     // width: auto;
     width: 50%;
-    
+    cursor: pointer;
 }
 .item h1{
     padding-top: 1rem;
@@ -100,5 +100,8 @@
 @media only screen and (max-width: 800px){
     .container_level .item{
         width: 100%;
+    }
+    .container_level{
+        padding-bottom: 4rem;
     }
 }
