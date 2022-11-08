@@ -32,8 +32,8 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
     imageUrl: new FormControl<string>(''),
     a: new FormControl<string>('',Validators.required),
     b: new FormControl('',Validators.required),
-    c: new FormControl<string>('',Validators.required),
-    d: new FormControl<string>('',Validators.required),
+    c: new FormControl<string>(''),
+    d: new FormControl<string>(''),
     correctAnswer: new FormControl<string>('',Validators.required),
     level: new FormControl<number|null>(null,Validators.required),
   });
