@@ -12,7 +12,7 @@
     border: 1px solid #ccc;
 }
 .questions_component{
-    margin-top: 9rem;
+    margin-top: 7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,7 +64,7 @@
     width: 50%;
 }
 .selected{
-    background-color: rgb(90, 212, 59);
+    background-color: #FF6F91;
 }
 .results mat-progress-bar{
     width: 40%;
@@ -88,6 +88,7 @@
     display: flex;
     flex-direction: row;
     color: #32e438;
+    font-size: 1.2rem;
     // text-align: end;
     // justify-content: end;
     // align-items: flex-end;
