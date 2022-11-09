@@ -1,0 +1,33 @@
+@import '/src/style/colors.scss';
+.profile_card_container{
+    width: 100%;
+    height: calc(100vh - 5.4rem);
+    background-color: #E4F0F8;
+    border: 2px solid #fff;
+    border-radius: 15px;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    margin-top: 4rem;
+    align-items: center;
+}
+.username h2{
+    font-size: 2.2rem;
+}
+.image_profile img{
+    width: 100px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+}
+.text_rank{
+    color: rgb(255, 47, 227);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
