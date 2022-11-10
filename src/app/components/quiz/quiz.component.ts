@@ -22,6 +22,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   endResult = 0
   getResultValue?: number
 
+
   btnNextEnable = false
   btnShowResult = false
 
@@ -141,6 +142,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.counter = 30
     this.acceptAnswer = 'time'
     this.valueAnswer = 0 
+    this.countDown?.unsubscribe()
     if (this.counter > 0) {
       this.countDown = timer(0, this.tick).subscribe(() => 
       {
