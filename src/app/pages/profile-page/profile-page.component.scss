@@ -12,17 +12,26 @@
 }
 .header{
     display: flex;
-    justify-content: center;
-    column-gap: 2rem;
+    // justify-content: center;
+    column-gap: 4rem;
     margin-top: 4rem;
     align-items: center;
+    margin-left: 4rem;
+}
+.txt{
+    width: 100%;
+    margin-right: 2rem;
 }
 .username h2{
-    font-size: 2.2rem;
+    font-size: 1.6rem;
+    font-family: 'Arial Black';
+    font-weight: 900;
+    color: #2C3366;
+    margin: 0px;
 }
 .image_profile img{
-    width: 100px;
-    border-radius: 50px;
+    width: 120px;
+    border-radius: 50%;
     border: 2px solid #fff;
 }
 .text_rank{
@@ -31,3 +40,15 @@
     font-weight: 500;
     font-size: 1rem;
 }
+.email h2{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 0.9rem;
+}
+// .border{
+//     border-bottom: 1px solid #ccc;
+//     width: auto;
+//     margin-left: 2rem;
+//     margin-right: 2rem;
+//     margin-top: 2rem;
+//     margin-bottom: 2rem;
+// }
