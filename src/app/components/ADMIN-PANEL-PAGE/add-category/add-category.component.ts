@@ -81,9 +81,9 @@ export class AddCategoryComponent implements OnInit {
   uploadFile(file: any){
     this.fileToUpload = file.files[0]
 
-    console.log(file.files[0])
+    // console.log(file.files[0])
 
-    console.log(file.files[0].name)
+    // console.log(file.files[0].name)
 
   }
 
