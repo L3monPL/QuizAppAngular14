@@ -1,10 +1,10 @@
 @import '/src/style/colors.scss';
 .profile_card_container{
     width: 100%;
-    height: calc(100vh - 5.4rem);
-    background-color: #E4F0F8;
-    border: 2px solid #fff;
-    border-radius: 15px;
+    // height: calc(100vh - 5.4rem);
+    // background-color: #E4F0F8;
+    // border: 2px solid #fff;
+    // border-radius: 15px;
 }
 .column{
     display: flex;
@@ -14,9 +14,12 @@
     display: flex;
     // justify-content: center;
     column-gap: 4rem;
-    margin-top: 4rem;
+    // margin-top: 4rem;
     align-items: center;
-    margin-left: 4rem;
+    // margin-left: 4rem;
+    background-color: #414455;
+    padding: 2rem;
+    border-radius: 15px;
 }
 .txt{
     width: 100%;
@@ -26,7 +29,7 @@
     font-size: 1.6rem;
     font-family: 'Arial Black';
     font-weight: 900;
-    color: #2C3366;
+    color: #fff;
     margin: 0px;
 }
 .image_profile img{
@@ -43,6 +46,8 @@
 .email h2{
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 0.9rem;
+    color: #838797;
+    font-weight: 800;
 }
 // .border{
 //     border-bottom: 1px solid #ccc;
@@ -52,3 +57,34 @@
 //     margin-top: 2rem;
 //     margin-bottom: 2rem;
 // }
+.score{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+}
+.lesson_score{
+    text-align: center;
+}
+.lesson_score h2{
+    font-size: 3.4rem;
+    color: #fff;
+    // width: 200px;
+}
+.text_lesson_score h2{
+    color: #fff;
+    margin: 0px;
+}
+.info h2{
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin: 0px;
+    color: #fff;
+    font-size: 1rem;
+}
+.right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 2rem;
+}

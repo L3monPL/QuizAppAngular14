@@ -34,4 +34,8 @@ export class UserDataService {
     return url
   }
 
+  getEmail(): string{
+    return this.user!.emailAddress
+  }
+
 }
