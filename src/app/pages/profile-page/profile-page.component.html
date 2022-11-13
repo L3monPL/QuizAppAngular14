@@ -40,5 +40,20 @@
             
         </div>
         <!-- <div class="border"></div> -->
+
+        <div class="columns_3">
+            <div class="progress_quiz_container">
+                <p>Progres rozpoczątych quizów</p>
+                <div id="chart">
+                    <apx-chart
+                      [series]="chartOptions.series!"
+                      [chart]="chartOptions.chart!"
+                      [labels]="chartOptions.labels"
+                      [responsive]="chartOptions.responsive!">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>

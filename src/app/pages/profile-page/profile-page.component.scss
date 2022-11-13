@@ -20,6 +20,7 @@
     background-color: #414455;
     padding: 2rem;
     border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .txt{
     width: 100%;
@@ -87,4 +88,33 @@
     flex-direction: row;
     align-items: center;
     column-gap: 2rem;
+}
+
+
+
+
+
+.columns_3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+}
+
+
+
+
+
+
+
+.progress_quiz_container{
+    background-color: #fff;
+    border-radius: 15px;
+    grid-column: 3;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.progress_quiz_container p{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
 }
