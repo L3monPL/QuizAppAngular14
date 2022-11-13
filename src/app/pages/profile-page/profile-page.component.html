@@ -42,9 +42,26 @@
         <!-- <div class="border"></div> -->
 
         <div class="columns_3">
+            <div class="achievements_container">
+                <!-- <p>Osiągniecia</p> -->
+                <div class="achievements_items">
+                    <div class="achievements_item color_3">
+                        <p>Osiągnięcia</p>
+                    </div>
+                    <div class="achievements_item color_4">
+                        <p>Stwórz swój quiz</p>
+                    </div>
+                    <div class="achievements_item color_6">
+                        <p>Edytuj swoje quizy</p>
+                    </div>
+                    <div class="achievements_item color_5">
+                        <p>Edytuj profil</p>
+                    </div>
+                </div>
+            </div>
             <div class="progress_quiz_container">
                 <p>Wykres postępów</p>
-                <div id="chart">
+                <div class="chart" id="chart">
                     <apx-chart
                       [series]="chartOptions.series!"
                       [chart]="chartOptions.chart!"
