@@ -96,7 +96,7 @@ export class EditUserComponent implements OnInit {
           } 
         },
         error: (errorResponse) => {
-              this.customErrorEditUserId = errorResponse.error.title;
+              this.customErrorEditUserId = errorResponse.error;
               console.log(this.customErrorEditUserId)
               this.loadingValuesToEdit = false
         },

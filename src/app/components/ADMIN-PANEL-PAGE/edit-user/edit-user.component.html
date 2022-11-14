@@ -2,7 +2,8 @@
     <div class="title_row2">
 
         <h2 *ngIf="editUserDone" class="green_txt2">Edytowano poprawnie</h2>
-        <h2 *ngIf="customErrorUserId">{{customErrorUserId}}</h2>
+        <h2 *ngIf="customErrorUserId" class="red_txt">{{customErrorUserId}}</h2>
+        <h2 *ngIf="customErrorEditUserId" class="red_txt">{{this.customErrorEditUserId}}</h2>
     </div>
     <form [formGroup]="userListForm">
 
