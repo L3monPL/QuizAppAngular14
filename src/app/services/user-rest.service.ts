@@ -33,7 +33,19 @@ export interface UserList{
   role: {
     id: number,
     name: string
+  },
+  userProgress: {
+    experiencePoints: number,
+    level: number,
+    totalCompletedQuiz: number,
+    categoryProgress: Array<CategoryProgress>
   }
+}
+export interface CategoryProgress{
+  id: string,
+  categoryName: string,
+  categoryId: number,
+  userProgressId: number
 }
 
 export interface UserPatch{
