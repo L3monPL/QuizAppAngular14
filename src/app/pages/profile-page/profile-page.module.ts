@@ -23,6 +23,10 @@ const routes: Routes = [
         path: 'create-quiz',
         loadChildren: () => import('../../components/USER-PROFILE-PAGE/create-quiz-profile/create-quiz-profile.module').then(m => m.CreateQuizProfileModule)
       },
+      {
+        path: 'edit-quiz',
+        loadChildren: () => import('../../components/USER-PROFILE-PAGE/edit-quiz-profile/edit-quiz-profile.module').then(m => m.EditQuizProfileModule)
+      },
     ]
   },
 ];
