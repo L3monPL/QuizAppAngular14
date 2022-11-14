@@ -55,9 +55,10 @@ export class RegisterComponent implements OnInit {
       let password = this.registerForm.get('password')!.value
       let passwordSecond = this.registerForm.get('password')!.value
       let emailValue = this.registerForm.get('email')!.value
+      let profilePictureUrl = 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0'
       let roleId = 2
         this.postRegisterUser = this.userRest.postUserRegister(username!, password!,
-          passwordSecond!, emailValue!, roleId!).subscribe({
+          passwordSecond!, emailValue!, profilePictureUrl, roleId!).subscribe({
           next: (response) => { 
             this.loading = false;
             this.router.navigateByUrl('login');

@@ -77,12 +77,13 @@ export class UserRestService {
   }
 
   postUserRegister(username: string, password: string, confirmPassword: string,
-    emailAddress: string, roleId: number):Observable<HttpResponse<Register>>{
+    emailAddress: string, profilePictureUrl: string, roleId: number):Observable<HttpResponse<Register>>{
     return this.http.post<Register>(this.PATH + `/account/register`,{
       username: username,
       password: password,
       confirmPassword: confirmPassword,
       emailAddress: emailAddress,
+      profilePictureUrl: profilePictureUrl,
       roleId: roleId
     }, {
       observe: 'response',
