@@ -30,6 +30,7 @@ export interface UserList{
   id: number,
   username: string,
   emailAddress: string,
+  profilePictureUrl: string,
   role: {
     id: number,
     name: string

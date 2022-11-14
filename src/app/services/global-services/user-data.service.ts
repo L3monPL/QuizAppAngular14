@@ -29,9 +29,8 @@ export class UserDataService {
     return this.user?.role.name == 'Admin';
   }
   getProfileIcon(): string|undefined{
-    // return this.user?.iconUrl
-    let url = 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0'
-    return url
+    return 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0'
+    // return this.user?.profilePictureUrl
   }
 
   getEmail(): string{
