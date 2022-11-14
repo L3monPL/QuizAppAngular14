@@ -19,6 +19,10 @@ const routes: Routes = [
         path: 'achievements',
         loadChildren: () => import('../../components/USER-PROFILE-PAGE/achievements-profile/achievements-profile.module').then(m => m.AchievementsProfileModule)
       },
+      {
+        path: 'create-quiz',
+        loadChildren: () => import('../../components/USER-PROFILE-PAGE/create-quiz-profile/create-quiz-profile.module').then(m => m.CreateQuizProfileModule)
+      },
     ]
   },
 ];
