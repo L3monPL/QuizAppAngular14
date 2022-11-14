@@ -15,7 +15,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserDataService } from './services/global-services/user-data.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
