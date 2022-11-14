@@ -51,9 +51,9 @@ export interface CategoryProgress{
 
 export interface UserPatch{
   username: number,
-  password: string,
+  // password: string,
   emailAddress: string,
-  roleId?: number
+  // roleId?: number
 }
 
 @Injectable({
@@ -123,13 +123,13 @@ export class UserRestService {
     })
   }
 
-  postUserEdit(userId: number, username: string, password: string,
-    emailAddress: string, roleId: number):Observable<HttpResponse<UserPatch>>{
+  postUserEdit(userId: number, username: string,
+    emailAddress: string):Observable<HttpResponse<UserPatch>>{
     return this.http.patch<UserPatch>(this.PATH + `/user/${userId}`,{
       username: username,
-      password: password,
+      // password: password,
       emailAddress: emailAddress,
-      roleId: roleId
+      // roleId: roleId
     }, {
       observe: 'response',
       responseType: 'json',

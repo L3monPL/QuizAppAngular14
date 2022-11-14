@@ -38,19 +38,29 @@
 
             <mat-form-field class="form-field half_width" appearance="outline">
                     
+                <mat-label>emailAddress</mat-label>
+                
+                <input matInput formControlName="emailAddress">
+                
+                <div *ngIf="f2['emailAddress'].touched && f2['emailAddress'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <!-- <mat-form-field class="form-field half_width" appearance="outline">
+                    
                 <mat-label>Rola</mat-label>
                 
                 <input matInput formControlName="roleId">
                 
                 <div *ngIf="f2['roleId'].touched && f2['roleId'].invalid" class="alert alert-danger"></div>
             
-            </mat-form-field>
+            </mat-form-field> -->
         </div>
         
         
         
         <div class="row">
-                <mat-form-field class="form-field half_width" appearance="outline">
+                <!-- <mat-form-field class="form-field half_width" appearance="outline">
                     
                     <mat-label>emailAddress</mat-label>
                     
@@ -58,8 +68,8 @@
                     
                     <div *ngIf="f2['emailAddress'].touched && f2['emailAddress'].invalid" class="alert alert-danger"></div>
                 
-                </mat-form-field>
-                <mat-form-field class="form-field half_width" appearance="outline">
+                </mat-form-field> -->
+                <!-- <mat-form-field class="form-field half_width" appearance="outline">
                         
                     <mat-label>Hasło</mat-label>
                     
@@ -67,7 +77,7 @@
                     
                     <div *ngIf="f2['password'].touched && f2['password'].invalid" class="alert alert-danger"></div>
                 
-                </mat-form-field>
+                </mat-form-field> -->
         </div>
             
             <!-- <mat-form-field class="form-field question_width" appearance="outline">

@@ -36,9 +36,9 @@ export class EditUserComponent implements OnInit {
 
   editUserForm = new FormGroup({
     username: new FormControl<string>('',Validators.required),
-    password: new FormControl<string>('',Validators.required),
+    // password: new FormControl<string>('',Validators.required),
     emailAddress: new FormControl<string>('',Validators.required),
-    roleId: new FormControl<number>(0,Validators.required)
+    // roleId: new FormControl<number>(0,Validators.required)
   });
 
   userListForm = new FormGroup({
@@ -63,7 +63,7 @@ export class EditUserComponent implements OnInit {
   }
 
   chooseUser(){
-    this.editUserForm.controls['password'].setErrors(null)
+    // this.editUserForm.controls['password'].setErrors(null)
     let userId = this.userListForm.get('userId')?.value
     if (this.userListForm.get('userId')?.value != null) {
       if (this.userListForm.valid) {
@@ -82,7 +82,7 @@ export class EditUserComponent implements OnInit {
       let roleId = this.editUserForm.get('roleId')?.value
       let userId = this.userListForm.get('userId')?.value
       this.subEditUserId = this.userRestService.postUserEdit(
-        userId!, username!, password!, emailAddress!, roleId!
+        userId!, username!, emailAddress!
       ).subscribe({
         next: (response) => {
           if (response.body) {
@@ -148,9 +148,9 @@ export class EditUserComponent implements OnInit {
         if (response.body) {
           this.userById = response.body
           this.editUserForm.controls['username'].setValue(this.userById.username)
-          this.editUserForm.controls['password'].setValue(null)
+          // this.editUserForm.controls['password'].setValue(null)
           this.editUserForm.controls['emailAddress'].setValue(this.userById.emailAddress!)
-          this.editUserForm.controls['roleId'].setValue(this.userById.role.id)
+          // this.editUserForm.controls['roleId'].setValue(this.userById.role.id)
           this.showValuesToEditUser = true
           // console.log(this.userById)
         }
