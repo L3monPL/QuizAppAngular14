@@ -2,7 +2,7 @@
     background-color: #fff;
     border-radius: 15px;
     margin-top: 2rem;
-    height: 300px;
+    padding-bottom: 2rem;
 }
 .container_edit p{
     // margin-left: 1rem;
@@ -15,4 +15,43 @@
     margin-left: 1rem;
     margin-top: 1rem;
     cursor: pointer;
+}
+
+
+
+
+
+
+.container_icon{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 15px;
+    background-color: rgb(116, 115, 203);
+}
+.items{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    // height: 200px;
+    padding: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item{
+    cursor: pointer;
+}
+.item img{
+    width: 100px;
+    background-color: #fff;
+    // border: 2px solid #ccc;
+    // border: 2px solid #fff;
+}
+.imageBorder{
+    border: 4px solid #ccc;
+    border-radius: 15px;
+}
+.selected {
+    border: 4px solid rgb(59, 231, 88);
 }
