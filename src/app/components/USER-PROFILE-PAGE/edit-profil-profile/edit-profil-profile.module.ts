@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EditProfilProfileComponent } from './edit-profil-profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     EditProfilProfileComponent
