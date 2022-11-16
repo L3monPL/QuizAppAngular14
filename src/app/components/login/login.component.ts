@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.autoLogin()
   }
 
 
@@ -90,6 +91,47 @@ export class LoginComponent implements OnInit {
     let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
     console.log(token.jti)
     this.userData.userIdByToken = token.jti
+  }
+  
+  autoLogin(){
+    let token = this.helper.decodeToken(localStorage.getItem('currentUser')!)
+    
+
+    if (token) {
+      let userIdFromToken = token.jti
+      this.loading = true
+      
+    // if (!this.userDataService.userIdByToken) {
+    //   this.userDataService.userIdByToken = userIdFromToken
+    // }
+      this.userRest.getUserById(userIdFromToken)
+      .subscribe({
+        next: (response) => {
+          if(response.body){
+            this.router.navigateByUrl('/home');
+          }
+          else{
+            this.loading = false
+            this.router.navigateByUrl('/login');
+          }
+        },
+        error: (errorResponse) => {
+          console.log(errorResponse);
+          this.loading = false
+
+        },
+        complete: () => {
+          // console.log(this.userGlobalService.getName())
+        }
+      }
+    )
+    }
+    else{
+      this.loading = false
+    }
+   
+
+    
   }
 
 }
