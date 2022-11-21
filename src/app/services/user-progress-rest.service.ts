@@ -14,8 +14,8 @@ export class UserProgressRestService {
   ) { }
 
   postUserLogin(categoryId : number, level: number, quizLevelName: string, expGained: number):Observable<HttpResponse<any>>{
-    return this.http.post<any>
-    (this.PATH + `/${categoryId}/${level}/${quizLevelName}/${quizLevelName}/${expGained}`,{
+    return this.http.patch<any>
+    (this.PATH + `/${categoryId}/${level}/${quizLevelName}/${expGained}`,{
 
     }, {
       observe: 'response',

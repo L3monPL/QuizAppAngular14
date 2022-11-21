@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
+import { UserProgressRestService } from 'src/app/services/user-progress-rest.service';
 
 @Component({
   selector: 'app-quiz',
@@ -30,10 +31,16 @@ export class QuizComponent implements OnInit, OnDestroy {
   counter?: number
   tick = 1000;
 
+  subSaveProgress?: Subscription
+  loading = false
+  customError?: string
+  selectedQuizLevelName?: string
+
   constructor(
     private route: ActivatedRoute,
     public questionManagerService: QuestionManagerRestService,
-    private router: Router
+    private router: Router,
+    public userProgressRest: UserProgressRestService
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +61,15 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.idParam = params.get('code')
       this.questionManagerService.level = this.idParam
       console.log(this.idParam);
+      if (this.idParam == 1) {
+        this.selectedQuizLevelName = 'Easy' 
+      }
+      if (this.idParam == 2) {
+        this.selectedQuizLevelName = 'Medium' 
+      }
+      if (this.idParam == 3) {
+        this.selectedQuizLevelName = 'Hard' 
+      }
     });
   }
 
@@ -72,6 +88,12 @@ export class QuizComponent implements OnInit, OnDestroy {
     else if(this.indexOfQuiz >= this.quizList.length){
       this.btnShowResult = true
       this.getResultValue = (this.endResult / this.quizList.length) * 100
+      console.log("działa przed pętlą" + this.endResult + "na quizy" + this.quizList.length)
+      if (this.endResult / this.quizList.length == 1) {
+        console.log("działa w pętli")
+        this.saveProgress()
+      }
+      
     }
     console.log(this.indexOfQuiz)
     console.log(this.quizList.length)
@@ -155,8 +177,46 @@ export class QuizComponent implements OnInit, OnDestroy {
     }
   }
 
+  saveProgress(){
+    this.userProgressRest.postUserLogin(
+      this.questionManagerService.categoryId!,
+      this.quizes.level,
+      this.selectedQuizLevelName!,
+      20
+    ).subscribe({
+      next: (response) => {
+        if (response.body) {
+          
+          this.loading = false
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error;
+            this.loading = false
+      },
+      complete: () => {}
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
+
+
 
 
 @Pipe({
