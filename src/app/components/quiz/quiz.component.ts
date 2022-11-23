@@ -188,7 +188,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   saveProgress(){
     this.userProgressRest.postUserLogin(
       this.questionManagerService.categoryId!,
-      this.quizes.level,
+      this.quizes?.level!,
       this.selectedQuizLevelName!,
       20
     ).subscribe({
@@ -220,7 +220,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     });
     console.log(this.currentUserProgressToCategory)
 
-    this.currentLvl = this.currentUserProgressToCategory?.levelProgresses[this.idParam - 1]
+    this.currentLvl = this.currentUserProgressToCategory?.levelProgresses![this.idParam - 1]
     // this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
     // this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
     console.log(this.currentLvl?.levelCompleted)

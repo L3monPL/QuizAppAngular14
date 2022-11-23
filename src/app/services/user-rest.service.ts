@@ -47,12 +47,12 @@ export interface CategoryProgress{
   categoryName: string,
   categoryId: number,
   userProgressId: number,
-  levelProgresses: Array<LevelProgresses>
+  levelProgresses?: Array<LevelProgresses>
 }
 
 export interface LevelProgresses{
   id: number,
-  levelName: string,
+  levelName?: string,
   finishedQuizzes?: string,
   quizzesToFinish?: string,
   levelCompleted?: boolean,

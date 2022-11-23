@@ -82,9 +82,9 @@ export class LessonsComponent implements OnInit {
     });
     // console.log(this.currentUserProgressToCategory)
 
-    this.lvlEasy = this.currentUserProgressToCategory?.levelProgresses[0]
-    this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
-    this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
+    this.lvlEasy = this.currentUserProgressToCategory?.levelProgresses![0]
+    this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses![1]
+    this.lvlHard = this.currentUserProgressToCategory?.levelProgresses![2]
     // console.log(this.lvlEasy)
     // console.log(this.lvlMedium)
     // console.log(this.lvlHard)

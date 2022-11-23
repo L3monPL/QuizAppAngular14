@@ -16,6 +16,20 @@ export class QuizListComponent implements OnInit {
 
   objekt?: any
 
+  lvl1Finish?: number|string
+  lvl2Finish?: number|string
+  lvl3Finish?: number|string
+
+  lvl1Max?: number|string
+  lvl2Max?: number|string
+  lvl3Max?: number|string
+
+  sumLvlFinish?: number
+
+  sumLvlMax?: number
+
+  progressCategoryResult?: number
+
 
   constructor(
     // public categoryRest: CategoryRestService
@@ -25,7 +39,7 @@ export class QuizListComponent implements OnInit {
 
   ngOnInit(): void {
     // this.checkProgress()
-    this.showProgress(49)
+    // this.showProgress(52)
   }
 
 
@@ -39,21 +53,67 @@ export class QuizListComponent implements OnInit {
       this.objekt = obj.categoryId === id
        return this.objekt
     })
-    // this.userProgressList = this.userDataService.user?.userProgress.categoryProgress
-    if (this.userProgressList?.levelProgresses[0]) {
-      
+    let ok = this.userProgressList?.levelProgresses![0]
+
+    if (this.userProgressList?.levelProgresses![0]) {
+      this.lvl1Finish = this.userProgressList?.levelProgresses![0].finishedQuizzes
+      this.lvl2Finish = this.userProgressList?.levelProgresses![1].finishedQuizzes
+      this.lvl3Finish = this.userProgressList?.levelProgresses![2].finishedQuizzes
+
+      this.lvl1Max = this.userProgressList?.levelProgresses![0].quizzesToFinish
+      this.lvl2Max = this.userProgressList?.levelProgresses![1].quizzesToFinish
+      this.lvl3Max = this.userProgressList?.levelProgresses![2].quizzesToFinish
     }
-    // else if(this.userProgressList!.levelProgresses[0].finishedQuizzes !== undefined){
-      // console.log(this.userProgressList?.levelProgresses[0].finishedQuizzes)
-      // console.log(this.userProgressList?.levelProgresses[1].finishedQuizzes)
-      // console.log(this.userProgressList?.levelProgresses[2].finishedQuizzes)
-  
-      // console.log(this.userProgressList?.levelProgresses[0].quizzesToFinish)
-      // console.log(this.userProgressList?.levelProgresses[1].quizzesToFinish)
-      // console.log(this.userProgressList?.levelProgresses[2].quizzesToFinish)
-    // }
     
-    console.log(this.objekt)
+    if(ok?.finishedQuizzes == undefined){
+      this.lvl1Finish = '0'
+      this.lvl2Finish = '0'
+      this.lvl3Finish = '0'
+
+      this.lvl1Max = '4'
+      this.lvl2Max = '4'
+      this.lvl3Max = '4'
+    }
+
+    let l1f = this.lvl1Finish!
+    let y1f: number = +l1f;
+    this.lvl1Finish = y1f
+
+    let l2f = this.lvl2Finish!
+    let y2f: number = +l2f;
+    this.lvl2Finish = y2f
+
+    let l3f = this.lvl3Finish!
+    let y3f: number = +l3f;
+    this.lvl3Finish = y3f
+
+    let l1m = this.lvl1Max!
+    let y1m: number = +l1m;
+    this.lvl1Max = y1m
+
+    let l2m = this.lvl1Max!
+    let y2m: number = +l2m;
+    this.lvl2Max = y2m
+
+    let l3m = this.lvl1Max!
+    let y3m: number = +l3m;
+    this.lvl3Max = y3m
+
+    
+
+
+    this.sumLvlFinish = this.lvl1Finish + this.lvl2Finish + this.lvl3Finish
+
+    this.sumLvlMax = this.lvl1Max + this.lvl2Max + this.lvl3Max
+
+    // console.log(this.sumLvlFinish)
+    // console.log(this.sumLvlMax)
+
+    this.progressCategoryResult = (this.sumLvlFinish / this.sumLvlMax) * 100
+
+    // console.log(this.progressCategoryResult)
+
+    return this.progressCategoryResult
   }
 
 
