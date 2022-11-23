@@ -17,9 +17,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   idParam?: any
 
-  lvlEasy?: LevelProgresses
-  lvlMedium?: LevelProgresses
-  lvlHard?: LevelProgresses
+  currentLvl?: LevelProgresses
 
   quizList = []
   quizes: any
@@ -60,6 +58,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     }
     this.takeValueFromRest()
     this.timer()
+    this.checkUser()
   }
   ngOnDestroy(): void{
     this.countDown?.unsubscribe()
@@ -100,7 +99,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       console.log("działa przed pętlą" + this.endResult + "na quizy" + this.quizList.length)
       if (this.endResult / this.quizList.length == 1) {
         console.log("działa w pętli")
-        this.saveProgress()
+        this.checkUser()
       }
       
     }
@@ -217,19 +216,20 @@ export class QuizComponent implements OnInit, OnDestroy {
     // console.log(this.idParam)
 
     this.currentUserProgressToCategory = this.userDataService.user?.userProgress.categoryProgress.find((obj) => {
-      return obj.categoryId.toString() === this.idParam;
+      return obj.categoryId.toString() === this.questionManagerService.categoryId?.toString();
     });
-    // console.log(this.currentUserProgressToCategory)
+    console.log(this.currentUserProgressToCategory)
 
-    this.lvlEasy = this.currentUserProgressToCategory?.levelProgresses[0]
-    this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
-    this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
-    // console.log(this.lvlEasy)
-    // console.log(this.lvlMedium)
-    // console.log(this.lvlHard)
-    // this.checkLvlEasy()
-    // this.checkLvlMedium()
-    // this.checkLvlHard()
+    this.currentLvl = this.currentUserProgressToCategory?.levelProgresses[this.idParam - 1]
+    // this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
+    // this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
+    console.log(this.currentLvl?.levelCompleted)
+    if (this.currentLvl?.levelCompleted) {
+      let infoComplete = 'Ukończyłeś poprawie wszystkie lekcje z danego poziomu!'
+    }
+    else if (this.currentLvl?.levelCompleted == false) {
+      this.saveProgress()
+    }
   }
 
 
