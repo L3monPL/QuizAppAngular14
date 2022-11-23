@@ -19,7 +19,7 @@
                 <div class="under_title_level">
                     <!-- <h2 class="mod">Moduły</h2> -->
                     <!-- <h2 class="score_mod">3/{{categoryById?.lessonsPerLevel}}</h2> -->
-                    <h2 class="percent">75%</h2>
+                    <h2 class="percent">{{this.easyPercent}}</h2>
                 </div>
             </div>
             <div class="items" routerLink='/home/level/{{idParam}}/2'>
@@ -30,7 +30,7 @@
                 <div class="under_title_level">
                     <!-- <h2 class="mod">Moduły</h2> -->
                     <!-- <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2> -->
-                    <h2 class="info_block">Zablokowane</h2>
+                    <h2 class="info_block">{{this.mediumPercent}}</h2>
                     <!-- <h2 class="percent">25%</h2> -->
                 </div>
             </div>
@@ -42,7 +42,7 @@
                 <div class="under_title_level">
                     <!-- <h2 class="mod">Moduły</h2> -->
                     <!-- <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2> -->
-                    <h2 class="info_block">Zablokowane</h2>
+                    <h2 class="info_block">{{this.hardPercent}}</h2>
                     <!-- <h2 class="percent">0%</h2> -->
                 </div>
             </div>

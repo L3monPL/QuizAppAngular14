@@ -55,7 +55,7 @@ export interface LevelProgresses{
   levelName: string,
   finishedQuizzes: string,
   quizzesToFinish: string,
-  levelCompleted: boolean,
+  levelCompleted?: boolean,
   categoryProgressId: number
 }
 

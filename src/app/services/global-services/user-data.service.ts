@@ -8,7 +8,7 @@ export class UserDataService {
 
   userDataEmitter: EventEmitter<any> = new EventEmitter();
 
-  private user?: UserList;
+  public user?: UserList;
 
   userIdByToken?: number
 
@@ -36,5 +36,9 @@ export class UserDataService {
   getEmail(): string{
     return this.user!.emailAddress
   }
+
+  // getCurrentCategoryProgress(){
+  //   return this.user?.userProgress.categoryProgress
+  // }
 
 }

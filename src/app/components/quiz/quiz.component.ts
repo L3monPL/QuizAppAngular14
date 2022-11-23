@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
+import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { UserProgressRestService } from 'src/app/services/user-progress-rest.service';
+import { CategoryProgress, LevelProgresses } from 'src/app/services/user-rest.service';
 
 @Component({
   selector: 'app-quiz',
@@ -11,7 +13,13 @@ import { UserProgressRestService } from 'src/app/services/user-progress-rest.ser
 })
 export class QuizComponent implements OnInit, OnDestroy {
 
+  currentUserProgressToCategory?: CategoryProgress
+
   idParam?: any
+
+  lvlEasy?: LevelProgresses
+  lvlMedium?: LevelProgresses
+  lvlHard?: LevelProgresses
 
   quizList = []
   quizes: any
@@ -40,7 +48,8 @@ export class QuizComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     public questionManagerService: QuestionManagerRestService,
     private router: Router,
-    public userProgressRest: UserProgressRestService
+    public userProgressRest: UserProgressRestService,
+    public userDataService: UserDataService
   ) { }
 
   ngOnInit(): void {
@@ -200,6 +209,27 @@ export class QuizComponent implements OnInit, OnDestroy {
       },
       complete: () => {}
     })
+  }
+
+
+  checkUser(){
+    // console.log(this.userDataService.user?.userProgress.categoryProgress)
+    // console.log(this.idParam)
+
+    this.currentUserProgressToCategory = this.userDataService.user?.userProgress.categoryProgress.find((obj) => {
+      return obj.categoryId.toString() === this.idParam;
+    });
+    // console.log(this.currentUserProgressToCategory)
+
+    this.lvlEasy = this.currentUserProgressToCategory?.levelProgresses[0]
+    this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
+    this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
+    // console.log(this.lvlEasy)
+    // console.log(this.lvlMedium)
+    // console.log(this.lvlHard)
+    // this.checkLvlEasy()
+    // this.checkLvlMedium()
+    // this.checkLvlHard()
   }
 
 
