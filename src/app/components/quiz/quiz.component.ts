@@ -58,7 +58,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     }
     this.takeValueFromRest()
     this.timer()
-    this.checkUser()
+    // this.checkUser()
   }
   ngOnDestroy(): void{
     this.countDown?.unsubscribe()
@@ -100,6 +100,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       if (this.endResult / this.quizList.length == 1) {
         console.log("działa w pętli")
         this.checkUser()
+        console.log('checkUser init')
       }
       
     }
@@ -186,6 +187,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
 
   saveProgress(){
+    console.log('saveProgress init')
     this.userProgressRest.postUserLogin(
       this.questionManagerService.categoryId!,
       this.quizes?.level!,
@@ -215,21 +217,22 @@ export class QuizComponent implements OnInit, OnDestroy {
     // console.log(this.userDataService.user?.userProgress.categoryProgress)
     // console.log(this.idParam)
 
-    this.currentUserProgressToCategory = this.userDataService.user?.userProgress.categoryProgress.find((obj) => {
-      return obj.categoryId.toString() === this.questionManagerService.categoryId?.toString();
-    });
-    console.log(this.currentUserProgressToCategory)
+    // console.log('checkUser work')
 
-    this.currentLvl = this.currentUserProgressToCategory?.levelProgresses![this.idParam - 1]
-    // this.lvlMedium = this.currentUserProgressToCategory?.levelProgresses[1]
-    // this.lvlHard = this.currentUserProgressToCategory?.levelProgresses[2]
-    console.log(this.currentLvl?.levelCompleted)
-    if (this.currentLvl?.levelCompleted) {
-      let infoComplete = 'Ukończyłeś poprawie wszystkie lekcje z danego poziomu!'
-    }
-    else if (this.currentLvl?.levelCompleted == false) {
+    // this.currentUserProgressToCategory = this.userDataService.user?.userProgress.categoryProgress.find((obj) => {
+    //   return obj.categoryId.toString() === this.questionManagerService.categoryId?.toString();
+    // });
+    // console.log(this.currentUserProgressToCategory)
+
+    // this.currentLvl = this.currentUserProgressToCategory?.levelProgresses![this.idParam - 1]
+ 
+    // console.log(this.currentLvl?.levelCompleted)
+    // if (this.currentLvl?.levelCompleted) {
+    //   let infoComplete = 'Ukończyłeś poprawie wszystkie lekcje z danego poziomu!'
+    // }
+    // else if (this.currentLvl?.levelCompleted == false) {
       this.saveProgress()
-    }
+    // }
   }
 
 

@@ -99,7 +99,16 @@ export class QuizListComponent implements OnInit {
     let y3m: number = +l3m;
     this.lvl3Max = y3m
 
-    
+    if (this.lvl1Finish >= this.lvl1Max) {
+      this.lvl1Finish = this.lvl1Max
+    }
+    if (this.lvl2Finish >= this.lvl2Max) {
+      this.lvl2Finish = this.lvl2Max
+    }
+
+    if (this.lvl3Finish >= this.lvl3Max) {
+      this.lvl3Finish = this.lvl3Max
+    }
 
 
     this.sumLvlFinish = this.lvl1Finish + this.lvl2Finish + this.lvl3Finish
