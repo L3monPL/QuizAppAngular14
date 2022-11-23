@@ -53,8 +53,8 @@ export interface CategoryProgress{
 export interface LevelProgresses{
   id: number,
   levelName: string,
-  finishedQuizzes: string,
-  quizzesToFinish: string,
+  finishedQuizzes?: string,
+  quizzesToFinish?: string,
   levelCompleted?: boolean,
   categoryProgressId: number
 }
