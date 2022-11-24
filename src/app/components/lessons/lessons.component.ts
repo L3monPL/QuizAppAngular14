@@ -53,7 +53,7 @@ export class LessonsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.idParam = params.get('code')
       this.questionManagerService.categoryId = this.idParam
-      console.log(this.idParam);
+      // console.log(this.idParam);
     });
   }
 
@@ -114,7 +114,7 @@ export class LessonsComponent implements OnInit {
 
         this.easyPercent = (x/y)*100 
         this.easyPercent = this.easyPercent + '%'
-        console.log(this.easyPercent)        
+        // console.log(this.easyPercent)        
       }
     }
     if (this.lvlEasy?.levelCompleted == true) {
@@ -150,7 +150,7 @@ export class LessonsComponent implements OnInit {
 
         this.mediumPercent = (x/y)*100 
         this.mediumPercent = this.mediumPercent + '%'
-        console.log(this.mediumPercent)  
+        // console.log(this.mediumPercent)  
         this.mediumEnable = true      
       }
     }
@@ -188,7 +188,7 @@ export class LessonsComponent implements OnInit {
 
         this.hardPercent = (x/y)*100 
         this.hardPercent = this.hardPercent + '%'
-        console.log(this.hardPercent)  
+        // console.log(this.hardPercent)  
         this.hardEnable = true      
       }
     }

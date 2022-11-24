@@ -68,7 +68,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       this.idParam = params.get('code')
       this.questionManagerService.level = this.idParam
-      console.log(this.idParam);
+      // console.log(this.idParam);
       if (this.idParam == 1) {
         this.selectedQuizLevelName = 'Easy' 
       }
@@ -96,16 +96,16 @@ export class QuizComponent implements OnInit, OnDestroy {
     else if(this.indexOfQuiz >= this.quizList.length){
       this.btnShowResult = true
       this.getResultValue = (this.endResult / this.quizList.length) * 100
-      console.log("działa przed pętlą" + this.endResult + "na quizy" + this.quizList.length)
+      // console.log("działa przed pętlą" + this.endResult + "na quizy" + this.quizList.length)
       if (this.endResult / this.quizList.length == 1) {
-        console.log("działa w pętli")
+        // console.log("działa w pętli")
         this.checkUser()
-        console.log('checkUser init')
+        // console.log('checkUser init')
       }
       
     }
-    console.log(this.indexOfQuiz)
-    console.log(this.quizList.length)
+    // console.log(this.indexOfQuiz)
+    // console.log(this.quizList.length)
 
     
   }
@@ -115,8 +115,8 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.quizList = item
       // console.log(this.quizList)
       if (this.quizList) {
-          console.log(this.quizList.length)
-          console.log(this.quizList[0])
+          // console.log(this.quizList.length)
+          // console.log(this.quizList[0])
           this.quizes = this.quizList[0]
       }
     })
@@ -125,7 +125,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   onClickAnswerSelect(question: any){
     this.btnNextEnable = true
     this.selectedQuestion = question
-    console.log(this.selectedQuestion)
+    // console.log(this.selectedQuestion)
     if (question == this.quizes.a) {
       this.acceptAnswer = 'a'
       if (this.quizes.correctAnswer == this.acceptAnswer) {
@@ -134,7 +134,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       else if (this.quizes.correctAnswer != this.acceptAnswer){
         this.valueAnswer = 0
       }
-      console.log(this.valueAnswer)
+      // console.log(this.valueAnswer)
     }
     if (question == this.quizes.b) {
       this.acceptAnswer = 'b'
@@ -144,7 +144,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       else if (this.quizes.correctAnswer != this.acceptAnswer){
         this.valueAnswer = 0
       }
-      console.log(this.valueAnswer)
+      // console.log(this.valueAnswer)
     }
     if (question == this.quizes.c) {
       this.acceptAnswer = 'c'
@@ -154,7 +154,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       else if (this.quizes.correctAnswer != this.acceptAnswer){
         this.valueAnswer = 0
       }
-      console.log(this.valueAnswer)
+      // console.log(this.valueAnswer)
     }
     if (question == this.quizes.d) {
       this.acceptAnswer = 'd'
@@ -164,7 +164,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       else if (this.quizes.correctAnswer != this.acceptAnswer){
         this.valueAnswer = 0
       }
-      console.log(this.valueAnswer)
+      // console.log(this.valueAnswer)
     }
     // console.log(this.selectedQuestion)
   }
