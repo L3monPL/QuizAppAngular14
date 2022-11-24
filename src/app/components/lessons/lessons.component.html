@@ -22,7 +22,7 @@
                     <h2 class="percent">{{this.easyPercent}}</h2>
                 </div>
             </div>
-            <div class="items" routerLink='/home/level/{{idParam}}/2'>
+            <div *ngIf="this.mediumEnable" class="items" routerLink='/home/level/{{idParam}}/2'>
                 <div class="item yellow_bg">
                     <h1>ŚREDNI</h1>
                     <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
@@ -34,7 +34,31 @@
                     <!-- <h2 class="percent">25%</h2> -->
                 </div>
             </div>
-            <div class="items" routerLink='/home/level/{{idParam}}/3'>
+            <div *ngIf="!this.mediumEnable" class="items">
+                <div class="item yellow_bg">
+                    <h1>ŚREDNI</h1>
+                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
+                </div>
+                <div class="under_title_level">
+                    <!-- <h2 class="mod">Moduły</h2> -->
+                    <!-- <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2> -->
+                    <h2 class="info_block">{{this.mediumPercent}}</h2>
+                    <!-- <h2 class="percent">25%</h2> -->
+                </div>
+            </div>
+            <div *ngIf="this.hardEnable" class="items" routerLink='/home/level/{{idParam}}/3'>
+                <div class="item red_bg">
+                    <h1>TRUDNY</h1>
+                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
+                </div>
+                <div class="under_title_level">
+                    <!-- <h2 class="mod">Moduły</h2> -->
+                    <!-- <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2> -->
+                    <h2 class="info_block">{{this.hardPercent}}</h2>
+                    <!-- <h2 class="percent">0%</h2> -->
+                </div>
+            </div>
+            <div *ngIf="!this.hardEnable" class="items">
                 <div class="item red_bg">
                     <h1>TRUDNY</h1>
                     <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->

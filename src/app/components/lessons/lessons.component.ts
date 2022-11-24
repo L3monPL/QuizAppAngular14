@@ -19,10 +19,14 @@ export class LessonsComponent implements OnInit {
 
   lvlEasy?: LevelProgresses
   easyPercent?: number|string
+
   lvlMedium?: LevelProgresses
   mediumPercent?: number|string
+  mediumEnable?: boolean
+
   lvlHard?: LevelProgresses
   hardPercent?: number|string
+  hardEnable?: boolean
 
   idParam?: any
 
@@ -99,7 +103,7 @@ export class LessonsComponent implements OnInit {
     }
     if (this.lvlEasy?.levelCompleted == false) {
       if (this.lvlEasy?.finishedQuizzes == '0') {
-        this.easyPercent = "0%"
+        this.easyPercent = "Kontynuuj"
       }
       else if (this.lvlEasy?.finishedQuizzes !== '0') {
         let finishedQuizzes = this.lvlEasy?.finishedQuizzes!;
@@ -120,18 +124,21 @@ export class LessonsComponent implements OnInit {
 
   checkLvlMedium(){
     if (this.lvlMedium?.levelCompleted == undefined) {
-      this.mediumPercent = "Rozpocznij!"
+      this.mediumPercent = "Zablokowane!"
+      this.mediumEnable = false
     }
     if (this.lvlMedium?.levelCompleted == false) {
       if (this.lvlMedium?.finishedQuizzes == '0') {
         if (this.lvlEasy?.levelCompleted == false) {
           this.mediumPercent = "Zablokowane!"
+          this.mediumEnable = false
         }
         
       }
       if (this.lvlMedium?.finishedQuizzes == '0') {
         if (this.lvlEasy?.levelCompleted == true) {
-          this.mediumPercent = "0%"
+          this.mediumPercent = "Kontynuuj"
+          this.mediumEnable = true
         }
       }
       else if (this.lvlMedium?.finishedQuizzes !== '0') {
@@ -143,28 +150,33 @@ export class LessonsComponent implements OnInit {
 
         this.mediumPercent = (x/y)*100 
         this.mediumPercent = this.mediumPercent + '%'
-        console.log(this.mediumPercent)        
+        console.log(this.mediumPercent)  
+        this.mediumEnable = true      
       }
     }
     if (this.lvlMedium?.levelCompleted == true) {
       this.mediumPercent = "Ukończone"
+      this.mediumEnable = true
     }
   }
 
   checkLvlHard(){
     if (this.lvlHard?.levelCompleted == undefined) {
-      this.hardPercent = "Rozpocznij!"
+      this.hardPercent = "Zablokowane!"
+      this.hardEnable = false
     }
     if (this.lvlHard?.levelCompleted == false) {
       if (this.lvlHard?.finishedQuizzes == '0') {
         if (this.lvlMedium?.levelCompleted == false) {
           this.hardPercent = "Zablokowane!"
+          this.hardEnable = false
         }
         
       }
       if (this.lvlHard?.finishedQuizzes == '0') {
         if (this.lvlMedium?.levelCompleted) {
-          this.hardPercent = "0%"
+          this.hardPercent = "Kontynuuj"
+          this.hardEnable = true
         }
       }
       else if (this.lvlHard?.finishedQuizzes !== '0') {
@@ -176,11 +188,13 @@ export class LessonsComponent implements OnInit {
 
         this.hardPercent = (x/y)*100 
         this.hardPercent = this.hardPercent + '%'
-        console.log(this.hardPercent)        
+        console.log(this.hardPercent)  
+        this.hardEnable = true      
       }
     }
     if (this.lvlHard?.levelCompleted == true) {
       this.hardPercent = "Ukończone"
+      this.hardEnable = true
     }
   }
   
