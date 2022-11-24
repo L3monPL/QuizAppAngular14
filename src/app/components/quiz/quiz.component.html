@@ -43,7 +43,7 @@
         <mat-progress-bar mode="determinate" value={{this.getResultValue}}></mat-progress-bar>
         <div class="btn_container_result">
             <button class="btn" routerLink="/home/dashboard" mat-raised-button color="primary">Zakończ</button>
-            <button class="btn" routerLink='/home/level/{{idParam}}' mat-raised-button color="primary">Koontynuuj Quiz</button>
+            <button class="btn" routerLink='/home/level/{{this.questionManagerService.categoryId}}' mat-raised-button color="primary">Koontynuuj Quiz</button>
             <!-- <button class="btn" routerLink="/home/dashboard" mat-raised-button color="primary">Zakończ</button> -->
         </div>
     </div>

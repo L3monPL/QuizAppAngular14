@@ -18,17 +18,17 @@
         </div>
         <div class="right_container_flex">
             <div class="lvl_bar">
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <mat-progress-bar mode="determinate" value={{this.currentExpPoints}}></mat-progress-bar>
             </div>
             <div class="row_lvl_text">
                 <div class="current_lvl">
-                    <p>1 LVL</p>
+                    <p>{{this.userData.getLevel()}} LVL</p>
                 </div>
                 <!-- <div class="lvl_text">
                     <p>30/100 do </p>
                 </div> -->
                 <div class="to_current_lvl">
-                    <p>2 LVL</p>
+                    <p>{{this.userData.getLevel() + 1}} LVL</p>
                 </div>
             </div>
         </div>

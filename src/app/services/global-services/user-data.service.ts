@@ -37,6 +37,18 @@ export class UserDataService {
     return this.user!.emailAddress
   }
 
+  getLevel(): number{
+    return this.user!.userProgress.level
+  }
+
+  getExperiencePoints():number{
+    return this.user!.userProgress.experiencePoints
+  }
+
+  getTotalCompletedQuiz():number{
+    return this.user!.userProgress.totalCompletedQuiz
+  }
+
   // getCurrentCategoryProgress(){
   //   return this.user?.userProgress.categoryProgress
   // }
