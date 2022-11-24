@@ -74,6 +74,12 @@
     width: 200px;
     margin-top: 4rem;
 }
+.btn_container_result{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 1rem;
+}
 .border_progress_bar ::ng-deep .mat-progress-bar-buffer{
     background: #ccc;
 }
