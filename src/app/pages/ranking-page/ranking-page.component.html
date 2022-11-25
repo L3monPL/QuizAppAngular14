@@ -6,7 +6,7 @@
                     <img src="../../../assets/quiz_logo.jpg" alt="">
                 </div> -->
                 <div class="profil_name">
-                    <h2 class="user_txt">User_user</h2>
+                    <h2 class="user_txt">{{this.userProgressUpdate?.username}}</h2>
                     <h3 class="lvl_user">Początkujący</h3>
                 </div>
                 <div class="btn_container">
@@ -46,15 +46,15 @@
             </div>
         </div>
         <div class="scroll_container" id="style-scroll">
-            <div class="item border_bottom" *ngFor="let player of ranking; let i = index">
+            <div class="item border_bottom" *ngFor="let user of userListRanking; let i = index">
                 <div class="left_in_item">
                     <h2 class="number">{{i+1}}.</h2>
                     <div class="image_profile_in_list">
                         <img src="../../../assets/quiz_logo.jpg" alt="">
                     </div>
-                    <h2>{{player.name}}</h2>
+                    <h2>{{user.userName}}</h2>
                 </div>
-                <h2>{{player.points}} pkt.</h2>
+                <h2>{{user.experiencePoints}} pkt.</h2>
             </div>
         </div>
     </div>

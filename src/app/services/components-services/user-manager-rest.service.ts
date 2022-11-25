@@ -1,6 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserList, UserRestService } from '../user-rest.service';
+import { UserDataService } from '../global-services/user-data.service';
+import { UserList, UserRanking, UserRestService } from '../user-rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,17 @@ export class UserManagerRestService {
 
   loading = true
 
+  currentUserProgressValue?: UserList
+
+  userListRanking?: Array<UserRanking>
+
   serviceUser: EventEmitter<any> = new EventEmitter();
+  serviceUserRangingList: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private userRestService: UserRestService
+    private userRestService: UserRestService,
+    private userDataService: UserDataService,
+    private router: Router
   ) { }
 
   getUsersList(){
@@ -39,4 +48,53 @@ export class UserManagerRestService {
       complete: () => {}
     })
   }
+
+  checkUserProgress(){
+    this.userRestService.getUserById(this.userDataService.userIdByToken!).subscribe({
+      next: (response) => {
+        if(response.body){
+          this.currentUserProgressValue = response.body
+          this.serviceUser.emit(response.body)
+        }
+        else{
+          this.router.navigateByUrl('/login');
+        }
+      },
+      error: (errorResponse) => {
+        console.log(errorResponse);
+        this.router.navigateByUrl('/login');
+
+      },
+      complete: () => {
+
+      }
+    }
+  )
+}
+  checkRankingUsers(){
+    this.userRestService.getUsersListSortByExp().subscribe({
+      next: (response) => {
+        if(response.body){
+          this.userListRanking = response.body
+          this.serviceUserRangingList.emit(response.body)
+        }
+      },
+      error: (errorResponse) => {
+        console.log(errorResponse);
+
+      },
+      complete: () => {
+
+      }
+    })
+  }
+
+
+
+
+
+
+
+
+
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 
 
@@ -38,6 +39,7 @@ export class HomePageComponent implements OnInit {
   constructor(
     private router: Router,
     public userDataService: UserDataService,
+    private userManagerService: UserManagerRestService
     ) { }
 
   ngOnInit(): void {
@@ -60,6 +62,8 @@ export class HomePageComponent implements OnInit {
      }
 
      this.setSizeOptions(window.innerWidth)
+
+    //  this.userManagerService.checkUserProgress()
   }
 
   hideReightPanel(value: boolean){

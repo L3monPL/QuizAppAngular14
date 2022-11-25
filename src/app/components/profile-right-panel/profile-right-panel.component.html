@@ -49,20 +49,20 @@
     <mat-card class="scoreboard">
         <div class="label border_label">
             <div class="rank_number">
-                <p>Dzienny ranking</p>
+                <p>RANKING</p>
             </div>
             <p>PUNKTY</p>
         </div>
         <div class="scroll_elements" id="style-scroll">
             <div class="margin_top_in_scroll"></div>
-            <div class="label">
+            <div class="label" *ngFor="let user of this.userListRanking; let i = index">
                 <div class="rank_number">
-                    <p>1.</p>
-                    <p>User_user</p>
+                    <p>{{i + 1}}.</p>
+                    <p>{{user.userName}}</p>
                 </div>
-                <p>320 pkt.</p>
+                <p>{{user.experiencePoints}} pkt.</p>
             </div>
-            <div class="label">
+            <!-- <div class="label">
                 <div class="rank_number">
                     <p>2.</p>
                     <p>Kacper</p>
@@ -103,7 +103,7 @@
                     <p>Wiktor</p>
                 </div>
                 <p>200 pkt.</p>
-            </div>
+            </div> -->
         </div>
         
     </mat-card>

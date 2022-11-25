@@ -66,6 +66,15 @@ export interface UserPatch{
   // roleId?: number
 }
 
+export interface UserRanking{
+  id: number,
+  userName: string,
+  emailAddress: string,
+  profilePictureUrl: string,
+  experiencePoints: number,
+  level: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -124,6 +133,13 @@ export class UserRestService {
     })
   }
 
+  getUsersListSortByExp():Observable<HttpResponse<Array<UserRanking>>>{
+    return this.http.get<Array<UserRanking>>(this.PATH + `/user/SortByExp`,{
+      observe: 'response',
+      responseType: 'json',
+    })
+  }
+
   deleteUser(
     id: number, 
     ):Observable<HttpResponse<User>>{
@@ -145,4 +161,11 @@ export class UserRestService {
       responseType: 'json',
     })
   }
+
+
+
+
+
+
+
 }

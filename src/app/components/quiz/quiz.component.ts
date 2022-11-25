@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { UserProgressRestService } from 'src/app/services/user-progress-rest.service';
 import { CategoryProgress, LevelProgresses } from 'src/app/services/user-rest.service';
@@ -47,7 +48,8 @@ export class QuizComponent implements OnInit, OnDestroy {
     public questionManagerService: QuestionManagerRestService,
     private router: Router,
     public userProgressRest: UserProgressRestService,
-    public userDataService: UserDataService
+    public userDataService: UserDataService,
+    private userManagerService: UserManagerRestService
   ) { }
 
   ngOnInit(): void {
@@ -196,8 +198,9 @@ export class QuizComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (response) => {
         if (response.body) {
-          
           this.loading = false
+          this.userManagerService.checkUserProgress()
+          this.userManagerService.checkRankingUsers()
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'

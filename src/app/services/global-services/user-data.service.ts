@@ -42,7 +42,6 @@ export class UserDataService {
   }
 
   getExperiencePoints():number{
-    console.log(this.user!.userProgress.experiencePoints)
     return this.user!.userProgress.experiencePoints
   }
 

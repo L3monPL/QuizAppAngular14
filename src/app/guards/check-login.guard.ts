@@ -54,6 +54,7 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
             if(onlyAdmin){
               if(response.body.role.name == 'Admin'){
                 this.userGlobalService.setUser(response.body);
+                // console.log(response.body)
                 resolve(true)
               }
               else{
@@ -63,6 +64,7 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
             }
             else{
               this.userGlobalService.setUser(response.body);
+              // console.log(response.body)
               resolve(true)
             }
           }
