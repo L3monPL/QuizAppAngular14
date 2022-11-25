@@ -31,25 +31,37 @@ export class ProfileRightPanelComponent implements OnInit {
     // this.currentExpPoints = (this.currentExpPoints / 120) * 100
     // console.log(this.currentExpPoints)
 
-    this.abc = 120
+    if (this.currentLvl > 1) {
+      this.abc = 120
 
-    this.value120 = 120
-
-    for (let index = 0; index < this.currentLvl - 2; index++) {
-      this.abc = this.abc * 2
-      console.log(this.abc + 'mniejsze')
+      this.value120 = 120
+  
+  
+      // if (this.currentLvl == 1) {
+      //   this.value120 = this.value120 * 2
+      // }
+  
+  
+      for (let index = 1; index < this.currentLvl; index++) {
+        this.value120 = this.value120 * 2
+        console.log(this.value120)
+      }
+  
+      this.abc = this.value120 / 2
+  
+      let value = this.currentExpPoints - this.abc
+      console.log(value)
+  
+      this.currentExpPoints = (value / this.value120) * 100
+      console.log(this.currentExpPoints)
+    }
+    if (this.currentLvl == 1) {
+      this.currentExpPoints = (this.currentExpPoints % 120)
+    this.currentExpPoints = (this.currentExpPoints / 120) * 100
     }
 
+   
 
-    for (let index = 0; index < this.currentLvl - 1; index++) {
-      this.value120 = this.value120 * 2
-      console.log(this.value120)
-    }
-
-    this.currentExpPoints = (this.currentExpPoints / this.value120) * 100
-    console.log(this.currentExpPoints)
-    // this.currentExpPoints = (this.currentExpPoints / 120) * 100
-    // console.log(this.currentExpPoints)
   }
 
   hideRightPanel(){
