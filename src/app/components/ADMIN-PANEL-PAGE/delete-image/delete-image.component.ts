@@ -38,9 +38,10 @@ export class DeleteImageComponent implements OnInit {
   }
 
   deleteImage(){
+    let getFileName = 'image'
     let imageName = this.imageDeleteForm.get('imageName')?.value
     if (this.imageDeleteForm.valid) {
-      this.subImageDelete = this.imageRestService.deleteImage(imageName!).subscribe({
+      this.subImageDelete = this.imageRestService.deleteImage(imageName!, getFileName).subscribe({
         next: (response) => {
           if (response.body) {
             this.resetForm()

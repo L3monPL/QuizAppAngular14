@@ -65,10 +65,11 @@ export class AddImageComponent implements OnInit {
   }
 
   uploadedRequest(){
+    let getFileName = 'image'
     if (this.fileToUpload) {
       let name = this.addImageForm.get('name')?.value
       this.subUploadFile = this.imageRestService.postImage(
-        this.fileToUpload!, name!).subscribe({
+        this.fileToUpload!, name!, getFileName).subscribe({
         next: (response) => {
           if (response.body) {
             this.customError = undefined

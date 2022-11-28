@@ -20,7 +20,8 @@ export class ImageManagerRestService {
   ) { }
 
   getImagesList(){
-    this.subImagesList = this.imageRestService.getImagesList().subscribe({
+    let getFileName = 'image'
+    this.subImagesList = this.imageRestService.getImagesList(getFileName).subscribe({
       next: (response) => {
         if (response.body) {
           this.imagesList = response.body

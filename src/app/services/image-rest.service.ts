@@ -20,8 +20,8 @@ export class ImageRestService {
     private http: HttpClient
   ) { }
 
-  getImagesList():Observable<HttpResponse<Array<Image>>>{
-    return this.http.get<Array<Image>>(this.PATH + `/get`,{
+  getImagesList(containerName: string):Observable<HttpResponse<Array<Image>>>{
+    return this.http.get<Array<Image>>(this.PATH + `/${containerName}`,{
       observe: 'response',
       responseType: 'json'
     })
@@ -29,11 +29,12 @@ export class ImageRestService {
 
   postImage(
     file: File, 
-    fileName: string
+    fileName: string,
+    containerName: string
     ){
       let formData = new FormData()
       formData.append('file', file, fileName)
-    return this.http.post(this.PATH + `/upload`,
+    return this.http.post(this.PATH + `/${containerName}`,
     formData
     ,{
       observe: 'response',
@@ -44,8 +45,9 @@ export class ImageRestService {
 
   deleteImage(
     filename: string, 
+    containerName: string
     ):Observable<HttpResponse<Image>>{
-    return this.http.delete<Image>(this.PATH + `/filename?filename=${filename}`,{
+    return this.http.delete<Image>(this.PATH + `/${containerName}/filename?filename=${filename}`,{
       observe: 'response',
       responseType: 'text' as 'json'
     })
