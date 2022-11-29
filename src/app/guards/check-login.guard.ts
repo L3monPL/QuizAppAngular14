@@ -42,11 +42,13 @@ export class CheckLoginGuard implements CanActivate, CanActivateChild, CanLoad {
     return new Promise<boolean>((resolve, rejects) => {
     let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
    
+    
 
     let userIdFromToken = token.jti
     if (!this.userDataService.userIdByToken) {
       this.userDataService.userIdByToken = userIdFromToken
     }
+    
       this.userRest.getUserById(this.userDataService.userIdByToken!)
       .subscribe({
         next: (response) => {

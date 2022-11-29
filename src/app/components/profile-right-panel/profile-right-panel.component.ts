@@ -77,8 +77,8 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
 
 
   default(){
-      this.currentLvl = this.userProgressUpdate?.userProgress.level!
-      this.currentExpPoints = this.userProgressUpdate?.userProgress.experiencePoints!
+      this.currentLvl = this.userProgressUpdate?.userProgress?.level!
+      this.currentExpPoints = this.userProgressUpdate?.userProgress?.experiencePoints!
       console.log(this.currentLvl)
       if (this.currentLvl > 1) {
         this.abc = 120

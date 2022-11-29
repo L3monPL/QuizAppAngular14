@@ -89,7 +89,6 @@ export class LoginComponent implements OnInit {
 
   getUserStart(){
     let token = this.helper.decodeToken(localStorage.getItem('currentUser')!);
-    console.log(token.jti)
     this.userData.userIdByToken = token.jti
   }
   
