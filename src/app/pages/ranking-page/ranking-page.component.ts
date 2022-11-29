@@ -151,7 +151,7 @@ export class RankingPageComponent implements OnInit, OnDestroy {
   }
 
   subscribeUserRest(){
-    this.subsProgressBar = this.userManagerService.serviceUser.subscribe(
+    this.subsProgressBar = this.userManagerService.serviceCurrentUser.subscribe(
       res => {
         this.userProgressUpdate = res
       },

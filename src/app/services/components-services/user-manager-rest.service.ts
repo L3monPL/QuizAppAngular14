@@ -20,6 +20,7 @@ export class UserManagerRestService {
   userListRanking?: Array<UserRanking>
 
   serviceUser: EventEmitter<any> = new EventEmitter();
+  serviceCurrentUser: EventEmitter<any> = new EventEmitter();
   serviceUserRangingList: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -54,7 +55,7 @@ export class UserManagerRestService {
       next: (response) => {
         if(response.body){
           this.currentUserProgressValue = response.body
-          this.serviceUser.emit(response.body)
+          this.serviceCurrentUser.emit(response.body)
         }
         else{
           this.router.navigateByUrl('/login');
