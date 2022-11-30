@@ -3,10 +3,10 @@
     <p>Edytuj profil</p>
     <div class="container_icon">
         <div class="items">
-            <div class="item" *ngFor="let img of images" (click)="onClickSelect(img)">
+            <div class="item" *ngFor="let img of avatarsList" (click)="onClickSelect(img)">
                 <!-- <img class="currentImage" *ngIf="img.profileImg == this.currentProfileImage" src={{img.profileImg}} alt=""> -->
                 <!-- <img *ngIf="img.profileImg !== this.currentProfileImage" src={{img.profileImg}} alt=""> -->
-                <img class="imageBorder" [ngClass]="{ 'selected': img.profileImg == this.selectedItem }" src={{img.profileImg}} alt="">
+                <img class="imageBorder" [ngClass]="{ 'selected': img.uri == this.selectedItem }" src={{img.uri}} alt="">
             </div>
         </div>
     </div>

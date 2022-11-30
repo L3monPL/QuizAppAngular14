@@ -9,6 +9,13 @@ export interface Image{
   content: string
 }
 
+export interface Avatar{
+  uri: string,
+  name: string,
+  contentType: string,
+  content: any
+}
+
 @Injectable({
   providedIn: 'root'
 })

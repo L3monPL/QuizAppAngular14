@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageManagerRestService } from 'src/app/services/components-services/image-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
+import { Avatar } from 'src/app/services/image-rest.service';
 
 
 
@@ -10,48 +12,29 @@ import { UserDataService } from 'src/app/services/global-services/user-data.serv
 })
 export class EditProfilProfileComponent implements OnInit {
 
-  images =[
-    {
-      profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0"
-    },
-    {
-      profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/Quiz Form"
-    },
-    {
-      profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/WSB XD"
-    },
-    // {
-    //   profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0"
-    // },
-    // {
-    //   profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0"
-    // },
-    // {
-    //   profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0"
-    // },
-    // {
-    //   profileImg: "https://wsblearnstorage.blob.core.windows.net/imagecontainer/User_Icon_0"
-    // },
-  ]
 
   currentProfileImage?: string
 
   selectedItem?: any
 
+  avatarsList?: Array<Avatar>
+
 
   constructor(
     public userData: UserDataService,
+    public imageManagerRest: ImageManagerRestService
   ) { }
 
   ngOnInit(): void {
     // console.log(this.userData.getProfileIcon())
-    this.checkCurrentImage()
+    this.imageManagerRest.getAvatarsList()
+    this.getSubAvatars()
   }
 
   checkCurrentImage(){
-    for (let index = 0; index < this.images.length; index++) {
-      if (this.images[index].profileImg == this.userData.getProfileIcon()) {
-        this.currentProfileImage = this.images[index].profileImg
+    for (let index = 0; index < this.avatarsList!.length; index++) {
+      if (this.avatarsList![index].uri == this.userData.getProfileIcon()) {
+        this.currentProfileImage = this.avatarsList![index].uri
         console.log(this.currentProfileImage)
         this.selectedItem = this.currentProfileImage
       }
@@ -60,10 +43,18 @@ export class EditProfilProfileComponent implements OnInit {
   }
 
   onClickSelect(img: any){
-    this.selectedItem = img.profileImg;
+    this.selectedItem = img.uri;
     console.log(this.selectedItem)
     // this.showLessonsFromQuizMap = null
     // this.lastId = null
   }
+
+  getSubAvatars(){
+    this.imageManagerRest.serviceAvatar.subscribe(res => {
+      this.avatarsList = res
+      this.checkCurrentImage()
+    })
+  }
+
 
 }
