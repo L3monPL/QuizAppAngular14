@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 
 export type ChartOptions = {
@@ -24,7 +25,8 @@ export class MainProfileComponent implements OnInit {
   public chartOptions!: Partial<ChartOptions>;
 
   constructor(
-    public userData: UserDataService
+    public userData: UserDataService,
+    public userManagerService: UserManagerRestService
   ) {
     
    }
@@ -33,6 +35,7 @@ export class MainProfileComponent implements OnInit {
     this.getNamesOfQuiz()
     this.getValueOfQuiz()
     this.chartLoading()
+    this.userManagerService.checkUserProgress()
   }
 
   chartLoading(){
@@ -90,7 +93,7 @@ export class MainProfileComponent implements OnInit {
         return item.categoryName;
       })
 
-    console.log(userProgress)
+    // console.log(userProgress)
     this.quizList = quizNames
   }
 
@@ -153,13 +156,13 @@ export class MainProfileComponent implements OnInit {
       // console.log(currentEasy)
       // console.log(currentMedium)
       // console.log(currentHard)
-      console.log(currentAllValue)
+      // console.log(currentAllValue)
 
       this.quizFinishQuizValueList.push(currentAllValue!)
 
     })
 
-    console.log(this.quizFinishQuizValueList!)
+    // console.log(this.quizFinishQuizValueList!)
   }
 
 }

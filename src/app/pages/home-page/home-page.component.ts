@@ -63,7 +63,7 @@ export class HomePageComponent implements OnInit {
 
      this.setSizeOptions(window.innerWidth)
 
-    //  this.userManagerService.checkUserProgress()
+     this.userManagerService.checkUserProgress()
   }
 
   hideReightPanel(value: boolean){

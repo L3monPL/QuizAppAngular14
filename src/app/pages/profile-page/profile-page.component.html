@@ -2,7 +2,7 @@
     <div class="column">
         <div class="header">
             <div class="image_profile">
-                <img src={{this.userData.getProfileIcon()}} alt="">
+                <img routerLink="/home/profile/edit-profile" src={{this.currentUser?.profilePictureUrl}} alt="">
             </div>
             <div class="txt">
                 <!-- <div class="text_rank">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="score">
                     <div class="lesson_score">
-                        <h2>X</h2>
+                        <h2>{{this.userData.getCurrentCategoryProgress()}}</h2>
                     </div>
                     <div class="text_lesson_score">
                         <h2>Quizy</h2>

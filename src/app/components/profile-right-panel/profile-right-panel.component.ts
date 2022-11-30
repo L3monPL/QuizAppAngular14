@@ -36,8 +36,8 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnDestroy(): void {
-    this.subsProgressBar?.unsubscribe()
-    this.subRanking?.unsubscribe()
+    // this.subsProgressBar?.unsubscribe()
+    // this.subRanking?.unsubscribe()
   }
 
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
     this.subRanking = this.userManagerService.serviceUserRangingList.subscribe(
       res => {
         this.userListRanking = res
-        console.log(this.userListRanking)
+        // console.log(this.userListRanking)
       },
       error => {}, 
       () => {})
@@ -79,7 +79,7 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
   default(){
       this.currentLvl = this.userProgressUpdate?.userProgress?.level!
       this.currentExpPoints = this.userProgressUpdate?.userProgress?.experiencePoints!
-      console.log(this.currentLvl)
+      // console.log(this.currentLvl)
       if (this.currentLvl > 1) {
         this.abc = 120
   
@@ -90,16 +90,16 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
     
         for (let index = 1; index < this.currentLvl; index++) {
           this.value120 = this.value120 * 2
-          console.log(this.value120)
+          // console.log(this.value120)
         }
     
         this.abc = this.value120 / 2
     
         let value = this.currentExpPoints - this.abc
-        console.log(value)
+        // console.log(value)
     
         this.currentExpPoints = (value / this.value120) * 100
-        console.log(this.currentExpPoints)
+        // console.log(this.currentExpPoints)
       }
       if (this.currentLvl == 1) {
         this.currentExpPoints = (this.currentExpPoints % 120)

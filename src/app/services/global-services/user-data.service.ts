@@ -29,8 +29,8 @@ export class UserDataService {
     return this.user?.role.name == 'Admin';
   }
   getProfileIcon(): string|undefined{
-    return 'https://wsblearnstorage.blob.core.windows.net/avatarcontainer/User_Icon_0-ce698e0b-12fd-461a-88ca-0bd24f9484cf.png'
-    // return this.user?.profilePictureUrl
+    // return 'https://wsblearnstorage.blob.core.windows.net/avatarcontainer/User_Icon_0-ce698e0b-12fd-461a-88ca-0bd24f9484cf.png'
+    return this.user?.profilePictureUrl
   }
 
   getEmail(): string{
@@ -49,8 +49,8 @@ export class UserDataService {
     return this.user!.userProgress.totalCompletedQuiz
   }
 
-  // getCurrentCategoryProgress(){
-  //   return this.user?.userProgress.categoryProgress
-  // }
+  getCurrentCategoryProgress(){
+    return this.user!.userProgress.totalCompletedCategory
+  }
 
 }

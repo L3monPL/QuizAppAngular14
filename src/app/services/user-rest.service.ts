@@ -39,6 +39,7 @@ export interface UserList{
     experiencePoints: number,
     level: number,
     totalCompletedQuiz: number,
+    totalCompletedCategory: number,
     categoryProgress: Array<CategoryProgress>
   }
 }
@@ -156,6 +157,15 @@ export class UserRestService {
       // password: password,
       emailAddress: emailAddress,
       // roleId: roleId
+    }, {
+      observe: 'response',
+      responseType: 'json',
+    })
+  }
+
+  postUserAvatar(userId: number, profilePictureUrl: string):Observable<HttpResponse<any>>{
+    return this.http.patch<any>(this.PATH + `/user/${userId}`,{
+      profilePictureUrl: profilePictureUrl,
     }, {
       observe: 'response',
       responseType: 'json',
