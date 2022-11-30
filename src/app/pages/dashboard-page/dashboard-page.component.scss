@@ -20,6 +20,10 @@
 .txt{
     display: flex;
     flex-direction: column;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    color: #000;
+    
 }
 .txt h2{
     font-size: 2rem;
@@ -34,6 +38,8 @@
 }
 .name_color{
     margin-left: 8px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
     color: #000;
 }
 .image{
