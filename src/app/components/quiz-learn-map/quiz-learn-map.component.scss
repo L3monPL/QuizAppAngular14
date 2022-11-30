@@ -237,6 +237,10 @@
     justify-content: flex-end;
     // margin-right: 2rem;
 }
+.chart_container{
+    display: flex;
+    align-items: center;
+}
 
 
 
@@ -264,5 +268,8 @@
     .color{
         height: 6px;
         margin-top: 0.6rem;
+    }
+    .chart{
+        display: none;
     }
 }

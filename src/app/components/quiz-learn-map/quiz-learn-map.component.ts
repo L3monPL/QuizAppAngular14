@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import { UserDataService } from 'src/app/services/global-services/user-data.service';
+import { CategoryProgress } from 'src/app/services/user-rest.service';
+
+
+export type ChartOptions = {
+  series: ApexNonAxisChartSeries;
+  chart: ApexChart;
+  responsive: ApexResponsive[];
+  labels: any;
+};
 
 @Component({
   selector: 'app-quiz-learn-map',
@@ -7,61 +18,88 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizLearnMapComponent implements OnInit {
 
-  quizList = [
-    {
-      name: 'JavaScript',
-      icon: '../../../assets/js.png',
-      type: 'Front-end',
-      progresValue: 75,
-      link: '/home/quiz/1'
-    },
-    {
-      name: 'CSS',
-      icon: '../../../assets/css.png',
-      type: 'Front-end',
-      progresValue: 55,
-      link: '/home/quiz/2'
-    },
-    {
-      name: 'HTML',
-      icon: '../../../assets/html.png',
-      type: 'Front-end',
-      progresValue: 85,
-      link: '/home/quiz/3'
-    },
-    {
-      name: 'C#',
-      icon: '../../../assets/csharp.png',
-      type: 'Back-end',
-      progresValue: 95,
-      link: '/home/quiz/4'
-    },
-    {
-      name: 'SQL',
-      icon: '../../../assets/sql.png',
-      type: 'Back-end',
-      progresValue: 25,
-      link: '/home/quiz/5'
-    },
-    {
-      name: 'C++',
-      icon: '../../../assets/c++.png',
-      type: 'Back-end',
-      progresValue: 45,
-      link: '/home/quiz/6'
-    },
-    {
-      name: 'Python',
-      icon: '../../../assets/python.png',
-      type: 'Back-end',
-      progresValue: 5,
-      link: '/home/quiz/7'
-    },
-  ]
+  userProgress?: Array<CategoryProgress>
 
-  constructor() { }
+  quizFinishQuizValueList: any = [2, 3,1]
+  quizList?: any = ['html', 'css', 'javascript']
+
+  
+  @ViewChild("chart") chart?: ChartComponent;
+  public chartOptions!: Partial<ChartOptions>;
+
+
+  constructor(
+    public userData: UserDataService
+  ) { }
 
   ngOnInit(): void {
+    this.chartLoading()
+    this.takeValueToChart()
+  }
+
+  chartLoading(){
+    this.chartOptions = {
+      series: this.quizFinishQuizValueList,
+      chart: {
+        type: "donut"
+      },
+      labels: this.quizList,
+      responsive: [
+        {
+          breakpoint: 30000,
+          options: {
+            chart: {
+              width: 230,
+              // height: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        },
+        {
+          breakpoint: 1600,
+          options: {
+            chart: {
+              width: 200,
+              // height: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        },
+        {
+          breakpoint: 1400,
+          options: {
+            chart: {
+              width: 250,
+              // height: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        },
+        {
+          breakpoint: 600,
+          options: {
+            chart: {
+              width: 200,
+              // height: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ]
+    };
+  }
+
+  takeValueToChart(){
+    this.userProgress = this.userData.user?.userProgress.categoryProgress
+    console.log(this.userProgress)
   }
 
 }

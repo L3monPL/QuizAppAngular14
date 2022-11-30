@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { QuizLearnMapComponent } from './quiz-learn-map.component';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
     CommonModule,
     RouterModule,
     MatButtonModule,
+    NgApexchartsModule
   ],
   exports: [
     QuizLearnMapComponent
