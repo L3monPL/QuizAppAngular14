@@ -14,7 +14,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     CommonModule,
     RouterModule,
     MatButtonModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    RouterModule
   ],
   exports: [
     QuizLearnMapComponent

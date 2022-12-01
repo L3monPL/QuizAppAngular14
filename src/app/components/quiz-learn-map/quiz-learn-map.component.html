@@ -22,13 +22,16 @@
             <p>Angular</p>
         </div>
         <div class="chart_container">
-            <div class="chart" id="chart">
+            <div *ngIf="this.showChart" class="chart" id="chart">
                 <apx-chart
                   [series]="chartOptions.series!"
                   [chart]="chartOptions.chart!"
                   [labels]="chartOptions.labels"
                   [responsive]="chartOptions.responsive!">
                 </apx-chart>
+            </div>
+            <div *ngIf="!this.showChart" class="chart">
+                <h2 routerLink='/home/level/{{angularMAPCategory[0]}}' class="txt_start_chart">Rozpocznij</h2>
             </div>
         </div>
         <div class="container_category">
