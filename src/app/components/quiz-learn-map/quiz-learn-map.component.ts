@@ -118,6 +118,9 @@ export class QuizLearnMapComponent implements OnInit {
   @ViewChild("chart") chart?: ChartComponent;
   public chartOptions!: Partial<ChartOptions>;
 
+  testArr?: any [] = []
+ 
+
 
   constructor(
     public userData: UserDataService,
@@ -141,12 +144,17 @@ export class QuizLearnMapComponent implements OnInit {
     this.valueChart0 = this.chartId(0)
     this.valueChart1 = this.chartId(1)
     this.valueChart2 = this.chartId(2)
+
+    this.testArr?.push(this.chartId(0))
+
+    console.log(this.testArr)
+    console.log(this.testArr)
     
     
     /////////////ZMIENIĆ POD RESTA -----------------------------------------
   }
 
-  chartId(id: number):any{
+  chartId(id: number){
     var currentId = id
     for (let index = 0; index < id; index++) {
       currentId = currentId + 2
