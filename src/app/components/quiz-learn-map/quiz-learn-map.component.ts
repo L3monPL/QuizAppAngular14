@@ -86,12 +86,6 @@ export class QuizLearnMapComponent implements OnInit {
     }
   ]
 
-  angularMAPCategory = [57, 56, 55]//54><55
-  angularArray: any = []
-  quizList?: any = ['html', 'css', 'javascript']
-  showChart?: boolean = true
-
-
   lvl1Finish?: number|string
   lvl2Finish?: number|string
   lvl3Finish?: number|string
@@ -111,17 +105,13 @@ export class QuizLearnMapComponent implements OnInit {
   userProgressCategory?: CategoryProgress
 
   userProgress?: Array<CategoryProgress>
-
-  valueChart0?: any []
-  valueChart1?: any []
-  valueChart2?: any []
-
-
   
   @ViewChild("chart") chart?: ChartComponent;
   public chartOptions!: Partial<ChartOptions>;
 
   testArr?: any [] = []
+
+  angularArray: any = []
 
   arrayWithLabelNames?: any [] = []
 
@@ -137,7 +127,6 @@ export class QuizLearnMapComponent implements OnInit {
   ngOnInit(): void {
     this.chartLoading()
 
-    /////////////ZMIENIĆ POD RESTA -----------------------------------------
     for (let index = 0; index < this.maps.length; index++) {
   
       for (let indexMap = 0; indexMap < this.maps[index].mapList.length; indexMap++) {
@@ -185,11 +174,9 @@ export class QuizLearnMapComponent implements OnInit {
 
   chartLoading(){
     this.chartOptions = {
-      series: this.angularArray,
       chart: {
         type: "donut"
       },
-      labels: this.quizList,
       responsive: [
         {
           breakpoint: 30000,
