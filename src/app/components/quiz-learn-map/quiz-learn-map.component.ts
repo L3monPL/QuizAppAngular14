@@ -142,13 +142,13 @@ export class QuizLearnMapComponent implements OnInit {
         let currentValue = this.maps[index].mapList[indexMap].categoryId
         this.takeValueToChart(currentValue)
       }
-
       this.testArr?.push(this.chartId(index))
       this.arrayWithLabelNames?.push(this.chartLabelName(index))
-      console.log(this.arrayWithLabelNames) 
     }
 
-    // this.chartLabelName(0)
+    for (let index = 0; index < this.maps.length; index++) {
+      this.checkValueToShowChartOrHide(index)
+    }
     
   }
 
@@ -156,7 +156,7 @@ export class QuizLearnMapComponent implements OnInit {
     var arrayLabelNameToPush = []
     for (let index = 0; index < this.maps[id].mapList.length; index++) {
       let currentLabelName = this.maps[id].mapList[index].categoryName
-      console.log(currentLabelName) 
+      // console.log(currentLabelName) 
       arrayLabelNameToPush.push(currentLabelName)
     }
     return arrayLabelNameToPush
@@ -242,12 +242,12 @@ export class QuizLearnMapComponent implements OnInit {
 
   takeValueToChart(id: number){
     this.userProgress = this.userData.user?.userProgress.categoryProgress
-    console.log(this.userProgress)
+    // console.log(this.userProgress)
 
       this.userProgressCategory = this.userDataService.user?.userProgress.categoryProgress.find((obj) => {
         return obj.categoryId === id;
       });
-      console.log(this.userProgressCategory)
+      // console.log(this.userProgressCategory)
 
       let ok = this.userProgressCategory?.levelProgresses![0]
 
@@ -320,7 +320,7 @@ export class QuizLearnMapComponent implements OnInit {
     this.progressCategoryResult = (this.sumLvlFinish / this.sumLvlMax) * 100
 
     // })
-    console.log(this.progressCategoryResult)
+    // console.log(this.progressCategoryResult)
 
     if (this.progressCategoryResult == 0) {
       // this.showChart = false
@@ -331,9 +331,16 @@ export class QuizLearnMapComponent implements OnInit {
 
     this.angularArray?.push(this.progressCategoryResult)
 
-    console.log(this.angularArray)
+    // console.log(this.angularArray)
   
-    
+  }
+
+  checkValueToShowChartOrHide(id: number){
+    var sumcheckValueShow = 0
+    for (let index = -1; index < id; index++) {
+      sumcheckValueShow = this.angularArray[0] + this.angularArray[1] + this.angularArray[2]
+    }
+    return console.log(sumcheckValueShow)
   }
 
 
