@@ -159,14 +159,14 @@ export class QuizLearnMapComponent implements OnInit {
     for (let index = 0; index < id; index++) {
       currentId = currentId + 2
     }
-    var idd = []
+    var arrayValueToPush = []
       
       for (let indexMap = 0; indexMap < 3; indexMap++) {
-        idd.push(this.angularArray[currentId + indexMap])
+        arrayValueToPush.push(this.angularArray[currentId + indexMap])
       }
       
-    console.log(idd)
-    return idd
+    // console.log(arrayValueToPush)
+    return arrayValueToPush
     
   }
 
