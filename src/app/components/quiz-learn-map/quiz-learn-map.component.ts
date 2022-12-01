@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import { ApexAxisChartSeries, ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
 import { Category } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
@@ -7,7 +7,7 @@ import { CategoryProgress } from 'src/app/services/user-rest.service';
 
 
 export type ChartOptions = {
-  series: ApexNonAxisChartSeries;
+  series: string;
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
@@ -60,13 +60,33 @@ export class QuizLearnMapComponent implements OnInit {
           categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
         }
       ]
+    },
+    {
+      mapName: 'React',
+      mapList: [
+        {
+          categoryId: 57,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        },
+        {
+          categoryId: 54,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        },
+        {
+          categoryId: 57,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        }
+      ]
     }
   ]
 
   angularMAPCategory = [57, 56, 55]//54><55
   angularArray: any = []
   quizList?: any = ['html', 'css', 'javascript']
-  showChart?: boolean
+  showChart?: boolean = true
 
 
   lvl1Finish?: number|string
@@ -89,6 +109,10 @@ export class QuizLearnMapComponent implements OnInit {
 
   userProgress?: Array<CategoryProgress>
 
+  valueChart0?: any []
+  valueChart1?: any []
+  valueChart2?: any []
+
 
   
   @ViewChild("chart") chart?: ChartComponent;
@@ -106,14 +130,36 @@ export class QuizLearnMapComponent implements OnInit {
 
     /////////////ZMIENIĆ POD RESTA -----------------------------------------
     for (let index = 0; index < this.maps.length; index++) {
+  
       for (let indexMap = 0; indexMap < this.maps[index].mapList.length; indexMap++) {
         let currentValue = this.maps[index].mapList[indexMap].categoryId
         this.takeValueToChart(currentValue)
       }
-      
+      // this.valueFirstChart?.push(this.chartId(index))
+      // console.log(this.chartId(index))
     }
+    this.valueChart0 = this.chartId(0)
+    this.valueChart1 = this.chartId(1)
+    this.valueChart2 = this.chartId(2)
+    
     
     /////////////ZMIENIĆ POD RESTA -----------------------------------------
+  }
+
+  chartId(id: number):any{
+    var currentId = id
+    for (let index = 0; index < id; index++) {
+      currentId = currentId + 2
+    }
+    var idd = []
+      
+      for (let indexMap = 0; indexMap < 3; indexMap++) {
+        idd.push(this.angularArray[currentId + indexMap])
+      }
+      
+    console.log(idd)
+    return idd
+    
   }
 
   chartLoading(){
@@ -256,10 +302,10 @@ export class QuizLearnMapComponent implements OnInit {
     console.log(this.progressCategoryResult)
 
     if (this.progressCategoryResult == 0) {
-      this.showChart = false
+      // this.showChart = false
     }
     if (this.progressCategoryResult !== 0) {
-      this.showChart = true
+      // this.showChart = true
     }
 
     this.angularArray?.push(this.progressCategoryResult)
