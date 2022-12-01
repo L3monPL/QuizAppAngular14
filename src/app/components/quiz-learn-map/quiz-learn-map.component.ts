@@ -20,6 +20,49 @@ export type ChartOptions = {
 })
 export class QuizLearnMapComponent implements OnInit {
 
+  maps = [
+    {
+      mapName: 'Angular',
+      mapList: [
+        {
+          categoryId: 57,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        },
+        {
+          categoryId: 56,
+          categoryName: 'HTML',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/HTML'
+        },
+        {
+          categoryId: 57,
+          categoryName: 'JavaScript',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/JavaScript'
+        }
+      ]
+    },
+    {
+      mapName: 'React',
+      mapList: [
+        {
+          categoryId: 54,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        },
+        {
+          categoryId: 54,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        },
+        {
+          categoryId: 54,
+          categoryName: 'CSS',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+        }
+      ]
+    }
+  ]
+
   angularMAPCategory = [57, 56, 55]//54><55
   angularArray: any = []
   quizList?: any = ['html', 'css', 'javascript']
