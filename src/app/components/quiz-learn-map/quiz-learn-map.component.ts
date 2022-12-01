@@ -44,7 +44,7 @@ export class QuizLearnMapComponent implements OnInit {
     },
     {
       mapName: 'React',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/react-fd251711-20df-4986-bd15-5bc32a669b4e.png',
       mapList: [
         {
           categoryId: 54,
@@ -65,7 +65,7 @@ export class QuizLearnMapComponent implements OnInit {
     },
     {
       mapName: '.Net',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/csharp-logo.jpg',
       mapList: [
         {
           categoryId: 57,

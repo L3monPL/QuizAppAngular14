@@ -54,7 +54,7 @@ export class ImageRestService {
     filename: string, 
     containerName: string
     ):Observable<HttpResponse<Image>>{
-    return this.http.delete<Image>(this.PATH + `/${containerName}/filename?filename=${filename}`,{
+    return this.http.delete<Image>(this.PATH + `/${containerName}/${filename}`,{
       observe: 'response',
       responseType: 'text' as 'json'
     })

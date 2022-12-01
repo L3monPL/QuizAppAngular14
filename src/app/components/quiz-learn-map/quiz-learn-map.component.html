@@ -19,7 +19,7 @@
     <div class="item" *ngFor=" let chart of maps; let i = index">
         <div class="icon_side">
             <img src={{chart.mapIconUrl}} alt="">
-            <p>{{chart.mapName}}</p>
+            <!-- <p>{{chart.mapName}}</p> -->
         </div>
         <div class="chart_container">
             <div *ngIf="this.arrayWithSumProgressResult![i] !== 0" class="chart" id="chart">
