@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { CategoryProgress } from 'src/app/services/user-rest.service';
 
@@ -29,7 +30,8 @@ export class QuizLearnMapComponent implements OnInit {
 
 
   constructor(
-    public userData: UserDataService
+    public userData: UserDataService,
+    private categoryManagerRest: CategoryManagerRestService
   ) { }
 
   ngOnInit(): void {
@@ -100,6 +102,9 @@ export class QuizLearnMapComponent implements OnInit {
   takeValueToChart(){
     this.userProgress = this.userData.user?.userProgress.categoryProgress
     console.log(this.userProgress)
+
+    this.categoryManagerRest.categoryList
+    console.log(this.categoryManagerRest.categoryList)
   }
 
 }
