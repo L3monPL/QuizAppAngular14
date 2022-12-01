@@ -65,12 +65,12 @@ export class QuizLearnMapComponent implements OnInit {
     },
     {
       mapName: '.Net',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/csharp-logo.jpg',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-ce8bdbe7-44a4-4b06-bd01-e490913a373b.png',
       mapList: [
         {
-          categoryId: 57,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+          categoryId: 1,
+          categoryName: 'C#',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-ce8bdbe7-44a4-4b06-bd01-e490913a373b.png'
         },
         {
           categoryId: 54,
