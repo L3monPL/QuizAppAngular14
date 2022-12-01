@@ -105,10 +105,14 @@ export class QuizLearnMapComponent implements OnInit {
     this.chartLoading()
 
     /////////////ZMIENIĆ POD RESTA -----------------------------------------
-    for (let index = 0; index < this.angularMAPCategory.length; index++) {
-      let currentValue = this.angularMAPCategory[index]
-      this.takeValueToChart(currentValue)
+    for (let index = 0; index < this.maps.length; index++) {
+      for (let indexMap = 0; indexMap < this.maps[index].mapList.length; indexMap++) {
+        let currentValue = this.maps[index].mapList[indexMap].categoryId
+        this.takeValueToChart(currentValue)
+      }
+      
     }
+    
     /////////////ZMIENIĆ POD RESTA -----------------------------------------
   }
 
