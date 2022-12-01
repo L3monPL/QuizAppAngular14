@@ -123,6 +123,8 @@ export class QuizLearnMapComponent implements OnInit {
 
   testArr?: any [] = []
 
+  arrayWithLabelNames?: any [] = []
+
 
   constructor(
     public userData: UserDataService,
@@ -140,22 +142,27 @@ export class QuizLearnMapComponent implements OnInit {
         let currentValue = this.maps[index].mapList[indexMap].categoryId
         this.takeValueToChart(currentValue)
       }
-      // this.valueFirstChart?.push(this.chartId(index))
-      // console.log(this.chartId(index))
+
       this.testArr?.push(this.chartId(index))
+      this.arrayWithLabelNames?.push(this.chartLabelName(index))
+      console.log(this.arrayWithLabelNames) 
     }
-    // this.valueChart0 = this.chartId(0)
-    // this.valueChart1 = this.chartId(1)
-    // this.valueChart2 = this.chartId(2)
 
-    // this.testArr?.push(this.chartId(0))
-
-    console.log(this.testArr)
-    console.log(this.testArr)
+    // this.chartLabelName(0)
     
-    
-    /////////////ZMIENIĆ POD RESTA -----------------------------------------
   }
+
+  chartLabelName(id: number){
+    var arrayLabelNameToPush = []
+    for (let index = 0; index < this.maps[id].mapList.length; index++) {
+      let currentLabelName = this.maps[id].mapList[index].categoryName
+      console.log(currentLabelName) 
+      arrayLabelNameToPush.push(currentLabelName)
+    }
+    return arrayLabelNameToPush
+  }
+
+
 
   chartId(id: number){
     var currentId = id
@@ -252,8 +259,11 @@ export class QuizLearnMapComponent implements OnInit {
       this.lvl1Max = this.userProgressCategory?.levelProgresses![0].quizzesToFinish
       this.lvl2Max = this.userProgressCategory?.levelProgresses![1].quizzesToFinish
       this.lvl3Max = this.userProgressCategory?.levelProgresses![2].quizzesToFinish
+
+
     }
-    
+
+
     if(ok?.finishedQuizzes == undefined){
       this.lvl1Finish = '0'
       this.lvl2Finish = '0'
@@ -323,7 +333,9 @@ export class QuizLearnMapComponent implements OnInit {
 
     console.log(this.angularArray)
   
+    
   }
+
 
   // getInfoAboutCategoryFromList(){
   //   this.userProgress = this.userData.user?.userProgress.categoryProgress

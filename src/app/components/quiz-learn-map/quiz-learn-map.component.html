@@ -26,7 +26,7 @@
                 <apx-chart
                   [series]="testArr![i]"
                   [chart]="chartOptions.chart!"
-                  [labels]="chartOptions.labels"
+                  [labels]="this.arrayWithLabelNames![i]"
                   [responsive]="chartOptions.responsive!">
                 </apx-chart>
             </div>
