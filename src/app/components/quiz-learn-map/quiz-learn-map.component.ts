@@ -151,7 +151,7 @@ export class QuizLearnMapComponent implements OnInit {
     for (let index = 0; index < this.maps.length; index++) {
       this.arrayWithSumProgressResult?.push(this.checkValueToShowChartOrHide(index))
     }
-    console.log(this.arrayWithSumProgressResult)
+    // console.log(this.arrayWithSumProgressResult)
     
   }
 
@@ -346,7 +346,7 @@ export class QuizLearnMapComponent implements OnInit {
     }
     sumcheckValueShow = this.angularArray[intiger] + this.angularArray[intiger+1] + this.angularArray[intiger+2]
 
-    console.log(this.angularArray[intiger], this.angularArray[intiger+1], this.angularArray[intiger+2])
+    // console.log(this.angularArray[intiger], this.angularArray[intiger+1], this.angularArray[intiger+2])
     return sumcheckValueShow
   }
 
