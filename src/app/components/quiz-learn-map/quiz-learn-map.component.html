@@ -24,7 +24,7 @@
         <div class="chart_container">
             <div *ngIf="this.showChart" class="chart" id="chart">
                 <apx-chart
-                  [series]="this.valueChart0!"
+                  [series]="testArr![0]"
                   [chart]="chartOptions.chart!"
                   [labels]="chartOptions.labels"
                   [responsive]="chartOptions.responsive!">
@@ -50,7 +50,7 @@
         <div class="chart_container">
             <div *ngIf="this.showChart" class="chart" id="chart">
                 <apx-chart
-                  [series]="this.valueChart1!"
+                  [series]="testArr![1]"
                   [chart]="chartOptions.chart!"
                   [labels]="chartOptions.labels"
                   [responsive]="chartOptions.responsive!">
@@ -76,7 +76,7 @@
         <div class="chart_container">
             <div class="chart" id="chart">
                 <apx-chart
-                  [series]="this.valueChart2!"
+                  [series]="testArr![2]"
                   [chart]="chartOptions.chart!"
                   [labels]="chartOptions.labels"
                   [responsive]="chartOptions.responsive!">
