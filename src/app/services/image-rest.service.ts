@@ -40,12 +40,12 @@ export class ImageRestService {
     containerName: string
     ){
       let formData = new FormData()
-      formData.append('file', file, fileName)
+      formData.append('file', file)
     return this.http.post(this.PATH + `/${containerName}`,
     formData
     ,{
       observe: 'response',
-      responseType: 'json'
+      responseType: 'text' as 'json'
     }
     )
   }
