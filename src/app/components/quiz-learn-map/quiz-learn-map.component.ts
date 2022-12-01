@@ -23,6 +23,7 @@ export class QuizLearnMapComponent implements OnInit {
   maps = [
     {
       mapName: 'Angular',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
       mapList: [
         {
           categoryId: 57,
@@ -43,6 +44,7 @@ export class QuizLearnMapComponent implements OnInit {
     },
     {
       mapName: 'React',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
       mapList: [
         {
           categoryId: 54,
@@ -62,7 +64,8 @@ export class QuizLearnMapComponent implements OnInit {
       ]
     },
     {
-      mapName: 'React',
+      mapName: '.Net',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
       mapList: [
         {
           categoryId: 57,

@@ -16,81 +16,33 @@
     </div>
 </div>
 <div class="items_container">
-    <div class="item">
+    <div class="item" *ngFor=" let chart of maps; let i = index">
         <div class="icon_side">
-            <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular" alt="">
-            <p>Angular</p>
+            <img src={{chart.mapIconUrl}} alt="">
+            <p>{{chart.mapName}}</p>
         </div>
         <div class="chart_container">
             <div *ngIf="this.showChart" class="chart" id="chart">
                 <apx-chart
-                  [series]="testArr![0]"
+                  [series]="testArr![i]"
                   [chart]="chartOptions.chart!"
                   [labels]="chartOptions.labels"
                   [responsive]="chartOptions.responsive!">
                 </apx-chart>
             </div>
             <div *ngIf="!this.showChart" class="chart">
-                <h2 routerLink='/home/level/{{angularMAPCategory[0]}}' class="txt_start_chart">Rozpocznij</h2>
+                <h2 routerLink='/home/level/{{chart.mapList[0].categoryId}}' class="txt_start_chart">Rozpocznij</h2>
             </div>
         </div>
         <div class="container_category">
             <div class="icon_bg">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/HTML" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/JavaScript" alt="">
+                <img src={{chart.mapList[0].categoryUrl}} alt="">
+                <img src={{chart.mapList[1].categoryUrl}} alt="">
+                <img src={{chart.mapList[2].categoryUrl}} alt="">
             </div>
         </div>
     </div>
-    <div class="item">
-        <div class="icon_side">
-            <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular" alt="">
-            <p>Angular</p>
-        </div>
-        <div class="chart_container">
-            <div *ngIf="this.showChart" class="chart" id="chart">
-                <apx-chart
-                  [series]="testArr![1]"
-                  [chart]="chartOptions.chart!"
-                  [labels]="chartOptions.labels"
-                  [responsive]="chartOptions.responsive!">
-                </apx-chart>
-            </div>
-            <div *ngIf="!this.showChart" class="chart">
-                <h2 routerLink='/home/level/{{angularMAPCategory[1]}}' class="txt_start_chart">Rozpocznij</h2>
-            </div>
-        </div>
-        <div class="container_category">
-            <div class="icon_bg">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/HTML" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/JavaScript" alt="">
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="icon_side">
-            <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular" alt="">
-            <p>Angular</p>
-        </div>
-        <div class="chart_container">
-            <div class="chart" id="chart">
-                <apx-chart
-                  [series]="testArr![2]"
-                  [chart]="chartOptions.chart!"
-                  [labels]="chartOptions.labels"
-                  [responsive]="chartOptions.responsive!">
-                </apx-chart>
-            </div>
-        </div>
-        <div class="container_category">
-            <div class="icon_bg">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/HTML" alt="">
-                <img src="https://wsblearnstorage.blob.core.windows.net/imagecontainer/JavaScript" alt="">
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 
