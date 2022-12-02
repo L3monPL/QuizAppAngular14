@@ -1,4 +1,4 @@
-<div *ngIf="!this.loading" class="container">
+<!-- <div *ngIf="!this.loading" class="container">
     <div class="grid_area">
         <div class="container_header">
             <div class="header">
@@ -14,60 +14,41 @@
             <div class="items" routerLink='/home/level/{{idParam}}/1'>
                 <div class="item green_bg">
                     <h1>ŁATWY</h1>
-                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
                 </div>
                 <div class="under_title_level">
-                    <!-- <h2 class="mod">Moduły</h2> -->
-                    <!-- <h2 class="score_mod">3/{{categoryById?.lessonsPerLevel}}</h2> -->
                     <h2 class="percent">{{this.easyPercent}}</h2>
                 </div>
             </div>
             <div *ngIf="this.mediumEnable" class="items" routerLink='/home/level/{{idParam}}/2'>
                 <div class="item yellow_bg">
                     <h1>ŚREDNI</h1>
-                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
                 </div>
                 <div class="under_title_level">
-                    <!-- <h2 class="mod">Moduły</h2> -->
-                    <!-- <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2> -->
                     <h2 class="info_block">{{this.mediumPercent}}</h2>
-                    <!-- <h2 class="percent">25%</h2> -->
                 </div>
             </div>
             <div *ngIf="!this.mediumEnable" class="items">
                 <div class="item yellow_bg">
                     <h1>ŚREDNI</h1>
-                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
                 </div>
                 <div class="under_title_level">
-                    <!-- <h2 class="mod">Moduły</h2> -->
-                    <!-- <h2 class="score_mod">1/{{categoryById?.lessonsPerLevel}}</h2> -->
                     <h2 class="info_block">{{this.mediumPercent}}</h2>
-                    <!-- <h2 class="percent">25%</h2> -->
                 </div>
             </div>
             <div *ngIf="this.hardEnable" class="items" routerLink='/home/level/{{idParam}}/3'>
                 <div class="item red_bg">
                     <h1>TRUDNY</h1>
-                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
                 </div>
                 <div class="under_title_level">
-                    <!-- <h2 class="mod">Moduły</h2> -->
-                    <!-- <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2> -->
                     <h2 class="info_block">{{this.hardPercent}}</h2>
-                    <!-- <h2 class="percent">0%</h2> -->
                 </div>
             </div>
             <div *ngIf="!this.hardEnable" class="items">
                 <div class="item red_bg">
                     <h1>TRUDNY</h1>
-                    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
                 </div>
                 <div class="under_title_level">
-                    <!-- <h2 class="mod">Moduły</h2> -->
-                    <!-- <h2 class="score_mod">0/{{categoryById?.lessonsPerLevel}}</h2> -->
                     <h2 class="info_block">{{this.hardPercent}}</h2>
-                    <!-- <h2 class="percent">0%</h2> -->
                 </div>
             </div>
             
@@ -83,15 +64,148 @@
     </div>
 
     
-</div>
+</div> -->
 
-<!-- <mat-card routerLink='/home/level/{{idParam}}/1'>
-    <h1>ŁATWY</h1> -->
-    <!-- <p>{{categoryById?.lessonsPerLevel}}</p> -->
-<!-- </mat-card>
-<mat-card routerLink='/home/level/{{idParam}}/2'>
-    <h1>ŚREDNI</h1>
-</mat-card>
-<mat-card routerLink='/home/level/{{idParam}}/3'>
-    <h1>TRUDNY</h1>
-</mat-card> -->
+
+<div *ngIf="!this.loading" class="container_main">
+    <div class="container_side center column">
+        <div class="image_category">
+            <img src={{categoryById?.iconUrl}} alt="">
+        </div>
+        <div class="title">
+            <h2>{{categoryById?.description}}</h2>
+        </div>
+    </div>
+    <div class="container_side center">
+        <div class="items_col">
+            <div class="item" routerLink='/home/level/{{idParam}}/1'>
+                <div class="header_item header_green">
+                    <h2>ŁATWY</h2>
+                </div>
+                <div *ngIf="this.easyPercent! == 'Kontynuuj' || this.easyPercent! == 'Rozpocznij!'" class="row_in_item">
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.easyPercent! == '25%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.easyPercent! == '50%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.easyPercent! == '75%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.easyPercent! == 'Ukończone'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                </div>
+            </div>
+            <div class="item" *ngIf="this.mediumEnable" routerLink='/home/level/{{idParam}}/2'>
+                <div class="header_item header_yellow">
+                    <h2>ŚREDNI</h2>
+                </div>
+                <div *ngIf="this.mediumPercent! == 'Kontynuuj' || this.mediumPercent! == 'Rozpocznij!'" class="row_in_item">
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.mediumPercent! == '25%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.mediumPercent! == '50%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.mediumPercent! == '75%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.mediumPercent! == 'Ukończone'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                </div>
+            </div>
+            <div class="item" *ngIf="!this.mediumEnable">
+                <div class="header_item header_yellow">
+                    <h2>ŚREDNI</h2>
+                </div>
+                <div class="row_in_item_block">
+                    <mat-icon class="color_block">block</mat-icon>
+                    <h2>Zablokowane</h2>
+                    <mat-icon class="color_block">block</mat-icon>
+                </div>
+            </div>
+            <div class="item" *ngIf="this.hardEnable" routerLink='/home/level/{{idParam}}/3'>
+                <div class="header_item header_red">
+                    <h2>TRUDNY</h2>
+                </div>
+                <div *ngIf="this.hardPercent! == 'Kontynuuj' || this.mediumPercent! == 'Rozpocznij!'" class="row_in_item">
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.hardPercent! == '25%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.hardPercent! == '50%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.hardPercent! == '75%'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                    <mat-icon class="color_no">cancel</mat-icon>
+                </div>
+                <div *ngIf="this.hardPercent! == 'Ukończone'" class="row_in_item">
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                    <mat-icon class="color_yes">check_circle</mat-icon>
+                </div>
+            </div>
+            <div class="item" *ngIf="!this.hardEnable">
+                <div class="header_item header_red">
+                    <h2>TRUDNY</h2>
+                </div>
+                <div class="row_in_item_block">
+                    <mat-icon class="color_block">block</mat-icon>
+                    <h2>Zablokowane</h2>
+                    <mat-icon class="color_block">block</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container_side">
+        CHART
+    </div>
+</div>

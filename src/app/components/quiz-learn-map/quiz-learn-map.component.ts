@@ -65,7 +65,7 @@ export class QuizLearnMapComponent implements OnInit {
     },
     {
       mapName: '.Net',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-ce8bdbe7-44a4-4b06-bd01-e490913a373b.png',
+      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/dot-net-a56ff2b2-84d0-44fa-b6e1-318c0449b86c.png',
       mapList: [
         {
           categoryId: 1,
