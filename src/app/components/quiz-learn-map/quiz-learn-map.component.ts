@@ -70,7 +70,7 @@ export class QuizLearnMapComponent implements OnInit {
         {
           categoryId: 1,
           categoryName: 'C#',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-ce8bdbe7-44a4-4b06-bd01-e490913a373b.png'
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-2d46b5d1-cc94-4c2e-97ca-97c408c16d23.png'
         },
         {
           categoryId: 54,
@@ -78,9 +78,9 @@ export class QuizLearnMapComponent implements OnInit {
           categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
         },
         {
-          categoryId: 57,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
+          categoryId: 63,
+          categoryName: 'SQL',
+          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/sql-70005d9a-3e1d-4881-ae78-83b569c738a6.png'
         }
       ]
     }
