@@ -72,9 +72,9 @@
         <div class="image_category">
             <img src={{categoryById?.iconUrl}} alt="">
         </div>
-        <div class="title">
+        <!-- <div class="title">
             <h2>{{categoryById?.description}}</h2>
-        </div>
+        </div> -->
     </div>
     <div class="container_side center">
         <div class="items_col">
@@ -205,7 +205,17 @@
             </div>
         </div>
     </div>
-    <div class="container_side">
-        CHART
+    <div class="container_side center column">
+        <div class="chart" id="chart">
+            <apx-chart
+              [series]="chartOptions.series!"
+              [chart]="chartOptions.chart!"
+              [labels]="chartOptions.labels"
+              [responsive]="chartOptions.responsive!">
+            </apx-chart>
+        </div>
+        <!-- <div class="title">
+            <h2 class="margin_txt_title_chart">Statystyka ukończonych poziomów</h2>
+        </div> -->
     </div>
 </div>

@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     MatCardModule,
     RouterModule,
     RouterModule.forChild(routes),
-    MatIconModule
+    MatIconModule,
+    NgApexchartsModule
   ],
   exports: [
     LessonsComponent

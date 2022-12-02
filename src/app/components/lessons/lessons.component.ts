@@ -1,10 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
 import { Subscription } from 'rxjs';
 import { Category, CategoryRestService } from 'src/app/services/category-rest.service';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { CategoryProgress, LevelProgresses, UserList } from 'src/app/services/user-rest.service';
+
+
+export type ChartOptions = {
+  series: ApexNonAxisChartSeries;
+  chart: ApexChart;
+  responsive: ApexResponsive[];
+  labels: any;
+};
 
 @Component({
   selector: 'app-lessons',
@@ -12,6 +21,12 @@ import { CategoryProgress, LevelProgresses, UserList } from 'src/app/services/us
   styleUrls: ['./lessons.component.scss']
 })
 export class LessonsComponent implements OnInit {
+
+  quizList?: any
+  quizFinishQuizValueList: any = []
+
+  @ViewChild("chart") chart?: ChartComponent;
+  public chartOptions!: Partial<ChartOptions>;
 
   user?: UserList
 
@@ -47,6 +62,7 @@ export class LessonsComponent implements OnInit {
     this.takeValueFromUrl()
     this.getCategoryById()
     this.checkUser()
+    this.chartLoading()
   }
 
   takeValueFromUrl(){
@@ -198,7 +214,53 @@ export class LessonsComponent implements OnInit {
     }
   }
   
-  
+  chartLoading(){
+    this.chartOptions = {
+      series: [1,1,1],
+      chart: {
+        type: "donut"
+      },
+      labels: ['Łatwy', 'Średni', 'Trudny'],
+      responsive: [
+        {
+          breakpoint: 3000,
+          options: {
+            chart: {
+              width: 360,
+              // height: 200
+            },
+            legend: {
+              position: "top"
+            }
+          }
+        },
+        {
+          breakpoint: 1400,
+          options: {
+            chart: {
+              width: 400,
+              height: 300
+            },
+            legend: {
+              position: "top"
+            }
+          }
+        },
+        {
+          breakpoint: 600,
+          options: {
+            chart: {
+              width: 200,
+              // height: 200
+            },
+            legend: {
+              position: "top"
+            }
+          }
+        }
+      ]
+    };
+  }
   
 
 }
