@@ -22,6 +22,9 @@ export type ChartOptions = {
 })
 export class LessonsComponent implements OnInit {
 
+  currentValueToShowShart = 0
+  currentAllFinishedQuizzesArray?: any = []
+
   quizList?: any
   quizFinishQuizValueList: any = []
 
@@ -111,6 +114,23 @@ export class LessonsComponent implements OnInit {
     this.checkLvlEasy()
     this.checkLvlMedium()
     this.checkLvlHard()
+    // console.log(this.lvlEasy?.finishedQuizzes)
+    // console.log(this.lvlMedium?.finishedQuizzes)
+    // console.log(this.lvlHard?.finishedQuizzes)
+    this.currentAllFinishedQuizzesArray.push(this.lvlEasy?.finishedQuizzes)
+    this.currentAllFinishedQuizzesArray.push(this.lvlMedium?.finishedQuizzes)
+    this.currentAllFinishedQuizzesArray.push(this.lvlHard?.finishedQuizzes)
+    if (this.lvlEasy?.finishedQuizzes == undefined || this.lvlEasy?.finishedQuizzes == '0') {
+      this.currentValueToShowShart = this.currentValueToShowShart + 1
+    }
+    if (this.lvlMedium?.finishedQuizzes == undefined || this.lvlMedium?.finishedQuizzes == '0') {
+      this.currentValueToShowShart = this.currentValueToShowShart + 1
+    }
+    if (this.lvlHard?.finishedQuizzes == undefined || this.lvlHard?.finishedQuizzes == '0') {
+      this.currentValueToShowShart = this.currentValueToShowShart + 1
+    }
+    console.log(this.currentValueToShowShart)
+    console.log(this.currentAllFinishedQuizzesArray)
   }
 
   checkLvlEasy(){
@@ -216,7 +236,7 @@ export class LessonsComponent implements OnInit {
   
   chartLoading(){
     this.chartOptions = {
-      series: [1,1,1],
+      series: this.currentAllFinishedQuizzesArray,
       chart: {
         type: "donut"
       },

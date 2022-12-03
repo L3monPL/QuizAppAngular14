@@ -206,7 +206,7 @@
         </div>
     </div>
     <div class="container_side center column">
-        <div class="chart" id="chart">
+        <div *ngIf="this.currentValueToShowShart !== 3" class="chart" id="chart">
             <apx-chart
               [series]="chartOptions.series!"
               [chart]="chartOptions.chart!"
@@ -214,6 +214,9 @@
               [responsive]="chartOptions.responsive!">
             </apx-chart>
         </div>
+        <!-- <div *ngIf="this.currentValueToShowShart == 3">
+            <h2 class="txt_start_quiz_info_chart">Rozpocznij quiz by uzyskać statystyki</h2>
+        </div> -->
         <!-- <div class="title">
             <h2 class="margin_txt_title_chart">Statystyka ukończonych poziomów</h2>
         </div> -->
