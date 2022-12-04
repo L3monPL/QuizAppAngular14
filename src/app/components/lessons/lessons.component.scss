@@ -240,12 +240,12 @@
     font-size: 2rem;
 }
 .row_in_item_block{
-    display: flex;
+    // display: flex;
     flex-direction: row;
     column-gap: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-bottom: 1.6rem;
+    padding-bottom: 2rem;
     padding-top: 1rem;
 }
 .row_in_item_block mat-icon{
@@ -303,7 +303,8 @@
     margin: 0px;
     font-size: 1.2rem;
     margin-block-end: -1em;
-    margin-left: 8px;
+    // margin-left: 8px;
+    text-align: center;
 }
 .color_block{
     color: #e2943a;
