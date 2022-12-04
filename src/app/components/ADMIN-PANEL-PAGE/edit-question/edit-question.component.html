@@ -1,1 +1,95 @@
-<p>edit-question works!</p>
+<div class="container2">
+    <div class="title_row2">
+        <!-- <h2 *ngIf="editCategoryDone" class="green_txt2">Edytowano poprawnie</h2> -->
+        <!-- <h2 *ngIf="customErrorCategoryId">{{customErrorCategoryId}}</h2> -->
+    </div>
+    <form [formGroup]="categoryEditForm">
+
+            <mat-form-field class="auto_width2" appearance="outline">
+                <mat-label>Wybierz Quiz</mat-label>
+                <mat-select (ngModelChange)="editCategorySubmit()" formControlName="categoryId" required>
+                  <mat-option *ngFor="let element of categoryList" [value]=element.id><img class="image_select2" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
+   
+                  
+                </mat-select>
+                <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+    </form>
+
+
+    <!-- <form class="second_form" *ngIf="showValuesToEditCategory && this.loadingEditingQuiz == false" [formGroup]="addCategoryForm" (submit)="editCategory()">
+        <h2 *ngIf="customErrorEditCategoryId">{{customErrorEditCategoryId}}</h2>
+        <div class="row">
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Nazwa Quizu</mat-label>
+                
+                <input matInput formControlName="name">
+                
+                <div *ngIf="f2['name'].touched && f2['name'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Opis</mat-label>
+                
+                <input matInput formControlName="description">
+                
+                <div *ngIf="f2['description'].touched && f2['description'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+        </div>
+        
+        
+        
+        <div class="row">
+            <div class="half_in_row">
+                <mat-form-field class="form-field auto_width" appearance="outline">
+                    
+                    <mat-label>Ilość pytań na lekcje</mat-label>
+                    
+                    <input type="number" matInput formControlName="questionsPerLesson">
+                    
+                    <div *ngIf="f2['questionsPerLesson'].touched && f2['questionsPerLesson'].invalid" class="alert alert-danger"></div>
+                
+                </mat-form-field>
+                <mat-form-field class="form-field auto_width" appearance="outline">
+                        
+                    <mat-label>Ilość lekcji na poziom</mat-label>
+                    
+                    <input type="number" matInput formControlName="lessonsPerLevel">
+                    
+                    <div *ngIf="f2['lessonsPerLevel'].touched && f2['lessonsPerLevel'].invalid" class="alert alert-danger"></div>
+                
+                </mat-form-field>
+            </div>
+            
+            <mat-form-field class="form-field question_width" appearance="outline">
+                    
+                <mat-label>Link url do ikony</mat-label>
+                
+                <input matInput formControlName="iconUrl">
+                
+                <div *ngIf="f2['iconUrl'].touched && f2['iconUrl'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+        </div>
+        
+
+        <div class="input_margin">
+            <button [disabled]="!btnEditQuizDone" class="button_margin" mat-raised-button color="primary" type="submit">Edytuj quiz</button>
+        </div>
+    </form> -->
+    <!-- <div *ngIf="this.loadingEditingQuiz" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div> -->
+
+
+</div>
