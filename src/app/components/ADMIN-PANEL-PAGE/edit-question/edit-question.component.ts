@@ -14,13 +14,21 @@ export class EditQuestionComponent implements OnInit {
   categoryList?: any
   questionsList?: Array<Questions>
   subQuestions?: Subscription
+  subQuestionEdit?: Subscription
   customErrorCategoryId?: string
+  customErrorEditQuestions?: string
+  currentCategoryId?: number
+  currentQuestionId?: number
 
   showToEditQuestionsList?: boolean = false
   showToEditQuestions = false
 
   categoryEditForm = new FormGroup({
     categoryId: new FormControl<number|null>(null,Validators.required),
+  });
+
+  levelForm = new FormGroup({
+    currentLevel: new FormControl<number|string>("1",Validators.required),
   });
 
   editQuestionForm = new FormGroup({
@@ -45,6 +53,8 @@ export class EditQuestionComponent implements OnInit {
 
   editCategorySubmit(){
     let categoryId = this.categoryEditForm.get('categoryId')?.value
+
+    this.currentCategoryId = this.categoryEditForm.get('categoryId')?.value!
    
     if (categoryId != null) {
       if (this.categoryEditForm.valid) {
@@ -65,31 +75,28 @@ export class EditQuestionComponent implements OnInit {
       () => {})
 
   }
+  changeValueLevel(){
+    let level = this.levelForm.get('currentLevel')?.value
+    console.log(level)
+    this.editCategorySubmit()
+  }
 
   getQUestionsList(id: number){
+    let level = this.levelForm.get('currentLevel')?.value
     this.resetForm()
-    this.subQuestions = this.questionRestSerivice.getQuestionsListByCategoryIdAndLvl(id, 1).subscribe({
+    this.subQuestions = this.questionRestSerivice.getQuestionsListByCategoryIdAndLvl(id, Number(level)).subscribe({
         next: (response) => {
           if (response.body) {
             this.questionsList = response.body
-            // this.categoryById = response.body
-            // this.addCategoryForm.controls['name'].setValue(this.categoryById.name)
-            // this.addCategoryForm.controls['description'].setValue(this.categoryById.description!)
-            // this.addCategoryForm.controls['iconUrl'].setValue(this.categoryById.iconUrl!)
-            // this.addCategoryForm.controls['questionsPerLesson'].setValue(this.categoryById.questionsPerLesson)
-            // this.addCategoryForm.controls['lessonsPerLevel'].setValue(this.categoryById.lessonsPerLevel)
             this.showToEditQuestionsList = true
-            // this.loadingEditingQuiz = false
             console.log(this.questionsList)
           }
           else{
             this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
-            // this.loadingEditingQuiz = false
           } 
         },
         error: (errorResponse) => {
               this.customErrorCategoryId = errorResponse.error;
-              // this.loadingEditingQuiz = false
         },
         complete: () => {}
       })
@@ -97,6 +104,9 @@ export class EditQuestionComponent implements OnInit {
   }
 
   getQuestionsValueToFOrm(id: number){
+
+    this.currentQuestionId = id
+
     this.showToEditQuestions = true
 
 
@@ -154,6 +164,47 @@ export class EditQuestionComponent implements OnInit {
   }
 
   editQuestion(){
+    let questionContent = this.editQuestionForm.get('questionContent')?.value
+    let imageUrl = this.editQuestionForm.get('imageUrl')?.value
+
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+      imageUrl = 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular'
+
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+//CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!CHANGE!!!!!!!!!!!!!!!!!!
+
+    let a = this.editQuestionForm.get('a')?.value
+    let b = this.editQuestionForm.get('b')?.value
+    let c = this.editQuestionForm.get('c')?.value
+    let d = this.editQuestionForm.get('d')?.value
+    let correctAnswer = this.editQuestionForm.get('correctAnswer')?.value
+    let level = this.levelForm.get('currentLevel')?.value
+
+    if (this.editQuestionForm.valid){
+      this.subQuestionEdit = this.questionRestSerivice.putQuestions(this.currentQuestionId!,
+        questionContent!, imageUrl!, a!, b!, c!, d!, correctAnswer!, Number(level!), this.currentCategoryId!
+        ).subscribe({
+        next: (response) => {
+          if (response.body) {
+            this.resetForm()
+            this.editCategorySubmit()
+            // this.categoryManagerService.getCategoryList()
+          }
+          else{
+            this.customErrorEditQuestions = 'Brak obiektu odpowiedzi'
+          } 
+        },
+        error: (errorResponse) => {
+              this.customErrorEditQuestions = errorResponse.error;
+        },
+        complete: () => {
+          
+        }
+      })
+    }
 
   }
 

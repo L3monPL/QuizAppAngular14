@@ -73,6 +73,33 @@ export class QuestionRestService {
     })
   }
 
+  putQuestions(
+    questionId: number,
+    questionContent: string, 
+    imageUrl: string, 
+    a: string, 
+    b: string, 
+    c: string, 
+    d: string, 
+    correctAnswer: string, 
+    level: number,
+    categoryId: number):Observable<HttpResponse<Questions>>{
+    return this.http.put<Questions>(this.PATH + `/question/${questionId}`,{
+      questionContent: questionContent, 
+      imageUrl: imageUrl,
+      a: a,
+      b: b,
+      c: c,
+      d: d,
+      correctAnswer: correctAnswer,
+      level: level,
+      categoryId: categoryId
+    },{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
+
 
 
   
