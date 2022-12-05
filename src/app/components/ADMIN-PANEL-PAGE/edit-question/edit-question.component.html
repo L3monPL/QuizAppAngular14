@@ -16,7 +16,7 @@
             </mat-form-field>
     </form>
 
-    <div *ngIf="showToEditQuestionsList" class="questions_container">
+    <div *ngIf="this.questionManagerRest.showToEditQuestionsList" class="questions_container">
         <mat-form-field [formGroup]="levelForm" class="auto_width1" appearance="outline">
             <mat-label>Poziom trudności</mat-label>
             <mat-select (ngModelChange)="changeValueLevel()" formControlName="currentLevel" required>

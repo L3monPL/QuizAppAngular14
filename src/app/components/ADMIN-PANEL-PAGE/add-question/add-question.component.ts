@@ -5,6 +5,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
+import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
 import { QuestionRestService } from 'src/app/services/question-rest.service';
 
 @Component({
@@ -41,7 +42,8 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
   constructor(
     public questionRestService: QuestionRestService,
     public categoryManagerService: CategoryManagerRestService,
-    private categoryRestService: CategoryRestService
+    private categoryRestService: CategoryRestService,
+    public questionManagerRest: QuestionManagerRestService
   ) { }
 
   ngOnInit(): void {
@@ -133,6 +135,7 @@ export class AddQuestionComponent implements OnInit, OnDestroy {
           if (response.body) {
             this.resetForm()
             this.categoryManagerService.getCategoryList()
+            this.questionManagerRest.questionsListFromCreateNewQuiz()
           }
           else{
             this.customError = 'Brak obiektu odpowiedzi'

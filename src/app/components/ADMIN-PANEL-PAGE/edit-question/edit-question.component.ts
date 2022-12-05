@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
+import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
 import { QuestionRestService, Questions } from 'src/app/services/question-rest.service';
 
 @Component({
@@ -44,11 +45,13 @@ export class EditQuestionComponent implements OnInit {
 
   constructor(
     public categoryManagerService: CategoryManagerRestService,
-    public questionRestSerivice: QuestionRestService
+    public questionRestSerivice: QuestionRestService,
+    public questionManagerRest: QuestionManagerRestService
   ) { }
 
   ngOnInit(): void {
     this.subscribeCategoryList()
+    this.subscribeQuestionsList()
   }
 
   editCategorySubmit(){
@@ -69,12 +72,22 @@ export class EditQuestionComponent implements OnInit {
     this.categoryManagerService.serviceCategory.subscribe(
       res => {
         this.categoryList = res
-        console.log(this.categoryList)
+        // console.log(this.categoryList)
       },
       error => {}, 
       () => {})
-
   }
+
+  subscribeQuestionsList(){
+    this.questionManagerRest.questionsEmitterRest.subscribe(
+      res => {
+        this.questionsList = res
+        console.log(this.questionsList)
+      },
+      error => {}, 
+      () => {})
+  }
+
   changeValueLevel(){
     let level = this.levelForm.get('currentLevel')?.value
     console.log(level)
@@ -84,23 +97,7 @@ export class EditQuestionComponent implements OnInit {
   getQUestionsList(id: number){
     let level = this.levelForm.get('currentLevel')?.value
     this.resetForm()
-    this.subQuestions = this.questionRestSerivice.getQuestionsListByCategoryIdAndLvl(id, Number(level)).subscribe({
-        next: (response) => {
-          if (response.body) {
-            this.questionsList = response.body
-            this.showToEditQuestionsList = true
-            console.log(this.questionsList)
-          }
-          else{
-            this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
-          } 
-        },
-        error: (errorResponse) => {
-              this.customErrorCategoryId = errorResponse.error;
-        },
-        complete: () => {}
-      })
-    console.log('tutaj pokazujemy listę pytań')
+    this.questionManagerRest.questionsListByCategoryIdAndLvl(id, level)
   }
 
   getQuestionsValueToFOrm(id: number){
