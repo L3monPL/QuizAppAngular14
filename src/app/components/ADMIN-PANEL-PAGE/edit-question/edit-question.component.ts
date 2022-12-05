@@ -231,6 +231,27 @@ export class EditQuestionComponent implements OnInit {
     this.showToEditQuestions = false
   }
 
+  deleteQuestion(id: number){
+    this.subQuestionEdit = this.questionRestSerivice.deleteQuestion(id).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.resetForm()
+          this.editCategorySubmit()
+        }
+        else{
+          this.customErrorEditQuestions = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+            this.customErrorEditQuestions = errorResponse.error;
+      },
+      complete: () => {
+        
+      }
+    })
+  
+  }
+
   get f(){
     return this.categoryEditForm.controls;
   }

@@ -100,6 +100,13 @@ export class QuestionRestService {
     })
   }
 
+  deleteQuestion(id: number):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(this.PATH + `/question/${id}`,{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
+
 
 
   

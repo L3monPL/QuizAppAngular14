@@ -28,7 +28,10 @@
         </mat-form-field>
         <div class="item_question" *ngFor="let question of questionsList">
             <p>{{question.questionContent}}</p>
-            <button (click)="getQuestionsValueToFOrm(question.id)" mat-raised-button color="primary">Edytuj</button>
+            <div class="btn_container">
+                <button class="btn_width" (click)="getQuestionsValueToFOrm(question.id)" mat-raised-button color="primary">Edytuj</button>
+                <button class="btn_width" (click)="deleteQuestion(question.id)" mat-raised-button color="warn">Usuń</button>
+            </div>
         </div>
     </div>
     <form class="second_form" *ngIf="showToEditQuestions" [formGroup]="editQuestionForm" (submit)="editQuestion()">
