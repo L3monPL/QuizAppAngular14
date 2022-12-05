@@ -218,7 +218,7 @@ export class QuizLearnMapComponent implements OnInit {
           breakpoint: 600,
           options: {
             chart: {
-              width: 200,
+              width: 180,
               // height: 200
             },
             legend: {

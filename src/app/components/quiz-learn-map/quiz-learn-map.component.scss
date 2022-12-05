@@ -272,7 +272,24 @@
         height: 6px;
         margin-top: 0.6rem;
     }
-    .chart{
-        display: none;
+    // .chart{
+    //     display: none;
+    // }
+    
+}
+@media only screen and (max-width: 600px){
+    .icon_side{
+        margin-left: 1rem;
+    }
+    .mobile_size{
+        width: 70px!important;
+    }
+}
+@media only screen and (max-width: 400px){
+    .icon_side{
+        margin-left: 0.5rem;
+    }
+    .mobile_size{
+        width: 60px!important;
     }
 }
