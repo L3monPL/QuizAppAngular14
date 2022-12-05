@@ -87,6 +87,72 @@
 .green_txt{
     color: rgb(40, 207, 82);
 }
+.questions_container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.item_question{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.item_question p{
+    margin: 0px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.question_width{
+    width: 100%;
+}
+.row .auto_width{
+    width: 24%;
+}
+.row .auto_width1{
+    width: 32.5%;
+}
+.input_margin{
+    display: flex;
+    justify-content: flex-end;
+}
+.image_select{
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+.auto_width ::ng-deep.mat-option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.title_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.green_txt{
+    color: rgb(40, 207, 82);
+}
+.spinner{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 800px){
     .row{
         flex-direction: column;
@@ -110,6 +176,12 @@
         width: 100%;
     }
     .input_margin2 button{
+        width: 100%;
+    }
+    .row .auto_width{
+        width: 100%;
+    }
+    .row .auto_width1{
         width: 100%;
     }
     }
