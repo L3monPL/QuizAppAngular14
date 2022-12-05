@@ -16,7 +16,7 @@ export class QuestionManagerRestService {
   customError?: string
 
   subQuestions?: Subscription
-  showToEditQuestionsList?: boolean
+  showToEditQuestionsList?: boolean = false
   customErrorCategoryId?: string
 
   categoryId?: number
