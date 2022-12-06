@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryGroup, CategoryGroupServiceService } from 'src/app/services/category-group-service.service';
 import { Category } from 'src/app/services/category-rest.service';
+import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 import { CategroyGroupManagerRestService } from 'src/app/services/components-services/categroy-group-manager-rest.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   categoryGroupList?: Array<CategoryGroup>
   categoryList?: Array<Category>
+  allCategoryList?: Array<Category>
 
   // subCategory?: Subscription
   subCategoryGroupEdit?: Subscription
@@ -38,12 +40,14 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   constructor(
     public categoryGroupManagerService: CategroyGroupManagerRestService,
-    private categoryGroupRest: CategoryGroupServiceService
+    private categoryGroupRest: CategoryGroupServiceService,
+    private categoryManagerRest: CategoryManagerRestService
   ) { }
 
   ngOnInit(): void {
     this.subscribeCategoryGroupList()
     this.subscribeQuestionsList()
+    this.subscribeCategoryList()
   }
 
   editCategorySubmit(){
@@ -64,6 +68,10 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   }
 
   addCategoryToCategoryGroup(){
+
+  }
+
+  btnAddCategoryToCategoryGroup(){
     this.showCategoryGroupAddForm = true
     this.hideBtnAddCategoryToGroup = false
   }
@@ -103,6 +111,15 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     this.categoryGroupManagerService.getCategoryListById(id)
   }
   
+  subscribeCategoryList(){
+    this.categoryManagerRest.serviceCategory.subscribe(
+      res => {
+        this.allCategoryList = res
+        console.log(this.allCategoryList)
+      },
+      error => {}, 
+      () => {})
+  }
 
   subscribeCategoryGroupList(){
     this.categoryGroupManagerService.serviceCategoryGroup.subscribe(
