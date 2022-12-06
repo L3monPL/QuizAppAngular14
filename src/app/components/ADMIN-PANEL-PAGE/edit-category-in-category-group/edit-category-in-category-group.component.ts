@@ -17,7 +17,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   categoryList?: Array<Category>
   allCategoryList?: Array<Category>
 
-  // subCategory?: Subscription
+  subCategoryGroupAdd?: Subscription
   subCategoryGroupEdit?: Subscription
   // customErrorCategoryId?: string
   customErrorEditQuestions?: string
@@ -51,7 +51,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   }
 
   editCategorySubmit(){
-    let categoryGroupId = this.categoryGroupEditForm.get('categoryGroupId')?.value!
+    let categoryGroupId = this.categoryGroupEditForm.get('categoryGroupId')?.value 
 
     this.currentCategoryGroupId = this.categoryGroupEditForm.get('categoryGroupId')?.value!
    
@@ -63,12 +63,36 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     
   }
 
-  resetForm(){
+  resetFormAddCategoryToGroup(){
+    this.editQuestionForm.controls['categoryId'].setValue(null)
+    this.editQuestionForm.controls['categoryId'].setErrors(null)
 
+    // this.showCategoryGroupAddForm = true
+    this.hideBtnAddCategoryToGroup = false
   }
 
   addCategoryToCategoryGroup(){
-
+    let categoryId = this.editQuestionForm.get('categoryId')?.value 
+    if (this.editQuestionForm.valid) {
+      this.subCategoryGroupAdd = this.categoryGroupRest.putCategoryGroupAddCategory(this.currentCategoryGroupId!, categoryId!).subscribe({
+        next: (response) => {
+          if (response.body) {
+            this.resetFormAddCategoryToGroup()
+            this.editCategorySubmit()
+          }
+          else{
+            this.customErrorEditQuestions = 'Brak obiektu odpowiedzi'
+          } 
+        },
+        error: (errorResponse) => {
+              this.customErrorEditQuestions = errorResponse.error;
+        },
+        complete: () => {
+          
+        }
+      })
+    }
+   
   }
 
   btnAddCategoryToCategoryGroup(){
@@ -88,7 +112,6 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     this.subCategoryGroupEdit = this.categoryGroupRest.putCategoryGroupRemoveCategory(this.currentCategoryGroupId!, id).subscribe({
       next: (response) => {
         if (response.body) {
-          this.resetForm()
           this.editCategorySubmit()
         }
         else{

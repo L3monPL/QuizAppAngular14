@@ -25,18 +25,20 @@
         <button *ngIf="categoryGroupList?.length! < 3 && hideBtnAddCategoryToGroup == true" class="btn_width" (click)="btnAddCategoryToCategoryGroup()" mat-raised-button color="primary">Dodaj</button>
 
     </div>
-    <div *ngIf="showCategoryGroupAddForm" class="category_add_container">
-        <form class="second_form" [formGroup]="editQuestionForm" (submit)="addCategoryToCategoryGroup()">
+    <div *ngIf="showCategoryGroupAddForm" class="category_add_container questions_container">
+        <form class="second_form" [formGroup]="editQuestionForm">
             
             <mat-form-field class="auto_width2" appearance="outline">
                 <mat-label>Wybierz kategorię do dodania</mat-label>
-                <mat-select formControlName="categoryGroupId" required>
+                <mat-select formControlName="categoryId" required>
                   <mat-option *ngFor="let element of allCategoryList" [value]=element.id><img class="image_select2" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
                 </mat-select>
-                <div *ngIf="f['categoryGroupId'].touched && f['categoryGroupId'].invalid" class="alert alert-danger"></div>
+                <div *ngIf="f2['categoryId'].touched && f2['categoryId'].invalid" class="alert alert-danger"></div>
             </mat-form-field>
 
         </form>
+        <button class="btn_width" (click)="addCategoryToCategoryGroup()" mat-raised-button color="primary">Dodaj kategorię do grupy</button>
+
     </div>
     <!-- <div *ngIf="this.categoryGroupManagerService.showToEditCategoryGroupList" class="questions_container">
             <div class="btn_container">
