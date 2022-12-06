@@ -10,10 +10,14 @@ export class CategroyGroupManagerRestService {
   categoryList?: Array<CategoryGroup>
 
   subCategoryList?: Subscription
+  subCategoryGroupByIdList?: Subscription
   customError?: string
   loading = true;
 
+  currentGroupId?: number
+
   serviceCategoryGroup: EventEmitter<any> = new EventEmitter();
+  serviceCategoryGroupById: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private categoryGroupRest: CategoryGroupServiceService
@@ -26,6 +30,29 @@ export class CategroyGroupManagerRestService {
           this.categoryList = response.body
           // console.log(this.categoryList + "response this aaaa")
           this.serviceCategoryGroup.emit(response.body)
+          this.loading = false
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error;
+            this.loading = false
+      },
+      complete: () => {}
+    })
+  }
+
+  getCategoryListById(id: number){
+    this.currentGroupId = id
+    this.subCategoryGroupByIdList = this.categoryGroupRest.getCategoryGroupId(id).subscribe({
+      next: (response) => {
+        if (response.body) {
+          // this.categoryList = response.body
+          // console.log(response.body + "response this aaaa")
+          this.serviceCategoryGroupById.emit(response.body.categories)
           this.loading = false
         }
         else{
