@@ -35,4 +35,42 @@ export class CategoryGroupServiceService {
       responseType: 'json'
     })
   }
+  getCategoryGroupId(id: number):Observable<HttpResponse<CategoryGroup>>{
+    return this.http.get<CategoryGroup>(this.PATH + `/categoryGroup/${id}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
+  postCategoryGroup():Observable<HttpResponse<any>>{
+    return this.http.post<any>(this.PATH + `/categoryGroup`,{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
+
+  putCategoryGroupId(id: number):Observable<HttpResponse<any>>{
+    return this.http.put<any>(this.PATH + `/categoryGroup/${id}`,{
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
+
+  putCategoryGroupAddCategory(id: number, categoryId: number):Observable<HttpResponse<CategoryGroup>>{
+    return this.http.put<CategoryGroup>(this.PATH + `/categoryGroup/addCategory/${id}/${categoryId}`,{
+
+    },{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
+  putCategoryGroupRemoveCategory(id: number, categoryId: number):Observable<HttpResponse<CategoryGroup>>{
+    return this.http.put<CategoryGroup>(this.PATH + `/categoryGroup/addCategory/${id}/${categoryId}`,{
+
+    },{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
 }
