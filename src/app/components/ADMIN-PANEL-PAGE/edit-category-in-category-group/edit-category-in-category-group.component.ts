@@ -24,7 +24,8 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   // showToEditQuestionsList?: boolean = false
   showToEditCategoryList = false
-
+  showCategoryGroupAddForm = false
+  hideBtnAddCategoryToGroup?: boolean = true
   
 
   categoryGroupEditForm = new FormGroup({
@@ -60,6 +61,11 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   resetForm(){
 
+  }
+
+  addCategoryToCategoryGroup(){
+    this.showCategoryGroupAddForm = true
+    this.hideBtnAddCategoryToGroup = false
   }
 
   deleteCategoryFromCategoryGroup(id: number){
@@ -113,6 +119,8 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
       res => {
         this.categoryGroupList = res
         console.log(this.categoryGroupList)
+        this.hideBtnAddCategoryToGroup = true
+        this.showCategoryGroupAddForm = false
       },
       error => {}, 
       () => {})

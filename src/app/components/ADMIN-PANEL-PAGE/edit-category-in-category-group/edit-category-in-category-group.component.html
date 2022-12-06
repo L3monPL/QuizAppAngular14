@@ -22,7 +22,21 @@
                 <button class="btn_width" (click)="deleteCategoryFromCategoryGroup(categories.id)" mat-raised-button color="warn">Usuń</button>
             </div>
         </div>
+        <button *ngIf="categoryGroupList?.length! < 3 && hideBtnAddCategoryToGroup == true" class="btn_width" (click)="addCategoryToCategoryGroup()" mat-raised-button color="primary">Dodaj</button>
+
     </div>
+    <div *ngIf="showCategoryGroupAddForm" class="category_add_container">
+        XD
+    </div>
+    <!-- <div *ngIf="this.categoryGroupManagerService.showToEditCategoryGroupList" class="questions_container">
+            <div class="btn_container">
+                <button class="btn_width" (click)="addCategoryToCategoryGroup(categories.id)" mat-raised-button color="warn">Usuń</button>
+            </div>
+    </div> -->
+
+
+
+
     <!-- <form class="second_form" *ngIf="showToEditCategoryList" [formGroup]="editQuestionForm" (submit)="editQuestion()">
         <div class="row">
 
