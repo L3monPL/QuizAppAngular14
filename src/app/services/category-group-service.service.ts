@@ -42,8 +42,11 @@ export class CategoryGroupServiceService {
     })
   }
 
-  postCategoryGroup():Observable<HttpResponse<any>>{
+  postCategoryGroup(name: string, iconUrl: string):Observable<HttpResponse<any>>{
     return this.http.post<any>(this.PATH + `/categoryGroup`,{
+      name: name,
+      iconUrl: iconUrl
+    },{
       observe: 'response',
       responseType: 'text' as 'json'
     })

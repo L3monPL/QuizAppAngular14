@@ -20,6 +20,7 @@ import { DeleteImageModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-im
 import { AddImageModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-image/add-image.module';
 import { EditUserModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-user/edit-user.module';
 import { EditQuestionModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-question/edit-question.module';
+import { AddCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-category-group/add-category-group.module';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
     DeleteImageModule,
     AddImageModule,
     EditUserModule,
-    EditQuestionModule
+    EditQuestionModule,
+    AddCategoryGroupModule
   ],
   exports: [
     AdminPanelPageComponent
