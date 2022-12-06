@@ -22,72 +22,6 @@ export type ChartOptions = {
 })
 export class QuizLearnMapComponent implements OnInit {
 
-  maps = [
-    {
-      mapName: 'Angular',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/Angular',
-      mapList: [
-        {
-          categoryId: 57,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
-        },
-        {
-          categoryId: 56,
-          categoryName: 'HTML',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/HTML'
-        },
-        {
-          categoryId: 57,
-          categoryName: 'JavaScript',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/JavaScript'
-        }
-      ]
-    },
-    {
-      mapName: 'React',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/react-fd251711-20df-4986-bd15-5bc32a669b4e.png',
-      mapList: [
-        {
-          categoryId: 54,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
-        },
-        {
-          categoryId: 54,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
-        },
-        {
-          categoryId: 54,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
-        }
-      ]
-    },
-    {
-      mapName: '.Net',
-      mapIconUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/dot-net-a56ff2b2-84d0-44fa-b6e1-318c0449b86c.png',
-      mapList: [
-        {
-          categoryId: 1,
-          categoryName: 'C#',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/c-sharp-2d46b5d1-cc94-4c2e-97ca-97c408c16d23.png'
-        },
-        {
-          categoryId: 54,
-          categoryName: 'CSS',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/CSS'
-        },
-        {
-          categoryId: 63,
-          categoryName: 'SQL',
-          categoryUrl: 'https://wsblearnstorage.blob.core.windows.net/imagecontainer/sql-70005d9a-3e1d-4881-ae78-83b569c738a6.png'
-        }
-      ]
-    }
-  ]
-
   categoryGroup?: Array<CategoryGroup>
   subCategoryGroup?: Subscription
   customError?: string
@@ -134,29 +68,14 @@ export class QuizLearnMapComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategoryGroup()
-    this.chartLoading()
-
-    for (let index = 0; index < this.maps.length; index++) {
-  
-      for (let indexMap = 0; indexMap < this.maps[index].mapList.length; indexMap++) {
-        let currentValue = this.maps[index].mapList[indexMap].categoryId
-        this.takeValueToChart(currentValue)
-      }
-      this.testArr?.push(this.chartId(index))
-      this.arrayWithLabelNames?.push(this.chartLabelName(index))
-    }
-
-    for (let index = 0; index < this.maps.length; index++) {
-      this.arrayWithSumProgressResult?.push(this.checkValueToShowChartOrHide(index))
-    }
-    // console.log(this.arrayWithSumProgressResult)
+    
     
   }
 
   chartLabelName(id: number){
     var arrayLabelNameToPush = []
-    for (let index = 0; index < this.maps[id].mapList.length; index++) {
-      let currentLabelName = this.maps[id].mapList[index].categoryName
+    for (let index = 0; index < this.categoryGroup![id].categories.length; index++) {
+      let currentLabelName = this.categoryGroup![id].categories[index].name
       // console.log(currentLabelName) 
       arrayLabelNameToPush.push(currentLabelName)
     }
@@ -370,7 +289,22 @@ export class QuizLearnMapComponent implements OnInit {
       next: (response) => {
         if (response.body) {
           this.categoryGroup = response.body
-          console.log(this.categoryGroup)
+          // console.log(this.categoryGroup)
+          this.chartLoading()
+
+          for (let index = 0; index < this.categoryGroup!.length; index++) {
+        
+            for (let indexMap = 0; indexMap < this.categoryGroup![index].categories.length; indexMap++) {
+              let currentValue = this.categoryGroup![index].categories[indexMap].id
+              this.takeValueToChart(currentValue)
+            }
+            this.testArr?.push(this.chartId(index))
+            this.arrayWithLabelNames?.push(this.chartLabelName(index))
+          }
+
+          for (let index = 0; index < this.categoryGroup!.length; index++) {
+            this.arrayWithSumProgressResult?.push(this.checkValueToShowChartOrHide(index))
+          }
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'

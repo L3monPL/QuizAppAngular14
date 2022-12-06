@@ -16,9 +16,9 @@
     </div>
 </div>
 <div class="items_container">
-    <div class="item" *ngFor=" let chart of maps; let i = index">
+    <div class="item" *ngFor=" let chart of categoryGroup; let i = index">
         <div class="icon_side">
-            <img class="mobile_size" src={{chart.mapIconUrl}} alt="">
+            <img class="mobile_size" src={{chart.iconUrl}} alt="">
             <!-- <p>{{chart.mapName}}</p> -->
         </div>
         <div class="chart_container">
@@ -31,14 +31,14 @@
                 </apx-chart>
             </div>
             <div *ngIf="this.arrayWithSumProgressResult![i] == 0" class="chart">
-                <h2 routerLink='/home/level/{{chart.mapList[0].categoryId}}' class="txt_start_chart">Rozpocznij</h2>
+                <h2 routerLink='/home/level/{{chart.categories[0].id}}' class="txt_start_chart">Rozpocznij</h2>
             </div>
         </div>
         <div class="container_category">
             <div class="icon_bg">
-                <img src={{chart.mapList[0].categoryUrl}} alt="">
-                <img src={{chart.mapList[1].categoryUrl}} alt="">
-                <img src={{chart.mapList[2].categoryUrl}} alt="">
+                <img src={{chart.categories[0].iconUrl}} alt="">
+                <img src={{chart.categories[1].iconUrl}} alt="">
+                <img src={{chart.categories[2].iconUrl}} alt="">
             </div>
         </div>
     </div>
