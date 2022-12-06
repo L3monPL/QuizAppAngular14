@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryGroupServiceService } from 'src/app/services/category-group-service.service';
+import { CategroyGroupManagerRestService } from 'src/app/services/components-services/categroy-group-manager-rest.service';
 import { ImageRestService } from 'src/app/services/image-rest.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class AddCategoryGroupComponent implements OnInit {
 
   constructor(
     private imageRestService: ImageRestService,
-    public categoryGroupRest: CategoryGroupServiceService
+    public categoryGroupRest: CategoryGroupServiceService,
+    private categoryGroupManagerService: CategroyGroupManagerRestService
   ) { }
 
   ngOnInit(): void {
@@ -86,6 +88,7 @@ export class AddCategoryGroupComponent implements OnInit {
       next: (response) => {
         if (response.body) {
           this.customError = undefined
+          this.categoryGroupManagerService.getCategoryList()
           this.resetForm()
           // this.categoryManagerService.getCategoryList()
         }

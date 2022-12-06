@@ -1,9 +1,43 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CategoryGroup, CategoryGroupServiceService } from '../category-group-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategroyGroupManagerRestService {
 
-  constructor() { }
+  categoryList?: Array<CategoryGroup>
+
+  subCategoryList?: Subscription
+  customError?: string
+  loading = true;
+
+  serviceCategoryGroup: EventEmitter<any> = new EventEmitter();
+
+  constructor(
+    private categoryGroupRest: CategoryGroupServiceService
+  ) { }
+
+  getCategoryList(){
+    this.subCategoryList = this.categoryGroupRest.getCategoryGroup().subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.categoryList = response.body
+          // console.log(this.categoryList + "response this aaaa")
+          this.serviceCategoryGroup.emit(response.body)
+          this.loading = false
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error;
+            this.loading = false
+      },
+      complete: () => {}
+    })
+  }
 }

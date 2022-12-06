@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="title_row">
+        <!-- <h2>Usuń quiz</h2> -->
+        <h2 *ngIf="deleteCategoryGroupDone" class="green_txt">Usunięto poprawnie</h2>
+        <h2 *ngIf="customError">{{customError}}</h2>
+    </div>
+    
+    <form [formGroup]="categoryGroupDeleteForm" (submit)="deleteCategoryGroupSubmit()">
+
+            <mat-form-field class="auto_width" appearance="outline">
+                <mat-label>Wybierz Quiz</mat-label>
+                <mat-select formControlName="categoryId" required>
+                  <mat-option *ngFor="let element of categoryGroupList" [value]=element.id><img class="image_select" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
+                  <!-- <mat-option value=2>2</mat-option>
+                  <mat-option value=3>3</mat-option> -->
+                  
+                </mat-select>
+                <div *ngIf="f['categoryId'].touched && f['categoryId'].invalid" class="alert alert-danger"></div>
+            </mat-form-field>
+    
+           
+        
+
+        <div class="input_margin">
+            <button type="submit" class="button_margin" mat-raised-button color="primary">Usuń quiz</button>
+        </div>
+    </form>
+</div>

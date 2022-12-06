@@ -76,4 +76,13 @@ export class CategoryGroupServiceService {
       responseType: 'json'
     })
   }
+
+  deleteCategory(
+    id: number, 
+    ):Observable<HttpResponse<any>>{
+    return this.http.delete<any>(this.PATH + `/categoryGroup/${id}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
 }
