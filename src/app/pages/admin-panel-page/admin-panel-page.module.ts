@@ -22,6 +22,7 @@ import { EditUserModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-user/ed
 import { EditQuestionModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-question/edit-question.module';
 import { AddCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-category-group/add-category-group.module';
 import { DeleteCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-category-group/delete-category-group.module';
+import { EditCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-category-group/edit-category-group.module';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
     EditUserModule,
     EditQuestionModule,
     AddCategoryGroupModule,
-    DeleteCategoryGroupModule
+    DeleteCategoryGroupModule,
+    EditCategoryGroupModule
   ],
   exports: [
     AdminPanelPageComponent

@@ -52,8 +52,11 @@ export class CategoryGroupServiceService {
     })
   }
 
-  putCategoryGroupId(id: number):Observable<HttpResponse<any>>{
+  putCategoryGroupId(id: number, name: string, iconUrl: string):Observable<HttpResponse<any>>{
     return this.http.put<any>(this.PATH + `/categoryGroup/${id}`,{
+      name: name,
+      iconUrl: iconUrl
+    },{
       observe: 'response',
       responseType: 'text' as 'json'
     })
