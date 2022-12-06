@@ -24,6 +24,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   // showToEditQuestionsList?: boolean = false
   showToEditCategoryList = false
+
   
 
   categoryGroupEditForm = new FormGroup({
@@ -35,7 +36,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   });
 
   constructor(
-    private categoryGroupManagerService: CategroyGroupManagerRestService,
+    public categoryGroupManagerService: CategroyGroupManagerRestService,
     private categoryGroupRest: CategoryGroupServiceService
   ) { }
 
@@ -57,6 +58,10 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     
   }
 
+  resetForm(){
+
+  }
+
   deleteCategoryFromCategoryGroup(id: number){
     // this.currentCategoryId = id
 
@@ -69,7 +74,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     this.subCategoryGroupEdit = this.categoryGroupRest.putCategoryGroupRemoveCategory(this.currentCategoryGroupId!, id).subscribe({
       next: (response) => {
         if (response.body) {
-          // this.resetForm()
+          this.resetForm()
           this.editCategorySubmit()
         }
         else{

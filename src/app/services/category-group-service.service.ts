@@ -72,7 +72,7 @@ export class CategoryGroupServiceService {
   }
 
   putCategoryGroupRemoveCategory(id: number, categoryId: number):Observable<HttpResponse<CategoryGroup>>{
-    return this.http.put<CategoryGroup>(this.PATH + `/categoryGroup/addCategory/${id}/${categoryId}`,{
+    return this.http.put<CategoryGroup>(this.PATH + `/categoryGroup/removeCategory/${id}/${categoryId}`,{
 
     },{
       observe: 'response',

@@ -13,6 +13,7 @@ export class CategroyGroupManagerRestService {
   subCategoryGroupByIdList?: Subscription
   customError?: string
   loading = true;
+  showToEditCategoryGroupList = false
 
   currentGroupId?: number
 
@@ -50,19 +51,20 @@ export class CategroyGroupManagerRestService {
     this.subCategoryGroupByIdList = this.categoryGroupRest.getCategoryGroupId(id).subscribe({
       next: (response) => {
         if (response.body) {
-          // this.categoryList = response.body
-          // console.log(response.body + "response this aaaa")
+          this.showToEditCategoryGroupList = true
           this.serviceCategoryGroupById.emit(response.body.categories)
           this.loading = false
         }
         else{
           this.customError = 'Brak obiektu odpowiedzi'
           this.loading = false
+          this.showToEditCategoryGroupList = true
         } 
       },
       error: (errorResponse) => {
             this.customError = errorResponse.error;
             this.loading = false
+            this.showToEditCategoryGroupList = true
       },
       complete: () => {}
     })
