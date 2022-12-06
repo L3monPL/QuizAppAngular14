@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApexAxisChartSeries, ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
+import { Subscription } from 'rxjs';
+import { CategoryGroup, CategoryGroupServiceService } from 'src/app/services/category-group-service.service';
 import { Category } from 'src/app/services/category-rest.service';
 import { CategoryManagerRestService } from 'src/app/services/components-services/category-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
@@ -86,6 +88,11 @@ export class QuizLearnMapComponent implements OnInit {
     }
   ]
 
+  categoryGroup?: Array<CategoryGroup>
+  subCategoryGroup?: Subscription
+  customError?: string
+  loading = false
+
   lvl1Finish?: number|string
   lvl2Finish?: number|string
   lvl3Finish?: number|string
@@ -121,10 +128,12 @@ export class QuizLearnMapComponent implements OnInit {
   constructor(
     public userData: UserDataService,
     private categoryManagerRest: CategoryManagerRestService,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private categroyGroupService: CategoryGroupServiceService
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryGroup()
     this.chartLoading()
 
     for (let index = 0; index < this.maps.length; index++) {
@@ -355,6 +364,26 @@ export class QuizLearnMapComponent implements OnInit {
 
   //   })
   // }
+
+  getCategoryGroup(){
+    this.subCategoryGroup = this.categroyGroupService.getCategoryGroup().subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.categoryGroup = response.body
+          console.log(this.categoryGroup)
+        }
+        else{
+          this.customError = 'Brak obiektu odpowiedzi'
+          this.loading = false
+        } 
+      },
+      error: (errorResponse) => {
+            this.customError = errorResponse.error;
+            this.loading = false
+      },
+      complete: () => {}
+    })
+  }
 
 
 }
