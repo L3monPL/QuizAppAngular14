@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CategoryGroup } from 'src/app/services/category-group-service.service';
+import { CategoryGroup, CategoryGroupServiceService } from 'src/app/services/category-group-service.service';
 import { Category } from 'src/app/services/category-rest.service';
 import { CategroyGroupManagerRestService } from 'src/app/services/components-services/categroy-group-manager-rest.service';
 
@@ -12,18 +12,19 @@ import { CategroyGroupManagerRestService } from 'src/app/services/components-ser
 })
 export class EditCategoryInCategoryGroupComponent implements OnInit {
 
-  categoryGroupList?: any
+  categoryGroupList?: Array<CategoryGroup>
   categoryList?: Array<Category>
 
   // subCategory?: Subscription
-  // subQuestionEdit?: Subscription
+  subCategoryGroupEdit?: Subscription
   // customErrorCategoryId?: string
-  // customErrorEditQuestions?: string
+  customErrorEditQuestions?: string
   currentCategoryGroupId?: number
-  // currentQuestionId?: number
+  currentCategoryId?: number
 
   // showToEditQuestionsList?: boolean = false
-  // showToEditQuestions = false
+  showToEditCategoryList = false
+  
 
   categoryGroupEditForm = new FormGroup({
     categoryGroupId: new FormControl<number|null>(null,Validators.required),
@@ -34,7 +35,8 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   });
 
   constructor(
-    private categoryGroupManagerService: CategroyGroupManagerRestService
+    private categoryGroupManagerService: CategroyGroupManagerRestService,
+    private categoryGroupRest: CategoryGroupServiceService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,34 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
       }
     }
     
+  }
+
+  deleteCategoryFromCategoryGroup(id: number){
+    // this.currentCategoryId = id
+
+    // this.showToEditCategoryList = true
+
+    // let selectedCategory  = this.categoryGroupList!.find(x => x.id === id)
+
+    // console.log(selectedCategory)
+
+    this.subCategoryGroupEdit = this.categoryGroupRest.putCategoryGroupRemoveCategory(this.currentCategoryGroupId!, id).subscribe({
+      next: (response) => {
+        if (response.body) {
+          // this.resetForm()
+          this.editCategorySubmit()
+        }
+        else{
+          this.customErrorEditQuestions = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+            this.customErrorEditQuestions = errorResponse.error;
+      },
+      complete: () => {
+        
+      }
+    })
   }
 
   getCategoryFromGroupList(id: number){

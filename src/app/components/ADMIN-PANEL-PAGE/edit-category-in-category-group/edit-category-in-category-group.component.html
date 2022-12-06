@@ -17,13 +17,13 @@
     <div *ngIf="true" class="questions_container">
         <div class="item_question" *ngFor="let categories of categoryGroupList">
             <p>{{categories.name}}</p>
-            <!-- <div class="btn_container">
-                <button class="btn_width" (click)="getQuestionsValueToFOrm(question.id)" mat-raised-button color="primary">Edytuj</button>
-                <button class="btn_width" (click)="deleteQuestion(question.id)" mat-raised-button color="warn">Usuń</button>
-            </div> -->
+            <div class="btn_container">
+                <!-- <button class="btn_width" (click)="getQuestionsValueToFOrm(question.id)" mat-raised-button color="primary">Edytuj</button> -->
+                <button class="btn_width" (click)="deleteCategoryFromCategoryGroup(categories.id)" mat-raised-button color="warn">Zmień</button>
+            </div>
         </div>
     </div>
-    <!-- <form class="second_form" *ngIf="showToEditQuestions" [formGroup]="editQuestionForm" (submit)="editQuestion()">
+    <!-- <form class="second_form" *ngIf="showToEditCategoryList" [formGroup]="editQuestionForm" (submit)="editQuestion()">
         <div class="row">
 
     
