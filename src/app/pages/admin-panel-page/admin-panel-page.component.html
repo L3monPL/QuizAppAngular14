@@ -59,6 +59,56 @@
     </mat-expansion-panel>
     </mat-accordion>
 
+    <div class="selection">
+      <h2>Panel zarządzania grupami kategorii</h2>
+      <mat-accordion multi *ngIf="true">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_green margin_right material-symbols-outlined">create_new_folder</mat-icon>
+              Dodaj grupę
+            </mat-panel-title>
+              
+          </mat-expansion-panel-header>
+          <!-- <app-add-category></app-add-category> -->
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_red margin_right material-symbols-outlined">folder_delete</mat-icon>
+              Usuń grupę
+            </mat-panel-title>
+              
+          </mat-expansion-panel-header>
+          <!-- <app-delete-category></app-delete-category> -->
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_yellow margin_right material-symbols-outlined">edit_document</mat-icon>
+              Edytuj grupę
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <!-- <app-edit-category></app-edit-category> -->
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_yellow margin_right material-symbols-outlined">edit_square</mat-icon>
+              Edytuj kategorie w grupie
+              <mat-icon class="font_red second_icon_margin margin_right material-symbols-outlined">delete</mat-icon>
+              Usuń kategorie z grupy
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- <app-edit-question></app-edit-question> -->
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
 
     <div class="selection">
       <h2>Panel zarządzania użytkownikami</h2>
