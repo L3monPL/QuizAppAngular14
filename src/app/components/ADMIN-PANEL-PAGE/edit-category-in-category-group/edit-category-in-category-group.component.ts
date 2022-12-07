@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CategoryGroup, CategoryGroupServiceService } from 'src/app/services/category-group-service.service';
@@ -11,7 +11,7 @@ import { CategroyGroupManagerRestService } from 'src/app/services/components-ser
   templateUrl: './edit-category-in-category-group.component.html',
   styleUrls: ['./edit-category-in-category-group.component.scss']
 })
-export class EditCategoryInCategoryGroupComponent implements OnInit {
+export class EditCategoryInCategoryGroupComponent implements OnInit, OnDestroy {
 
   categoryGroupList?: Array<CategoryGroup>
   categoryList?: Array<Category>
@@ -19,6 +19,9 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
 
   subCategoryGroupAdd?: Subscription
   subCategoryGroupEdit?: Subscription
+
+  subCategoryList?: Subscription
+  subCategoryGroupList?: Subscription
   // customErrorCategoryId?: string
   customErrorEditQuestions?: string
   currentCategoryGroupId?: number
@@ -43,11 +46,16 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     private categoryGroupRest: CategoryGroupServiceService,
     private categoryManagerRest: CategoryManagerRestService
   ) { }
+  ngOnDestroy(): void {
+    this.subCategoryList?.unsubscribe()
+    this.subCategoryGroupList?.unsubscribe()
+  }
 
   ngOnInit(): void {
     this.subscribeCategoryGroupList()
     this.subscribeQuestionsList()
     this.subscribeCategoryList()
+    this.hideBtnAddCategoryToGroup = false
   }
 
   editCategorySubmit(){
@@ -67,7 +75,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
     this.editQuestionForm.controls['categoryId'].setValue(null)
     this.editQuestionForm.controls['categoryId'].setErrors(null)
 
-    // this.showCategoryGroupAddForm = true
+    // this.showCategoryGroupAddForm = false
     this.hideBtnAddCategoryToGroup = false
   }
 
@@ -135,7 +143,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   }
   
   subscribeCategoryList(){
-    this.categoryManagerRest.serviceCategory.subscribe(
+    this.subCategoryList = this.categoryManagerRest.serviceCategory.subscribe(
       res => {
         this.allCategoryList = res
         console.log(this.allCategoryList)
@@ -145,7 +153,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit {
   }
 
   subscribeCategoryGroupList(){
-    this.categoryGroupManagerService.serviceCategoryGroup.subscribe(
+    this.subCategoryGroupList = this.categoryGroupManagerService.serviceCategoryGroup.subscribe(
       res => {
         this.categoryList = res
         console.log(this.categoryList)
