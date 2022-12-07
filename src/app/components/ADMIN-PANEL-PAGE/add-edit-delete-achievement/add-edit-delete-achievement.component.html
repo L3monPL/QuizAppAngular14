@@ -7,6 +7,10 @@
         </div>
         <div *ngIf="editAchivementShowCard && currentAchivementToEdit == achievement.id" class="edit_achivement_container">
             <p>edit</p>
+            <div class="btn_container">
+                <button (click)="acceptEditAchivement(achievement.id)" class="accept_width" mat-raised-button color="primary">Zatwierdz</button>
+                <button (click)="delcineEditAchievement(achievement.id)" class="accept_width" mat-raised-button color="warn">Anuluj</button>
+            </div>
         </div>
     </div>
     <button *ngIf="!this.addAchievementCard" (click)="showCardAddAchievement()" class="btn_width" mat-raised-button color="primary">Dodaj</button>

@@ -9,6 +9,16 @@
     justify-content: space-between;
     align-items: center;
 }
+.edit_achivement_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.edit_achivement_container p{
+    margin: 0px;
+}
 .item_achievement p{
     margin: 0px;
 }
@@ -48,6 +58,9 @@
 }
 .half_width{
     width: 49%;
+}
+.accept_width{
+    width: 100px;
 }
 
 
