@@ -24,6 +24,7 @@ import { AddCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-
 import { DeleteCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/delete-category-group/delete-category-group.module';
 import { EditCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-category-group/edit-category-group.module';
 import { EditCategoryInCategoryGroupModule } from 'src/app/components/ADMIN-PANEL-PAGE/edit-category-in-category-group/edit-category-in-category-group.module';
+import { AddEditDeleteAchievementModule } from 'src/app/components/ADMIN-PANEL-PAGE/add-edit-delete-achievement/add-edit-delete-achievement.module';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
     AddCategoryGroupModule,
     DeleteCategoryGroupModule,
     EditCategoryGroupModule,
-    EditCategoryInCategoryGroupModule
+    EditCategoryInCategoryGroupModule,
+    AddEditDeleteAchievementModule
   ],
   exports: [
     AdminPanelPageComponent

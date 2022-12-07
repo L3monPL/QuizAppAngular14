@@ -1,0 +1,46 @@
+<div class="achievement_list_container">
+    <div class="item_achievement" *ngFor="let achievement of achievementList">
+        <p>{{achievement.name}}</p>
+        <div class="btn_container_row">
+            <button class="btn_width" mat-raised-button color="primary">Edytuj</button>
+            <button (click)="deleteAchievement(achievement.id)" class="btn_width" mat-raised-button color="warn">Usuń</button>
+        </div>
+    </div>
+    <button *ngIf="!this.addAchievementCard" (click)="showCardAddAchievement()" class="btn_width" mat-raised-button color="primary">Dodaj</button>
+</div>
+<div *ngIf="this.addAchievementCard" class="addAchievement_container">
+    <form class="form" [formGroup]="addAchievementForm">
+        <div class="row">   
+
+            <!-- <div class="btn_back">
+                <mat-icon class="icon">chevron_left</mat-icon>
+            </div> -->
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Nazwa osiągnięcia</mat-label>
+                
+                <input matInput formControlName="name">
+                
+                <div *ngIf="f1['name'].touched && f1['name'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+            <mat-form-field class="form-field half_width" appearance="outline">
+                    
+                <mat-label>Opis osiągnięcia</mat-label>
+                
+                <input matInput formControlName="description">
+                
+                <div *ngIf="f1['description'].touched && f1['description'].invalid" class="alert alert-danger"></div>
+            
+            </mat-form-field>
+
+        </div>
+        <div class="btn_container">
+            <button class="btn_width" [disabled]="disableBtnAddAchievement" (click)="addAchievement()" mat-raised-button color="primary">Dodaj</button>
+            <button class="btn_width" [disabled]="disableBtnAddAchievement" (click)="declineAddAchievementCard()" mat-raised-button color="warn">Anuluj</button>
+        </div>
+
+    </form>
+</div>

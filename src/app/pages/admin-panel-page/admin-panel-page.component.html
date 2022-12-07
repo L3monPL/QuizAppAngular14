@@ -185,6 +185,23 @@
         </mat-expansion-panel>
 
     </mat-accordion>
+    <div class="selection">
+      <h2>Panel zarządzania osiągnięciami</h2>
+      <mat-accordion multi *ngIf="true">
+        
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon class="font_green padding_top_icon margin_right material-symbols-outlined">edit_square</mat-icon>
+              <mat-icon class="font_yellow margin_right material-symbols-outlined">edit_document</mat-icon>
+              <mat-icon class="font_red margin_right material-symbols-outlined">delete</mat-icon>
+              Zarządzaj osiągnięciami
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-add-edit-delete-achievement></app-add-edit-delete-achievement>
+        </mat-expansion-panel>
+
+      </mat-accordion>
   </div>
 
 
