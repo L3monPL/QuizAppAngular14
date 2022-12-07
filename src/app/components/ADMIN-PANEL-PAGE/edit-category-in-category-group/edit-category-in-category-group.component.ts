@@ -74,6 +74,7 @@ export class EditCategoryInCategoryGroupComponent implements OnInit, OnDestroy {
   resetFormAddCategoryToGroup(){
     this.editQuestionForm.controls['categoryId'].setValue(null)
     this.editQuestionForm.controls['categoryId'].setErrors(null)
+    this.editQuestionForm.reset()
 
     // this.showCategoryGroupAddForm = false
     this.hideBtnAddCategoryToGroup = false

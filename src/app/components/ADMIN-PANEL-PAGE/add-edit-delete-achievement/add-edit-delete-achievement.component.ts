@@ -27,6 +27,8 @@ export class AddEditDeleteAchievementComponent implements OnInit {
   editAchivementShowCard = false
   currentAchivementToEdit?: number|string
 
+  subEditAchievement?: Subscription
+
   addAchievementForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required)
@@ -114,7 +116,28 @@ export class AddEditDeleteAchievementComponent implements OnInit {
   }
 
   acceptEditAchivement(id: number){
+    let name = this.editAchievementForm.get('name')?.value 
+    let description = this.editAchievementForm.get('description')?.value 
 
+    if (this.editAchievementForm.valid) {
+      this.subEditAchievement = this.achievementRest.patchAchievement(name!, description!, id).subscribe({
+        next: (response) => {
+          if (response.body) {
+            this.delcineEditAchievement(id)
+            this.getAchievementList()
+          }
+          else{
+            this.customErrorAddAchievement = 'Brak obiektu odpowiedzi'
+          } 
+        },
+        error: (errorResponse) => {
+              this.customErrorAddAchievement = errorResponse.error;
+        },
+        complete: () => {
+          
+        }
+      })
+    }
   }
 
   checkSelectedAchivementId(id: number){
@@ -144,11 +167,20 @@ export class AddEditDeleteAchievementComponent implements OnInit {
     this.addAchievementCard = true
   }
   declineAddAchievementCard(){
+    this.addAchievementForm.controls['name'].setValue('')
+    this.addAchievementForm.controls['description'].setValue('')
+
+    this.addAchievementForm.controls['name'].setErrors(null)
+    this.addAchievementForm.controls['description'].setErrors(null)
+
+    this.addAchievementForm.reset()
+
     this.addAchievementCard = false
   }
 
   resetFormAddAchievement(){
-    this.addAchievementCard = false
+    this.declineAddAchievementCard()
+
   }
 
   get f1(){

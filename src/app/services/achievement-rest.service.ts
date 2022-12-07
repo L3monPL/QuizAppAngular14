@@ -36,6 +36,16 @@ export class AchievementRestService {
     })
   }
 
+  patchAchievement(name: string, description: string, id: number):Observable<HttpResponse<Achievement>>{
+    return this.http.patch<Achievement>(this.PATH + `/${id}`,{
+      name: name,
+      description: description
+    },{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
   deleteAchievement(id: number):Observable<HttpResponse<any>>{
     return this.http.delete<any>(this.PATH + `/${id}`,{
       observe: 'response',
