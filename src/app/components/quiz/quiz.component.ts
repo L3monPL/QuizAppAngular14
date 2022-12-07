@@ -190,7 +190,7 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   saveProgress(){
     console.log('saveProgress init')
-    this.userProgressRest.postUserLogin(
+    this.userProgressRest.postUserProgressExpGained(
       this.questionManagerService.categoryId!,
       this.quizes?.level!,
       this.selectedQuizLevelName!,

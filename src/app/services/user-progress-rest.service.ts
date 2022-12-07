@@ -13,9 +13,19 @@ export class UserProgressRestService {
     private http: HttpClient
   ) { }
 
-  postUserLogin(categoryId : number, level: number, quizLevelName: string, expGained: number):Observable<HttpResponse<any>>{
+  postUserProgressExpGained(categoryId : number, level: number, quizLevelName: string, expGained: number):Observable<HttpResponse<any>>{
     return this.http.patch<any>
     (this.PATH + `/${categoryId}/${level}/${quizLevelName}/${expGained}`,{
+
+    }, {
+      observe: 'response',
+      responseType: 'text' as 'json'
+    })
+  }
+
+  postUserProgressCompleteAchievement(userId : number, achievementId: number):Observable<HttpResponse<any>>{
+    return this.http.patch<any>
+    (this.PATH + `/${userId}/${achievementId}`,{
 
     }, {
       observe: 'response',
