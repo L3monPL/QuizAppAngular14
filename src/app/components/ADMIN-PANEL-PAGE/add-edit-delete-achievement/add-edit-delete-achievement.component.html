@@ -2,11 +2,43 @@
     <div class="item_achievement" *ngFor="let achievement of achievementList">
         <p *ngIf="checkSelectedAchivementId(achievement.id)">{{achievement.name}}</p>
         <div *ngIf="checkSelectedAchivementId(achievement.id)" class="btn_container_row">
-            <button (click)="editAchivement(achievement.id)" class="btn_width" mat-raised-button color="primary">Edytuj</button>
+            <button (click)="editAchivement(achievement)" class="btn_width" mat-raised-button color="primary">Edytuj</button>
             <button (click)="deleteAchievement(achievement.id)" class="btn_width" mat-raised-button color="warn">Usuń</button>
         </div>
         <div *ngIf="editAchivementShowCard && currentAchivementToEdit == achievement.id" class="edit_achivement_container">
-            <p>edit</p>
+            
+            
+
+            <form class="form" [formGroup]="editAchievementForm">
+                <div class="row">   
+        
+        
+                    <mat-form-field class="form-field half_width" appearance="outline">
+                            
+                        <mat-label>Nazwa osiągnięcia</mat-label>
+                        
+                        <input matInput formControlName="name">
+                        
+                        <div *ngIf="f2['name'].touched && f2['name'].invalid" class="alert alert-danger"></div>
+                    
+                    </mat-form-field>
+        
+                    <mat-form-field class="form-field half_width" appearance="outline">
+                            
+                        <mat-label>Opis osiągnięcia</mat-label>
+                        
+                        <input matInput formControlName="description">
+                        
+                        <div *ngIf="f2['description'].touched && f2['description'].invalid" class="alert alert-danger"></div>
+                    
+                    </mat-form-field>
+        
+                </div>
+            </form>
+
+
+
+
             <div class="btn_container">
                 <button (click)="acceptEditAchivement(achievement.id)" class="accept_width" mat-raised-button color="primary">Zatwierdz</button>
                 <button (click)="delcineEditAchievement(achievement.id)" class="accept_width" mat-raised-button color="warn">Anuluj</button>

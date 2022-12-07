@@ -32,6 +32,11 @@ export class AddEditDeleteAchievementComponent implements OnInit {
     description: new FormControl<string>('',Validators.required)
   });
 
+  editAchievementForm = new FormGroup({
+    name: new FormControl<string>('',Validators.required),
+    description: new FormControl<string>('',Validators.required)
+  });
+
   constructor(
     private achievementRest: AchievementRestService
   ) { }
@@ -127,9 +132,12 @@ export class AddEditDeleteAchievementComponent implements OnInit {
     return value
   }
 
-  editAchivement(id: number){
+  editAchivement(achivement: Achievement){
     this.editAchivementShowCard = true
-    this.currentAchivementToEdit = id
+    this.currentAchivementToEdit = achivement.id
+
+    this.editAchievementForm.controls['name'].setValue(achivement.name)
+    this.editAchievementForm.controls['description'].setValue(achivement.description)
   }
 
   showCardAddAchievement(){
@@ -145,6 +153,10 @@ export class AddEditDeleteAchievementComponent implements OnInit {
 
   get f1(){
     return this.addAchievementForm.controls;
+  }
+
+  get f2(){
+    return this.editAchievementForm.controls;
   }
 
 
