@@ -13,7 +13,7 @@ export interface Categories{
   id: number,
   name: string,
   description: string,
-  iconUrl: string,
+  iconUrl?: string,
   questionsPerLesson: number,
   lessonsPerLevel: number
 }

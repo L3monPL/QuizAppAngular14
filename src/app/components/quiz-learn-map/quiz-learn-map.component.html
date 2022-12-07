@@ -36,9 +36,9 @@
         </div>
         <div class="container_category">
             <div class="icon_bg">
-                <img src={{chart.categories[0].iconUrl}} alt="">
-                <img src={{chart.categories[1].iconUrl}} alt="">
-                <img src={{chart.categories[2].iconUrl}} alt="">
+                <img src={{categories.iconUrl}} alt="" *ngFor="let categories of chart.categories">
+                <!-- <img src={{chart.categories[1].iconUrl}} alt="">
+                <img src={{chart.categories[2].iconUrl}} alt=""> -->
             </div>
         </div>
     </div>
