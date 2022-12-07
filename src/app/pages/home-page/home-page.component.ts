@@ -2,10 +2,12 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Subscription } from 'rxjs';
 import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
+import { UserList } from 'src/app/services/user-rest.service';
 
 
 @Component({
@@ -26,6 +28,9 @@ export class HomePageComponent implements OnInit {
   userIdFromToken?: number
 
   obj0 = Array<any>()
+
+  subsProgressBar?: Subscription
+  userProgressUpdate?: UserList
 
   @ViewChild('drawer') input!: MatDrawer
   @ViewChild('mobileDrawer') mobileDrawer!: MatDrawer
@@ -64,6 +69,29 @@ export class HomePageComponent implements OnInit {
      this.setSizeOptions(window.innerWidth)
 
      this.userManagerService.checkUserProgress()
+     this.subscribeUserRest()
+  }
+
+  subscribeUserRest(){
+    this.subsProgressBar = this.userManagerService.serviceCurrentUser.subscribe(
+      res => {
+        this.userProgressUpdate = res
+        this.checkAchievementToGet()
+      },
+      error => {}, 
+      () => {}) 
+  }
+  checkAchievementToGet(){
+    if (this.userProgressUpdate?.userProgress?.totalCompletedCategory == 1) {
+      let achievementCompleteFirstQuiz = this.userProgressUpdate?.userProgress?.achievements.find(x => x.name === 'Pierwsza kategoria')
+      // console.log(achievementCompleteFirstQuiz)
+      if (achievementCompleteFirstQuiz == undefined) {
+        console.log(achievementCompleteFirstQuiz + 'tutaj powinno dodać achievement')
+      }
+      if (achievementCompleteFirstQuiz) {
+        console.log(achievementCompleteFirstQuiz + 'nie dodaje achivementów')
+      }
+    }
   }
 
   hideReightPanel(value: boolean){

@@ -41,7 +41,7 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.userManagerService.checkUserProgress()
+    // this.userManagerService.checkUserProgress()
     this.userManagerService.checkRankingUsers()
 
     this.subscribeUserRest()
@@ -60,6 +60,7 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
       res => {
         this.userProgressUpdate = res
         this.default()
+        // this.checkAchievementToGet()
       },
       error => {}, 
       () => {}) 
@@ -79,7 +80,6 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
   default(){
       this.currentLvl = this.userProgressUpdate?.userProgress?.level!
       this.currentExpPoints = this.userProgressUpdate?.userProgress?.experiencePoints!
-      // console.log(this.currentLvl)
       if (this.currentLvl > 1) {
         this.abc = 120
   
@@ -106,6 +106,7 @@ export class ProfileRightPanelComponent implements OnInit, OnDestroy {
       this.currentExpPoints = (this.currentExpPoints / 120) * 100
       }
   }
+
   
 
 

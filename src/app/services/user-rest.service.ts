@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Achievement } from './achievement-rest.service';
 
 export interface Message{
   message: string;
@@ -40,7 +41,8 @@ export interface UserList{
     level: number,
     totalCompletedQuiz: number,
     totalCompletedCategory: number,
-    categoryProgress: Array<CategoryProgress>
+    categoryProgress: Array<CategoryProgress>,
+    achievements: Array<Achievement>
   }
 }
 export interface CategoryProgress{
