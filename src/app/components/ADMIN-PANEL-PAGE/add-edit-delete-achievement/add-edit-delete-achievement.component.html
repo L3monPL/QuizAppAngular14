@@ -1,9 +1,12 @@
 <div class="achievement_list_container">
     <div class="item_achievement" *ngFor="let achievement of achievementList">
-        <p>{{achievement.name}}</p>
-        <div class="btn_container_row">
-            <button class="btn_width" mat-raised-button color="primary">Edytuj</button>
+        <p *ngIf="checkSelectedAchivementId(achievement.id)">{{achievement.name}}</p>
+        <div *ngIf="checkSelectedAchivementId(achievement.id)" class="btn_container_row">
+            <button (click)="editAchivement(achievement.id)" class="btn_width" mat-raised-button color="primary">Edytuj</button>
             <button (click)="deleteAchievement(achievement.id)" class="btn_width" mat-raised-button color="warn">Usuń</button>
+        </div>
+        <div *ngIf="editAchivementShowCard && currentAchivementToEdit == achievement.id" class="edit_achivement_container">
+            <p>edit</p>
         </div>
     </div>
     <button *ngIf="!this.addAchievementCard" (click)="showCardAddAchievement()" class="btn_width" mat-raised-button color="primary">Dodaj</button>

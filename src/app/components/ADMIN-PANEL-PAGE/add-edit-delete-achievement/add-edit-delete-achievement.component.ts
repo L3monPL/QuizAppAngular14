@@ -24,6 +24,9 @@ export class AddEditDeleteAchievementComponent implements OnInit {
   subDeleteAchievement?: Subscription
   customErrorDeleteAchievement?: string
 
+  editAchivementShowCard = false
+  currentAchivementToEdit?: number
+
   addAchievementForm = new FormGroup({
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required)
@@ -98,6 +101,22 @@ export class AddEditDeleteAchievementComponent implements OnInit {
         
       }
     })
+  }
+
+  checkSelectedAchivementId(id: number){
+    let value
+    if (this.currentAchivementToEdit !== id) {
+      value = true
+    }
+    if (this.currentAchivementToEdit == id) {
+      value = false
+    }
+    return value
+  }
+
+  editAchivement(id: number){
+    this.editAchivementShowCard = true
+    this.currentAchivementToEdit = id
   }
 
   showCardAddAchievement(){
