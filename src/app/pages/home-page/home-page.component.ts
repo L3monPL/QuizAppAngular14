@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
 import { CheckLoginGuard } from 'src/app/guards/check-login.guard';
+import { Achievement, AchievementRestService } from 'src/app/services/achievement-rest.service';
 import { CategoryRestService } from 'src/app/services/category-rest.service';
 import { UserManagerRestService } from 'src/app/services/components-services/user-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
@@ -32,6 +33,12 @@ export class HomePageComponent implements OnInit {
   subsProgressBar?: Subscription
   userProgressUpdate?: UserList
 
+  subAchievementList?: Subscription
+  customErrorAchievementList?: string
+  achievementList?: Array<Achievement>
+
+  subAchievementAddFirstCategoryUnlockToUser?: Subscription
+
   @ViewChild('drawer') input!: MatDrawer
   @ViewChild('mobileDrawer') mobileDrawer!: MatDrawer
 
@@ -44,7 +51,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     private router: Router,
     public userDataService: UserDataService,
-    private userManagerService: UserManagerRestService
+    private userManagerService: UserManagerRestService,
+    private achievementRest: AchievementRestService
     ) { }
 
   ngOnInit(): void {
@@ -87,11 +95,40 @@ export class HomePageComponent implements OnInit {
       // console.log(achievementCompleteFirstQuiz)
       if (achievementCompleteFirstQuiz == undefined) {
         console.log(achievementCompleteFirstQuiz + 'tutaj powinno dodać achievement')
+        
+        this.subAchievementList = this.achievementRest.getAchievementList().subscribe({
+          next: (response) => {
+            if (response.body) {
+              this.achievementList = response.body
+              console.log(this.achievementList)
+              this.postAchievementFirstCategoryToUser()
+            }
+            else{
+              this.customErrorAchievementList = 'Brak obiektu odpowiedzi'
+            } 
+          },
+          error: (errorResponse) => {
+                this.customErrorAchievementList = errorResponse.error;
+          },
+          complete: () => {}
+        })
+
+
       }
       if (achievementCompleteFirstQuiz) {
         console.log(achievementCompleteFirstQuiz + 'nie dodaje achivementów')
       }
     }
+  }
+
+  postAchievementFirstCategoryToUser(){
+    let currentUser = this.userDataService.getId()
+    console.log(currentUser)
+
+    let sortAchievementToSearchFirstCategoryUnlock = this.achievementList!.find(x => x.name === 'Pierwsza kategoria')
+    console.log(sortAchievementToSearchFirstCategoryUnlock?.id)
+
+    this.subAchievementAddFirstCategoryUnlockToUser
   }
 
   hideReightPanel(value: boolean){
