@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent } from 'ng-apexcharts';
 import { Subscription } from 'rxjs';
 import { Category, CategoryRestService } from 'src/app/services/category-rest.service';
 import { QuestionManagerRestService } from 'src/app/services/components-services/question-manager-rest.service';
 import { UserDataService } from 'src/app/services/global-services/user-data.service';
 import { CategoryProgress, LevelProgresses, UserList } from 'src/app/services/user-rest.service';
-
+import { trigger, state, style, transition, animate, group } from '@angular/animations';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -18,7 +18,36 @@ export type ChartOptions = {
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
-  styleUrls: ['./lessons.component.scss']
+  styleUrls: ['./lessons.component.scss'],
+  animations: [
+    trigger('categoryIcon', [
+      state('open', style({
+
+      })),
+      state('closed', style({
+
+      })),
+      transition(':enter', [
+        style({opacity: 0, transform: 'translateX(20px)'}),
+        animate(
+          '500ms ease-in-out',
+          style({opacity: 1, transform: 'translateY(0)'})
+        )
+      ]),
+    ]),
+    trigger('toggleBox', [
+      state('open', style({ 
+
+      })),
+      state('closed', style({
+        
+      })),
+
+      transition('closed => open', [
+        animate('0s')
+      ]),
+    ])
+  ]
 })
 export class LessonsComponent implements OnInit {
 
@@ -53,11 +82,14 @@ export class LessonsComponent implements OnInit {
   customError?: string
   loading?: boolean
 
+  currentAminationCallback = -1
+
   constructor(
     private route: ActivatedRoute,
     public questionManagerService: QuestionManagerRestService,
     public categoryRestService : CategoryRestService,
-    public userDataService: UserDataService
+    public userDataService: UserDataService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +98,19 @@ export class LessonsComponent implements OnInit {
     this.getCategoryById()
     this.checkUser()
     this.chartLoading()
+  }
+
+  routerNavigate(id: number){
+    this.currentAminationCallback++
+    if (this.currentAminationCallback>0) {
+      console.log('end')
+      this.router.navigateByUrl(`/home/level/${this.idParam}/${id}`)
+    }
+  }
+  isOpen?: any
+  toggle(){
+    this.isOpen = !this.isOpen;
+    console.log(this.isOpen)
   }
 
   takeValueFromUrl(){

@@ -27,7 +27,7 @@ const routes: Routes = [
     RouterModule,
     RouterModule.forChild(routes),
     MatIconModule,
-    NgApexchartsModule
+    NgApexchartsModule,
   ],
   exports: [
     LessonsComponent

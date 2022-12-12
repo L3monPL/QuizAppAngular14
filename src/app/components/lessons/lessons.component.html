@@ -70,7 +70,7 @@
 <div *ngIf="!this.loading" class="container_main">
     <div class="container_side center column">
         <div class="image_category">
-            <img src={{categoryById?.iconUrl}} alt="">
+            <img [@categoryIcon] src={{categoryById?.iconUrl}} alt="">
         </div>
         <!-- <div class="title">
             <h2>{{categoryById?.description}}</h2>
@@ -78,7 +78,7 @@
     </div>
     <div class="container_side center">
         <div class="items_col">
-            <div class="item" routerLink='/home/level/{{idParam}}/1'>
+            <div class="item" (click)="toggle()" [@toggleBox]="isOpen ? 'open' : 'closed'" routerLink='/home/level/{{idParam}}/1'>
                 <div class="header_item header_green">
                     <h2>ŁATWY</h2>
                 </div>
