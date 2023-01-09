@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppGlobalLoadingComponent } from './components/app-global-loading/app-global-loading.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserDataService } from './services/global-services/user-data.service';
+import { AuthRequestInterceptor } from './auth/authRequest.interceptor';
 
 
 @NgModule({
@@ -35,6 +36,11 @@ import { UserDataService } from './services/global-services/user-data.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthRequestInterceptor,
       multi: true
     },
       UserDataService
