@@ -47,6 +47,13 @@ export class QuestionRestService {
     })
   }
 
+  getAllQuestionsListByCategoryIdAndLvl(categoryId: number, level: number):Observable<HttpResponse<Array<Questions>>>{
+    return this.http.get<Array<Questions>>(this.PATH + `/question/all/${categoryId}/${level}`,{
+      observe: 'response',
+      responseType: 'json'
+    })
+  }
+
 
   postQuestionsByCategoryId(
     categoryId: number, 

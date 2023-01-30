@@ -11,6 +11,8 @@ export class QuestionManagerRestService {
 
   questionsEmitterRest: EventEmitter<any> = new EventEmitter()
 
+  questionsAllEmitterRest: EventEmitter<any> = new EventEmitter()
+
   subQuestionsList?: Subscription
   questionsList?: Array<Questions>
   customError?: string
@@ -64,6 +66,26 @@ export class QuestionManagerRestService {
         if (response.body) {
           this.showToEditQuestionsList = true
           this.questionsEmitterRest.emit(response.body)
+        }
+        else{
+          this.customErrorCategoryId = 'Brak obiektu odpowiedzi'
+        } 
+      },
+      error: (errorResponse) => {
+            this.customErrorCategoryId = errorResponse.error;
+      },
+      complete: () => {}
+    })
+  }
+
+  questionsAllListByCategoryIdAndLvl(id: number, level: any){
+    this.currentId = id
+    this.currentLevel = level
+    this.subQuestions = this.quiestionRestService.getAllQuestionsListByCategoryIdAndLvl(id, Number(level)).subscribe({
+      next: (response) => {
+        if (response.body) {
+          this.showToEditQuestionsList = true
+          this.questionsAllEmitterRest.emit(response.body)
         }
         else{
           this.customErrorCategoryId = 'Brak obiektu odpowiedzi'

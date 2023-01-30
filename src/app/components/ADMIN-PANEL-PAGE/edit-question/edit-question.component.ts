@@ -79,7 +79,7 @@ export class EditQuestionComponent implements OnInit {
   }
 
   subscribeQuestionsList(){
-    this.questionManagerRest.questionsEmitterRest.subscribe(
+    this.questionManagerRest.questionsAllEmitterRest.subscribe(
       res => {
         this.questionsList = res
         console.log(this.questionsList)
@@ -97,7 +97,7 @@ export class EditQuestionComponent implements OnInit {
   getQUestionsList(id: number){
     let level = this.levelForm.get('currentLevel')?.value
     this.resetForm()
-    this.questionManagerRest.questionsListByCategoryIdAndLvl(id, level)
+    this.questionManagerRest.questionsAllListByCategoryIdAndLvl(id, level)
   }
 
   getQuestionsValueToFOrm(id: number){
