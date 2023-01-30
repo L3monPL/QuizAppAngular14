@@ -174,6 +174,17 @@ export class UserRestService {
     })
   }
 
+  postUpdatePassword(userId: number, oldPassword: string, newPassword: string, repeatNewPassword: string):Observable<HttpResponse<any>>{
+    return this.http.patch<any>(this.PATH + `/user/updatePassword/${userId}`,{
+      oldPassword: oldPassword,
+      newPassword: newPassword,
+      repeatNewPassword: repeatNewPassword
+    }, {
+      observe: 'response',
+      responseType: 'json',
+    })
+  }
+
 
 
 

@@ -1,1 +1,71 @@
-<p>settings-page works!</p>
+<mat-card class="form-container">
+    <form [formGroup]="changePasswordChange" (submit)="submit()">
+        <div class="form_column" *ngIf="!loading">
+            
+        <mat-form-field class="form-field" appearance="outline">
+            
+            <mat-label> Stare hasło</mat-label>
+            
+            <input matInput formControlName="oldPassword" required>
+            
+            <div *ngIf="f['oldPassword'].touched && f['oldPassword'].invalid" class="alert alert-danger"></div>
+
+            <mat-error *ngIf="f['oldPassword'].hasError('oldPassword') && !changePasswordChange.hasError('required')">
+                Wprowadz poprawne hasło
+            </mat-error>
+
+            <mat-error *ngIf="f['oldPassword'].hasError('required')">
+                Hasło jest <strong>wymagane</strong>
+            </mat-error>
+        
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+            
+            <mat-label>Nowe hasło</mat-label>
+            
+            <input matInput formControlName="newPassword" type="password">
+            
+            <div *ngIf="f['newPassword'].touched && f['newPassword'].invalid" class="alert alert-danger"></div>
+
+            <mat-error *ngIf="f['newPassword'].hasError('required')">
+                Nowe hasło jest <strong>wymagane</strong>
+            </mat-error>
+
+            
+        
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline">
+            
+            <mat-label>Powtórz nowe hasło</mat-label>
+            
+            <input matInput formControlName="repeatNewPassword" type="password">
+            
+            <div *ngIf="f['repeatNewPassword'].touched && f['repeatNewPassword'].invalid" class="alert alert-danger"></div>
+
+            <mat-error *ngIf="f['repeatNewPassword'].hasError('required')">
+                Nowe hasło jest <strong>wymagane</strong>
+            </mat-error>
+
+            
+        
+        </mat-form-field>
+    </div>
+    <!-- <div *ngIf="loading" class="spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            [color]="color"
+            [mode]="mode"
+            [value]="value">
+        </mat-progress-spinner>  
+    </div>
+    <div class="error" *ngIf="customError">
+        <strong>{{customError}}</strong>
+   </div>  -->
+    
+        <div class="input_margin">
+            <button class="button_margin" mat-raised-button color="primary" type="submit">Zmień hasło</button>
+            
+        </div>
+    </form>
+    
+</mat-card>
