@@ -28,8 +28,8 @@ export class AddCategoryComponent implements OnInit {
     name: new FormControl<string>('',Validators.required),
     description: new FormControl<string>('',Validators.required),
     iconUrl: new FormControl<string|null>('https://cdn-icons-png.flaticon.com/512/5705/5705144.png',Validators.required),
-    questionsPerLesson: new FormControl<number|null>(null,Validators.required),
-    lessonsPerLevel: new FormControl<number|null>(null,Validators.required),
+    questionsPerLesson: new FormControl<number|null>(4,Validators.required),
+    lessonsPerLevel: new FormControl<number|null>(4,Validators.required),
   });
 
   constructor(
@@ -50,8 +50,8 @@ export class AddCategoryComponent implements OnInit {
     this.addCategoryForm.controls['name'].setValue('')
     this.addCategoryForm.controls['description'].setValue('')
     this.addCategoryForm.controls['iconUrl'].setValue('')
-    this.addCategoryForm.controls['questionsPerLesson'].setValue(null)
-    this.addCategoryForm.controls['lessonsPerLevel'].setValue(null)
+    this.addCategoryForm.controls['questionsPerLesson'].setValue(4)
+    this.addCategoryForm.controls['lessonsPerLevel'].setValue(4)
 
     this.addCategoryForm.controls['name'].setErrors(null)
     this.addCategoryForm.controls['description'].setErrors(null)

@@ -7,7 +7,7 @@
     <form [formGroup]="categoryEditForm">
 
             <mat-form-field class="auto_width2" appearance="outline">
-                <mat-label>Wybierz Quiz</mat-label>
+                <mat-label>Wybierz Kategorie</mat-label>
                 <mat-select (ngModelChange)="editCategorySubmit()" formControlName="categoryId" required>
                   <mat-option *ngFor="let element of categoryList" [value]=element.id><img class="image_select2" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
                   <!-- <mat-option value=2>2</mat-option>

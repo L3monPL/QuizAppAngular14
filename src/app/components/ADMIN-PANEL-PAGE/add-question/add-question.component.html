@@ -17,7 +17,7 @@
         </mat-form-field> -->
         <div class="row">
             <mat-form-field class="auto_width" appearance="outline">
-                <mat-label>Wybierz Quiz</mat-label>
+                <mat-label>Wybierz Kategorie</mat-label>
                 <mat-select formControlName="categoryId" required>
                   <mat-option *ngFor="let element of categoryList" [value]=element.id><img class="image_select" src={{element.iconUrl}} alt="">{{element.name}}</mat-option>
                   <!-- <mat-option value=2>2</mat-option>
