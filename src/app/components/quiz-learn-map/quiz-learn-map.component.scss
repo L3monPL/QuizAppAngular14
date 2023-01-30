@@ -128,15 +128,16 @@
     box-shadow: $box_shadow;
     border-radius: 10px;
     height: 84.4px;
-    justify-content: space-between;
+    justify-content: center;
 }
 .header_card h2{
     margin: 0px;
-    margin-top: 8px;
+    // margin-top: 8px;
     color: #fff;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: 500;
-    color: #000;
+    // color: #000;
+    text-align: center;
 }
 .row{
     display: flex;

@@ -208,4 +208,11 @@
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
 }
+.row_achievement{
+    display: none;
+    // flex-direction: column;
+}
+.container{
+    height: calc(100vh - 6.2rem);
+}
 }
