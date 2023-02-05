@@ -47,7 +47,7 @@ export class SettingsPageComponent implements OnInit {
       this.changePassword = this.userRest.postUpdatePassword(this.currentUserId!, oldPassword!, newPassword!, repeatNewPassword!).subscribe({
         next: (response) => {
           if (response) {
-            this.router.navigateByUrl('/home'); 
+            this.router.navigateByUrl('/home/dashboard'); 
           }
         },
         error: (errorResponse) => {

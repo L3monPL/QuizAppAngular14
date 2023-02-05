@@ -178,7 +178,7 @@ export class UserRestService {
     return this.http.patch<any>(this.PATH + `/user/updatePassword/${userId}`,{
       oldPassword: oldPassword,
       newPassword: newPassword,
-      repeatNewPassword: repeatNewPassword
+      confirmNewPassword: repeatNewPassword
     }, {
       observe: 'response',
       responseType: 'json',
